@@ -11,7 +11,7 @@ categories:
 tags:
 - CMake
 ---
-* table of contents
+ 
 <!-- toc -->
 
 在开始介绍如何使用CMake编译跨平台的静态库之前，先讲讲我在没有使用CMake之前所趟过的坑。因为很多开源的程序，比如png，都是自带编译脚本的。我们可以使用下列脚本来进行编译：

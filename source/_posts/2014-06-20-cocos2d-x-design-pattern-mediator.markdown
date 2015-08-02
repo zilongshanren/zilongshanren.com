@@ -14,7 +14,7 @@ tags:
 - design pattern
 ---
 
-* table of contents
+ 
 <!-- toc -->
 上周写了关于[cocos2d-x里面的观察者模式](http://4gamers.cn/blog/2014/06/20/cocos2d-x-design-pattern-observer/)，文章最后提到一个应用场景：“你的GameScene里面有两个layer，一个gameLayer，它包含了游戏中的对象，比如玩家、敌人等。另一个层是HudLayer，它包含了游戏中显示分数、生命值等信息。如何让这两个层相互通信。”
 

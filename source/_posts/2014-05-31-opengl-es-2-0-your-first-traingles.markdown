@@ -16,7 +16,7 @@ tags:
 - opengl
 ---
 
-* table of contents
+ 
 <!-- toc -->
 
 ## 前言

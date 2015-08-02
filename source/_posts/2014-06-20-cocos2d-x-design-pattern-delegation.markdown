@@ -14,7 +14,7 @@ tags:
 - design pattern
 ---
 
-* table of contents
+ 
 <!-- toc -->
 
 前言：

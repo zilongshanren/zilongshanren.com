@@ -1,0 +1,265 @@
+---
+title: "使用 Org-mode 来写博客"
+date: 2015-07-19
+layout: post
+categories: org
+published: true
+comments: true
+---
+<p>
+本文将介绍如何使用 Org-mode 在 Emacs 里面写博客。因为我的博客系统采用的是 Octopress，Org-mode 自带的 publish 功能太简单，所以，我决定在已有的博客上面添加 Org-mode 的支持。当然，和我一样有这个需求的人不止一个，我通过 Google 很快就找到了一个现成的方案。 <a href="https://github.com/yoshinari-nomura/org-octopress">yoshinari-nomura/org-octopress</a> :+1: 
+</p>
+
+<p>
+本文就是使用 org-octopress 来完成的。这是 org-mode 的示例。
+</p>
+
+<p>
+<!-- more -->
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Why Org-mode:question:</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">它比 Markdown 功能更加强大:dog:</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+作为一门标识语言，Org-mode 的功能要比 Markdown 强大得多，它支持 GTD，项目管理，记笔记，文学编程等，它让你可以用纯文本来管理你的生活（<a href="http://doc.norang.ca/org-mode.html">Org Mode - Organize Your Life In Plain Text!</a>）。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">和 Emacs 无缝集成:round_pushpin:</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+因为我现在的主要编程环境都在 Emacs 里面，而论到对 Org-mode 的支持力度，Emacs 无出其右。虽然现在 Vim 党和 Sublime 党都有相应的 Org-mode 移植插件，但是体验都太差。
+</p>
+
+<p>
+另外，我可以自己定义一些快捷操作，比如抓取 Chrome 浏览器里的链接直接插入到 Blog 里面，比如调用截图程序，自动保存图片到博客的相应目录同时上传到七牛云存储。当然，我还可以做的更多。
+</p>
+
+<p>
+这种自由的写博客的感觉，只有 Emacs 可以让你拥有。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">支持文学编程</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+因为我经常需要在博客里面贴代码，使用 Org-mode，代码片断可以有代码高亮。另外，我可以直接在 Org-mode 里面执行这些代码片断，这个功能太爽了。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4">我正在学习 Org-mode</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+我目前还在学习 Org-mode，学习一样东西最好的办法就是一直用它。一方面有利于学以致用，另一方面也减少学习痛苦，是保持学习激情的好方法。Org-mode 和 Emacs 一样，都是属于刚开始没啥卵用，后面越用越爽的类型。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">How to configure Org-octopress</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+配置 Org-octopress 的方法很简单，我们只需要从 Melpa 上面安装最新版本的 Org-octopress 即可。
+</p>
+
+<p>
+然后在你的.emacs 配置里面添加下面的代码：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span>setq org-octopress-directory-top       <span style="color: #2aa198;">"~/4gamers.cn/source"</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span>setq org-octopress-directory-posts     <span style="color: #2aa198;">"~/4gamers.cn/source/_posts"</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span>setq org-octopress-directory-org-top   <span style="color: #2aa198;">"~/4gamers.cn/source"</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span>setq org-octopress-directory-org-posts <span style="color: #2aa198;">"~/4gamers.cn/source/blog"</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span>setq org-octopress-setup-file          <span style="color: #2aa198;">"~/4gamers.cn/setupfile.org"</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+这里我的 Octopress 博客的根目录是 <code>4gamers.cn</code> ，你需要根据自己的情况来修改这个地址。
+</p>
+
+<p>
+接下来，你需要修改你的博客里面的 <code>_config.yml</code> ，它里面的 <code>permalink</code> 修改成下面的样子：
+</p>
+
+<pre class="example">
+permalink: /blog/:year-:month-:day-:title.html
+</pre>
+
+<p>
+接下来，你就可以调用 <code>org-octopress</code> 了。此时会打开一个 org-octopress-summary-mode 的 buffer，你可以根据提示很容易地创建一篇文章的模板。
+</p>
+
+<p>
+最后，当你写完博客以后，可以用 <code>C-c C-e P x</code> 来选择导出 octopress 工程，然后就可以输入 <code>rake preview</code> 来本地预览你的文章了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Some tips</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">让文章支持评论</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+在文章的最开头，添加下列开关：
+</p>
+
+<pre class="example">
+#+JEKYLL_COMMENTS: true
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">配置 spacemacs</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+通过配置下面的设置，可以让 <code>org-octopress</code> 的操作更爽。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span>evilify org-octopress-summary-mode org-octopress-summary-mode-map<span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span>add-hook 'org-octopress-summary-mode-hook
+          #'<span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">lambda</span> <span style="color: #268bd2;">()</span> <span style="color: #268bd2;">(</span>local-set-key <span style="color: #6c71c4;">(</span>kbd <span style="color: #2aa198;">"q"</span><span style="color: #6c71c4;">)</span> 'bury-buffer<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">自动截图，保存图片到博客的相应目录，并且插入一个图片链接</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">zilongshanren//insert-org-or-md-img-link</span> <span style="color: #b58900;">(</span>prefix imagename<span style="color: #b58900;">)</span>
+  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>equal <span style="color: #6c71c4;">(</span>file-name-extension <span style="color: #859900;">(</span>buffer-file-name<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span> <span style="color: #2aa198;">"org"</span><span style="color: #268bd2;">)</span>
+      <span style="color: #268bd2;">(</span>insert <span style="color: #6c71c4;">(</span>format <span style="color: #2aa198;">"[[%s][%s%s]]"</span> imagename prefix imagename<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+    <span style="color: #268bd2;">(</span>insert <span style="color: #6c71c4;">(</span>format <span style="color: #2aa198;">"![%s](%s%s)"</span> imagename prefix imagename<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">zilongshanren/capture-screenshot</span> <span style="color: #b58900;">(</span>basename<span style="color: #b58900;">)</span>
+  <span style="color: #2aa198;">"Take a screenshot into a time stamped unique-named file in the</span>
+<span style="color: #2aa198;">  same directory as the org-buffer/markdown-buffer and insert a link to this file."</span>
+  <span style="color: #b58900;">(</span>interactive <span style="color: #2aa198;">"sScreenshot name: "</span><span style="color: #b58900;">)</span>
+  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>equal basename <span style="color: #2aa198;">""</span><span style="color: #268bd2;">)</span>
+      <span style="color: #268bd2;">(</span>setq basename <span style="color: #6c71c4;">(</span>format-time-string <span style="color: #2aa198;">"%Y%m%d_%H%M%S"</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+  <span style="color: #b58900;">(</span>setq fullpath
+        <span style="color: #268bd2;">(</span>concat <span style="color: #6c71c4;">(</span>file-name-directory <span style="color: #859900;">(</span>buffer-file-name<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+                <span style="color: #2aa198;">"../images/posts/"</span>
+                <span style="color: #6c71c4;">(</span>file-name-base <span style="color: #859900;">(</span>buffer-file-name<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+                <span style="color: #2aa198;">"_"</span>
+                basename<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+  <span style="color: #b58900;">(</span>setq relativepath
+        <span style="color: #268bd2;">(</span>concat <span style="color: #6c71c4;">(</span>file-name-base <span style="color: #859900;">(</span>buffer-file-name<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+                <span style="color: #2aa198;">"_"</span>
+                basename
+                <span style="color: #2aa198;">".png"</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>file-exists-p <span style="color: #6c71c4;">(</span>file-name-directory fullpath<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+      <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">progn</span>
+        <span style="color: #6c71c4;">(</span>call-process <span style="color: #2aa198;">"screencapture"</span> nil nil nil <span style="color: #2aa198;">"-s"</span> <span style="color: #859900;">(</span>concat fullpath <span style="color: #2aa198;">".png"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+        <span style="color: #6c71c4;">(</span>zilongshanren//insert-org-or-md-img-link <span style="color: #2aa198;">"http://guanghuiqu.qiniudn.com/"</span> relativepath<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+    <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">progn</span>
+      <span style="color: #6c71c4;">(</span>call-process <span style="color: #2aa198;">"screencapture"</span> nil nil nil <span style="color: #2aa198;">"-s"</span> <span style="color: #859900;">(</span>concat basename <span style="color: #2aa198;">".png"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+      <span style="color: #6c71c4;">(</span>zilongshanren//insert-org-or-md-img-link <span style="color: #2aa198;">"./"</span> <span style="color: #859900;">(</span>concat basename <span style="color: #2aa198;">".png"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+  <span style="color: #b58900;">(</span>insert <span style="color: #2aa198;">"\n"</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+这个截图程序只有在写博客的时候才会把图片保存到对应的博客存放图片的目录，其它时候都是在当前目录保存图片。
+</p>
+
+<p>
+下面这个截图就是使用上面的函数生成的，不过我还把它上传到了自己的七牛云存储上面。（如果你需要使用七牛，请把 guanghui.qiniudn.com 改成你的七牛数据空间地址。）
+</p>
+
+
+<div class="figure">
+<p><i><img src="http://guanghuiqu.qiniudn.com/2015-07-19-add-org-mode-support_test-img.png" alt="2015-07-19-add-org-mode-support_test-img.png" /></i>
+</p>
+</div>
+
+<p>
+另外，如果使用的是 org 或者 markdown，最终插入 buffer 里面的链接格式也有做相应的调整。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">自动捕获当前 Chrome 的 Tab 页的 URL 并插入到文章中</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+如果是 Mac 用户，只需要安装 Org-mac-link 这个插件即可，使用方法也非常简单，只需要调用以下命令：
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">org-mac-grab-link
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5">去除 Org 导出的 HTML 中的多余的空格</h3>
+<div class="outline-text-3" id="text-3-5">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defadvice</span> <span style="color: #268bd2;">org-html-paragraph</span> <span style="color: #b58900;">(</span>before org-html-paragraph-advice
+                                      <span style="color: #268bd2;">(</span>paragraph contents info<span style="color: #268bd2;">)</span> activate<span style="color: #b58900;">)</span>
+  <span style="color: #2aa198;">"Join consecutive Chinese lines into a single long line without</span>
+<span style="color: #2aa198;">unwanted space when exporting org-mode to html."</span>
+  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">let*</span> <span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span>origin-contents <span style="color: #859900;">(</span>ad-get-arg <span style="color: #268bd2; font-weight: bold;">1</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+         <span style="color: #6c71c4;">(</span>fix-regexp <span style="color: #2aa198;">"[[:multibyte:]]"</span><span style="color: #6c71c4;">)</span>
+         <span style="color: #6c71c4;">(</span>fixed-contents
+          <span style="color: #859900;">(</span>replace-regexp-in-string
+           <span style="color: #b58900;">(</span>concat
+            <span style="color: #2aa198;">"</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">(</span><span style="color: #2aa198;">"</span> fix-regexp <span style="color: #2aa198;">"</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">)</span><span style="color: #2aa198;"> *\n *</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">(</span><span style="color: #2aa198;">"</span> fix-regexp <span style="color: #2aa198;">"</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">)</span><span style="color: #2aa198;">"</span><span style="color: #b58900;">)</span> <span style="color: #2aa198;">"\\1\\2"</span> origin-contents<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+
+    <span style="color: #268bd2;">(</span>ad-set-arg <span style="color: #268bd2; font-weight: bold;">1</span> fixed-contents<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Conclusion</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+通过给 Octopress 添加 Org-mode 的支持，我感觉写博客的欲望又增加了。哈哈，不过坚持写博客还是很难的说。。。:disappointed_relieved: 
+</p>
+
+<p>
+Happy hacking!:smile: 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Reference</h2>
+<div class="outline-text-2" id="text-5">
+<ol class="org-ol">
+<li><a href="http://elvestar.com/notes/org-mode/#sec-7">Emacs Org Mode</a>
+</li>
+
+<li><a href="http://segmentfault.com/a/1190000000444374">使用七牛储存 Octopress 图片 - SegmentFault</a>
+</li>
+</ol>
+</div>
+</div>

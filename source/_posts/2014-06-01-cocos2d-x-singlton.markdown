@@ -14,7 +14,7 @@ tags:
 - design pattern
 ---
 
-* table of contents
+ 
 <!-- toc -->
 
 本系列文章我将和大家一起来发掘cocos2d-x中所使用到的设计模式。

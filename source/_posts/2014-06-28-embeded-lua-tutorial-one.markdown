@@ -12,7 +12,7 @@ tags:
 - Lua
 ---
 
-* table of contents
+ 
 <!-- toc -->
 本系列教程主要介绍如何在C/C++程序里面嵌入Lua脚本，我打算从以下几个方面来介绍：
 

@@ -14,7 +14,7 @@ tags:
 - opengl
 ---
 
-* table of contents
+ 
 <!-- toc -->
 
 在[上一篇文章](http://4gamers.cn/blog/2014/07/01/opengl-es2-your-first-cube/)中，我们介绍了如何绘制一个立方体，里面涉及的知识点有VBO(Vertex Buffer Object)、IBO(Index Buffer Object)和MVP(Modile-View-Projection)变换。

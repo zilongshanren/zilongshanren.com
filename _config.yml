@@ -6,8 +6,8 @@
 title: 子龙山人
 subtitle: Game PROgrammer and Geek
 description: Game programming, Emacs Cocos2D-X
-author: zilongshanren
-language: Chinese
+author: 子龙山人
+language: zh-CN
 timezone:
 
 # URL
@@ -84,9 +84,8 @@ toc:
 
 #plugins
 plugins:
-- hexo-tag-emojis
 
-#emoji
-#"https://github.com/sergiolepore/hexo-tag-emojis"
-emojis:
-  image_dir: images/emojis
+
+#duoshuo
+#"http://dev.duoshuo.com/threads/541d3b2b40b5abcd2e4df0e9"
+duoshuo_shortname: zilongshanren2

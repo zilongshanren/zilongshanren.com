@@ -10,7 +10,7 @@ categories:
 - Javascript
 ---
 
-* table of contents
+ 
 <!-- toc -->
 本文档主要涵盖如何嵌入SpiderMonkey javascript引擎到你自己的c++程序中。
 

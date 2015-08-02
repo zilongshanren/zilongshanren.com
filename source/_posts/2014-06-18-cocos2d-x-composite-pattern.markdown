@@ -14,7 +14,7 @@ tags:
 - design pattern
 ---
 
-* table of contents
+ 
 <!-- toc -->
 在开始挖掘cocos2d-x里面的组合模式之前，我先武断地下个结论：
 

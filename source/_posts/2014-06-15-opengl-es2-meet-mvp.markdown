@@ -13,7 +13,7 @@ tags:
 - opengl
 ---
 
-* table of contents
+ 
 <!-- toc -->
 
 在[上一篇文章](http://4gamers.cn/blog/2014/06/07/write-your-own-shader/)中，我在介绍vertex shader的时候挖了一个坑：CC_MVPMatrix。它其实是一个uniform，每一个cocos2d-x预定义的shader都包含有这个uniform，

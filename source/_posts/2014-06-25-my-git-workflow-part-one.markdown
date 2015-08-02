@@ -12,7 +12,7 @@ tags:
 - Git
 ---
 
-* table of contents
+ 
 <!-- toc -->
 
 这篇文章主要是记录一下我自己的Git工作流。

@@ -13,7 +13,7 @@ tags:
 - programming life
 ---
 
-* table of contents
+ 
 <!-- toc -->
 
 **如何坚持每周写一篇博客呢？**

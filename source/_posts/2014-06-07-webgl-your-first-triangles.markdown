@@ -12,7 +12,7 @@ tags:
 - welgl
 ---
 
-* table of contents
+ 
 <!-- toc -->
 
 本人最近正在学习WebGL，所以想借着自己写《Cocos2D-X OpenGLES 2.0教程系列》的同时再应用到WebGL上面来。一来可以加深自己的理解，二来也可以对比两者的差别，提高学习效率。WebGL目前各大厂商都在推，就连微软也开始重视这项技术了，不得不说这是一项不小的进步。而最近我看到一篇文章，讲到[《为什么要使用WebGL来做图形学的研究》](http://www.realtimerendering.com/blog/why-use-webgl-for-graphics-research/)，深受启发。而且javascript编写OpenGL代码也非常地方便和简洁。另外，js在编写3D程序方面，它的性能是可以和C媲美的。

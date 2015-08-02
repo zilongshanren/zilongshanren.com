@@ -14,7 +14,7 @@ tags:
 - opengl
 ---
 
-* table of contents
+ 
 <!-- toc -->
 在[上篇文章](http://4gamers.cn/blog/2014/06/22/opengl-es2-use-vbo/)中，我们介绍了VBO索引的使用，使用VBO索引可以有效地减少顶点个数,优化内存，提高程序效率。
 

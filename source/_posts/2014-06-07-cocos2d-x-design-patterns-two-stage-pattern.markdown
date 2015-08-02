@@ -14,7 +14,7 @@ tags:
 - design pattern
 ---
 
-* table of contents
+ 
 <!-- toc -->
 乍一看标题，大家可能会觉得很奇怪，神马是“二段构建模式”呢？
 

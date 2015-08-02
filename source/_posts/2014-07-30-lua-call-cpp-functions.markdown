@@ -14,7 +14,7 @@ tags:
 - Lua
 ---
 
-* table of contents
+ 
 <!-- toc -->
 本教程将介绍如何在Lua里面调用c/c++函数。
 

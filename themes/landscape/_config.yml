@@ -1,21 +1,21 @@
 # Header
 menu:
-  Home: /
-  Archives: /archives
+  主页: /
+  博文列表: /archives
 rss: /atom.xml
 
 # Content
-excerpt_link: Read More
+excerpt_link: 继续阅读
 fancybox: true
 
 # Sidebar
 sidebar: right
 widgets:
+- recent_posts
 - category
 - tag
 - tagcloud
 - archive
-- recent_posts
 
 # Miscellaneous
 google_analytics:
