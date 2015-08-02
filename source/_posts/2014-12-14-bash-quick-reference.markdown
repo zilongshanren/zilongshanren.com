@@ -7,8 +7,8 @@ categories:
 - bash
 ---
 
-* toc
-{:toc}
+ 
+<!-- toc -->
 
 
 由于前段时间一直在做Bash和Makefile脚本的编写，所以，本文主要是记录一些Bash使用心得.

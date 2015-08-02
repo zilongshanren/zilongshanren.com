@@ -13,7 +13,7 @@ tags:
 ---
 
 * table of contents
-{:toc}
+<!-- toc -->
 
 最近看了一个关于Emacs的视频，视频的标题为[The Editor of a Life Time](https://www.youtube.com/watch?v=VADudzQGvU8)。一个程序员，使用Emacs 31年了，不得不说让人很震撼。认识我的朋友都知道，我之前是一个不折不扣的Vim党，也写过一篇《打造属于自己的Vim神器》，可能还有一些朋友看了这篇文章和文中的视频，受到了一些鼓舞，于是开始接触并认真学习Vim。可是，我怎么这么快就“叛变”了呢？！且听我慢慢道来。
 <!-- more -->

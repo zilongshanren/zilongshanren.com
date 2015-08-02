@@ -7,8 +7,8 @@ categories:
 - programming life
 ---
 
-* toc
-{:toc}
+ 
+<!-- toc -->
 
 国庆七天假，为了回家，我于万军丛中抢到了回家的高铁票，终于踏上了回乡之路。在家里没网上，除了带小孩以外，我还阅读完了一本关于Emacs Lisp的书
 《Writing GNU Emacs Extensions》。该书内容有些地方过时了，不过对于编写Emacs扩展和学习Lisp还是有帮助的。

@@ -17,7 +17,7 @@ tags:
 ---
 
 * table of contents
-{:toc}
+<!-- toc -->
 [上篇文章](http://4gamers.cn/blog/2014/06/07/webgl-your-first-triangles/)介绍了如何使用WebGL来绘制一个三角形。从那个教程中，我们可以看出，其实WebGL只是一个[2D API](http://games.greggman.com/game/webgl-fundamentals/),我们只需要在Vertex Shader里面指定绘制图元的裁剪坐标系的坐标(取值范围从-1到+1)，同时在Fragment Shader里面指定顶点最终的像素颜色即可。如果要实现3D效果，必须由程序员自己来指定3D空间坐标变换，即Model-View-Projection变换。
 
 而WebGL本身是不提供数学库来做这些事情的，所以我们需要借助一些第三方的库（当然，也可以自己编写，但是效率可能会有问题,除非是学习，否则建议不要自己写）。现在Js的数学库比较多，而本教程主要介绍如何使用[glMatrix.js](https://github.com/toji/gl-matrix)来做MVP变换，在文章的最后，我们通过集成Jquery可以让3D场景更具有交互性。（当然，本教程只是通过往场景里面添加一个slider来改变三角形的颜色）

@@ -6,8 +6,8 @@ comments: true
 categories: python
 ---
 
-* toc
-{:toc}
+ 
+<!-- toc -->
 
 周五的时候，我的一个朋友让我帮忙写一个小工具。这个小工具要完成的功能如下：
 

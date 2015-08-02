@@ -7,8 +7,8 @@ categories:
 - cross compile
 ---
 
-* toc
-{:toc}
+ 
+<!-- toc -->
 
 现在移动平台非常火热，我们在使用C/C++开发一些移动应用的时候，经常可能需要将一些第三方c/c++库编译成对应的iOS/Android/WP/Tizen上面的静态库。
 之前我介绍过[如何使用CMake来编译跨平台库](http://4gamers.cn/blog/2014/09/01/how-to-use-cmake-to-compile-static-library/)。

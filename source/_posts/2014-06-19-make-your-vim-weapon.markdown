@@ -12,8 +12,8 @@ tags:
 - vim
 ---
 
-* toc
-{:toc}
+ 
+<!-- toc -->
 
 ## Why Vim?
 

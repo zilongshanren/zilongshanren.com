@@ -15,7 +15,7 @@ tags:
 ---
 
 * table of contents
-{:toc}
+<!-- toc -->
 
 在[上一篇文章](http://4gamers.cn/blog/2014/06/15/opengl-es2-meet-mvp/)中，我们介绍了uniform和模型-视图-投影变换，相信大家对于OpenGL ES 2.0应该有一点感觉了。在这篇文章中，我们不再画三角形了，改为画四边形。下篇教程，我们就可以画立方体了，到时候就是真3D了，哈哈。
 

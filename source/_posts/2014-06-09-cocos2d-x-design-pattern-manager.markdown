@@ -15,7 +15,7 @@ tags:
 ---
 
 * table of contents
-{:toc}
+<!-- toc -->
 
 管理者（Manager）就是专门负责管理其它类的实例的类，比如Cocoa里面的NSFontManager、NSInputManager、NSFileManager和NSLayoutManager类。此模式和“二段构建模式”一样，也没有出现在GoF的23个设计模式中，但是《Cocoa设计模式》一书中有提及，感兴趣的读者可以去查阅一下。
 

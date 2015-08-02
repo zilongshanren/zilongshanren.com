@@ -14,7 +14,7 @@ tags:
 ---
 
 * table of contents
-{:toc}
+<!-- toc -->
 
 本文是最后一篇C/C++与Lua交互的教程，在此之后，我们会结合Cocos2D-X来介绍Lua绑定。本文主要介绍如何绑定一个简单的C++类到Lua里面，并且提供Lua的面向对象访问方式。
 

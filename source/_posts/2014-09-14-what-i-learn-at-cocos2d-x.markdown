@@ -7,8 +7,8 @@ categories:
 - programming life
 ---
 
-* toc
-{:toc}
+ 
+<!-- toc -->
 
 我是去年7月加入的Cocos2D-X团队，从今年2月份正式进入Cocos2D-x引擎团队，负责维护GUI框架。之前我一直在做技术推广，写英文教程、演讲、偶尔上课是我的全部工作。
 期间，我最骄傲的产出是出色地完成了Doxygen自动提取C++源码，然后生成Js/Lua/Cpp可以切换的API文档。

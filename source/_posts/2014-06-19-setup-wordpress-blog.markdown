@@ -12,8 +12,8 @@ tags:
 - wordpress
 ---
 
-* toc
-{:toc}
+ 
+<!-- toc -->
 
 ## 前言
 

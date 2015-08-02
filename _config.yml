@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: zilongshanren
+title: 子龙山人
 subtitle: Game PROgrammer and Geek
 description: Game programming, Emacs Cocos2D-X
 author: zilongshanren
@@ -69,3 +69,24 @@ theme: landscape
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type:
+
+#rss
+#
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+
+#toc
+#"https://github.com/bubkoo/hexo-toc"
+toc:
+  maxDepth: 3
+
+#plugins
+plugins:
+- hexo-tag-emojis
+
+#emoji
+#"https://github.com/sergiolepore/hexo-tag-emojis"
+emojis:
+  image_dir: images/emojis

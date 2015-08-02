@@ -15,7 +15,7 @@ tags:
 ---
 
 * table of contents
-{:toc}
+<!-- toc -->
 在[上一篇文章](http://4gamers.cn/blog/2014/06/28/webgl-use-glmatrix-and-jquery/)中，我们介绍了如何使用glMatrix.js来处理3D图形里面的数学运算，主要谈到了MVP的应用。同时，我们还简单地提到了如何使用JQuery来丰富我们的WebGL应用。
 
 本文将介绍如何使用WebGL来制作一个旋转的立方体。在这篇教程里面，我们会提到以下内容：

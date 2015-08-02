@@ -11,7 +11,7 @@ categories:
 ---
 
 * table of contents
-{:toc}
+<!-- toc -->
 本文档主要涵盖如何嵌入SpiderMonkey javascript引擎到你自己的c++程序中。
 
 JavaScript在浏览器端已经被广泛使用了。现在，Mozilla的javascript引擎可以被嵌入到任何c++程序中，而不仅仅是应用于浏览器。许多应用程序开发可以通过脚本化的方式获益,这些程序可以使用SpiderMonkey API让c++代码里面跑js代码。

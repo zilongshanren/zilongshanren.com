@@ -13,7 +13,7 @@ tags:
 ---
 
 * table of contents
-{:toc}
+<!-- toc -->
 本文将介绍如何在C/C++里面操作Lua的数组和字符串类型，同时还会介绍如何在C/C++函数里面存储Lua状态（registry和upvalue），而registry在使用C/C++自定义类型时非常有用，可以方便地为userdata指定metatable。
 
 <!-- more -->

@@ -15,7 +15,7 @@ tags:
 ---
 
 * table of contents
-{:toc}
+<!-- toc -->
 
 前言：
 

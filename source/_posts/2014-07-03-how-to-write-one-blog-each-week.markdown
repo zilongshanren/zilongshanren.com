@@ -14,7 +14,7 @@ tags:
 ---
 
 * table of contents
-{:toc}
+<!-- toc -->
 
 **如何坚持每周写一篇博客呢？**
 
