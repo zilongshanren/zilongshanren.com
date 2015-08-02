@@ -68,7 +68,15 @@ theme: landscape
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: rsync
+  host: 112.124.58.18
+  user: root
+  root: "/var/www/octopress-cn"
+  port: 22
+  delete: true
+  verbose: true
+  ignore_errors: false
+
 
 #rss
 #
