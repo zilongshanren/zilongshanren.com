@@ -52,7 +52,7 @@ skip_render: [webgl/*, webgl/**/*]
 
 最终我的目录结构如下：
 
-[[2015-08-02-migrate-blog-to-hexo_hexo-directory.png][http://guanghuiqu.qiniudn.com/2015-08-02--blog-to-hexo_hexo-directory.png]]
+[[2015-08-02-migrate-blog-to-hexo_hexo-directory.png][http://guanghuiqu.qiniudn.com/2015-08-02-blog-to-hexo_hexo-directory.png]]
 
 ** Emacs 集成
 首先，前面我在[[http://zilongshanren.com/blog/2015-07-19-add-org-mode-support.html][使用 Org-mode 来写博客]] 中提到了 Emacs 自动截图并放到对应 images 目录的方法，迁移到 Hexo 后，
