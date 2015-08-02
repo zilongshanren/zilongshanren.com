@@ -92,6 +92,7 @@ toc:
 #plugins
 plugins:
 - hexo-tag-video
+- hexo-generator-feed
 
 #duoshuo
 #"http://dev.duoshuo.com/threads/541d3b2b40b5abcd2e4df0e9"
