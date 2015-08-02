@@ -1,0 +1,103 @@
+#+TITLE: 迁移博客到 Hexo
+#+DATE: 2015-08-02
+#+SETUPFILE: ~/4gamers.cn/setupfile.org
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: hexo blog
+#+JEKYLL_PUBLISHED: true
+
+本文主要是记录我是如何把博客从 Octopress 迁移到 Hexo 上面去的，同时解释了我为什么要这么做。
+
+{{{more}}}
+
+** 为什么要迁移到 Hexo
+Octopress 我已经用了 3 年多了，中间有换过一次 Wordpress，后来还是又换回来了。我在[[http://zilongshanren.com/blog/2014-09-08-migrate-to-octopress.html][迁移博客到 octopress]]
+中已经讲过我为什么不喜欢 Wordpress 以及后来转到 Octopress 的原因。这一次我又要打脸了，我又一次折腾了博客。（明明说好了不再折腾的）真是生命不息，折腾不止啊。
+这一次我又要折腾 Hexo 了。这次折腾的主要原因是，Octopress 太慢了。我现在的博文数量才 50+，生成速度明显感觉不行了。换了 Hexo 后，速度至少是 10+倍以上的提升。
+另外，Octopress 的架构其实有问题，它有点像 Oh-my-zsh 的架构，All in one，但是 All in one 的东西往往就意味着强耦合和不好的设计。而 Hexo 借鉴了 Octopress，并且
+很多地方兼容 Octopress，这也是我为什么迁移的原因之一，因为迁移的成本实在是非常低的。
+另外，Hexo 是由台湾同胞发起的 Node.js 项目，里面很多中国人在上面讨论和交流，这也可以算是迁移的一个原因吧。
+
+** 迁移过程
+迁移过程比较简单，阅读[[https://hexo.io/docs/setup.html][官方文档]] ，先在本地新建一个 Hexo 的博客，然后把以前 Octopress 的博文从 source/_posts 目录全部拷贝到 Hexo 的 source/_posts 目录。
+然后修改_config.yml 里面的 new_post_name:为
+
+#+BEGIN_SRC sh
+  new_post_name: :year-:month-:day-:title.markdown
+#+END_SRC
+
+就这么简单，分分钟就迁移完了。
+
+接下来就是一些常规的配置了，优化主题，去除 Google 字体，使用国内 Jquery CDN 安装各种小挂件
+和插件了。这里我就不展开了，因为是国货，中文资料特别丰富。
+我这里给大家推荐一个[[http://zipperary.com/categories/hexo/][链接]] ，里面博主写了很多文章，都很详细。
+
+*** 迁移 Org-Octopress
+**** 修改 permalink。
+
+#+BEGIN_SRC sh
+  permalink: /blog/:year-:month-:day-:title.html
+#+END_SRC
+
+**** 修改 Org-Octopress 的根路径
+不要放到 source 目录下面去，因为 Hexo 的渲染引擎不支持 Org 文件，会报错。
+最好是放到 Hexo 博客的根目录。
+
+**** 需要导出的文件要放到 source 目录，但是需要添加 skip_render 信息。
+因为我之前有写一些 WebGL 的 HTML，所以我的 skip_render 配置如下：
+
+#+BEGIN_SRC sh
+skip_render: [webgl/*, webgl/**/*]
+#+END_SRC
+如果不配置这些，你的 js 文件里面的引号什么的会被转义，引起语法错误。
+
+最终我的目录结构如下：
+
+[[2015-08-02-migrate-blog-to-hexo_hexo-directory.png][http://guanghuiqu.qiniudn.com/2015-08-02-migrate-blog-to-hexo_hexo-directory.png]]
+
+** Emacs 集成
+首先，前面我在[[http://zilongshanren.com/blog/2015-07-19-add-org-mode-support.html][使用 Org-mode 来写博客]] 中提到了 Emacs 自动截图并放到对应 images 目录的方法，迁移到 Hexo 后，
+只需要把 images 目录放到和 blog 目录同级即可。（具体见上图）
+
+其次，因为 Hexo 不支持 Org 渲染，实际上 Octopress 也是不支持的。我现在是把 Org 导出来 HTML，但是，默认的导出不太方便。
+另外如果 Org 文件没有修改是不会导出的（使用 universal argument 可以，但是太麻烦）。
+我这里写了一个小函数，可以每次强制导出：
+
+#+BEGIN_SRC emacs-lisp
+  (defun zilongshanren/org-save-and-export ()
+    (interactive)
+    (org-octopress-setup-publish-project)
+    (org-publish-project "octopress" t))
+  (evil-leader/set-key-for-mode 'org-mode
+    "op" 'zilongshanren/org-save-and-export)
+#+END_SRC
+
+最后，针对 hexo server 和 hexo deploy -g 命令，我编写了两个 Prodigy 服务。
+
+
+#+BEGIN_SRC emacs-lisp
+  (prodigy-define-service
+    :name "Hexo Server"
+    :command "hexo"
+    :args '("server")
+    :cwd "~/4gamers.cn"
+    :tags '(hexo server)
+    :kill-signal 'sigkill
+    :kill-process-buffer-on-stop t)
+
+  (prodigy-define-service
+    :name "Hexo Deploy"
+    :command "hexo"
+    :args '("deploy" "--generate")
+    :cwd "~/4gamers.cn"
+    :tags '(hexo deploy)
+    :kill-signal 'sigkill
+    :kill-process-buffer-on-stop t)
+#+END_SRC
+
+
+** 小结
+本文使用 Org-Octopress 编写，使用体验跟之前几乎没有差别。惟一的缺点是，之前配置好的 emoji 不起作用了。期待社区早日支持，
+另外，默认的代码着色是 tomorrow 主题，我还是希望改成 solarized light，这样，代码在 Emacs 里面的着色和导出后是一致的，
+这个后面再改好啦。最后，我还希望给博客添加 Travis CI，每次当我 push 的时候，会自动部署到我的阿里云服务器上。
+
+Node.js，我来啦。

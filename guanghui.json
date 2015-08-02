@@ -1,0 +1,8 @@
+{
+    "access_key": "EaUoYooXIOBKJ-zmLXF9wx0-cX6NcoayLaGHKmwC",
+    "secret_key": "uOKRzBUv8XtDLxfKEwg6UquP4wKV3vTXDsvnybwk",
+    "bucket": "guanghuiqu",
+    "sync_dir": "/Users/guanghui/4gamers.cn/images/posts",
+    "async_ops": "fop1;fop2;fopN",
+    "debug_level": 1
+}
