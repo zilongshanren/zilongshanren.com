@@ -25,7 +25,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: [webgl/*, webgl/**/*]
 
 # Writing
 new_post_name: :year-:month-:day-:title.markdown
@@ -77,7 +77,6 @@ deploy:
   verbose: true
   ignore_errors: false
 
-
 #rss
 #
 feed:
@@ -92,7 +91,7 @@ toc:
 
 #plugins
 plugins:
-
+- hexo-tag-video
 
 #duoshuo
 #"http://dev.duoshuo.com/threads/541d3b2b40b5abcd2e4df0e9"
