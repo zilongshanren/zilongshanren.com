@@ -4,7 +4,7 @@ title: "迁移博客到Octopress"
 date: 2014-09-08 14:35:09 +0800
 comments: true
 categories:
-- programming life
+- octopress
 ---
 
  
