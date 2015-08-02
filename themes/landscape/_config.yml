@@ -11,6 +11,7 @@ fancybox: true
 # Sidebar
 sidebar: right
 widgets:
+- weibo  
 - recent_posts
 - category
 - tag
