@@ -26,11 +26,11 @@ widgets:
 - tag
 - tagcloud
 - archive
-thumbnail: true
+thumbnail: false
 
 # Contacts
 contacts:
-  github: http://github.com/zilongshanren
+  stack-overflow: http://stackoverflow.com/users/3790559/zilongshanren
   twitter: http://twitter.com/zilongshanren
   facebook: http://facebook.com/zilongshanren
   weibo: http://www.weibo.com/zilongshanren
