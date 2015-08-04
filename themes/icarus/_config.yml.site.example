@@ -3,23 +3,23 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 子龙山人
-subtitle: 
-description: Game programming, Emacs Cocos2D-X
-author: 子龙山人
-author_title: 'Game PROgrammer and Geek'
-avatar: css/images/avatar.jpg
-location: 'Xiamen, China'
-language: zh-CN
+title: Icarus
+subtitle:
+description: Hexo theme - Icarus
+author: PPOffice
+author_title: 'Web Developer & Designer'
+avatar: css/images/avatar.png
+location: 'Harbin, China'
+follow: https://github.com/ppoffice/
+language: en
 timezone:
-follow: https://github.com/zilongshanren/
-since: 2015 # The start year showing in your copyright section.
+since: 2000 # The start year showing in your copyright section.
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.zilongshanren.com
-root: /
-permalink: /blog/:year-:month-:day-:title.html
+url: http://ppoffice.github.io/hexo-theme-icarus
+root: /hexo-theme-icarus/
+permalink: :year/:month/:day/:title/
 permalink_defaults:
 
 # Directory
@@ -30,10 +30,10 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render: [webgl/*, webgl/**/*]
+skip_render:
 
 # Writing
-new_post_name: :year-:month-:day-:title.markdown
+new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
@@ -45,7 +45,6 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: true
   tab_replace:
 
 # Category & Tag
@@ -62,43 +61,24 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 10
+per_page: 6
 pagination_dir: page
 
 # Extensions
-## Plugins: http://hexo.io/plugins/
-## Themes: http://hexo.io/themes/
+## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
+## Themes: https://github.com/hexojs/hexo/wiki/Themes
 theme: icarus
+
+# Disqus
+# disqus_shortname: hexo-theme-icarus
+
+# DuoShuo
+# duoshuo_shortname: hexo-theme-icarus
+
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-  type: rsync
-  host: 112.124.58.18
-  user: root
-  root: "/var/www/octopress-cn"
-  port: 22
-  delete: true
-  verbose: true
-  ignore_errors: false
-
-#rss
-#
-feed:
-  type: atom
-  path: atom.xml
-  limit: 20
-
-#toc
-#"https://github.com/bubkoo/hexo-toc"
-toc:
-  maxDepth: 3
-
-#plugins
-plugins:
-- hexo-tag-video
-- hexo-generator-feed
-
-#duoshuo
-#"http://dev.duoshuo.com/threads/541d3b2b40b5abcd2e4df0e9"
-duoshuo_shortname: zilongshanren2
+  type: git
+  repository: https://github.com/ppoffice/hexo-theme-icarus.git
+  branch: gh-pages
