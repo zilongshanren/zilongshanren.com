@@ -12,14 +12,14 @@ avatar: css/images/avatar.jpg
 location: 'Xiamen, China'
 language: zh-CN
 timezone:
-follow: https://github.com/zilongshanren/
+follow: https://github.com/zilongshanren
 since: 2015 # The start year showing in your copyright section.
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.zilongshanren.com
+url: http://www.zilongshanren.com/
 root: /
-permalink: /blog/:year-:month-:day-:title.html
+permalink: blog/:year-:month-:day-:title.html
 permalink_defaults:
 
 # Directory
