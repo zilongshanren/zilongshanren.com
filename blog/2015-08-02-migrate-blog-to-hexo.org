@@ -3,6 +3,7 @@
 #+SETUPFILE: ~/4gamers.cn/setupfile.org
 #+JEKYLL_LAYOUT: post
 #+JEKYLL_CATEGORIES: hexo
+#+JEKYLL_TAGS: hexo blog
 #+JEKYLL_PUBLISHED: true
 
 本文主要是记录我是如何把博客从 Octopress 迁移到 Hexo 上面去的，同时解释了我为什么要这么做。

@@ -4,6 +4,7 @@
 #+JEKYLL_LAYOUT: post
 #+JEKYLL_CATEGORIES: org
 #+JEKYLL_PUBLISHED: true
+#+JEKYLL_TAGS: Org-mode Octopress
 #+JEKYLL_COMMENTS: true
 
 本文将介绍如何使用 Org-mode 在 Emacs 里面写博客。因为我的博客系统采用的是 Octopress，Org-mode 自带的 publish 功能太

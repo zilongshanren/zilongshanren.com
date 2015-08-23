@@ -3,6 +3,7 @@
 #+SETUPFILE: ~/4gamers.cn/setupfile.org
 #+JEKYLL_LAYOUT: post
 #+JEKYLL_CATEGORIES: Emacs
+#+JEKYLL_TAGS: Emacs Vim
 #+JEKYLL_PUBLISHED: true
 #+JEKYLL_COMMENTS: true
 
