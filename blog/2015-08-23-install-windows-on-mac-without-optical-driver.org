@@ -2,7 +2,7 @@
 #+DATE: 2015-08-23
 #+SETUPFILE: ~/4gamers.cn/setupfile.org
 #+JEKYLL_LAYOUT: post
-#+JEKYLL_CATEGORIES: Mac
+#+JEKYLL_CATEGORIES: Mac Windows
 #+JEKYLL_TAGS: Mac Windows10
 #+JEKYLL_PUBLISHED: true
 
