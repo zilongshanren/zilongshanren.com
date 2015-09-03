@@ -54,7 +54,7 @@ There is no optical drive（因为我们把光驱拆了）
 
 接下来按照提示走就好了。（注意在开始界面不要勾选下面两个选项就行了。）
 
-[[2015-08-23-install-windows-on-mac-without-optical-driver_bootcamp.png][http://guanghuiqu.qiniudn.com/2015-08-23-install-windows-on-mac-without-optical-driver_bootcamp.png]]
+[[http://guanghuiqu.qiniudn.com/2015-08-23-install-windows-on-mac-without-optical-driver_bootcamp.png]]
 
 
 * Configure the GPT disk and EFI loader

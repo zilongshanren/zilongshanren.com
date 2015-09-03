@@ -23,9 +23,9 @@ comments:
 <!-- more -->
 </p>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">Hack Boot Camp Assistant</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Hack Boot Camp Assistant</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <p>
 因为 2011 年的 Macbook Pro 本来是有光驱的，所以默认 Boot Camp Assistant 没有提供 U 盘安装方式。当你打开 Boot Camp Assistant 的时候，你是看不到下面的选项的：
 </p>
@@ -47,26 +47,19 @@ There is no optical drive（因为我们把光驱拆了）
 </p>
 
 <ol class="org-ol">
-<li>打开 About this  Mac -&gt; System Report，找到 Boot ROM Version 后面的字符串，例如：MBP101.00EE.B09(这个是 15 寸电脑上面的，13 寸的会有所不同）
-</li>
+<li>打开 About this  Mac -&gt; System Report，找到 Boot ROM Version 后面的字符串，例如：MBP101.00EE.B09(这个是 15 寸电脑上面的，13 寸的会有所不同）</li>
 
-<li>同时找到 Model Identifier:  MacBookPro10,1(我的 2011 年的笔记本是 MacBookPro8,1)
-</li>
+<li>同时找到 Model Identifier:  MacBookPro10,1(我的 2011 年的笔记本是 MacBookPro8,1)</li>
 
-<li>打开 Application 下面的 Utilities 文件夹，找到 Boot Camp Assistant.app
-</li>
+<li>打开 Application 下面的 Utilities 文件夹，找到 Boot Camp Assistant.app</li>
 
-<li>右键“Show Packages contents”，然后找到 Info.plist 文件
-</li>
+<li>右键“Show Packages contents”，然后找到 Info.plist 文件</li>
 
-<li>在 DARequiredROMVersions 里面添加你的 Boot ROM Version
-</li>
+<li>在 DARequiredROMVersions 里面添加你的 Boot ROM Version</li>
 
-<li>在 PreUSBBootSupportedModels 里面添加你的 Model Identifier，并且把 PreUSBBootSupportedModels 改成 USBBootSupportedModels
-</li>
+<li>在 PreUSBBootSupportedModels 里面添加你的 Model Identifier，并且把 PreUSBBootSupportedModels 改成 USBBootSupportedModels</li>
 
-<li>保存 Info.plist 并重新启动 Boot Camp Assistant
-</li>
+<li>保存 Info.plist 并重新启动 Boot Camp Assistant</li>
 </ol>
 
 <p>
@@ -76,9 +69,9 @@ There is no optical drive（因为我们把光驱拆了）
 </div>
 
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">Burn the ISO to USB</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Burn the ISO to USB</h2>
+<div class="outline-text-2" id="text-orgheadline2">
 <p>
 这一步是非常简单的，你需要准备一个 Windows 10 的安装 ISO，同时准备一个大于 4G 的 U 盘，最好是 8G 以上。
 </p>
@@ -93,16 +86,16 @@ There is no optical drive（因为我们把光驱拆了）
 
 
 <div class="figure">
-<p><i><img src="http://guanghuiqu.qiniudn.com/2015-08-23-install-windows-on-mac-without-optical-driver_bootcamp.png" alt="2015-08-23-install-windows-on-mac-without-optical-driver_bootcamp.png" /></i>
+<p><img src="http://guanghuiqu.qiniudn.com/2015-08-23-install-windows-on-mac-without-optical-driver_bootcamp.png" alt="2015-08-23-install-windows-on-mac-without-optical-driver_bootcamp.png" />
 </p>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Configure the GPT disk and EFI loader</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">Configure the GPT disk and EFI loader</h2>
+<div class="outline-text-2" id="text-orgheadline3">
 <p>
 因为在 Mac 上面使用 EFI 需要 GUID 分区表（简称 GPT），而不是传统的 BIOS/MBR 分区表。而到目前为止，
 Windows 只能在 MBR 的磁盘上面安装，通常都是使用 Boot Camp Assistant 来创建一个带 MBR 的分区来安装双系统。
@@ -121,14 +114,11 @@ Windows 只能在 MBR 的磁盘上面安装，通常都是使用 Boot Camp Assis
 </p>
 
 <ol class="org-ol">
-<li>准备一个新的磁盘分区（格式化成 NTFS）
-</li>
+<li>准备一个新的磁盘分区（格式化成 NTFS）</li>
 
-<li>生成 GPT with protective MBR 的分区表（默认是 GPT with hybrid MBR）
-</li>
+<li>生成 GPT with protective MBR 的分区表（默认是 GPT with hybrid MBR）</li>
 
-<li>进入到 Windows 10 安装程序后，通过 Diskpart 命令手动挂载 EFI 分区
-</li>
+<li>进入到 Windows 10 安装程序后，通过 Diskpart 命令手动挂载 EFI 分区</li>
 </ol>
 
 <p>
@@ -136,26 +126,23 @@ Windows 只能在 MBR 的磁盘上面安装，通常都是使用 Boot Camp Assis
 </p>
 </div>
 
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1">安装失败的可能原因</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">安装失败的可能原因</h3>
+<div class="outline-text-3" id="text-orgheadline4">
 <ol class="org-ol">
-<li>USB 必须是 MBR 分区表（使用 Boot Camp Assistant 制作的启动盘默认是符合要求的）
-</li>
+<li>USB 必须是 MBR 分区表（使用 Boot Camp Assistant 制作的启动盘默认是符合要求的）</li>
 
-<li>目标磁盘必须是 GPT
-</li>
+<li>目标磁盘必须是 GPT</li>
 
-<li>目标磁盘不能包含一个 hybrid MBR，需要使用工具处理成 GPT with protective MBR（具体方法见文章后面的参考文章）
-</li>
+<li>目标磁盘不能包含一个 hybrid MBR，需要使用工具处理成 GPT with protective MBR（具体方法见文章后面的参考文章）</li>
 </ol>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">安装 Ubuntu</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">安装 Ubuntu</h2>
+<div class="outline-text-2" id="text-orgheadline5">
 <p>
 大家也可以用这种方式安装 Ubuntu，不过烧制 Ubuntu 的安装盘和 Windows 的略有不同，不需要 Hack Boot Camp Assistant。具体方法见：<a href="http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-mac-osx">How to create a bootable USB stick on OS X | Ubuntu</a>
 </p>
@@ -166,9 +153,9 @@ Windows 只能在 MBR 的磁盘上面安装，通常都是使用 Boot Camp Assis
 </div>
 </div>
 
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">总结</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">总结</h2>
+<div class="outline-text-2" id="text-orgheadline6">
 <p>
 因为这个安装过程着实让我吃不了少苦头，这里记录一下，希望对有需要的朋友能有所帮助。
 </p>
@@ -176,9 +163,9 @@ Windows 只能在 MBR 的磁盘上面安装，通常都是使用 Boot Camp Assis
 </div>
 
 
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6">Reference</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7">Reference</h2>
+<div class="outline-text-2" id="text-orgheadline7">
 <p>
 <a href="http://jmeosbn.github.io/blog/windows-8.1-efi-install/">Windows 8.1 - EFI install - jmeosbn</a>
 </p>

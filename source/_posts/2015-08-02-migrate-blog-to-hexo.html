@@ -18,9 +18,9 @@ comments:
 <!-- more -->
 </p>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">为什么要迁移到 Hexo</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">为什么要迁移到 Hexo</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <p>
 Octopress 我已经用了 3 年多了，中间有换过一次 Wordpress，后来还是又换回来了。我在<a href="http://zilongshanren.com/blog/2014-09-08-migrate-to-octopress.html">迁移博客到 octopress</a>
 中已经讲过我为什么不喜欢 Wordpress 以及后来转到 Octopress 的原因。这一次我又要打脸了，我又一次折腾了博客。（明明说好了不再折腾的）真是生命不息，折腾不止啊。这一次我又要折腾 Hexo 了。这次折腾的主要原因是，Octopress 太慢了。我现在的博文数量才 50+，生成速度明显感觉不行了。换了 Hexo 后，速度至少是 10+倍以上的提升。另外，Octopress 的架构其实有问题，它有点像 Oh-my-zsh 的架构，All in one，但是 All in one 的东西往往就意味着强耦合和不好的设计。而 Hexo 借鉴了 Octopress，并且很多地方兼容 Octopress，这也是我为什么迁移的原因之一，因为迁移的成本实在是非常低的。另外，Hexo 是由台湾同胞发起的 Node.js 项目，里面很多中国人在上面讨论和交流，这也可以算是迁移的一个原因吧。
@@ -28,9 +28,9 @@ Octopress 我已经用了 3 年多了，中间有换过一次 Wordpress，后来
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">迁移过程</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">迁移过程</h2>
+<div class="outline-text-2" id="text-orgheadline2">
 <p>
 迁移过程比较简单，阅读<a href="https://hexo.io/docs/setup.html">官方文档</a> ，先在本地新建一个 Hexo 的博客，然后把以前 Octopress 的博文从 source/_posts 目录全部拷贝到 Hexo 的 source/_posts 目录。然后修改_config.yml 里面的 new_post_name:为
 </p>
@@ -50,12 +50,12 @@ Octopress 我已经用了 3 年多了，中间有换过一次 Wordpress，后来
 </p>
 </div>
 
-<div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1">迁移 Org-Octopress</h3>
-<div class="outline-text-3" id="text-2-1">
-</div><div id="outline-container-sec-2-1-1" class="outline-4">
-<h4 id="sec-2-1-1">修改 permalink。</h4>
-<div class="outline-text-4" id="text-2-1-1">
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">迁移 Org-Octopress</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+</div><div id="outline-container-orgheadline3" class="outline-4">
+<h4 id="orgheadline3">修改 permalink。</h4>
+<div class="outline-text-4" id="text-orgheadline3">
 <div class="org-src-container">
 
 <pre class="src src-sh">permalink: /blog/:year-:month-:day-:title.html
@@ -64,25 +64,25 @@ Octopress 我已经用了 3 年多了，中间有换过一次 Wordpress，后来
 </div>
 </div>
 
-<div id="outline-container-sec-2-1-2" class="outline-4">
-<h4 id="sec-2-1-2">修改 Org-Octopress 的根路径</h4>
-<div class="outline-text-4" id="text-2-1-2">
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4">修改 Org-Octopress 的根路径</h4>
+<div class="outline-text-4" id="text-orgheadline4">
 <p>
 不要放到 source 目录下面去，因为 Hexo 的渲染引擎不支持 Org 文件，会报错。最好是放到 Hexo 博客的根目录。
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-2-1-3" class="outline-4">
-<h4 id="sec-2-1-3">需要导出的文件要放到 source 目录，但是需要添加 skip_render 信息。</h4>
-<div class="outline-text-4" id="text-2-1-3">
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5">需要导出的文件要放到 source 目录，但是需要添加 skip_render 信息。</h4>
+<div class="outline-text-4" id="text-orgheadline5">
 <p>
 因为我之前有写一些 WebGL 的 HTML，所以我的 skip_render 配置如下：
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-sh">skip_render: <span style="color: #2aa198;">[</span>webgl/*, webgl/**/*<span style="color: #2aa198;">]</span>
+<pre class="src src-sh">skip_render: <span style="color: #A1EFE4;">[</span>webgl/*, webgl/**/*<span style="color: #A1EFE4;">]</span>
 </pre>
 </div>
 <p>
@@ -95,7 +95,7 @@ Octopress 我已经用了 3 年多了，中间有换过一次 Wordpress，后来
 
 
 <div class="figure">
-<p><i><img src="http://guanghuiqu.qiniudn.com/2015-08-02-blog-to-hexo_hexo-directory.png" alt="2015-08-02-blog-to-hexo_hexo-directory.png" /></i>
+<p><img src="http://guanghuiqu.qiniudn.com/2015-08-02-blog-to-hexo_hexo-directory.png" alt="2015-08-02-blog-to-hexo_hexo-directory.png" />
 </p>
 </div>
 </div>
@@ -103,9 +103,9 @@ Octopress 我已经用了 3 年多了，中间有换过一次 Wordpress，后来
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Emacs 集成</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7">Emacs 集成</h2>
+<div class="outline-text-2" id="text-orgheadline7">
 <p>
 首先，前面我在<a href="http://zilongshanren.com/blog/2015-07-19-add-org-mode-support.html">使用 Org-mode 来写博客</a> 中提到了 Emacs 自动截图并放到对应 images 目录的方法，迁移到 Hexo 后，只需要把 images 目录放到和 blog 目录同级即可。（具体见上图）
 </p>
@@ -116,12 +116,12 @@ Octopress 我已经用了 3 年多了，中间有换过一次 Wordpress，后来
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">zilongshanren/org-save-and-export</span> <span style="color: #b58900;">()</span>
-  <span style="color: #b58900;">(</span>interactive<span style="color: #b58900;">)</span>
-  <span style="color: #b58900;">(</span>org-octopress-setup-publish-project<span style="color: #b58900;">)</span>
-  <span style="color: #b58900;">(</span>org-publish-project <span style="color: #2aa198;">"octopress"</span> t<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
-<span style="color: #2aa198;">(</span>evil-leader/set-key-for-mode 'org-mode
-  <span style="color: #2aa198;">"op"</span> 'zilongshanren/org-save-and-export<span style="color: #2aa198;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #A1EFE4;">(</span><span style="color: #F92672;">defun</span> <span style="color: #A6E22E;">zilongshanren/org-save-and-export</span> <span style="color: #E6DB74;">()</span>
+  <span style="color: #E6DB74;">(</span>interactive<span style="color: #E6DB74;">)</span>
+  <span style="color: #E6DB74;">(</span>org-octopress-setup-publish-project<span style="color: #E6DB74;">)</span>
+  <span style="color: #E6DB74;">(</span>org-publish-project <span style="color: #E6DB74;">"octopress"</span> t<span style="color: #E6DB74;">)</span><span style="color: #A1EFE4;">)</span>
+<span style="color: #A1EFE4;">(</span>evil-leader/set-key-for-mode 'org-mode
+  <span style="color: #E6DB74;">"op"</span> 'zilongshanren/org-save-and-export<span style="color: #A1EFE4;">)</span>
 </pre>
 </div>
 
@@ -132,32 +132,32 @@ Octopress 我已经用了 3 年多了，中间有换过一次 Wordpress，后来
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span>prodigy-define-service
-  <span style="color: #657b83; font-weight: bold;">:name</span> <span style="color: #2aa198;">"Hexo Server"</span>
-  <span style="color: #657b83; font-weight: bold;">:command</span> <span style="color: #2aa198;">"hexo"</span>
-  <span style="color: #657b83; font-weight: bold;">:args</span> '<span style="color: #b58900;">(</span><span style="color: #2aa198;">"server"</span><span style="color: #b58900;">)</span>
-  <span style="color: #657b83; font-weight: bold;">:cwd</span> <span style="color: #2aa198;">"~/4gamers.cn"</span>
-  <span style="color: #657b83; font-weight: bold;">:tags</span> '<span style="color: #b58900;">(</span>hexo server<span style="color: #b58900;">)</span>
-  <span style="color: #657b83; font-weight: bold;">:kill-signal</span> 'sigkill
-  <span style="color: #657b83; font-weight: bold;">:kill-process-buffer-on-stop</span> t<span style="color: #2aa198;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #A1EFE4;">(</span>prodigy-define-service
+  <span style="color: #F92672;">:name</span> <span style="color: #E6DB74;">"Hexo Server"</span>
+  <span style="color: #F92672;">:command</span> <span style="color: #E6DB74;">"hexo"</span>
+  <span style="color: #F92672;">:args</span> '<span style="color: #E6DB74;">(</span><span style="color: #E6DB74;">"server"</span><span style="color: #E6DB74;">)</span>
+  <span style="color: #F92672;">:cwd</span> <span style="color: #E6DB74;">"~/4gamers.cn"</span>
+  <span style="color: #F92672;">:tags</span> '<span style="color: #E6DB74;">(</span>hexo server<span style="color: #E6DB74;">)</span>
+  <span style="color: #F92672;">:kill-signal</span> 'sigkill
+  <span style="color: #F92672;">:kill-process-buffer-on-stop</span> t<span style="color: #A1EFE4;">)</span>
 
-<span style="color: #2aa198;">(</span>prodigy-define-service
-  <span style="color: #657b83; font-weight: bold;">:name</span> <span style="color: #2aa198;">"Hexo Deploy"</span>
-  <span style="color: #657b83; font-weight: bold;">:command</span> <span style="color: #2aa198;">"hexo"</span>
-  <span style="color: #657b83; font-weight: bold;">:args</span> '<span style="color: #b58900;">(</span><span style="color: #2aa198;">"deploy"</span> <span style="color: #2aa198;">"--generate"</span><span style="color: #b58900;">)</span>
-  <span style="color: #657b83; font-weight: bold;">:cwd</span> <span style="color: #2aa198;">"~/4gamers.cn"</span>
-  <span style="color: #657b83; font-weight: bold;">:tags</span> '<span style="color: #b58900;">(</span>hexo deploy<span style="color: #b58900;">)</span>
-  <span style="color: #657b83; font-weight: bold;">:kill-signal</span> 'sigkill
-  <span style="color: #657b83; font-weight: bold;">:kill-process-buffer-on-stop</span> t<span style="color: #2aa198;">)</span>
+<span style="color: #A1EFE4;">(</span>prodigy-define-service
+  <span style="color: #F92672;">:name</span> <span style="color: #E6DB74;">"Hexo Deploy"</span>
+  <span style="color: #F92672;">:command</span> <span style="color: #E6DB74;">"hexo"</span>
+  <span style="color: #F92672;">:args</span> '<span style="color: #E6DB74;">(</span><span style="color: #E6DB74;">"deploy"</span> <span style="color: #E6DB74;">"--generate"</span><span style="color: #E6DB74;">)</span>
+  <span style="color: #F92672;">:cwd</span> <span style="color: #E6DB74;">"~/4gamers.cn"</span>
+  <span style="color: #F92672;">:tags</span> '<span style="color: #E6DB74;">(</span>hexo deploy<span style="color: #E6DB74;">)</span>
+  <span style="color: #F92672;">:kill-signal</span> 'sigkill
+  <span style="color: #F92672;">:kill-process-buffer-on-stop</span> t<span style="color: #A1EFE4;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">小结</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8">小结</h2>
+<div class="outline-text-2" id="text-orgheadline8">
 <p>
 本文使用 Org-Octopress 编写，使用体验跟之前几乎没有差别。惟一的缺点是，之前配置好的 emoji 不起作用了。期待社区早日支持，另外，默认的代码着色是 tomorrow 主题，我还是希望改成 solarized light，这样，代码在 Emacs 里面的着色和导出后是一致的，这个后面再改好啦。最后，我还希望给博客添加 Travis CI，每次当我 push 的时候，会自动部署到我的阿里云服务器上。
 </p>
