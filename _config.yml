@@ -102,3 +102,5 @@ plugins:
 #duoshuo
 #"http://dev.duoshuo.com/threads/541d3b2b40b5abcd2e4df0e9"
 duoshuo_shortname: zilongshanren2
+
+baidu_tongji: true
