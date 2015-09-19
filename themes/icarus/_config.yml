@@ -23,7 +23,6 @@ sidebar: right # set to false if you don't want a sidebar
 widgets:
 - recent_posts
 - category
-- tag
 - tagcloud
 - archive
 thumbnail: false

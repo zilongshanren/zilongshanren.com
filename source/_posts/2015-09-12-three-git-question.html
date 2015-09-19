@@ -16,9 +16,9 @@ comments:
 <ol class="org-ol">
 <li>为什么不推荐用 Git 保存二进制大文件?</li>
 
-<li>如果两个 Branch 修改同一个文件的同一行代码，各自 Commit 一次,在 Merge 的时候为什么不会有冲突？</li>
+<li>如果两个 Branch 修改同一个文件的同一行代码，各自 Commit 一次，在 Merge 的时候为什么不会有冲突？</li>
 
-<li>同样是两个 Branch 修改同一个文件的同一行代码，各自 Commit 一次,在 Rebase 的时候为何有一个 Commit 会被优化掉？</li>
+<li>同样是两个 Branch 修改同一个文件的同一行代码，各自 Commit 一次，在 Rebase 的时候为何有一个 Commit 会被优化掉？</li>
 </ol>
 
 <p>
@@ -29,9 +29,11 @@ comments:
 要回答好这三个问题，我们需要理解 Git 的内部工作原理。
 </p>
 
+<blockquote>
 <p>
 在保存文件历史的时候，Git 跟 SVN 最大的不一样在于，它保存的不是文件的 Diff 而是整个文件的快照。
 </p>
+</blockquote>
 
 <div id="outline-container-orgheadline1" class="outline-2">
 <h2 id="orgheadline1">什么是文件快照</h2>
@@ -48,9 +50,17 @@ git add .
 </div>
 
 <p>
-此时我们在 testGit 目录下面新建了一个 Git 仓库，并且新建了两个 txt 文件。此时我们可以在.git/objects 目录下面发现两个文件。它们就是 a.txt 和 b.txt 的内容的压缩存储。
+此时我们在 testGit 目录下面新建了一个 Git 仓库，并且新建了两个 txt 文件。此时我们可以在.git/objects 目录下面找到这两个文件。当调用完 git add .之后，
+Git 会对当前目录下面的所有文件进行“快照”并保存。
 </p>
 
+<p>
+大概就是 a.txt 和 b.txt 经过 zlib 压缩后，使用 SHA-1 算法把文件内容和文件头生成一个 40 位的 hash 值，并且使用此 hash 值的前两个字符作为目录，后面 38 位作为文件名来保存压缩后的文件对象。
+</p>
+
+<p>
+我们可以通过 find 命令来查找.git/objects 目录下面所有存储的对象：
+</p>
 
 <div class="org-src-container">
 
@@ -58,48 +68,18 @@ git add .
 </pre>
 </div>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">.git/objects/18/eb80fbbbf9160491c007668d5298f1e86cd40a</td>
-</tr>
-
-<tr>
-<td class="org-left">.git/objects/cc/628ccd10742baea8241c5924df992b5c019f71</td>
-</tr>
-
-<tr>
-<td class="org-left">.git/objects/ce/013625030ba8dba906f756967f9e9ca394464a</td>
-</tr>
-
-<tr>
-<td class="org-left">.git/objects/f6/042cce01150551255ec1e892d04b1c129a5fbd</td>
-</tr>
-</tbody>
-</table>
 <p>
-.git/objects/cc/628ccd10742baea8241c5924df992b5c019f71 
-.git/objects/ce/013625030ba8dba906f756967f9e9ca394464a 
+下图是输出：
+<img src="http://guanghuiqu.qiniudn.com/2015-09-12-three-git-question_find-objects-1.png" alt="2015-09-12-three-git-question_find-objects-1.png" />
 </p>
-
 
 <p>
 a.txt 和 b.txt 的文件内容存储在 628ccd10742baea8241c5924df992b5c019f71 和 013625030ba8dba906f756967f9e9ca394464a 文件中。
 </p>
 
 <p>
-但是 Git 是通过 hash 值来索引对象的，因此两个文件对应的 hash 值还需要加上文件夹的名称，即 cc628ccd10742baea8241c5924df992b5c019f71 和 ce013625030ba8dba906f756967f9e9ca394464a。
+我们可以通过 git cat-file -p [hash value]来查看保存的对象值（注意需要加上文件目录得到完整的 hash 值）
 </p>
-
-<p>
-我们可以通过 git cat-file -p [hash value]来查看保存的对象的值：
-</p>
-
 
 <div class="org-src-container">
 
@@ -107,9 +87,10 @@ a.txt 和 b.txt 的文件内容存储在 628ccd10742baea8241c5924df992b5c019f71 
 git cat-file -p ce013625030ba8dba906f756967f9e9ca394464a
 </pre>
 </div>
+
 <p>
-world b.txt
- hello a.txt
+下图是输出：
+<img src="http://guanghuiqu.qiniudn.com/2015-09-12-three-git-question_cat-file-1.png" alt="2015-09-12-three-git-question_cat-file-1.png" />
 </p>
 
 <p>
@@ -124,36 +105,11 @@ find .git/objects -type f
 </pre>
 </div>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">.git/objects/18/eb80fbbbf9160491c007668d5298f1e86cd40a</td>
-</tr>
-
-<tr>
-<td class="org-left">.git/objects/cc/628ccd10742baea8241c5924df992b5c019f71</td>
-</tr>
-
-<tr>
-<td class="org-left">.git/objects/ce/013625030ba8dba906f756967f9e9ca394464a</td>
-</tr>
-
-<tr>
-<td class="org-left">.git/objects/f6/042cce01150551255ec1e892d04b1c129a5fbd</td>
-</tr>
-</tbody>
-</table>
 <p>
-.git/objects/18/eb80fbbbf9160491c007668d5298f1e86cd40a 
-.git/objects/cc/628ccd10742baea8241c5924df992b5c019f71 
-.git/objects/ce/013625030ba8dba906f756967f9e9ca394464a 
-.git/objects/f6/042cce01150551255ec1e892d04b1c129a5fbd 
+下图是输出：
+<img src="http://guanghuiqu.qiniudn.com/2015-09-12-three-git-question_cat-file-2.png" alt="2015-09-12-three-git-question_cat-file-2.png" />
 </p>
+
 
 
 <p>
@@ -171,29 +127,9 @@ find .git/objects -type f
 </pre>
 </div>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">100644 blob ce013625030ba8dba906f756967f9e9ca394464a</td>
-<td class="org-left">a.txt</td>
-</tr>
-
-<tr>
-<td class="org-left">100644 blob cc628ccd10742baea8241c5924df992b5c019f71</td>
-<td class="org-left">b.txt</td>
-</tr>
-</tbody>
-</table>
 <p>
-100644 blob ce013625030ba8dba906f756967f9e9ca394464a  a.txt 
-100644 blob cc628ccd10742baea8241c5924df992b5c019f71  b.txt 
+下图是输出：
+<img src="http://guanghuiqu.qiniudn.com/2015-09-12-three-git-question_cat-file-3.png" alt="2015-09-12-three-git-question_cat-file-3.png" />
 </p>
 
 
@@ -204,62 +140,11 @@ find .git/objects -type f
 </pre>
 </div>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<p>
+下图是输出：
+<img src="http://guanghuiqu.qiniudn.com/2015-09-12-three-git-question_cat-tree-1.png" alt="2015-09-12-three-git-question_cat-tree-1.png" />
+</p>
 
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">tree</td>
-<td class="org-left">18eb80fbbbf9160491c007668d5298f1e86cd40a</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">author</td>
-<td class="org-left">andyque</td>
-<td class="org-left">&lt;guanghui8827@126.com&gt;</td>
-<td class="org-right">1442245298</td>
-<td class="org-right">+0800</td>
-</tr>
-
-<tr>
-<td class="org-left">committer</td>
-<td class="org-left">andyque</td>
-<td class="org-left">&lt;guanghui8827@126.com&gt;</td>
-<td class="org-right">1442245298</td>
-<td class="org-right">+0800</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">first</td>
-<td class="org-left">commit</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-<td class="org-right">&#xa0;</td>
-</tr>
-</tbody>
-</table>
 
 <p>
 这里的 18eb80fbbbf9160491c007668d5298f1e86cd40a 表示的是当前目录树的 hash 值，里面包含了每个文件的权限，类型，hash code 和名字信息。
@@ -272,14 +157,6 @@ find .git/objects -type f
 <p>
 如果此时我修改 a.txt 或者 b.txt，新修改后的文件会再用 zlib 压缩后生成一个 hash code 来当作名字。
 </p>
-
-<p>
-而前后两个以 hash 值命名的文件的大小变化不大。但是如果是二进制大文件的话，每一次对该文件进行修改，它将会多占一份空间。
-</p>
-
-<p>
-了解这一点非常重要。
-</p>
 </div>
 </div>
 
@@ -287,11 +164,11 @@ find .git/objects -type f
 <h2 id="orgheadline2">为什么 Git 切换分支特别快？</h2>
 <div class="outline-text-2" id="text-orgheadline2">
 <p>
-因此要把版本的历史 checkout 到工作区，Git 只需要把使用 hash 值命名的文件解压缩就得到了。
+因此要把版本的历史 checkout 到工作区，Git 只需要把 commit 对应的目录树的所有的文件解压缩即可。
 </p>
 
 <p>
-如果是 svn，可能要找到一个参考版本，然后不断地应用 Diff 才来得到相应的分支。
+如果是 svn，则需要找到一个参考版本，然后不断地应用 Diff 才来得到相应的分支，这个速度是非常之慢的。
 </p>
 </div>
 </div>
@@ -300,7 +177,11 @@ find .git/objects -type f
 <h2 id="orgheadline3">为什么不推荐使用 Git 保存二进制大文件</h2>
 <div class="outline-text-2" id="text-orgheadline3">
 <p>
-由前面的解释，我们知道了 Git 使用的是文件快照来保存版本历史。但是二进制文件在压缩上几乎没有效果，所以，二进制文件只要有一点点修改，保存的却是整个文件内容。
+因为 Git 使用的是文件快照来保存版本历史，但是二进制文件在压缩上几乎没有效果，所以，二进制文件只要有一点点修改，保存的却是整个文件内容。
+</p>
+
+<p>
+所以大的二进制文件是禁止放到 Git 里面去管理的。那么多大才算大呢？一般的标准是单个二进制文件的大小不要超过 100kb。
 </p>
 </div>
 </div>
