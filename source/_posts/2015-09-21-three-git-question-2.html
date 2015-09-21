@@ -200,6 +200,7 @@ git checkout testBranch
 </pre>
 </div>
 
+
 <div class="figure">
 <p><img src="http://guanghuiqu.qiniudn.com/2015-09-21-three-git-question-2_cat-file-4.png" alt="2015-09-21-three-git-question-2_cat-file-4.png" />
 </p>
@@ -219,7 +220,7 @@ What???
 
 <blockquote>
 <p>
-当你 rebase 的时候，你会把当前分支上的所有的 commit 全部丢弃，然后把这些 commit 的修改依次应用到目标分支上，并且此时会生成新的 tree 对象和 commit 对象。
+当你 rebase 的时候，你会把当前分支上的所有的 commit 全部丢弃，然后把这些 commit 的修改依次应用到目标分支上，并且此时会生成新的 tree 对象和 commit 对象。但是，如果进行 rebase 分支的 commit 和目标分支的 commit 是一样的时候（指的是 tree 和 parent 一样），会用当前 commit 替换掉目标 commit。
 </p>
 </blockquote>
 
@@ -228,7 +229,7 @@ What???
 </p>
 
 <p>
-我们拿上面的示例代码来看。
+我们拿上面的示例代码来看。当我们 rebase 的时候，9e2107 commit 和 407b6e commit 是一样的内容，此时会用 9e2107 commit 来替换掉 407b6e commit，即我们前面所指的 commit 优化。
 </p>
 </div>
 </div>
