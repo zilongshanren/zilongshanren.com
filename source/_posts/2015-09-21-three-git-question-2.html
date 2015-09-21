@@ -1,0 +1,145 @@
+---
+title: "三个 Git 问题(下)"
+date: 2015-09-21
+layout: post
+categories: 
+- Git
+tags: 
+- Git
+published: true
+comments: 
+---
+<p>
+在上篇文章中，我们介绍了 Git 内部存储对象的方式，以及为什么不要用 Git 去管理大的二进制文件。
+</p>
+
+<p>
+本文将继续探讨上篇文章中遗留的两个问题。
+</p>
+
+<ol class="org-ol">
+<li>如果两个 Branch 修改同一个文件的同一行代码，各自 Commit 一次，在 Merge 的时候为什么不会有冲突？</li>
+
+<li>同样是两个 Branch 修改同一个文件的同一行代码，各自 Commit 一次，在 Rebase 的时候为何有一个 Commit 会被优化掉？</li>
+</ol>
+
+<p>
+<!-- more -->
+</p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Merge 的示例代码</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+首先，我们新建一个分支，修改 a.txt，添加一行内容“Learn Git”：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">git checkout -b testBranch
+<span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"Learn Git"</span> &gt;&gt; a.txt
+git commit -a -m <span style="color: #E6DB74;">'commit'</span>
+</pre>
+</div>
+
+<p>
+此时，我们用 find 命令查看一下新增的 object 对象：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">find .git/objects -type f
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="http://guanghuiqu.qiniudn.com/2015-09-21-three-git-question-2_git-cat-file-1.png" alt="2015-09-21-three-git-question-2_git-cat-file-1.png" />
+</p>
+</div>
+
+<p>
+这里我们可以看到多了 3 个对象：407b6e (commit),  49bf80 (modified a.txt) 和 81f485(tree object)。我们可以用 git cat-file -p hash-code 来查看这 3 个对象的值。（注意这里我们使用的是 6 位数字的简码）
+</p>
+
+<p>
+现在，让我们切回主分支，并且对主分支的 a.txt 做同样的修改：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git checkout master
+<span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"Learn Git"</span> &gt;&gt; a.txt
+git commit -a -m <span style="color: #E6DB74;">'commit'</span>
+</pre>
+</div>
+
+<p>
+此时我们再查看一样新增的 object 对象：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">find .git/objects -type f
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="http://guanghuiqu.qiniudn.com/2015-09-21-three-git-question-2_git-cat-file-2.png" alt="2015-09-21-three-git-question-2_git-cat-file-2.png" />
+</p>
+</div>
+
+<p>
+此时我们只新增了一个新的对象 9e2107(commit)，我们用 git cat-file 查看其值为：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git cat-file -p <span style="color: #AE81FF;">9e2107</span><span style="color: #A1EFE4;">&#65288;</span>&#22914;&#26524;&#36825;&#37324;&#25442;&#25104; <span style="color: #AE81FF;">407b6e&#65292;&#32467;&#26524;&#26159;&#19968;&#26679;&#30340;</span><span style="color: #A1EFE4;">&#65289;</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="http://guanghuiqu.qiniudn.com/2015-09-21-three-git-question-2_tree-object.png" alt="2015-09-21-three-git-question-2_tree-object.png" />
+</p>
+</div>
+
+<p>
+此时，如果我们 merge testBranch 分支是不会有冲突的。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git merge testBranch
+find .git/objects -type f
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="http://guanghuiqu.qiniudn.com/2015-09-21-three-git-question-2_cat-file-3.png" alt="2015-09-21-three-git-question-2_cat-file-3.png" />
+</p>
+</div>
+
+<p>
+此时，我们发现多了一个 1bff79 对象，它的值如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git cat-file -p <span style="color: #AE81FF;">1bff79</span>
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="http://guanghuiqu.qiniudn.com/2015-09-21-three-git-question-2_tree-object-2.png" alt="2015-09-21-three-git-question-2_tree-object-2.png" />
+</p>
+</div>
+
+<p>
+我们知道，整个过程中，我们在两个分支上分别对 a.txt 的同一行代码做了同样的修改，但是最终 git 只会保存一份 a.txt 的内容。另外，整个目录树在不同的分支上面是一样的，所以 tree 对象也只有一份。
+</p>
+
+<p>
+虽然我们在不同的分支上面做了两次 commit，但是这两次 commit 只是记录
+</p>
+</div>
+</div>

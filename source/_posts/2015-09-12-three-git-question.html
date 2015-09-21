@@ -155,10 +155,11 @@ find .git/objects -type f
 </p>
 
 <p>
-如果此时我修改 a.txt 或者 b.txt，新修改后的文件会再用 zlib 压缩后生成一个 hash code 来当作名字。
+如果此时我们修改 a.txt 或者 b.txt 并 commit，新修改后的文件会再用 zlib 压缩后生成一个 hash code 来当作名字存储。
 </p>
 </div>
 </div>
+
 
 <div id="outline-container-orgheadline2" class="outline-2">
 <h2 id="orgheadline2">为什么 Git 切换分支特别快？</h2>
@@ -177,7 +178,7 @@ find .git/objects -type f
 <h2 id="orgheadline3">为什么不推荐使用 Git 保存二进制大文件</h2>
 <div class="outline-text-2" id="text-orgheadline3">
 <p>
-因为 Git 使用的是文件快照来保存版本历史，但是二进制文件在压缩上几乎没有效果，所以，二进制文件只要有一点点修改，保存的却是整个文件内容。
+因为 Git 使用的是文件快照来保存版本历史，而二进制文件在压缩上几乎没有效果，所以，二进制文件只要有一点点修改，保存的就是整个文件内容。
 </p>
 
 <p>
