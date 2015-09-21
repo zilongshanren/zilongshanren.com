@@ -28,7 +28,7 @@ comments:
 </p>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">Merge 的示例代码</h2>
+<h2 id="orgheadline1">Merge 的测试代码</h2>
 <div class="outline-text-2" id="text-orgheadline1">
 <p>
 首先，我们新建一个分支，修改 a.txt，添加一行内容“Learn Git”：
@@ -139,7 +139,105 @@ find .git/objects -type f
 </p>
 
 <p>
-虽然我们在不同的分支上面做了两次 commit，但是这两次 commit 只是记录
+虽然我们在不同的分支上面做了两次 commit，但是这两次 commit 只是记录了各自的 tree，parent 以及作者等信息。
+</p>
+
+<p>
+而在 merge 的时候，由于我们是 two-way merge，所以最终生成的 merge commit 是有两个 parent 的。
+</p>
+
+<p>
+由上面的测试代码我们可以清楚地知道 merge 到底干了些什么事。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Rebase 的测试代码</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+我们先 reset 掉刚刚 merge 的代码，并且切换到 testBranch 分支：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git reset --hard HEAD~1
+git checkout testBranch
+</pre>
+</div>
+
+<p>
+此时我们运行 find 命令来查找 objects 目录：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">find .git/objects -type f
+</pre>
+</div>
+
+<p>
+虽然我们的 1bff79 commit 已经被我们用 reset &#x2013;hard 命令撤销了，但是我们发现它还是在版本里面，我们可以用 git reflog 来找回这个 commit。 （这里扯远了，不过这也说明了，在 Git 里面只要 commit，你做的修改就不会丢。所以，程序猿们，commit early, commit often 吧。不过记得 publish 之前记得整理 commmits，哈哈，这又是另一个话题了。。。）
+</p>
+
+<p>
+现在，让我们 rebase 吧！
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git rebase master
+</pre>
+</div>
+
+<p>
+接下来，让我们看看 objects 的情况：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">find .git/objects -type f
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="http://guanghuiqu.qiniudn.com/2015-09-21-three-git-question-2_cat-file-4.png" alt="2015-09-21-three-git-question-2_cat-file-4.png" />
+</p>
+</div>
+
+<p>
+What???
+</p>
+
+<p>
+这次操作一个新的 objects 都没有生成。
+</p>
+
+<p>
+要理解这个，我们需要清楚地知道什么是 rebase。
+</p>
+
+<blockquote>
+<p>
+当你 rebase 的时候，你会把当前分支上的所有的 commit 全部丢弃，然后把这些 commit 的修改依次应用到目标分支上，并且此时会生成新的 tree 对象和 commit 对象。
+</p>
+</blockquote>
+
+<p>
+这段话听起来有点拗口，但是其实很容易理解。
+</p>
+
+<p>
+我们拿上面的示例代码来看。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">小结</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<p>
+当我们对于 Git 的基本原理有了一定的认识之后，像 rebase 和 squash 这样的高级工具就容易掌握了。而且 rebase 和 squash 是打造整洁的 commit 历史必不可少的工具。
 </p>
 </div>
 </div>
