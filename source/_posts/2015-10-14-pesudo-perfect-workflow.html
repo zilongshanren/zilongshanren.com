@@ -1,0 +1,168 @@
+---
+title: "我的工作流"
+date: 2015-10-14
+layout: post
+categories: 
+- workflow
+tags: 
+- workflow
+published: true
+comments: 
+---
+<p>
+本文要介绍的工作流是我最近才想出来的， 当然也借鉴了不少其他人的经验，但是，这不是重点，重点是此工作流要解决我目前遇到的问题。
+</p>
+
+<p>
+我的问题主要有：
+</p>
+
+<ol class="org-ol">
+<li>当我要完成一个代码 feature 或者要修复一个严重的 Bug 的时候，我无法准确预估我需要的时间。</li>
+
+<li>当我重构一些代码时候，很容易犯一些低级的错误，这让我显得很不专业。</li>
+
+<li>在解决复杂的问题的时候，我经常要试错然后不断地改进，中间会有推倒重来的可能。</li>
+
+<li>对于我以前写的有一些代码，要理解它们有一定的难度。</li>
+</ol>
+
+
+<p>
+<!-- more -->
+</p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">它是什么?</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+一句话就是: GTD -&gt; DDD -&gt; RDD  -&gt; TDD/BDD -&gt; Coding
+</p>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">GTD  = Getting Things Done</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+<p>
+GTD 是一个时间管理方法，还有一本书专门介绍它，叫做《Getting Things Done 无压力工作的艺术》。
+</p>
+
+<p>
+采用 GTD 来管理个人的时间，可以让自己的时间利用率最大化，把有限的时候花在最有价值的事情上面。
+</p>
+
+<p>
+因为我们现在有电脑和各种智能设备，它们很容易吸引我们的注意力，这无形中会消耗我们大量的时间。
+</p>
+
+<p>
+这里我就不介绍如何实践 GTD 了，对于我而言，最好的 GTD 工具自然是 Emacs 的 Org-mode，当然也有其它工具可供选择。
+</p>
+
+<p>
+我目前工作安排是，首先检查我的 org-agenda 上面的 todo 事项，一般我会列一些 habit 在上面。比如锻炼身体，逛 reddit，阅读 rss 等。
+</p>
+
+<p>
+当我
+</p>
+
+<p>
+&#x2013; Never begin to do something before you plan it
+Why it deserved your time. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">DDD &#x2013; State the problem before you could solve it</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+Use Org-mode literal programming.
+</p>
+
+<p>
+Analysis and Design are all about identifier your problem and find a proper solution for it. 
+Don't try to add more features to a code base. More simply accumulated features can't solve anyone's problem.
+Go and solve problems. It's very important.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">RDD &#x2013; Write some test code to better understand your problem</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+<p>
+Understand the problem: the facts, the context and the constraints.
+Are there any related problems?
+Write it all down.
+</p>
+
+<p>
+Be discerning. &#x2013; not everything is awesome.
+Find the problems in your solutions and solve it in the early stage. 
+Find the trade offs. (give more than two solutions at the same time.)
+</p>
+
+<p>
+Instead of building a prototype from scratch, the REPL is better for saving time and effect. It need some sort of coding engage with it.
+</p>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">TDD/BDD &#x2013; Write the test steps you want to solve the problem</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<p>
+Feedback loop is important.
+</p>
+
+<p>
+You will be wrong, but it's OK.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Coding &#x2013; Aim  to get simpler, elegant and maintainable code</h3>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7">Conclusion</h2>
+<div class="outline-text-2" id="text-orgheadline7">
+<p>
+Don't try to learn as many languages and frameworks as possible, try to learn the minimal knowledge to solve your problems at hand.
+</p>
+
+<p>
+Don't learn many thing for the unknown future. 
+</p>
+
+<p>
+Learn Vim &amp; Emacs, it's also the same. Try to use them to solve your problems, don't try to install as many plugins as possible, but never write any real programs. 
+</p>
+
+<p>
+Spacemacs save my life.
+</p>
+
+<p>
+也欢迎大家和我交流自己的工作流。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8">Reference</h2>
+<div class="outline-text-2" id="text-orgheadline8">
+<ul class="org-ul">
+<li><a href="http://eigenhombre.com/clojure/2014/07/20/a-worfklow-tdd-rdd-and-ddd/">http://eigenhombre.com/clojure/2014/07/20/a-worfklow-tdd-rdd-and-ddd/</a></li>
+
+<li><a href="https://www.youtube.com/watch?v=f84n5oFoZBc">https://www.youtube.com/watch?v=f84n5oFoZBc</a></li>
+</ul>
+</div>
+</div>
