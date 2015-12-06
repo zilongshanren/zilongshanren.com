@@ -1,0 +1,71 @@
+#+TITLE: Spacemacs Rocks
+#+DATE: 2015-12-06
+#+SETUPFILE: ~/4gamers.cn/setupfile.org
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: Emacs
+#+JEKYLL_TAGS: Emacs
+#+JEKYLL_PUBLISHED: true
+
+Spacemacs Rocks!
+
+本文是对 Spacemacs Rocks 第一季系列视频的一个小节，同时打个广告，欢迎对 Emacs 和 Spacemacs 感兴趣的朋友加入
+emacs-cn 的 slack 聊天组。目前此聊天组只对邀请的人开放，想加入的同学可以在本文下方留下你的 Email。
+
+{{{more}}}
+
+** 前言
+Spacemacs 这个社区维护的 Emacs 配置，集成了 Vim 和 Emacs 的优点，我已经用了整整一年了，非常好用，我已经迫不及待地想
+把它推荐给身边每一位朋友。
+
+[[https://github.com/zilongshanren/Spacemacs-rocks/issues/5][Spacemacs Rocks: 建议、意见和 Roadmap · Issue #5 · zilongshanren/Spacemacs-rocks]]
+
+如果你是一个 IDE 党，那么你可有听过这句话，“世界上只有三种程序员，一种用 Vim，一种用 Emacs，剩下的全是第三种”？
+
+如果你是个 Vim 党，那么恭喜你，学会 Spacemacs 是分分钟的事。
+
+如果你钟爱 Sublime Text 和 Atom，那么我建议你试试 Emacs，虽然说入门有一定难度，但是一旦掌握，将会终身受益。
+
+如果你对我的安利不感冒，那么你也可以花一点点时间，看看我为 Spacemacs 录制的视频，看看这些能否激发你的学习欲望。
+
+** Spacemacs
+你是否感觉每天时间不够用，你是否每天忙碌却又不知道在忙些什么，技术水平也长时间没什么长进？
+
+试试 GTD 吧！ （如果没听到 GTD 的同学，可以先 Google 一下）。
+
+下面这个视频可以看看我是怎么使用 Org mode 来实践 GTD 的：
+
+http://v.youku.com/v_show/id_XMTM2MjM5OTU5Ng==.html
+
+
+Spacemacs 其实是一种生活方式，它让你的学习，生活和工作融为一体，让你可以达到一种 Flow 的状态。
+
+http://v.youku.com/v_show/id_XMTQwNTg2NTkzMg==.html
+
+想要用你最喜爱的编辑器来写博客，没问题。
+
+http://v.youku.com/v_show/id_XMTM4NzIyMTc0MA==.html
+
+不想每次换平台都换编辑器，受够了百度寻找各种破解码和注册机，不想为每一门编辑语言都学习一个 IDE，试试 Emacs 吧。
+
+Emacs 打造成一个 C/C++ IDE:
+
+http://v.youku.com/v_show/id_XMTM2OTM3MDkwMA==.html
+
+Emacs 打造成一个 Javascript IDE:
+
+http://v.youku.com/v_show/id_XMTQwNTg3MDY4NA==.html
+
+想同时管理多个工作区间，希望在不同的文件之间快速切换，能够在不同的文件里面自由地搜索、查找与替换，看看 ninjia 是
+怎么做的。
+
+http://v.youku.com/v_show/id_XMTM5NDI3NjQxMg==.html
+
+http://v.youku.com/v_show/id_XMTM4MTI2NDQyOA==.html
+
+Git 命令行效率不够高？IDE 又太重了？来试试世界上最好的 git 工具吧，magit 让你爽到爆。
+
+http://v.youku.com/v_show/id_XMTM3NTI0ODYyMA==.html
+
+如果你实在没兴趣，那么上面这些都可以无视。
+
+** Happy Hacking
