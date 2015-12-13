@@ -4,6 +4,7 @@ logo:
 # Header
 menu:
   Home: .
+  LearnOpenGLES: LearnOpenGLES
   Archives: archives
   Categories: categories
   Tags: tags

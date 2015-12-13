@@ -10,6 +10,6 @@ date: 2015-08-02 15:27:52
 
 Emacs 交流：  https://emacs-cn.slack.com/signup （目前采用的是邀请制，欢迎Emacs党在评论区留言或者给我发邮件。）
 
-Cocos2D-x交流：  Cocos2D-X Github issue system. :)
+Cocos2D-x交流：  Cocos2D-X Github issue system. https://github.com/cocos2d/cocos2d-x/issues/new
 
 我的Email:  guanghui8827@gmail.com

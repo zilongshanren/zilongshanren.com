@@ -20,30 +20,11 @@ tags:
 <!-- toc -->
 
 ## 前言
-
-在本系列教程中，我会以当下最流行的2D引擎Cocos2D-X为基础，介绍OpenGL ES 2.0的一些基本用法。本系列教程的宗旨是OpenGL扫盲，让大家在使用Cocos2D-X过程中，知其然，更知其所以然。因为我自己的图形学水平有限，所以这些教程不会涉及非常底层的数学原理，同时也不会过多地提及OpenGL本身的一些细节知识。但是我会在每篇文章的最后给出一些参考链接，大家可以顺藤摸瓜，一举Get OpenGL这个新技能。
-
-我第一次学习OpenGL是在2008年，但是那时候学得很烂，被各种矩阵变换搞得云里雾里。我于今年年初彻底重新学习OpenGL，目前来讲，应该算是入门了，至少矩阵变换是理解了，同时也会自己写一些简单的shader，可以进行OpenGL调试了。但是，我的学习之路才刚刚开始，我希望在我自己学习的过程，把有用的一些知识记录下来，方便自己和他人查阅。经过这次重新学习，我个人觉得，OpenGL真的没有那么难，只要你用心，就一定可以学会。当然，好的学习方法和好的学习资料肯定是会使之事半功倍的，希望接下来我的这些博文能为大家带来些许帮助。
+学习程序世界里面的任何一项技能都有一个HelloWorld，而OpenGL的HelloWorld就是自己画一个三角形。当然，在
+cocos2d-x里面使用DrawPrimitives可以轻松画出一个三角形。但是，我们这一次希望只通过底层的图形API就能够绘制一个三
+角形。
 
 <!-- more -->
-
-在第一篇文章正式开始前，我谈下我自己的入门心得体会吧，而《如何学习OpenGL》这是个更大的话题，等我OpenGL水平精进之后，我再单独写一篇文章来谈谈我的看法。
-
-目前来说，我的体会是“三要”和“三不要”。
-
-  * 要理解OpenGL渲染管线
-
-  * 要理解OpenGL是个状态机
-
-  * 要多动手实践。
-
-当然还有最重要的“三不要”：
-
-  * 不要每天去群里问怎样最快能学好OpenGL
-
-  * 不要每天去看各种资料而不动手写一点代码
-
-  * 不要出了问题到处问，尝试先自己解决，实在解决不了再问
 
 ## 正文
 
@@ -166,42 +147,12 @@ this->setGLProgram(GLProgramCache::getInstance()->getGLProgram(GLProgram::SHADER
 
 ![cocos2d-x-es-1.1](http://guanghuiqu.qiniudn.com/cocos2d-x-es-1.1.png)
 
-本教程[源代码下载](http://git.oschina.net/zilongshanren/Cocos2D-X-OpenGL-ES-2.0/tree/tutorial1),请认准tutorial1分支。
-
-Git仓库地址: [https://git.oschina.net/zilongshanren/Cocos2D-X-OpenGL-ES-2.0](https://git.oschina.net/zilongshanren/Cocos2D-X-OpenGL-ES-2.0)
 
 ### 结束语
 
 为了保持第一篇文章的简单性，我只在画三角形的代码里面给了一些注释，因为我并不想一开始就涉及到OpenGL底层的一些细节，而且有些内容我一时半会儿也很难说清楚。所以，我会在文章的最后给出一些参考链接，强烈推荐大家在看完本文后，有时间就多看一看这些链接，相信对理解上面的代码有帮助。下一篇文章中，我将给大家介绍如何编写自己的shader，包括vertex attribute, uniform，vertex shader， fragment shader等内容。如果您对本文有什么建议或者意义，欢迎在下方评论。
 
-### 写在最后
-
-关于参考链接：所有的推荐阅读都是我精心挑选的，部分内容我自己看过，另外一些我也正在计划看。如果大家有好的资料，欢迎推荐给我。
-关于评论：请不要找我要电子书，所有的电子书都可以通过google找到。
-
-另外，我推荐的资料大部分都是英文版，如果对英文不是很感冒的同学，可以看[翻译的版本](http://opengl.zilongshanren.com/)。
 
 ### 推荐阅读
 
-网站：
-
-1. [http://http.developer.nvidia.com/CgTutorial/cg_tutorial_chapter01.html](http://http.developer.nvidia.com/CgTutorial/cg_tutorial_chapter01.html)
-2. [http://www.opengl-tutorial.org/](http://www.opengl-tutorial.org/)
-3. [http://antongerdelan.net/opengl/index.html](http://antongerdelan.net/opengl/index.html)
-4. [http://www.arcsynthesis.org/gltut/](http://www.arcsynthesis.org/gltut/)
-5. [http://www.scratchapixel.com/](http://www.scratchapixel.com/)
-6. [http://duriansoftware.com/joe/An-intro-to-modern-OpenGL.-Chapter-1:-The-Graphics-Pipeline.html](http://duriansoftware.com/joe/An-intro-to-modern-OpenGL.-Chapter-1:-The-Graphics-Pipeline.html)
-
-视频：
-
-[https://www.youtube.com/watch?v=-tonZsbHty8&index=26&list=PLRwVmtr-pp06qT6ckboaOhnm9FxmzHpbY](http://http.developer.nvidia.com/CgTutorial/cg_tutorial_chapter01.html)
-
-书籍：
-
-[Iphone 3D programming](http://www.amazon.com/iPhone-Programming-Developing-Graphical-Applications/dp/0596804822)
-
-[OpenGL ES 2.0 for Android](http://www.amazon.com/OpenGL-Android-Quick-Start-Pragmatic-Programmers/dp/1937785343)
-
-[OpenGL ES 2.0 Programming Guide ](http://www.amazon.com/OpenGL-ES-2-0-Programming-Guide/dp/0321502795/ref=sr_1_1?s=books&ie=UTF8&qid=1401529388&sr=1-1&keywords=opengl+es+2.0)
-
-[Real-Time Rendering, Third Edition ](http://www.amazon.com/Real-Time-Rendering-Third-Tomas-Akenine-Moller/dp/1568814240/ref=sr_1_1?s=books&ie=UTF8&qid=1401529337&sr=1-1&keywords=real+time+rendering)
+1. http://learnopengl.com/
