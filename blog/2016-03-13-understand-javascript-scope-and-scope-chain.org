@@ -1,0 +1,13 @@
+#+TITLE: 理解 Javascript 作用域和作用域链
+#+DATE: 2016-03-13
+#+SETUPFILE: ~/4gamers.cn/setupfile.org
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: Javascript
+#+JEKYLL_TAGS: Javascript
+#+JEKYLL_PUBLISHED: true
+
+[[http://zilongshanren.com/blog/2016-02-28-understand-javascript-closure.html][上篇文章]] 在介绍 Javascript 闭包的时候提到了“闭包创建时所处的环境信息”，但是并没有说明这些信息到底是什么。
+
+也多亏了读者的提醒，我对于 Js 闭包的理解还是太肤浅了。这篇文章除了介绍 Js 的作用域和作用域链外，我还会讨论变量提升(var hositing) 这个问题。
+
+{{{more}}}

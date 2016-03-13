@@ -14,6 +14,7 @@
 {{{more}}}
 
 * 什么是闭包？
+
 *闭包是一个函数，它在函数内部创建，并且携带了自身创建时的所处环境信息（比如变量信息和其它函数信息）。*
 
 上面这段话是引用至 MDN，它很清楚地说明了什么是闭包。
@@ -24,7 +25,7 @@
 但是我觉得其实并不准确。
 
 我们看一下下面这段代码：
-#+BEGIN_SRC js :exports both
+#+BEGIN_SRC js
   function init() {
       var name = "Zilongshanren"; // name 是在 init 函数里面创建的变量
       // displayName() 是一个内部函数，即一个闭包。注意，它不是匿名的。
@@ -38,9 +39,8 @@
   closure();
 #+END_SRC
 
-#+RESULTS:
+RESULTS:
 : Zilongshanren
-: undefined
 
 ~displayName~ 是一个在 ~init~ 函数内部创建的函数，它携带了 init 函数内部作用域的所有信息，比如这里的 ~name~ 变量。
 当 displayName 函数返回的时候，它本身携带了当时创建时的环境信息，即 init 函数里面的 ~name~ 变量。
@@ -59,7 +59,7 @@ Js 里面只有函数可以创建出属于自身的作用域的对象，Js 并�
 
 我们看一下下面这段代码：
 
-#+BEGIN_SRC js :exports both
+#+BEGIN_SRC js
   var makeCounter = function() {
       var privateCounter = 0;
       function changeBy(val) {
@@ -89,12 +89,11 @@ Js 里面只有函数可以创建出属于自身的作用域的对象，Js 并�
   console.log(counter2.value()); /* Alerts 0 */
 #+END_SRC
 
-#+RESULTS:
+RESULTS:
 : 0
 : 2
 : 1
 : 0
-: undefined
 
 这里面的 ~privateCounter~ 变量和 ~changeBy~ 都是私有的，对于 makeCounter 函数外部是完全不可见的。
 这样我们通过 ~makeCounter~ 生成的对象就把自己的私有数据和私有方法全部隐藏起来了。
