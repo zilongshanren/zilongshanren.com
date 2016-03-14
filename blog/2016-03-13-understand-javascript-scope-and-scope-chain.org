@@ -246,11 +246,10 @@ echo 函数的作用域属性指向此 scope chain 对象。
   echo();
 #+END_SRC
 
-+RESULTS:
+RESULTS:
 : zilongshanren
 : hello
 : hello
-: undefined
 
 
 调用 echo 函数的第一行 name = "hello"时并不是对全局变量 name 进行重新赋值，而是对函数内部声明的变量 name 进行赋
