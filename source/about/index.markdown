@@ -8,8 +8,6 @@ date: 2015-08-02 15:27:52
 
 欢迎大家一起交流。
 
-Emacs 交流：https://slackin-emacs-cn.herokuapp.com/
-
 Cocos2D-x 交流：  Cocos2D-X Github issue system. https://github.com/cocos2d/cocos2d-x/issues/new
 
 我的 Email:  guanghui8827@gmail.com
