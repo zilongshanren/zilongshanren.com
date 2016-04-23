@@ -4,7 +4,7 @@ date: 2015-12-13 22:45:28
 
 ## 可能是最好的中文 Emacs 社区
 
-[传送门](http://emacser.cn)
+[传送门](http://www.emacs-china.org)
 
 ## 可能是最好的中文 Emacs 讨论组
 
