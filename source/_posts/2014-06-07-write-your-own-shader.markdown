@@ -25,7 +25,7 @@ tags:
 理解OpenGL渲染管线，对于学习OpenGL非常重要。下面是OpenGL渲染管线的示意图：（图中淡蓝色区域是可以编程的阶段）
 <!-- more -->
 
-![pipeline](http://guanghuiqu.qiniudn.com/RenderingPipeline.png)
+![pipeline](https://zilongshanren.com/img/RenderingPipeline.png)
 
 此图是从[wiki](http://www.opengl.org/wiki/Rendering_Pipeline_Overview)中拿过来的，OpenGL的渲染管线主要包括：
 
@@ -98,7 +98,7 @@ fragment shader中也有一个main函数，同时我们看到这里也声明了�
 
 下图解释了我们的顶点数据是如何渲染成最终屏幕上面的像素的：
 
-![graphics_pipline](http://guanghuiqu.qiniudn.com/graphics_pipeline.png)
+![graphics_pipline](https://zilongshanren.com/img/graphics_pipeline.png)
 
 ## VAO和VBO初探
 
@@ -205,7 +205,7 @@ glGetAttribLocation是用来获得vertex attribute的入口的，在我们要传
 
 好了，编译并运行，还是原来的三角形。
 
-![triangle](http://guanghuiqu.qiniudn.com/cocos2d-x-es-1.1.png)
+![triangle](https://zilongshanren.com/img/cocos2d-x-es-1.1.png)
 
 下一篇文章，我们将讲一下OpenGL各种坐标系及其变换。当然，最重要的是World-to-Model变换，Model-to-View变换和View-to-Projection变换。
 

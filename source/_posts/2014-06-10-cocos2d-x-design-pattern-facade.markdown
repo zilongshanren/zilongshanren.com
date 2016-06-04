@@ -44,7 +44,7 @@ Cocos2d-x里面有一个非常明显的地方使用了外观模式，它就是Si
 
 UML图：
 
-![uml](http://guanghuiqu.qiniudn.com/FacadeDesignPattern1.png)
+![uml](https://zilongshanren.com/img/FacadeDesignPattern1.png)
 
 ### 定义：
 

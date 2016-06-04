@@ -54,7 +54,7 @@ tags:
 
 UML图：
 
-![mediator.jpg](http://guanghuiqu.qiniudn.com/mediator.jpg)
+![mediator.jpg](https://zilongshanren.com/img/mediator.jpg)
 
 一般实现：参考[wikipedia](http://en.wikipedia.org/wiki/Mediator_pattern)
 

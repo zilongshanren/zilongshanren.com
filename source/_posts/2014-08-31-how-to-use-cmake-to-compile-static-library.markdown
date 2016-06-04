@@ -47,7 +47,7 @@ file(GLOB_RECURSE box2d_source_files "${CMAKE_CURRENT_SOURCE_DIR}/Box2D/*.cpp")
 
 我的CMakeLists.txt和Box2D的文件结构关系如下图所示：
 
-![box2d_cmake](http://guanghuiqu.qiniudn.com/box2d-cmake.png)
+![box2d_cmake](https://zilongshanren.com/img/box2d-cmake.png)
 
 这里的`${CMAKE_CURRENT_SOURCE_DIR}`表示CMakeLists.txt所在的目录。而GLOB_RECURSE可以递归地去搜索Box2D目录下面所有的.cpp文件来参与静态库的编译。而include_directories和file指令，显而易见，它们是用来指定静态库的头文件和实现文件。
 

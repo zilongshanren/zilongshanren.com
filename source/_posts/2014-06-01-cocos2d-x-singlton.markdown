@@ -93,7 +93,7 @@ Application类的设计初衷是获得平台相关的一些信息，最重要的
 
 UML图：
 
-![](http://guanghuiqu.qiniudn.com/Singleton.png)
+![](https://zilongshanren.com/img/Singleton.png)
 
 它的一般实现如下所示：
 

@@ -17,7 +17,7 @@ categories:
 
 如果对此不了解的同学，可以根据下图所示，点击[此链接把玩一下](http://www.cocos2d-x.org/wiki/Reference)
 
-![api-reference](http://guanghuiqu.qiniudn.com/api-reference.png)
+![api-reference](https://zilongshanren.com/img/api-reference.png)
 
 对于王哲交给我的GUI框架改进任务，目前来说，效果我不是特别满意。原因非常的多，我也不在这里展开了。（PS：如果大家对现在的GUI有什么要吐槽的，
 欢迎大家在本文最后给我留言，或者去Github提issue，如果是好的建议，我一定会采纳.）

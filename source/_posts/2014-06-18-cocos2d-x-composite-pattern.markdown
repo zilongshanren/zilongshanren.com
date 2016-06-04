@@ -31,7 +31,7 @@ Cocoa编程框架APPKit和UIKit都应用了组合模式，各种各样的View及
 
 说到树，我们马上就会想到树根，树干和树叶。一棵树一般只包含一个根，若干树干和大量的叶子。同时，树干长在树根上，树叶长在树干上。（PS：这有点废话了，不过读者莫急，耐着性着往下看。）对应于Cocos2d-x里面，就是一个游戏有一个主场景GameScene，它是树根，然后它有若干个树干（GameLayer、HudLayer、InputLayer、BackgroundLayer和LevelLayer等），最后，每一个树干又包含若干个树叶（比如sprite、particles、font、TiledMap nodes、etc）。
 
-![tree-node](http://guanghuiqu.qiniudn.com/tree-nodes-labeled.png)
+![tree-node](https://zilongshanren.com/img/tree-nodes-labeled.png)
 
 说完了这些，你可能会问了，这跟组合模式有毛关系啊。好，组合模式正式登场！
 
@@ -65,7 +65,7 @@ cocos2d-x里面的CCScene、CCLayer、CCNode派生类(不含CCLayer和CCScene)�
 
 UML类图：
 
-![diagram](http://guanghuiqu.qiniudn.com/600px-Composite_UML_class_diagram_fixed.svg_.png)
+![diagram](https://zilongshanren.com/img/600px-Composite_UML_class_diagram_fixed.svg_.png)
 
 一般实现：参考[这篇文章](http://www.cnblogs.com/tiandsp/archive/2012/06/26/2563575.html)
 

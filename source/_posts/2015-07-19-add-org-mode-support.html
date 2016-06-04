@@ -174,7 +174,7 @@ permalink: /blog/:year-:month-:day-:title.html
   <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>file-exists-p <span style="color: #6c71c4;">(</span>file-name-directory fullpath<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
       <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">progn</span>
         <span style="color: #6c71c4;">(</span>call-process <span style="color: #2aa198;">"screencapture"</span> nil nil nil <span style="color: #2aa198;">"-s"</span> <span style="color: #859900;">(</span>concat fullpath <span style="color: #2aa198;">".png"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
-        <span style="color: #6c71c4;">(</span>zilongshanren//insert-org-or-md-img-link <span style="color: #2aa198;">"http://guanghuiqu.qiniudn.com/"</span> relativepath<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+        <span style="color: #6c71c4;">(</span>zilongshanren//insert-org-or-md-img-link <span style="color: #2aa198;">"https://zilongshanren.com/img/"</span> relativepath<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
     <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">progn</span>
       <span style="color: #6c71c4;">(</span>call-process <span style="color: #2aa198;">"screencapture"</span> nil nil nil <span style="color: #2aa198;">"-s"</span> <span style="color: #859900;">(</span>concat basename <span style="color: #2aa198;">".png"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
       <span style="color: #6c71c4;">(</span>zilongshanren//insert-org-or-md-img-link <span style="color: #2aa198;">"./"</span> <span style="color: #859900;">(</span>concat basename <span style="color: #2aa198;">".png"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
@@ -192,7 +192,7 @@ permalink: /blog/:year-:month-:day-:title.html
 
 
 <div class="figure">
-<p><img src="http://guanghuiqu.qiniudn.com/2015-07-19-add-org-mode-support_test-img.png" alt="2015-07-19-add-org-mode-support_test-img.png" />
+<p><img src="https://zilongshanren.com/img/2015-07-19-add-org-mode-support_test-img.png" alt="2015-07-19-add-org-mode-support_test-img.png" />
 </p>
 </div>
 

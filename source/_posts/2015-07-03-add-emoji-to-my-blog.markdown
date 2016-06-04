@@ -40,7 +40,7 @@ categories: Blog
 ---------
 Spacemacs中集成了一个`emoji` layer, 开启之后可以用 `SPC i e`和`SPC a E`来往buffer里面插入emoji.:cool: 
 
-![screenshot](http://guanghuiqu.qiniudn.com/emoji-screenshot.png)
+![screenshot](https://zilongshanren.com/img/emoji-screenshot.png)
 
 小结:dog: 
 ----

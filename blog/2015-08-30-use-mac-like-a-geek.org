@@ -55,7 +55,7 @@ Emacs 本质上是喜欢自由和 Hack 的极客们自己的工具，每一个 L
 Mac 本身系统全局内置 Emacs 的快捷键：C-a/C-e/C-n/C-p/C-f/C-b， 如果 Ctrl 键不好按，那么你的小拇指可能会疼。
 通过 Mac 系统自己的改键，可以很方便地把 CapsLock 和 Ctrl 键互换。
 
-[[http://guanghuiqu.qiniudn.com/2015-08-30-use-mac-like-a-geek_swap-ctrl-and-caps-lock.png]]
+[[https://zilongshanren.com/img/2015-08-30-use-mac-like-a-geek_swap-ctrl-and-caps-lock.png]]
 
 不管你是使用 Vim 或者 Emacs，甚至高效地使用 Mac 下面的命令行， 有一个舒服的 Ctrl 键都是必需的。
 

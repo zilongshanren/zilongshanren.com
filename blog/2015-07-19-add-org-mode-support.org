@@ -106,7 +106,7 @@
   (if (file-exists-p (file-name-directory fullpath))
       (progn
         (call-process "screencapture" nil nil nil "-s" (concat fullpath ".png"))
-        (zilongshanren//insert-org-or-md-img-link "http://guanghuiqu.qiniudn.com/" relativepath))
+        (zilongshanren//insert-org-or-md-img-link "https://zilongshanren.com/img/" relativepath))
     (progn
       (call-process "screencapture" nil nil nil "-s" (concat basename ".png"))
       (zilongshanren//insert-org-or-md-img-link "./" (concat basename ".png"))))
@@ -118,7 +118,7 @@
 下面这个截图就是使用上面的函数生成的，不过我还把它上传到了自己的七牛云存储上面。（如果你需要使用七牛，
 请把 guanghui.qiniudn.com 改成你的七牛数据空间地址。）
 
-[[http://guanghuiqu.qiniudn.com/2015-07-19-add-org-mode-support_test-img.png]]
+[[https://zilongshanren.com/img/2015-07-19-add-org-mode-support_test-img.png]]
 
 另外，如果使用的是 org 或者 markdown，最终插入 buffer 里面的链接格式也有做相应的调整。
 

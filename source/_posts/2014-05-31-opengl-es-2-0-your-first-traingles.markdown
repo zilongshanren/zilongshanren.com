@@ -55,7 +55,7 @@ bool HelloWorld::init()
 
 此时，再编译运行之。你将会得到以下界面。
 
-![first](http://guanghuiqu.qiniudn.com/cocos2d-x-es-1.0.png)
+![first](https://zilongshanren.com/img/cocos2d-x-es-1.0.png)
 
 ### 发送CustomCommand
 
@@ -145,7 +145,7 @@ this->setGLProgram(GLProgramCache::getInstance()->getGLProgram(GLProgram::SHADER
 
 接下来，运行一下程序.恭喜你，你的第一个漂亮的三角形完成啦，还算简单吧：）
 
-![cocos2d-x-es-1.1](http://guanghuiqu.qiniudn.com/cocos2d-x-es-1.1.png)
+![cocos2d-x-es-1.1](https://zilongshanren.com/img/cocos2d-x-es-1.1.png)
 
 
 ### 结束语

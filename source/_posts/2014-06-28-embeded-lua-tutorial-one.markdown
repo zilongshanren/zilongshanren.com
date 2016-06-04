@@ -41,13 +41,13 @@ tags:
 ### 准备工作
 
 首先，新建一个控制台应用程序。 打开Xcode,New->Project->OSX->Command Line Tool，取名为Lesson01如下图所示：
-![newMac](http://guanghuiqu.qiniudn.com/newMacProject.jpg)
+![newMac](https://zilongshanren.com/img/newMacProject.jpg)
 
 接下来，我们需要下载[lua5.2.3](http://www.lua.org/download.html).下载完后，解压缩，然后cd到刚刚解压缩的路径下面，输入make macosx，这样便可以生成Mac下面的lib文件。
 
 接下来把刚刚解压缩的文件夹拷贝到你新建的工程下面，然后设置include路径和library路径。（注意，这里是不需要把头文件添加到Xcode里面的，只要指定include路径，编译的时候，编译器会自动去找的。）
 
-![searchpath](http://guanghuiqu.qiniudn.com/searchpath.png)
+![searchpath](https://zilongshanren.com/img/searchpath.png)
 
 因为我的Lua文件夹的路径是:xxxx/Lesson01/lua-5.2.3，所以，我把search path和library path分别设置为：
 
@@ -60,7 +60,7 @@ $(PROJECT_DIR)/Lesson01
 
 下面是我的工程与lua之间的目录结构，liblua.a文件是从src里面拷贝出来的。（前面我们使用make macosx生成出来的）
 
-![luapath](http://guanghuiqu.qiniudn.com/luapath.png)
+![luapath](https://zilongshanren.com/img/luapath.png)
 
 **注意：如果直接添加lua的所有源码，则会编译报错。因为lua.c里面也有一个main函数。这个main函数是用来生成可执行程序的。**
 **另外，如果是添加其它第三方的库，也可以参考这个方法，添加search path和library path**
@@ -124,10 +124,10 @@ print "Hello World"
 此时编译并运行，这时可能看不到控制台输出"Hello World"。因为你的Lua脚本没有拷贝到程序里面去，我们需要再设置一下。如下图所示：
 （注意：subpath要清空，copy only when installing去掉打勾）
 
-![copylua](http://guanghuiqu.qiniudn.com/copylua.png)
+![copylua](https://zilongshanren.com/img/copylua.png)
 
 这时，编译并运行，你会得到如下结果 ：
-![luaresult](http://guanghuiqu.qiniudn.com/luaresult.png)
+![luaresult](https://zilongshanren.com/img/luaresult.png)
 
 接下来，我们讲讲IOS项目怎么集成Lua。
 

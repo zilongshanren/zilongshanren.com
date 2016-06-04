@@ -57,7 +57,7 @@ void main()
 
 此时，我们就在c++代码和shader程序之间传递数据啦。编译并运行，我们会得到一个半红不红的三角形：
 
-![triangle](http://guanghuiqu.qiniudn.com/triangle.jpg)
+![triangle](https://zilongshanren.com/img/triangle.jpg)
 
 
 
@@ -183,7 +183,7 @@ float vertercies[] = { -1,-1,   //第一个点的坐标
 
 为什么要这样呢？因为任何一个顶点乘以一个单位矩阵，它的值是不变的。而normalized device space空间的取值范围是-1~+1，如下图所示：
 
-![clippingspace](http://guanghuiqu.qiniudn.com/screenCoordinates-300x165.png)
+![clippingspace](https://zilongshanren.com/img/screenCoordinates-300x165.png)
 
 所以，如果我们要想显示同之前一模一样的三角形，就必须修改这个顶点数据，让它的取值范围落在Clipping Space以内。这也是我们在其它许多书本上面看到的规范的三角形的范例。
 

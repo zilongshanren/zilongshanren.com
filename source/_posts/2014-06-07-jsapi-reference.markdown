@@ -50,7 +50,7 @@ _Contexts:_一个JSContext，或者说上下文。它像一部小型机器，可
 
 Figure 1.1 js脚本、上下文和对象的关系
 
-![figure1](http://guanghuiqu.qiniudn.com/Over3.gif)
+![figure1](https://zilongshanren.com/img/Over3.gif)
 
 _Global objects:_ 最后，全局对象包含js脚本中所有的类、函数和变量。脚本里所做的任何操作，比如window.open("http://www.mozilla.org/"),
 它都需要访问全局属性，在此例中就是window。JSAPI应用程序对于全局对象里面应该暴露哪些属性给js脚本拥有绝对的控制权。程序刚开始时会创建一个对象，然后使用js的标准类来操作它，比如Array和Object。然后，它会提供一些应用程序所需要的类,对象和函数，比如：window。每一次应用程序跑js脚本时（通过调用JS_EvaluateScript）,它就会提供全局的对象给脚本访问。当脚本在运行的时候，它也可以创建自己的全局函数和全局变量。所以这些函数，类，变量都被当作全局对象的属性。

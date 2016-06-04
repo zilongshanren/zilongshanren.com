@@ -67,7 +67,7 @@ tags:
 ```
 
 此时，编译并运行，你会得到一个纯绿色的四边形：
-![greenrectangle](http://guanghuiqu.qiniudn.com/greenrectangle.png)
+![greenrectangle](https://zilongshanren.com/img/greenrectangle.png)
 
 怎么样，画4边形不过如此吧，只需要多准备点数据就行啦。另外，注意一下三角形的顶点顺序。不过，细心的读者立马就会发现，我们的顶点数据里面有两个顶点是重复的。这其实是一种内存浪费。假设我们现在渲染一个复杂的模型，它可能包含几千个三角形，如果采用这种方式，那不知道要浪费多少内存。接下来，我们要介绍一种方法，使用索引数组来重用顶点数据。
 
@@ -185,7 +185,7 @@ struct V3F_C4B_T2F
 这里，我们需要指定[glVertexAttribPointer](https://www.khronos.org/opengles/sdk/docs/man/xhtml/glVertexAttribPointer.xml)的第5个参数和第6个参数。
 
 下图告诉我们Vertex Shader是如何读取属性的：
-![multiplevertexattri](http://guanghuiqu.qiniudn.com/multiplevertexattribute.png)
+![multiplevertexattri](https://zilongshanren.com/img/multiplevertexattribute.png)
 
 注意，我们这里把colorVBO的生成和绑定代码注释掉了，因为已经不需要了。
 编译并运行，这时候你还是会看到一个绿色的四边形。

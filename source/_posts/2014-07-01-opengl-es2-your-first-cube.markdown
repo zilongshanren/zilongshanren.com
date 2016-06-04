@@ -125,7 +125,7 @@ void main()
 
 此时，编译运行，你会得到如下结果 ：
 
-![cube01](http://guanghuiqu.qiniudn.com/cube01.png)
+![cube01](https://zilongshanren.com/img/cube01.png)
 
 别诧异，这就是一个立方体，只不过现在它离我们的“眼睛”(Cemera)很近，所以我们只能看到一个面。接下来，让我们修改一个modelView矩阵，让它离我们的camera远一点。
 

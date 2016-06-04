@@ -48,7 +48,7 @@ tags:
 
 UML图：
 
-![observer](http://guanghuiqu.qiniudn.com/500px-Observer.svg_.png)
+![observer](https://zilongshanren.com/img/500px-Observer.svg_.png)
 
 一般实现：参考NotificationCenter.h和Notification.cpp文件的实现
 

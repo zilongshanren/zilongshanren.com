@@ -45,7 +45,7 @@ find .git/objects -type f
 #+END_SRC
 
 下图是输出：
-[[http://guanghuiqu.qiniudn.com/2015-09-12-three-git-question_find-objects-1.png]]
+[[https://zilongshanren.com/img/2015-09-12-three-git-question_find-objects-1.png]]
 
 a.txt 和 b.txt 的文件内容存储在 628ccd10742baea8241c5924df992b5c019f71 和 013625030ba8dba906f756967f9e9ca394464a 文件中。
 
@@ -57,7 +57,7 @@ a.txt 和 b.txt 的文件内容存储在 628ccd10742baea8241c5924df992b5c019f71 
 #+END_SRC
 
 下图是输出：
-[[http://guanghuiqu.qiniudn.com/2015-09-12-three-git-question_cat-file-1.png]]
+[[https://zilongshanren.com/img/2015-09-12-three-git-question_cat-file-1.png]]
 
 这里的 hash 值所代表的文件就是文件快照。此时，如果我们 commit 的话，会生成新的 hash 值对象。
 
@@ -68,7 +68,7 @@ a.txt 和 b.txt 的文件内容存储在 628ccd10742baea8241c5924df992b5c019f71 
 #+END_SRC
 
 下图是输出：
-[[http://guanghuiqu.qiniudn.com/2015-09-12-three-git-question_cat-file-2.png]]
+[[https://zilongshanren.com/img/2015-09-12-three-git-question_cat-file-2.png]]
 
 
 
@@ -82,7 +82,7 @@ a.txt 和 b.txt 的文件内容存储在 628ccd10742baea8241c5924df992b5c019f71 
 #+END_SRC
 
 下图是输出：
-[[http://guanghuiqu.qiniudn.com/2015-09-12-three-git-question_cat-file-3.png]]
+[[https://zilongshanren.com/img/2015-09-12-three-git-question_cat-file-3.png]]
 
 
 
@@ -91,7 +91,7 @@ a.txt 和 b.txt 的文件内容存储在 628ccd10742baea8241c5924df992b5c019f71 
 #+END_SRC
 
 下图是输出：
-[[http://guanghuiqu.qiniudn.com/2015-09-12-three-git-question_cat-tree-1.png]]
+[[https://zilongshanren.com/img/2015-09-12-three-git-question_cat-tree-1.png]]
 
 
 这里的 18eb80fbbbf9160491c007668d5298f1e86cd40a 表示的是当前目录树的 hash 值，里面包含了每个文件的权限，类型，hash code 和名字信息。

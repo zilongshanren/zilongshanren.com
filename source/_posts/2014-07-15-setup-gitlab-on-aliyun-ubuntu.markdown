@@ -131,9 +131,9 @@ https://github.com/gitlabhq/gitlabhq/issues/5596
 
 最后，应大家的要求来几张效果图吧：
 
-![gitlab_login](http://guanghuiqu.qiniudn.com/gitlab_login-300x273.png)
+![gitlab_login](https://zilongshanren.com/img/gitlab_login-300x273.png)
 
-![gitlab_repo](http://guanghuiqu.qiniudn.com/gitlab_repo-300x116.png)
+![gitlab_repo](https://zilongshanren.com/img/gitlab_repo-300x116.png)
 
 ## Reference
 

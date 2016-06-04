@@ -6,7 +6,7 @@ comments: true
 categories: Emacs
 ---
 
-![linua-emacs-talk](http://guanghuiqu.qiniudn.com/linus-talk-emacs.jpeg)
+![linua-emacs-talk](https://zilongshanren.com/img/linus-talk-emacs.jpeg)
 
 本文主要记录我的《Mastering Emacs》的读书心得，上图取自Google，在《Mastering Emacs》一书第五章篇头有引用。
 

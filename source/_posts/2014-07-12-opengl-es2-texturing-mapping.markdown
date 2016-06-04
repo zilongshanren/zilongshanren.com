@@ -160,7 +160,7 @@ void main()
 
 ## 运行结果
 
-![texturing](http://guanghuiqu.qiniudn.com/texturing.png)
+![texturing](https://zilongshanren.com/img/texturing.png)
 
 接下来，我们需要把立方体的六个面都添加这张纹理。
 
@@ -206,7 +206,7 @@ void main()
 
 下面是立方体的六个面贴上纹理之后的效果：
 
-![3dtexturing](http://guanghuiqu.qiniudn.com/3dtexturing.png)
+![3dtexturing](https://zilongshanren.com/img/3dtexturing.png)
 
 ## 结语
 
