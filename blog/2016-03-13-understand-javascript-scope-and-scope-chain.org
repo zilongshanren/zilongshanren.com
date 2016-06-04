@@ -204,7 +204,7 @@ echo 函数的作用域属性指向此 scope chain 对象。
 
 下图是 V8 引擎中 funcs 函数及其闭包的截图：
 
-[[http://guanghuiqu.qiniudn.com/2016-03-13-understand-javascript-scope-and-scope-chain_closure-example.png]]
+[[https://zilongshanren.com/img/2016-03-13-understand-javascript-scope-and-scope-chain_closure-example.png]]
 
 
 - 最后遍历执行所有的 loggers 的时候，会依次为每一个 loggers 函数创建一个执行上下文，每一个执行上下文的作用域链为：

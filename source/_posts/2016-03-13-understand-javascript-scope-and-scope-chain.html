@@ -35,21 +35,21 @@ Javascript 的这种特性导致 for 循环里面创建闭包时会产生让人�
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span style="color: #F92672;">var</span> <span style="color: #FD971F;">i</span> = <span style="color: #AE81FF;">20</span>;
-<span style="color: #F92672;">var</span> <span style="color: #FD971F;">makeLogger</span> = <span style="color: #F92672;">function</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
-    <span style="color: #F92672;">var</span> <span style="color: #FD971F;">funcs</span> = <span style="color: #66D9EF;">[]</span>;
-    <span style="color: #F92672;">for</span><span style="color: #66D9EF;">(</span><span style="color: #F92672;">var</span> <span style="color: #FD971F;">i</span> = <span style="color: #AE81FF;">0</span>; i &lt; <span style="color: #AE81FF;">10</span>; ++i<span style="color: #66D9EF;">){</span>
-        funcs<span style="color: #A6E22E;">[</span>i<span style="color: #A6E22E;">]</span> = <span style="color: #F92672;">function</span><span style="color: #A6E22E;">()</span> <span style="color: #A6E22E;">{</span>
-            console.log<span style="color: #E6DB74;">(</span>i<span style="color: #E6DB74;">)</span>;
-        <span style="color: #A6E22E;">}</span>
-    <span style="color: #66D9EF;">}</span>
-    <span style="color: #F92672;">return</span> funcs;
-<span style="color: #AE81FF;">}</span>
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">i</span> = <span style="color: #6c71c4;">20</span>;
+<span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">makeLogger</span> = <span style="color: #859900; font-weight: bold;">function</span><span style="color: #2aa198;">()</span> <span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">funcs</span> = <span style="color: #b58900;">[]</span>;
+    <span style="color: #859900; font-weight: bold;">for</span><span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">i</span> = <span style="color: #6c71c4;">0</span>; i &lt; <span style="color: #6c71c4;">10</span>; ++i<span style="color: #b58900;">){</span>
+        funcs<span style="color: #268bd2;">[</span>i<span style="color: #268bd2;">]</span> = <span style="color: #859900; font-weight: bold;">function</span><span style="color: #268bd2;">()</span> <span style="color: #268bd2;">{</span>
+            console.log<span style="color: #6c71c4;">(</span>i<span style="color: #6c71c4;">)</span>;
+        <span style="color: #268bd2;">}</span>
+    <span style="color: #b58900;">}</span>
+    <span style="color: #859900; font-weight: bold;">return</span> funcs;
+<span style="color: #2aa198;">}</span>
 
-<span style="color: #F92672;">var</span> <span style="color: #FD971F;">loggers</span> = makeLogger<span style="color: #AE81FF;">()</span>;
-<span style="color: #F92672;">for</span><span style="color: #AE81FF;">(</span><span style="color: #F92672;">var</span> <span style="color: #FD971F;">i</span> = <span style="color: #AE81FF;">0</span>; i &lt; <span style="color: #AE81FF;">10</span>; ++i<span style="color: #AE81FF;">){</span>
-    loggers<span style="color: #66D9EF;">[</span>i<span style="color: #66D9EF;">]()</span>;
-<span style="color: #AE81FF;">}</span>
+<span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">loggers</span> = makeLogger<span style="color: #2aa198;">()</span>;
+<span style="color: #859900; font-weight: bold;">for</span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">i</span> = <span style="color: #6c71c4;">0</span>; i &lt; <span style="color: #6c71c4;">10</span>; ++i<span style="color: #2aa198;">){</span>
+    loggers<span style="color: #b58900;">[</span>i<span style="color: #b58900;">]()</span>;
+<span style="color: #2aa198;">}</span>
 </pre>
 </div>
 
@@ -99,14 +99,14 @@ RESULTS:
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span style="color: #F92672;">var</span> <span style="color: #FD971F;">name</span> = <span style="color: #E6DB74;">'zilongshanren'</span>;
-<span style="color: #F92672;">function</span> <span style="color: #A6E22E;">echo</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
-    console.log<span style="color: #66D9EF;">(</span>name<span style="color: #66D9EF;">)</span>;
-    <span style="color: #F92672;">var</span> <span style="color: #FD971F;">name</span> = <span style="color: #E6DB74;">'hello'</span>;
-    console.log<span style="color: #66D9EF;">(</span>name<span style="color: #66D9EF;">)</span>;
-<span style="color: #AE81FF;">}</span>
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">name</span> = <span style="color: #2aa198;">'zilongshanren'</span>;
+<span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">echo</span><span style="color: #2aa198;">()</span> <span style="color: #2aa198;">{</span>
+    console.log<span style="color: #b58900;">(</span>name<span style="color: #b58900;">)</span>;
+    <span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">name</span> = <span style="color: #2aa198;">'hello'</span>;
+    console.log<span style="color: #b58900;">(</span>name<span style="color: #b58900;">)</span>;
+<span style="color: #2aa198;">}</span>
 
-echo<span style="color: #AE81FF;">()</span>;
+echo<span style="color: #2aa198;">()</span>;
 </pre>
 </div>
 
@@ -261,7 +261,7 @@ echo 函数的作用域属性指向此 scope chain 对象。
 
 
 <div class="figure">
-<p><img src="http://guanghuiqu.qiniudn.com/2016-03-13-understand-javascript-scope-and-scope-chain_closure-example.png" alt="2016-03-13-understand-javascript-scope-and-scope-chain_closure-example.png" />
+<p><img src="http://localhost:4000/img/2016-03-13-understand-javascript-scope-and-scope-chain_closure-example.png" alt="2016-03-13-understand-javascript-scope-and-scope-chain_closure-example.png" />
 </p>
 </div>
 
@@ -304,16 +304,16 @@ echo 函数的作用域属性指向此 scope chain 对象。
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span style="color: #F92672;">var</span> <span style="color: #FD971F;">name</span> = <span style="color: #E6DB74;">'zilongshanren'</span>;
-<span style="color: #F92672;">function</span> <span style="color: #A6E22E;">echo</span><span style="color: #AE81FF;">()</span> <span style="color: #AE81FF;">{</span>
-    name = <span style="color: #E6DB74;">"hello"</span>;
-    console.log<span style="color: #66D9EF;">(</span>name<span style="color: #66D9EF;">)</span>;
-    <span style="color: #F92672;">var</span> <span style="color: #FD971F;">name</span>;
-    console.log<span style="color: #66D9EF;">(</span>name<span style="color: #66D9EF;">)</span>;
-<span style="color: #AE81FF;">}</span>
-console.log<span style="color: #AE81FF;">(</span>name<span style="color: #AE81FF;">)</span>;
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">name</span> = <span style="color: #2aa198;">'zilongshanren'</span>;
+<span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">echo</span><span style="color: #2aa198;">()</span> <span style="color: #2aa198;">{</span>
+    name = <span style="color: #2aa198;">"hello"</span>;
+    console.log<span style="color: #b58900;">(</span>name<span style="color: #b58900;">)</span>;
+    <span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">name</span>;
+    console.log<span style="color: #b58900;">(</span>name<span style="color: #b58900;">)</span>;
+<span style="color: #2aa198;">}</span>
+console.log<span style="color: #2aa198;">(</span>name<span style="color: #2aa198;">)</span>;
 
-echo<span style="color: #AE81FF;">()</span>;
+echo<span style="color: #2aa198;">()</span>;
 </pre>
 </div>
 
