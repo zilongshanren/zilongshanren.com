@@ -65,7 +65,7 @@ cocos2d-x里面的CCScene、CCLayer、CCNode派生类(不含CCLayer和CCScene)�
 
 UML类图：
 
-![diagram](https://zilongshanren.com/img/600px-Composite_UML_class_diagram_fixed.svg_.png)
+![diagram](https://zilongshanren.com/img/600px-Composite_UML_class_diagram_fixed.png)
 
 一般实现：参考[这篇文章](http://www.cnblogs.com/tiandsp/archive/2012/06/26/2563575.html)
 
