@@ -59,7 +59,7 @@ HTTPS 是互联网下一个阶段的重要进化，所有的网站都应该上 H
 
 打分网站： https://www.ssllabs.com/ssltest/index.html
 
-[[https://zilongshanren.com/2016-06-08-embrace-https-and-http2_rate-https-site.png]]
+[[https://zilongshanren.com/img/2016-06-08-embrace-https-and-http2_rate-https-site.png]]
 
 让我们一起拥抱 HTTPS 和 HTTP/2吧！
 
