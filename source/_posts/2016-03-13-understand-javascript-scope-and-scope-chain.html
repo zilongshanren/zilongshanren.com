@@ -9,6 +9,18 @@ tags:
 published: true
 comments: 
 ---
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">Javascript 作用域</a></li>
+<li><a href="#orgheadline2">Javascript 作用域链</a></li>
+<li><a href="#orgheadline3">变量提升</a></li>
+<li><a href="#orgheadline4">小结</a></li>
+<li><a href="#orgheadline5">Reference</a></li>
+</ul>
+</div>
+</div>
 <p>
 <a href="http://zilongshanren.com/blog/2016-02-28-understand-javascript-closure.html">上篇文章</a> 在介绍 Javascript 闭包的时候提到了“闭包创建时所处的环境信息”，但是并没有说明这些信息到底是什么。
 </p>
@@ -209,7 +221,7 @@ echo 函数的作用域属性指向此 scope chain 对象。
 </pre>
 
 <p>
-并且此时 funcs&#x2026;funcs的 scope 都指向该 scope chain。
+并且此时 funcs[0]&#x2026;funcs[9]的 scope 都指向该 scope chain。
 </p>
 
 <ul class="org-ul">
