@@ -1,7 +1,6 @@
 title: LearnEmacs
 date: 2015-12-13 22:45:28
 ---
-
 ## 可能是最好的中文 Emacs 社区
 
 [传送门](http://www.emacs-china.org)
@@ -20,62 +19,123 @@ http://book.emacs-china.org/
 
 ## 21 天学会 Emacs 视频列表：
 
+
+
 ### 第一天
 
-{% youku 480 720 %}
-XMTUwNjU0MjE0OA
-{% endyouku %}
-
+<div id="youkuplayer" style="width:720px;height:480px"></div>
+<script type="text/javascript" src="https://players.youku.com/jsapi"></script>
+<script type="text/javascript">
+player = new YKU.Player('youkuplayer',{
+styleid: '0',
+client_id: 'd50f02c88356aaed',
+vid: 'XMTUwNjU0MjE0OA',
+newPlayer: true
+});
+</script>
 
 ### 第二天
-{% youku 480 720 %}
-XMTUxMzQyODI4MA
-{% endyouku %}
+<div id="youkuplayer2" style="width:720px;height:480px"></div>
+<script type="text/javascript">
+player = new YKU.Player('youkuplayer2',{
+styleid: '0',
+client_id: 'd50f02c88356aaed',
+vid: 'XMTUxMzQyODI4MA',
+newPlayer: true
+});
+</script>
 
 
 ### 第三天
-{% youku 480 720 %}
-XMTUyNzA0MTMxNg
-{% endyouku %}
+<div id="youkuplayer3" style="width:720px;height:480px"></div>
+<script type="text/javascript">
+player = new YKU.Player('youkuplayer3',{
+styleid: '0',
+client_id: 'd50f02c88356aaed',
+vid: 'XMTUyNzA0MTMxNg',
+newPlayer: true
+});
+</script>
 
 
 ### 第四天
-{% youku 480 720 %}
-XMTUzMDAwMDYwMA
-{% endyouku %}
+<div id="youkuplayer4" style="width:720px;height:480px"></div>
+<script type="text/javascript">
+player = new YKU.Player('youkuplayer4',{
+styleid: '0',
+client_id: 'd50f02c88356aaed',
+vid: 'XMTUzMDAwMDYwMA',
+newPlayer: true
+});
+</script>
 
 
 ### 第五天
-{% youku 480 720 %}
-XMTU0NjMyNDg5Ng
-{% endyouku %}
+<div id="youkuplayer5" style="width:720px;height:480px"></div>
+<script type="text/javascript">
+player = new YKU.Player('youkuplayer5',{
+styleid: '0',
+client_id: 'd50f02c88356aaed',
+vid: 'XMTU0NjMyNDg5Ng',
+newPlayer: true
+});
+</script>
 
 
 ### 第六天
-{% youku 480 720 %}
-XMTU0NjYwNzQ3Mg
-{% endyouku %}
+<div id="youkuplayer6" style="width:720px;height:480px"></div>
+<script type="text/javascript">
+player = new YKU.Player('youkuplayer6',{
+styleid: '0',
+client_id: 'd50f02c88356aaed',
+vid: 'XMTU0NjYwNzQ3Mg',
+newPlayer: true
+});
+</script>
 
 
 ### 第七天
-{% youku 480 720 %}
-XMTU1NTk4MzUyNA
-{% endyouku %}
+<div id="youkuplayer7" style="width:720px;height:480px"></div>
+<script type="text/javascript">
+player = new YKU.Player('youkuplayer7',{
+styleid: '0',
+client_id: 'd50f02c88356aaed',
+vid: 'XMTU1NTk4MzUyNA',
+newPlayer: true
+});
+</script>
 
 
 ### 第八天
-{% youku 480 720 %}
-XMTU3MzEyNDkxNg
-{% endyouku %}
-
+<div id="youkuplayer8" style="width:720px;height:480px"></div>
+<script type="text/javascript">
+player = new YKU.Player('youkuplayer8',{
+styleid: '0',
+client_id: 'd50f02c88356aaed',
+vid: 'XMTU3MzEyNDkxNg',
+newPlayer: true
+});
+</script>
 
 ### 第九天
-{% youku 480 720 %}
-XMTU4MDU2NjE3Ng
-{% endyouku %}
+<div id="youkuplayer9" style="width:720px;height:480px"></div>
+<script type="text/javascript">
+player = new YKU.Player('youkuplayer9',{
+styleid: '0',
+client_id: 'd50f02c88356aaed',
+vid: 'XMTU4MDU2NjE3Ng',
+newPlayer: true,
+});
+</script>
 
 ### 第十天：
 
-{% youku 480 720 %}
-XMTYwMzc0NDg0OA
-{% endyouku %}
+<div id="youkuplayer10" style="width:720px;height:480px"></div>
+<script type="text/javascript">
+player = new YKU.Player('youkuplayer10',{
+styleid: '0',
+client_id: 'd50f02c88356aaed',
+vid: 'XMTYwMzc0NDg0OA',
+newPlayer: true
+});
+</script>
