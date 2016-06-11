@@ -23,7 +23,7 @@ http://book.emacs-china.org/
 
 ### 第一天
 
-<div id="youkuplayer" style="width:720px;height:480px"></div>
+<div id="youkuplayer" style="width:600px;height:480px"></div>
 <script type="text/javascript" src="https://players.youku.com/jsapi"></script>
 <script type="text/javascript">
 player = new YKU.Player('youkuplayer',{
@@ -35,7 +35,7 @@ newPlayer: true
 </script>
 
 ### 第二天
-<div id="youkuplayer2" style="width:720px;height:480px"></div>
+<div id="youkuplayer2" style="width:600px;height:480px"></div>
 <script type="text/javascript">
 player = new YKU.Player('youkuplayer2',{
 styleid: '0',
@@ -47,7 +47,7 @@ newPlayer: true
 
 
 ### 第三天
-<div id="youkuplayer3" style="width:720px;height:480px"></div>
+<div id="youkuplayer3" style="width:600px;height:480px"></div>
 <script type="text/javascript">
 player = new YKU.Player('youkuplayer3',{
 styleid: '0',
@@ -59,7 +59,7 @@ newPlayer: true
 
 
 ### 第四天
-<div id="youkuplayer4" style="width:720px;height:480px"></div>
+<div id="youkuplayer4" style="width:600px;height:480px"></div>
 <script type="text/javascript">
 player = new YKU.Player('youkuplayer4',{
 styleid: '0',
@@ -71,7 +71,7 @@ newPlayer: true
 
 
 ### 第五天
-<div id="youkuplayer5" style="width:720px;height:480px"></div>
+<div id="youkuplayer5" style="width:600px;height:480px"></div>
 <script type="text/javascript">
 player = new YKU.Player('youkuplayer5',{
 styleid: '0',
@@ -83,7 +83,7 @@ newPlayer: true
 
 
 ### 第六天
-<div id="youkuplayer6" style="width:720px;height:480px"></div>
+<div id="youkuplayer6" style="width:600px;height:480px"></div>
 <script type="text/javascript">
 player = new YKU.Player('youkuplayer6',{
 styleid: '0',
@@ -95,7 +95,7 @@ newPlayer: true
 
 
 ### 第七天
-<div id="youkuplayer7" style="width:720px;height:480px"></div>
+<div id="youkuplayer7" style="width:600px;height:480px"></div>
 <script type="text/javascript">
 player = new YKU.Player('youkuplayer7',{
 styleid: '0',
@@ -107,7 +107,7 @@ newPlayer: true
 
 
 ### 第八天
-<div id="youkuplayer8" style="width:720px;height:480px"></div>
+<div id="youkuplayer8" style="width:600px;height:480px"></div>
 <script type="text/javascript">
 player = new YKU.Player('youkuplayer8',{
 styleid: '0',
@@ -118,7 +118,7 @@ newPlayer: true
 </script>
 
 ### 第九天
-<div id="youkuplayer9" style="width:720px;height:480px"></div>
+<div id="youkuplayer9" style="width:600px;height:480px"></div>
 <script type="text/javascript">
 player = new YKU.Player('youkuplayer9',{
 styleid: '0',
@@ -130,7 +130,7 @@ newPlayer: true,
 
 ### 第十天：
 
-<div id="youkuplayer10" style="width:720px;height:480px"></div>
+<div id="youkuplayer10" style="width:600px;height:480px"></div>
 <script type="text/javascript">
 player = new YKU.Player('youkuplayer10',{
 styleid: '0',
