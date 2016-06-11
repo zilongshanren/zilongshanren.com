@@ -18,6 +18,7 @@
     "hexo-renderer-stylus": "^0.2.0",
     "hexo-server": "^0.1.2",
     "hexo-tag-video": "0.0.2",
+    "hexo-tag-youku": "^1.0.2",
     "hexo-toc": "0.0.5"
   }
 }
