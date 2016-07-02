@@ -139,3 +139,27 @@ vid: 'XMTYwMzc0NDg0OA',
 newPlayer: true
 });
 </script>
+
+### 第十一天：
+
+<div id="youkuplayer11" style="width:600px;height:480px"></div>
+<script type="text/javascript">
+player = new YKU.Player('youkuplayer11',{
+styleid: '0',
+client_id: 'd50f02c88356aaed',
+vid: 'XMTYxMzYyNjc4MA',
+newPlayer: true
+});
+</script>
+
+### 第十二天：
+
+<div id="youkuplayer12" style="width:600px;height:480px"></div>
+<script type="text/javascript">
+player = new YKU.Player('youkuplayer12',{
+styleid: '0',
+client_id: 'd50f02c88356aaed',
+vid: 'XMTYyODgxNjU0OA',
+newPlayer: true
+});
+</script>
