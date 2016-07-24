@@ -108,11 +108,11 @@ comments: true
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span>setq org-octopress-directory-top       <span style="color: #2aa198;">"~/4gamers.cn/source"</span><span style="color: #2aa198;">)</span>
-<span style="color: #2aa198;">(</span>setq org-octopress-directory-posts     <span style="color: #2aa198;">"~/4gamers.cn/source/_posts"</span><span style="color: #2aa198;">)</span>
-<span style="color: #2aa198;">(</span>setq org-octopress-directory-org-top   <span style="color: #2aa198;">"~/4gamers.cn/source"</span><span style="color: #2aa198;">)</span>
-<span style="color: #2aa198;">(</span>setq org-octopress-directory-org-posts <span style="color: #2aa198;">"~/4gamers.cn/source/blog"</span><span style="color: #2aa198;">)</span>
-<span style="color: #2aa198;">(</span>setq org-octopress-setup-file          <span style="color: #2aa198;">"~/4gamers.cn/setupfile.org"</span><span style="color: #2aa198;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-top       <span style="color: #2aa198;">"~/4gamers.cn/source"</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-posts     <span style="color: #2aa198;">"~/4gamers.cn/source/_posts"</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-org-top   <span style="color: #2aa198;">"~/4gamers.cn/source"</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-org-posts <span style="color: #2aa198;">"~/4gamers.cn/source/blog"</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> org-octopress-setup-file          <span style="color: #2aa198;">"~/4gamers.cn/setupfile.org"</span><span style="color: #2aa198;">)</span>
 </pre>
 </div>
 
@@ -165,7 +165,7 @@ permalink: /blog/:year-:month-:day-:title.html
 
 <pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span>evilify org-octopress-summary-mode org-octopress-summary-mode-map<span style="color: #2aa198;">)</span>
 <span style="color: #2aa198;">(</span>add-hook 'org-octopress-summary-mode-hook
-          #'<span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">lambda</span> <span style="color: #268bd2;">()</span> <span style="color: #268bd2;">(</span>local-set-key <span style="color: #6c71c4;">(</span>kbd <span style="color: #2aa198;">"q"</span><span style="color: #6c71c4;">)</span> 'bury-buffer<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+          #'<span style="color: #b58900;">(</span>lambda <span style="color: #268bd2;">()</span> <span style="color: #268bd2;">(</span>local-set-key <span style="color: #6c71c4;">(</span>kbd <span style="color: #2aa198;">"q"</span><span style="color: #6c71c4;">)</span> 'bury-buffer<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
 </pre>
 </div>
 </div>
@@ -184,16 +184,16 @@ permalink: /blog/:year-:month-:day-:title.html
 <span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">zilongshanren/capture-screenshot</span> <span style="color: #b58900;">(</span>basename<span style="color: #b58900;">)</span>
   <span style="color: #2aa198;">"Take a screenshot into a time stamped unique-named file in the</span>
 <span style="color: #2aa198;">  same directory as the org-buffer/markdown-buffer and insert a link to this file."</span>
-  <span style="color: #b58900;">(</span>interactive <span style="color: #2aa198;">"sScreenshot name: "</span><span style="color: #b58900;">)</span>
+  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">interactive</span> <span style="color: #2aa198;">"sScreenshot name: "</span><span style="color: #b58900;">)</span>
   <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>equal basename <span style="color: #2aa198;">""</span><span style="color: #268bd2;">)</span>
-      <span style="color: #268bd2;">(</span>setq basename <span style="color: #6c71c4;">(</span>format-time-string <span style="color: #2aa198;">"%Y%m%d_%H%M%S"</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
-  <span style="color: #b58900;">(</span>setq fullpath
+      <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">setq</span> basename <span style="color: #6c71c4;">(</span>format-time-string <span style="color: #2aa198;">"%Y%m%d_%H%M%S"</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">setq</span> fullpath
         <span style="color: #268bd2;">(</span>concat <span style="color: #6c71c4;">(</span>file-name-directory <span style="color: #859900;">(</span>buffer-file-name<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
                 <span style="color: #2aa198;">"../images/posts/"</span>
                 <span style="color: #6c71c4;">(</span>file-name-base <span style="color: #859900;">(</span>buffer-file-name<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
                 <span style="color: #2aa198;">"_"</span>
                 basename<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
-  <span style="color: #b58900;">(</span>setq relativepath
+  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">setq</span> relativepath
         <span style="color: #268bd2;">(</span>concat <span style="color: #6c71c4;">(</span>file-name-base <span style="color: #859900;">(</span>buffer-file-name<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
                 <span style="color: #2aa198;">"_"</span>
                 basename
