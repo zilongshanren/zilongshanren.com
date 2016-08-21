@@ -154,4 +154,4 @@ http://book.emacs-china.org/
 
 ## 如果你认为我的视频对你帮助很大，可以考虑支持一把
 
-![fund](/css/image/wechat-reward.jpeg)
+![fund](/css/images/wechat-reward.png)
