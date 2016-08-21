@@ -103,7 +103,7 @@ Octopress 我已经用了 3 年多了，中间有换过一次 Wordpress，后来
 
 <div class="org-src-container">
 
-<pre class="src src-sh">skip_render: <span style="color: #2aa198;">[</span>webgl/*, webgl/**/*<span style="color: #2aa198;">]</span>
+<pre class="src src-sh">skip_render: [webgl/*, webgl/**/*]
 </pre>
 </div>
 <p>
@@ -137,12 +137,12 @@ Octopress 我已经用了 3 年多了，中间有换过一次 Wordpress，后来
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">zilongshanren/org-save-and-export</span> <span style="color: #b58900;">()</span>
-  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">interactive</span><span style="color: #b58900;">)</span>
-  <span style="color: #b58900;">(</span>org-octopress-setup-publish-project<span style="color: #b58900;">)</span>
-  <span style="color: #b58900;">(</span>org-publish-project <span style="color: #2aa198;">"octopress"</span> t<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
-<span style="color: #2aa198;">(</span>evil-leader/set-key-for-mode 'org-mode
-  <span style="color: #2aa198;">"op"</span> 'zilongshanren/org-save-and-export<span style="color: #2aa198;">)</span>
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">zilongshanren/org-save-and-export</span> ()
+  (<span style="color: #859900; font-weight: bold;">interactive</span>)
+  (org-octopress-setup-publish-project)
+  (org-publish-project <span style="color: #2aa198;">"octopress"</span> t))
+(evil-leader/set-key-for-mode 'org-mode
+  <span style="color: #2aa198;">"op"</span> 'zilongshanren/org-save-and-export)
 </pre>
 </div>
 
@@ -153,23 +153,23 @@ Octopress 我已经用了 3 年多了，中间有换过一次 Wordpress，后来
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span>prodigy-define-service
+<pre class="src src-emacs-lisp">(prodigy-define-service
   <span style="color: #657b83; font-weight: bold;">:name</span> <span style="color: #2aa198;">"Hexo Server"</span>
   <span style="color: #657b83; font-weight: bold;">:command</span> <span style="color: #2aa198;">"hexo"</span>
-  <span style="color: #657b83; font-weight: bold;">:args</span> '<span style="color: #b58900;">(</span><span style="color: #2aa198;">"server"</span><span style="color: #b58900;">)</span>
+  <span style="color: #657b83; font-weight: bold;">:args</span> '(<span style="color: #2aa198;">"server"</span>)
   <span style="color: #657b83; font-weight: bold;">:cwd</span> <span style="color: #2aa198;">"~/4gamers.cn"</span>
-  <span style="color: #657b83; font-weight: bold;">:tags</span> '<span style="color: #b58900;">(</span>hexo server<span style="color: #b58900;">)</span>
+  <span style="color: #657b83; font-weight: bold;">:tags</span> '(hexo server)
   <span style="color: #657b83; font-weight: bold;">:kill-signal</span> 'sigkill
-  <span style="color: #657b83; font-weight: bold;">:kill-process-buffer-on-stop</span> t<span style="color: #2aa198;">)</span>
+  <span style="color: #657b83; font-weight: bold;">:kill-process-buffer-on-stop</span> t)
 
-<span style="color: #2aa198;">(</span>prodigy-define-service
+(prodigy-define-service
   <span style="color: #657b83; font-weight: bold;">:name</span> <span style="color: #2aa198;">"Hexo Deploy"</span>
   <span style="color: #657b83; font-weight: bold;">:command</span> <span style="color: #2aa198;">"hexo"</span>
-  <span style="color: #657b83; font-weight: bold;">:args</span> '<span style="color: #b58900;">(</span><span style="color: #2aa198;">"deploy"</span> <span style="color: #2aa198;">"--generate"</span><span style="color: #b58900;">)</span>
+  <span style="color: #657b83; font-weight: bold;">:args</span> '(<span style="color: #2aa198;">"deploy"</span> <span style="color: #2aa198;">"--generate"</span>)
   <span style="color: #657b83; font-weight: bold;">:cwd</span> <span style="color: #2aa198;">"~/4gamers.cn"</span>
-  <span style="color: #657b83; font-weight: bold;">:tags</span> '<span style="color: #b58900;">(</span>hexo deploy<span style="color: #b58900;">)</span>
+  <span style="color: #657b83; font-weight: bold;">:tags</span> '(hexo deploy)
   <span style="color: #657b83; font-weight: bold;">:kill-signal</span> 'sigkill
-  <span style="color: #657b83; font-weight: bold;">:kill-process-buffer-on-stop</span> t<span style="color: #2aa198;">)</span>
+  <span style="color: #657b83; font-weight: bold;">:kill-process-buffer-on-stop</span> t)
 </pre>
 </div>
 </div>

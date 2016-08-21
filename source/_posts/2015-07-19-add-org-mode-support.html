@@ -108,11 +108,11 @@ comments: true
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-top       <span style="color: #2aa198;">"~/4gamers.cn/source"</span><span style="color: #2aa198;">)</span>
-<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-posts     <span style="color: #2aa198;">"~/4gamers.cn/source/_posts"</span><span style="color: #2aa198;">)</span>
-<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-org-top   <span style="color: #2aa198;">"~/4gamers.cn/source"</span><span style="color: #2aa198;">)</span>
-<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-org-posts <span style="color: #2aa198;">"~/4gamers.cn/source/blog"</span><span style="color: #2aa198;">)</span>
-<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> org-octopress-setup-file          <span style="color: #2aa198;">"~/4gamers.cn/setupfile.org"</span><span style="color: #2aa198;">)</span>
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-top       <span style="color: #2aa198;">"~/4gamers.cn/source"</span>)
+(<span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-posts     <span style="color: #2aa198;">"~/4gamers.cn/source/_posts"</span>)
+(<span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-org-top   <span style="color: #2aa198;">"~/4gamers.cn/source"</span>)
+(<span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-org-posts <span style="color: #2aa198;">"~/4gamers.cn/source/blog"</span>)
+(<span style="color: #859900; font-weight: bold;">setq</span> org-octopress-setup-file          <span style="color: #2aa198;">"~/4gamers.cn/setupfile.org"</span>)
 </pre>
 </div>
 
@@ -163,9 +163,9 @@ permalink: /blog/:year-:month-:day-:title.html
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span>evilify org-octopress-summary-mode org-octopress-summary-mode-map<span style="color: #2aa198;">)</span>
-<span style="color: #2aa198;">(</span>add-hook 'org-octopress-summary-mode-hook
-          #'<span style="color: #b58900;">(</span>lambda <span style="color: #268bd2;">()</span> <span style="color: #268bd2;">(</span>local-set-key <span style="color: #6c71c4;">(</span>kbd <span style="color: #2aa198;">"q"</span><span style="color: #6c71c4;">)</span> 'bury-buffer<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+<pre class="src src-emacs-lisp">(evilify org-octopress-summary-mode org-octopress-summary-mode-map)
+(add-hook 'org-octopress-summary-mode-hook
+          #'(lambda () (local-set-key (kbd <span style="color: #2aa198;">"q"</span>) 'bury-buffer)))
 </pre>
 </div>
 </div>
@@ -176,36 +176,36 @@ permalink: /blog/:year-:month-:day-:title.html
 <div class="outline-text-3" id="text-orgheadline9">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">zilongshanren//insert-org-or-md-img-link</span> <span style="color: #b58900;">(</span>prefix imagename<span style="color: #b58900;">)</span>
-  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>equal <span style="color: #6c71c4;">(</span>file-name-extension <span style="color: #859900;">(</span>buffer-file-name<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span> <span style="color: #2aa198;">"org"</span><span style="color: #268bd2;">)</span>
-      <span style="color: #268bd2;">(</span>insert <span style="color: #6c71c4;">(</span>format <span style="color: #2aa198;">"[[%s][%s%s]]"</span> imagename prefix imagename<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
-    <span style="color: #268bd2;">(</span>insert <span style="color: #6c71c4;">(</span>format <span style="color: #2aa198;">"![%s](%s%s)"</span> imagename prefix imagename<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">zilongshanren//insert-org-or-md-img-link</span> (prefix imagename)
+  (<span style="color: #859900; font-weight: bold;">if</span> (equal (file-name-extension (buffer-file-name)) <span style="color: #2aa198;">"org"</span>)
+      (insert (format <span style="color: #2aa198;">"[[%s][%s%s]]"</span> imagename prefix imagename))
+    (insert (format <span style="color: #2aa198;">"![%s](%s%s)"</span> imagename prefix imagename))))
 
-<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">zilongshanren/capture-screenshot</span> <span style="color: #b58900;">(</span>basename<span style="color: #b58900;">)</span>
+(<span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">zilongshanren/capture-screenshot</span> (basename)
   <span style="color: #2aa198;">"Take a screenshot into a time stamped unique-named file in the</span>
 <span style="color: #2aa198;">  same directory as the org-buffer/markdown-buffer and insert a link to this file."</span>
-  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">interactive</span> <span style="color: #2aa198;">"sScreenshot name: "</span><span style="color: #b58900;">)</span>
-  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>equal basename <span style="color: #2aa198;">""</span><span style="color: #268bd2;">)</span>
-      <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">setq</span> basename <span style="color: #6c71c4;">(</span>format-time-string <span style="color: #2aa198;">"%Y%m%d_%H%M%S"</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
-  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">setq</span> fullpath
-        <span style="color: #268bd2;">(</span>concat <span style="color: #6c71c4;">(</span>file-name-directory <span style="color: #859900;">(</span>buffer-file-name<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+  (<span style="color: #859900; font-weight: bold;">interactive</span> <span style="color: #2aa198;">"sScreenshot name: "</span>)
+  (<span style="color: #859900; font-weight: bold;">if</span> (equal basename <span style="color: #2aa198;">""</span>)
+      (<span style="color: #859900; font-weight: bold;">setq</span> basename (format-time-string <span style="color: #2aa198;">"%Y%m%d_%H%M%S"</span>)))
+  (<span style="color: #859900; font-weight: bold;">setq</span> fullpath
+        (concat (file-name-directory (buffer-file-name))
                 <span style="color: #2aa198;">"../images/posts/"</span>
-                <span style="color: #6c71c4;">(</span>file-name-base <span style="color: #859900;">(</span>buffer-file-name<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+                (file-name-base (buffer-file-name))
                 <span style="color: #2aa198;">"_"</span>
-                basename<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
-  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">setq</span> relativepath
-        <span style="color: #268bd2;">(</span>concat <span style="color: #6c71c4;">(</span>file-name-base <span style="color: #859900;">(</span>buffer-file-name<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+                basename))
+  (<span style="color: #859900; font-weight: bold;">setq</span> relativepath
+        (concat (file-name-base (buffer-file-name))
                 <span style="color: #2aa198;">"_"</span>
                 basename
-                <span style="color: #2aa198;">".png"</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
-  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>file-exists-p <span style="color: #6c71c4;">(</span>file-name-directory fullpath<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
-      <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">progn</span>
-        <span style="color: #6c71c4;">(</span>call-process <span style="color: #2aa198;">"screencapture"</span> nil nil nil <span style="color: #2aa198;">"-s"</span> <span style="color: #859900;">(</span>concat fullpath <span style="color: #2aa198;">".png"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
-        <span style="color: #6c71c4;">(</span>zilongshanren//insert-org-or-md-img-link <span style="color: #2aa198;">"https://zilongshanren.com/img/"</span> relativepath<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
-    <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">progn</span>
-      <span style="color: #6c71c4;">(</span>call-process <span style="color: #2aa198;">"screencapture"</span> nil nil nil <span style="color: #2aa198;">"-s"</span> <span style="color: #859900;">(</span>concat basename <span style="color: #2aa198;">".png"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
-      <span style="color: #6c71c4;">(</span>zilongshanren//insert-org-or-md-img-link <span style="color: #2aa198;">"./"</span> <span style="color: #859900;">(</span>concat basename <span style="color: #2aa198;">".png"</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
-  <span style="color: #b58900;">(</span>insert <span style="color: #2aa198;">"\n"</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+                <span style="color: #2aa198;">".png"</span>))
+  (<span style="color: #859900; font-weight: bold;">if</span> (file-exists-p (file-name-directory fullpath))
+      (<span style="color: #859900; font-weight: bold;">progn</span>
+        (call-process <span style="color: #2aa198;">"screencapture"</span> nil nil nil <span style="color: #2aa198;">"-s"</span> (concat fullpath <span style="color: #2aa198;">".png"</span>))
+        (zilongshanren//insert-org-or-md-img-link <span style="color: #2aa198;">"https://zilongshanren.com/img/"</span> relativepath))
+    (<span style="color: #859900; font-weight: bold;">progn</span>
+      (call-process <span style="color: #2aa198;">"screencapture"</span> nil nil nil <span style="color: #2aa198;">"-s"</span> (concat basename <span style="color: #2aa198;">".png"</span>))
+      (zilongshanren//insert-org-or-md-img-link <span style="color: #2aa198;">"./"</span> (concat basename <span style="color: #2aa198;">".png"</span>))))
+  (insert <span style="color: #2aa198;">"\n"</span>))
 </pre>
 </div>
 
@@ -249,18 +249,18 @@ permalink: /blog/:year-:month-:day-:title.html
 <div class="outline-text-3" id="text-orgheadline11">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">defadvice</span> <span style="color: #268bd2;">org-html-paragraph</span> <span style="color: #b58900;">(</span>before org-html-paragraph-advice
-                                      <span style="color: #268bd2;">(</span>paragraph contents info<span style="color: #268bd2;">)</span> activate<span style="color: #b58900;">)</span>
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">defadvice</span> <span style="color: #268bd2;">org-html-paragraph</span> (before org-html-paragraph-advice
+                                      (paragraph contents info) activate)
   <span style="color: #2aa198;">"Join consecutive Chinese lines into a single long line without</span>
 <span style="color: #2aa198;">unwanted space when exporting org-mode to html."</span>
-  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">let*</span> <span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span>origin-contents <span style="color: #859900;">(</span>ad-get-arg <span style="color: #6c71c4;">1</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
-         <span style="color: #6c71c4;">(</span>fix-regexp <span style="color: #2aa198;">"[[:multibyte:]]"</span><span style="color: #6c71c4;">)</span>
-         <span style="color: #6c71c4;">(</span>fixed-contents
-          <span style="color: #859900;">(</span>replace-regexp-in-string
-           <span style="color: #b58900;">(</span>concat
-            <span style="color: #2aa198;">"</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">(</span><span style="color: #2aa198;">"</span> fix-regexp <span style="color: #2aa198;">"</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">)</span><span style="color: #2aa198;"> *\n *</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">(</span><span style="color: #2aa198;">"</span> fix-regexp <span style="color: #2aa198;">"</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">)</span><span style="color: #2aa198;">"</span><span style="color: #b58900;">)</span> <span style="color: #2aa198;">"\\1\\2"</span> origin-contents<span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>
+  (<span style="color: #859900; font-weight: bold;">let*</span> ((origin-contents (ad-get-arg <span style="color: #6c71c4;">1</span>))
+         (fix-regexp <span style="color: #2aa198;">"[[:multibyte:]]"</span>)
+         (fixed-contents
+          (replace-regexp-in-string
+           (concat
+            <span style="color: #2aa198;">"</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">(</span><span style="color: #2aa198;">"</span> fix-regexp <span style="color: #2aa198;">"</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">)</span><span style="color: #2aa198;"> *\n *</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">(</span><span style="color: #2aa198;">"</span> fix-regexp <span style="color: #2aa198;">"</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">)</span><span style="color: #2aa198;">"</span>) <span style="color: #2aa198;">"\\1\\2"</span> origin-contents)))
 
-    <span style="color: #268bd2;">(</span>ad-set-arg <span style="color: #6c71c4;">1</span> fixed-contents<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+    (ad-set-arg <span style="color: #6c71c4;">1</span> fixed-contents)))
 </pre>
 </div>
 </div>

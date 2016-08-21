@@ -58,17 +58,17 @@ comments:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">init</span><span style="color: #2aa198;">()</span> <span style="color: #2aa198;">{</span>
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">init</span>() {
     <span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">name</span> = <span style="color: #2aa198;">"Zilongshanren"</span>; <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">name &#26159;&#22312; init &#20989;&#25968;&#37324;&#38754;&#21019;&#24314;&#30340;&#21464;&#37327;</span>
     <span style="color: #93a1a1;">// </span><span style="color: #93a1a1;">displayName() &#26159;&#19968;&#20010;&#20869;&#37096;&#20989;&#25968;&#65292;&#21363;&#19968;&#20010;&#38381;&#21253;&#12290;&#27880;&#24847;&#65292;&#23427;&#19981;&#26159;&#21311;&#21517;&#30340;&#12290;</span>
-    <span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">displayName</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span>
-        console.log<span style="color: #268bd2;">(</span>name<span style="color: #268bd2;">)</span>;
-    <span style="color: #b58900;">}</span>
+    <span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">displayName</span>() {
+        console.log(name);
+    }
     <span style="color: #93a1a1;">//</span><span style="color: #93a1a1;">&#24403; displayName &#20989;&#25968;&#36820;&#22238;&#21518;&#65292;&#36825;&#20010;&#20989;&#25968;&#36824;&#33021;&#35775;&#38382; init &#20989;&#25968;&#37324;&#38754;&#23450;&#20041;&#30340;&#21464;&#37327;&#12290;</span>
     <span style="color: #859900; font-weight: bold;">return</span> displayName;
-<span style="color: #2aa198;">}</span>
-<span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">closure</span> = init<span style="color: #2aa198;">()</span>;
-closure<span style="color: #2aa198;">()</span>;
+}
+<span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">closure</span> = init();
+closure();
 </pre>
 </div>
 
@@ -115,33 +115,33 @@ Js 里面只有函数可以创建出属于自身的作用域的对象，Js 并�
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">makeCounter</span> = <span style="color: #859900; font-weight: bold;">function</span><span style="color: #2aa198;">()</span> <span style="color: #2aa198;">{</span>
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">makeCounter</span> = <span style="color: #859900; font-weight: bold;">function</span>() {
     <span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">privateCounter</span> = <span style="color: #6c71c4;">0</span>;
-    <span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">changeBy</span><span style="color: #b58900;">(</span><span style="color: #268bd2;">val</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+    <span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">changeBy</span>(<span style="color: #268bd2;">val</span>) {
         privateCounter += val;
-    <span style="color: #b58900;">}</span>
-    <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #b58900;">{</span>
-        <span style="color: #268bd2;">increment</span>: <span style="color: #859900; font-weight: bold;">function</span><span style="color: #268bd2;">()</span> <span style="color: #268bd2;">{</span>
-            changeBy<span style="color: #6c71c4;">(</span><span style="color: #6c71c4;">1</span><span style="color: #6c71c4;">)</span>;
-        <span style="color: #268bd2;">}</span>,
-        <span style="color: #268bd2;">decrement</span>: <span style="color: #859900; font-weight: bold;">function</span><span style="color: #268bd2;">()</span> <span style="color: #268bd2;">{</span>
-            changeBy<span style="color: #6c71c4;">(</span>-<span style="color: #6c71c4;">1</span><span style="color: #6c71c4;">)</span>;
-        <span style="color: #268bd2;">}</span>,
-        <span style="color: #268bd2;">value</span>: <span style="color: #859900; font-weight: bold;">function</span><span style="color: #268bd2;">()</span> <span style="color: #268bd2;">{</span>
+    }
+    <span style="color: #859900; font-weight: bold;">return</span> {
+        <span style="color: #268bd2;">increment</span>: <span style="color: #859900; font-weight: bold;">function</span>() {
+            changeBy(<span style="color: #6c71c4;">1</span>);
+        },
+        <span style="color: #268bd2;">decrement</span>: <span style="color: #859900; font-weight: bold;">function</span>() {
+            changeBy(-<span style="color: #6c71c4;">1</span>);
+        },
+        <span style="color: #268bd2;">value</span>: <span style="color: #859900; font-weight: bold;">function</span>() {
             <span style="color: #859900; font-weight: bold;">return</span> privateCounter;
-        <span style="color: #268bd2;">}</span>
-    <span style="color: #b58900;">}</span>
-<span style="color: #2aa198;">}</span>;
+        }
+    }
+};
 
-<span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">counter1</span> = makeCounter<span style="color: #2aa198;">()</span>;
-<span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">counter2</span> = makeCounter<span style="color: #2aa198;">()</span>;
-console.log<span style="color: #2aa198;">(</span>counter1.value<span style="color: #b58900;">()</span><span style="color: #2aa198;">)</span>; <span style="color: #93a1a1;">/* </span><span style="color: #93a1a1;">Alerts 0 */</span>
-counter1.increment<span style="color: #2aa198;">()</span>;
-counter1.increment<span style="color: #2aa198;">()</span>;
-console.log<span style="color: #2aa198;">(</span>counter1.value<span style="color: #b58900;">()</span><span style="color: #2aa198;">)</span>; <span style="color: #93a1a1;">/* </span><span style="color: #93a1a1;">Alerts 2 */</span>
-counter1.decrement<span style="color: #2aa198;">()</span>;
-console.log<span style="color: #2aa198;">(</span>counter1.value<span style="color: #b58900;">()</span><span style="color: #2aa198;">)</span>; <span style="color: #93a1a1;">/* </span><span style="color: #93a1a1;">Alerts 1 */</span>
-console.log<span style="color: #2aa198;">(</span>counter2.value<span style="color: #b58900;">()</span><span style="color: #2aa198;">)</span>; <span style="color: #93a1a1;">/* </span><span style="color: #93a1a1;">Alerts 0 */</span>
+<span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">counter1</span> = makeCounter();
+<span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">counter2</span> = makeCounter();
+console.log(counter1.value()); <span style="color: #93a1a1;">/* </span><span style="color: #93a1a1;">Alerts 0 */</span>
+counter1.increment();
+counter1.increment();
+console.log(counter1.value()); <span style="color: #93a1a1;">/* </span><span style="color: #93a1a1;">Alerts 2 */</span>
+counter1.decrement();
+console.log(counter1.value()); <span style="color: #93a1a1;">/* </span><span style="color: #93a1a1;">Alerts 1 */</span>
+console.log(counter2.value()); <span style="color: #93a1a1;">/* </span><span style="color: #93a1a1;">Alerts 0 */</span>
 </pre>
 </div>
 
@@ -190,19 +190,19 @@ RESULTS:
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">MyObject</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">name</span>, <span style="color: #268bd2;">message</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
-    <span style="color: #268bd2; font-weight: bold;">this</span>.name = name.toString<span style="color: #b58900;">()</span>;
-    <span style="color: #268bd2; font-weight: bold;">this</span>.message = message.toString<span style="color: #b58900;">()</span>;
-    <span style="color: #268bd2; font-weight: bold;">this</span>.getName = <span style="color: #859900; font-weight: bold;">function</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span>
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">MyObject</span>(<span style="color: #268bd2;">name</span>, <span style="color: #268bd2;">message</span>) {
+    <span style="color: #268bd2; font-weight: bold;">this</span>.name = name.toString();
+    <span style="color: #268bd2; font-weight: bold;">this</span>.message = message.toString();
+    <span style="color: #268bd2; font-weight: bold;">this</span>.getName = <span style="color: #859900; font-weight: bold;">function</span>() {
         <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #268bd2; font-weight: bold;">this</span>.name;
-    <span style="color: #b58900;">}</span>;
+    };
 
-    <span style="color: #268bd2; font-weight: bold;">this</span>.getMessage = <span style="color: #859900; font-weight: bold;">function</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span>
+    <span style="color: #268bd2; font-weight: bold;">this</span>.getMessage = <span style="color: #859900; font-weight: bold;">function</span>() {
         <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #268bd2; font-weight: bold;">this</span>.message;
-    <span style="color: #b58900;">}</span>;
-<span style="color: #2aa198;">}</span>
+    };
+}
 
-<span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">myobj</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">MyObject</span><span style="color: #2aa198;">()</span>;
+<span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">myobj</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">MyObject</span>();
 </pre>
 </div>
 
@@ -217,18 +217,18 @@ RESULTS:
 
 <div class="org-src-container">
 
-<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">MyObject</span><span style="color: #2aa198;">(</span><span style="color: #268bd2;">name</span>, <span style="color: #268bd2;">message</span><span style="color: #2aa198;">)</span> <span style="color: #2aa198;">{</span>
-    <span style="color: #268bd2; font-weight: bold;">this</span>.name = name.toString<span style="color: #b58900;">()</span>;
-    <span style="color: #268bd2; font-weight: bold;">this</span>.message = message.toString<span style="color: #b58900;">()</span>;
-<span style="color: #2aa198;">}</span>
-MyObject.<span style="color: #268bd2; font-weight: bold;">prototype</span>.getName = <span style="color: #859900; font-weight: bold;">function</span><span style="color: #2aa198;">()</span> <span style="color: #2aa198;">{</span>
+<pre class="src src-js"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">MyObject</span>(<span style="color: #268bd2;">name</span>, <span style="color: #268bd2;">message</span>) {
+    <span style="color: #268bd2; font-weight: bold;">this</span>.name = name.toString();
+    <span style="color: #268bd2; font-weight: bold;">this</span>.message = message.toString();
+}
+MyObject.<span style="color: #268bd2; font-weight: bold;">prototype</span>.getName = <span style="color: #859900; font-weight: bold;">function</span>() {
     <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #268bd2; font-weight: bold;">this</span>.name;
-<span style="color: #2aa198;">}</span>;
-MyObject.<span style="color: #268bd2; font-weight: bold;">prototype</span>.getMessage = <span style="color: #859900; font-weight: bold;">function</span><span style="color: #2aa198;">()</span> <span style="color: #2aa198;">{</span>
+};
+MyObject.<span style="color: #268bd2; font-weight: bold;">prototype</span>.getMessage = <span style="color: #859900; font-weight: bold;">function</span>() {
     <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #268bd2; font-weight: bold;">this</span>.message;
-<span style="color: #2aa198;">}</span>;
+};
 
-<span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">myobj</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">MyObject</span><span style="color: #2aa198;">()</span>;
+<span style="color: #859900; font-weight: bold;">var</span> <span style="color: #268bd2;">myobj</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">MyObject</span>();
 </pre>
 </div>
 
