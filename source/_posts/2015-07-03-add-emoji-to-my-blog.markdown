@@ -8,6 +8,10 @@ categories: Blog
 
 我非常喜欢emoji，所以，我决定给自己的博客也添加emoji支持。
 
+Update: Saturday, October 15, 2016
+
+目前 emoji 的功能已被我折腾 hexo 给废了，这篇博客仅供参考。
+
 <!--more-->
 
 添加Emoji支持:question: 

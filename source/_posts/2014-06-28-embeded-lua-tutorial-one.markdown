@@ -30,6 +30,7 @@ tags:
 
 本系列教程不会过多地介绍Lua的基本语法，关于Lua基本语法的学习，推荐[《Programming In Lua》](http://www.amazon.com/Programming-Second-Edition-Roberto-Ierusalimschy/dp/8590379825)。 如有纰漏，欢迎指出，谢谢。
 
+本系列教程源码地址：https://github.com/zilongshanren/LuaCppBindingDemo
 
 <!-- more -->
 
