@@ -17,9 +17,9 @@ tags:
  
 <!-- toc -->
 
-在[上一篇文章](http://4gamers.cn/blog/2014/07/01/opengl-es2-your-first-cube/)中，我们介绍了如何绘制一个立方体，里面涉及的知识点有VBO(Vertex Buffer Object)、IBO(Index Buffer Object)和MVP(Modile-View-Projection)变换。
+在[上一篇文章](http://zilongshanren.com/blog/2014/07/01/opengl-es2-your-first-cube/)中，我们介绍了如何绘制一个立方体，里面涉及的知识点有VBO(Vertex Buffer Object)、IBO(Index Buffer Object)和MVP(Modile-View-Projection)变换。
 
-本文将在[教程4](http://4gamers.cn/blog/2014/06/22/opengl-es2-use-vbo/)的基础之上，添加纹理贴图支持。最后，本文会把纹理贴图扩展至3D立方体上面。
+本文将在[教程4](http://zilongshanren.com/blog/2014/06/22/opengl-es2-use-vbo/)的基础之上，添加纹理贴图支持。最后，本文会把纹理贴图扩展至3D立方体上面。
 
 ## 基本方法
 

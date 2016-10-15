@@ -1,11 +1,9 @@
 ---
-author: 0owen
 comments: true
 date: 2014-07-06 08:52:42+00:00
 layout: post
 slug: pass lua to cpp and vise verse
 title: Lua教程:C++和Lua相互传递数据(2)
-wordpress_id: 317
 categories:
 - Lua
 series:
@@ -17,7 +15,8 @@ tags:
  
 <!-- toc -->
 
-这是我的Lua系列教程的第二篇，本篇文章主要介绍C++和Lua相互传递数据。如果你还不知道怎么在c/c++里面调用Lua脚本的话，请参考[这篇文章](http://4gamers.cn/blog/2014/06/28/embeded-lua-tutorial-one/). 本文主要介绍基本数据类型的传递，比如整形(int)，字符串(string)、数字(number)及bool值。
+这是我的Lua系列教程的第二篇，本篇文章主要介绍C++和Lua相互传递数据。如果你还不知道怎么在c/c++里面调用Lua脚本的话，请参考[这篇文章](https://zilongshanren.com/blog/2014-06-28-embeded-lua-tutorial-one.html).
+本文主要介绍基本数据类型的传递，比如整形(int)，字符串(string)、数字(number)及bool值。
 <!-- more -->
 
 ## 加载并运行Lua脚本

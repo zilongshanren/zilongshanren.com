@@ -17,7 +17,7 @@ categories:
 <!-- more -->
 
 ## 没有银弹！
-之前我写过一篇文章[《使用CMake编译跨平台静态库》](http://4gamers.cn/blog/2014/09/01/how-to-use-cmake-to-compile-static-library/)，当时主要是为了解决Box2D,Chipmunk和Spine的静态库编译问题。当时，感觉用CMake太爽了，一个CMakeLists.txt配置好以后，把编译脚本复制粘贴，然后改几个参数，立马刷刷ios/mac/android/linux的静态库都编译出来了。于是乎，我坚信所有的第三方库都可以如此轻松都定。直到我在编译jpeg, png, webp,tiff的时候，我被坑到了。
+之前我写过一篇文章[《使用CMake编译跨平台静态库》](http://zilongshanren.com/blog/2014/09/01/how-to-use-cmake-to-compile-static-library/)，当时主要是为了解决Box2D,Chipmunk和Spine的静态库编译问题。当时，感觉用CMake太爽了，一个CMakeLists.txt配置好以后，把编译脚本复制粘贴，然后改几个参数，立马刷刷ios/mac/android/linux的静态库都编译出来了。于是乎，我坚信所有的第三方库都可以如此轻松都定。直到我在编译jpeg, png, webp,tiff的时候，我被坑到了。
 
 首先，这些库都是自带编译脚本的（autoconf那一套）。它们编译用到的部分配置头文件都需要在configure的时候动态去生成，这导致我们在编写Android.mk或者CMakeLists.txt的时候,会遇到头文件不存在的问题。
 

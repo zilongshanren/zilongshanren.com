@@ -16,7 +16,7 @@ tags:
  
 <!-- toc -->
 
-在[上一篇文章](http://4gamers.cn/blog/2014/06/07/write-your-own-shader/)中，我在介绍vertex shader的时候挖了一个坑：CC_MVPMatrix。它其实是一个uniform，每一个cocos2d-x预定义的shader都包含有这个uniform，
+在[上一篇文章](http://zilongshanren.com/blog/2014/06/07/write-your-own-shader/)中，我在介绍vertex shader的时候挖了一个坑：CC_MVPMatrix。它其实是一个uniform，每一个cocos2d-x预定义的shader都包含有这个uniform，
 但是如果你在shader里面不使用这个变量的话，OpenGL底层会把它优化掉。
 
 但是，CC_MVPMatrix是在什么时候设置进来的呢？我在shader里面明明没有看到它，它从哪儿来的？别急，请继续往下读。

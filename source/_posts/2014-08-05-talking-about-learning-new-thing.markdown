@@ -125,7 +125,7 @@ tags:
 
 
 
-学了一个新东西，一定要学以致用。哪怕是写简单的demo，也能证明你学习的价值和效果。比如我学习了OpenGL和Lua以后，我就相应地写了[OpenGL教程](http://4gamers.cn/blog/categories/opengl-es/)和[Lua教程](http://4gamers.cn/blog/categories/lua/).虽然这些教程可能只是学习笔记，但是它一方面强化了自己所学的内容，同时也给了自己一个归纳总结的机会。如果是工作中需要用到的技术，那么就更好了，直接就可以应用到项目中去。如果是业余学习的，那么最好是做一些个人的小项目，可以是比demo更高级别的那种。另外，学习OpenGL ES，我会把它用到cocos2d-x里面。学习Lua，我会用它们来写一些Lua小游戏，而不只是学习Lua语法。
+学了一个新东西，一定要学以致用。哪怕是写简单的demo，也能证明你学习的价值和效果。比如我学习了OpenGL和Lua以后，我就相应地写了[OpenGL教程](http://zilongshanren.com/blog/categories/opengl-es/)和[Lua教程](http://zilongshanren.com/blog/categories/lua/).虽然这些教程可能只是学习笔记，但是它一方面强化了自己所学的内容，同时也给了自己一个归纳总结的机会。如果是工作中需要用到的技术，那么就更好了，直接就可以应用到项目中去。如果是业余学习的，那么最好是做一些个人的小项目，可以是比demo更高级别的那种。另外，学习OpenGL ES，我会把它用到cocos2d-x里面。学习Lua，我会用它们来写一些Lua小游戏，而不只是学习Lua语法。
 
 
 

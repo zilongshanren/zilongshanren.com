@@ -102,7 +102,7 @@ tags:
 ```cpp
 server{
       server_name  zilongshanren.com;
-      rewrite ^(.*) http://4gamers.cn$1 permanent;
+      rewrite ^(.*) http://zilongshanren.com$1 permanent;
 }
 ```
 最后，只需要把zilongshanren.com这个域名的A记录也解析到阿里云服务器的ip。至于为什么要换域名，因为4gamers = for gamers,比zilongshanren.com好记，简单易输入。

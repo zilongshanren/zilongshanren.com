@@ -16,7 +16,7 @@ tags:
 
  
 <!-- toc -->
-从写[上一篇Lua的文章](http://4gamers.cn/blog/2014/07/06/lua-tutorials-pass-data-to-cpp-and-vice-versa/)到现在，已经过去半月有余了，是时候让自己的Lua状态refresh一下了。本教程将介绍Lua的栈及基本栈操作，同时还有如何在C/C++代码里面读取Lua的Table。
+从写[上一篇Lua的文章](http://zilongshanren.com/blog/2014/07/06/lua-tutorials-pass-data-to-cpp-and-vice-versa/)到现在，已经过去半月有余了，是时候让自己的Lua状态refresh一下了。本教程将介绍Lua的栈及基本栈操作，同时还有如何在C/C++代码里面读取Lua的Table。
 <!-- more -->
 
 ## 理解Lua栈
