@@ -42,8 +42,9 @@ Cocos2d-x 是一个跨平台的,免费的2D 游戏开发框架,它可以用来�
 ## 出版物
 
 1. [Cocos2D权威指南](http://item.jd.com/11206205.html)
+2. [游戏编程模式] (http://www.epubit.com.cn/book/details/4184)
 
-## 社区贡献
+## 大事纪
 
 1.  翻译和原创了大量高质量的 Cocos2d 和 Cocos2dx 的教程，具体见 [我的旧博客](http://cnblogs.com/zilongshanren) 和本博客
 
