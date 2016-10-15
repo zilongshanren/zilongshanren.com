@@ -1,11 +1,9 @@
 ---
-author: 0owen
 comments: true
 date: 2014-06-28 15:23:57+00:00
 layout: post
 slug: embed-lua-tutorials-one
 title: 'Lua教程: C++嵌入Lua脚本(1)'
-wordpress_id: 242
 categories:
 - Lua
 tags:
@@ -32,7 +30,6 @@ tags:
 
 本系列教程不会过多地介绍Lua的基本语法，关于Lua基本语法的学习，推荐[《Programming In Lua》](http://www.amazon.com/Programming-Second-Edition-Roberto-Ierusalimschy/dp/8590379825)。 如有纰漏，欢迎指出，谢谢。
 
-另外，关于更新时间，每周一篇，定期或者不定期，呵呵。
 
 <!-- more -->
 
@@ -43,7 +40,7 @@ tags:
 首先，新建一个控制台应用程序。 打开Xcode,New->Project->OSX->Command Line Tool，取名为Lesson01如下图所示：
 ![newMac](https://zilongshanren.com/img/newMacProject.jpg)
 
-接下来，我们需要下载[lua5.2.3](http://www.lua.org/download.html).下载完后，解压缩，然后cd到刚刚解压缩的路径下面，输入make macosx，这样便可以生成Mac下面的lib文件。
+接下来，我们需要下载[lua5.3.3](http://www.lua.org/download.html).下载完后，解压缩，然后cd到刚刚解压缩的路径下面，输入make macosx，这样便可以生成Mac下面的lib文件。
 
 接下来把刚刚解压缩的文件夹拷贝到你新建的工程下面，然后设置include路径和library路径。（注意，这里是不需要把头文件添加到Xcode里面的，只要指定include路径，编译的时候，编译器会自动去找的。）
 
@@ -122,7 +119,7 @@ print "Hello World"
 ### 编译并运行
 
 此时编译并运行，这时可能看不到控制台输出"Hello World"。因为你的Lua脚本没有拷贝到程序里面去，我们需要再设置一下。如下图所示：
-（注意：subpath要清空，copy only when installing去掉打勾）
+（注意：subpath 要清空，copy only when installing 去掉打勾）
 
 ![copylua](https://zilongshanren.com/img/copylua.png)
 
@@ -144,8 +141,8 @@ IOS项目集成Lua的方式与Mac大同小异，顺便补充一句，Lua本质�
   3. 直接使用luaL_dofile(lua_state, "hello.lua")是行不通的，因为ios项目的资源路径在一个沙盒里。我们必须取得全路径才可以访问到这个hello.lua文件。以cocos2d-x为例，我们可以使用下面的代码获得hello.lua的全路径，然后再传递给Lua虚拟机。
 
 ```cpp
-   std::string scriptPath = FileUtils::getInstance()->fullPathForFilename("hello.lua");
-    int status = luaL_loadfile(lua_state, scriptPath.c_str());
+std::string scriptPath = FileUtils::getInstance()->fullPathForFilename("hello.lua");
+int status = luaL_loadfile(lua_state, scriptPath.c_str());
 ```
 
 ## Android项目集成Lua
