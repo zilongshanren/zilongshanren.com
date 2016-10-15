@@ -99,9 +99,9 @@ plugins:
 - hexo-tag-video
 - hexo-generator-feed
 
-#duoshuo
-# duoshuo_shortname: zilongshanren2
+# duoshuo
+duoshuo_shortname: zilongshanren2
 
 baidu_tongji: true
 
-disqus_shortname: zilongshanren
+# disqus_shortname: zilongshanren
