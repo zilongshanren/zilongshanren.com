@@ -19,7 +19,7 @@ tags:
  
 <!-- toc -->
 
-在[上篇文章](http://zilongshanren.com/blog/2014/05/31/opengl-es-2-0-your-first-traingles/)中，我给大家介绍了如何在cocos2d-x里面绘制一个三角形，当时我们使用的是cocos2d-x引擎自带的shader和一些辅助函数。在本文中，我将演示一下如何编写自己的shader，同时，我们还会介绍VBO（顶点缓冲区对象）和VAO（顶点数组对象）的基本用法。
+在[上篇文章](http://zilongshanren.com/blog/2014-05-31-opengl-es-2-0-your-first-traingles.html)中，我给大家介绍了如何在cocos2d-x里面绘制一个三角形，当时我们使用的是cocos2d-x引擎自带的shader和一些辅助函数。在本文中，我将演示一下如何编写自己的shader，同时，我们还会介绍VBO（顶点缓冲区对象）和VAO（顶点数组对象）的基本用法。
 
 在编写自己的shader之前，我觉得有必要提一下OpenGL渲染管线。
 理解OpenGL渲染管线，对于学习OpenGL非常重要。下面是OpenGL渲染管线的示意图：（图中淡蓝色区域是可以编程的阶段）

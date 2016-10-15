@@ -16,7 +16,7 @@ tags:
 
  
 <!-- toc -->
-上周写了关于[cocos2d-x里面的观察者模式](http://zilongshanren.com/blog/2014/06/20/cocos2d-x-design-pattern-observer/)，文章最后提到一个应用场景：“你的GameScene里面有两个layer，一个gameLayer，它包含了游戏中的对象，比如玩家、敌人等。另一个层是HudLayer，它包含了游戏中显示分数、生命值等信息。如何让这两个层相互通信。”
+上周写了关于[cocos2d-x里面的观察者模式](http://zilongshanren.com/blog/2014-06-20-cocos2d-x-design-pattern-observer.html)，文章最后提到一个应用场景：“你的GameScene里面有两个layer，一个gameLayer，它包含了游戏中的对象，比如玩家、敌人等。另一个层是HudLayer，它包含了游戏中显示分数、生命值等信息。如何让这两个层相互通信。”
 
 关于这两个层之间如何通信的问题，读者Llllong和我畅快淋漓地讨论了一番，详细的内容可以参考那篇文章的留言部分。最后，我们总结出三种通信方式：委托、观察者模式、中介者模式。（PS：剧透一下，下周跟大家一起来探讨一下cocos2d-x里面的委托设计模式。我12年翻译了[cocos2d如何实现mvc系列文章](http://www.cnblogs.com/andyque/archive/2012/03/11/2390814.html)，里面涉及到委托的使用，可是代码是objc写的，有一些童鞋不知道c++如何实现委托，导致port代码有困难。别急，下周我们见分晓。）
 

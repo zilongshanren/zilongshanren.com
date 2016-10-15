@@ -38,7 +38,7 @@ print(array["1"])  --输出nil(想想和array[1]的区别：一个是integer作�
 
 ### 通用Table操作方法
 
-之前我们在[教程1](http://zilongshanren.com/blog/2014/06/28/embeded-lua-tutorial-one/)中介绍了如何传递Table给Lua，以及在[教程3](http://zilongshanren.com/blog/2014/07/28/call-lua-table-from-cpp/)中介绍了如何访问Table的数据。因为数组也是Table，所以我们可以用同样的方式来读取数组。
+之前我们在[教程1](http://zilongshanren.com/blog/2014-06-28-embeded-lua-tutorial-one.html)中介绍了如何传递Table给Lua，以及在[教程3](http://zilongshanren.com/blog/2014-07-28-call-lua-table-from-cpp.html)中介绍了如何访问Table的数据。因为数组也是Table，所以我们可以用同样的方式来读取数组。
 
 #### 读取数组
 

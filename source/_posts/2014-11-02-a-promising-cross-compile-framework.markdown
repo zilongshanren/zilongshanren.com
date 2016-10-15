@@ -11,7 +11,7 @@ categories:
 <!-- toc -->
 
 现在移动平台非常火热，我们在使用C/C++开发一些移动应用的时候，经常可能需要将一些第三方c/c++库编译成对应的iOS/Android/WP/Tizen上面的静态库。
-之前我介绍过[如何使用CMake来编译跨平台库](http://zilongshanren.com/blog/2014/09/01/how-to-use-cmake-to-compile-static-library/)。
+之前我介绍过[如何使用CMake来编译跨平台库](http://zilongshanren.com/blog/2014-09-01-how-to-use-cmake-to-compile-static-library.html)。
 那种方法有一个局限性，它只针对一些提供了CMake支持或者源码本身不需要configure的库来说，使用会非常方便，但是如果库本身没有提供CMake或者
 在编译之前需要configure的库，使用起来就会很麻烦了。最好的做法，其实是重用它本身提供的编译系统，然后提供交叉编译所需要的一些参数即可。
 

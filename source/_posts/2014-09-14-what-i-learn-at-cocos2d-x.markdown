@@ -31,7 +31,7 @@ categories:
 想像的要难很多。我指的不是单纯的技术复杂度，而是平台的多样性(Win32, Mac, Linux)、终端设备的多样式(苹果，小米，华为，三星，HTC等等)和终端操作系统(Android,iOS,WP8)的多样性，导致维护成本的极大提升。
 就拿实现视频播放控件来说，单纯地实现iOS或者Android都还算比较简单，但是如果你想要实现全平台的视频播放控件，你就要付出非常多的努力。当然我们可以采用第三方库，比如ffmpeg，但是据我所知，
 ffmpeg的开源协议是有问题的，我们不能使用。就算能够使用，集成进来也要花费非常多的时间去保证各个平台的可用性（因为我们的第三方库要使用预编译库，所以你要编译各种平台的静态库，这些静态库还分flat包，non-flat包，32bit,64bit,arm，x86等）。
-我之前有写过用[CMake](http://zilongshanren.com/blog/2014/09/01/how-to-use-cmake-to-compile-static-library/)可以减少很多工作量，但是，还是非常之麻烦。
+我之前有写过用[CMake](http://zilongshanren.com/blog/2014-09-01-how-to-use-cmake-to-compile-static-library.html)可以减少很多工作量，但是，还是非常之麻烦。
 
 另外，有些效果在国内外某些Android厂商的某些机型上面就是与众不同，比如某米的2s版本，还有某星的9100版本，我们还需要在代码里面专门针对这些奇葩机型去做处理。
 

@@ -15,7 +15,7 @@ tags:
  
 <!-- toc -->
 
-一年以前，我写下了[《如何打造属于自己的vim神器》](http://zilongshanren.com/blog/2014/06/19/make-your-vim-weapon/)并且录制了相应的[Vim使用视频](http://v.youku.com/v_show/id_XNTA2ODQyODAw.html)。 当时收到了大量vim爱好者的好评和反馈，在这一年里，我也对我自己的vim配置做了不少修改。现在[我的vim配置](https://github.com/andyque/dotfiles)放在Gihtub上面，目前有21个fork。它里面不仅存放了我的Vim配置，还保留了我的Mac使用习惯，包括Git，Tmux,Zsh等命令行工具的配置。几乎我每换一个工作环境，从mac到虚拟机，从本地电脑到远端服务器，我要做的第一件事情就是先clone我的Vim仓库，然后通过简单的几个命令把神器打造出来。
+一年以前，我写下了[《如何打造属于自己的vim神器》](http://zilongshanren.com/blog/2014-06-19-make-your-vim-weapon.html)并且录制了相应的[Vim使用视频](http://v.youku.com/v_show/id_XNTA2ODQyODAw.html)。 当时收到了大量vim爱好者的好评和反馈，在这一年里，我也对我自己的vim配置做了不少修改。现在[我的vim配置](https://github.com/zilongshanren/dotfiles)放在Gihtub上面，目前有21个fork。它里面不仅存放了我的Vim配置，还保留了我的Mac使用习惯，包括Git，Tmux,Zsh等命令行工具的配置。几乎我每换一个工作环境，从mac到虚拟机，从本地电脑到远端服务器，我要做的第一件事情就是先clone我的Vim仓库，然后通过简单的几个命令把神器打造出来。
 
 这篇文章我打算讲一下我对Vim的一些新的认识，同时写下我对于新手Vimer的一些建议。
 
