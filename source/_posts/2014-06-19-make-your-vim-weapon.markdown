@@ -184,7 +184,7 @@ tags:
 
 强烈推荐阅读：[《Practical Vim》](http://pragprog.com/book/dnvim/practical-vim)
 
-推荐视频网站三个：[Vimcasts.org](http://www.vimcasts.org/),[essential vim plugins](http://net.tutsplus.com/sessions/vim-essential-plugins/)和[Derek Wyatt's Blog](http://www.derekwyatt.org/vim/vim-tutorial-videos/)
+推荐视频网站三个：[Vimcasts.org](http://www.vimcasts.org/),[essential vim plugins](http://net.tutsplus.com/sessions/vim-essential-plugins/)和[Derek Wyatt's Blog](http://wiht.link/Vi-intro)
 
 国内站点推荐三个：[vimer世界](http://www.vimer.cn/),[易水的博客](http://easwy.com/blog/archives/advanced-vim-skills-catalog/),[水木清华社区](http://www.newsmth.net/bbsdoc.php?board=VIM)
 
