@@ -75,7 +75,7 @@ int writeLuaArray(lua_State *L)
 {
     lua_settop(L, 0);
     lua_getglobal(L, "array");
-    //确保第一个函数一个要是一个table
+    //确保栈的第一个数据是一个table
     luaL_checktype(L, 1, LUA_TTABLE);
     int n = luaL_len(L,1);
     for (int i = 1; i <= n; ++i) {
@@ -87,7 +87,6 @@ int writeLuaArray(lua_State *L)
         lua_rawset(L, -3);
     }
     return 0;
-}
 }
 ```
 注意这里的lua_rawset和lua_settable是等价的，只不过lua_rawset速度更快。
@@ -128,10 +127,10 @@ readLuaArray: hehe4
 因此，我们的读取代码可以改写成下面这样:
 
 ```cpp
-void readLuaArray(lua_State *L)
+void readLuaArray2(lua_State *L)
 {
     lua_getglobal(L, "array");
-    int n = luaL_len(L, -1);
+    auto n = luaL_len(L, -1);
     for (int i = 1; i <= n; ++i) {
         lua_rawgeti(L, 1, i);
         cout<<"readLuaArray: "<<lua_tostring(L, -1)<<endl;
@@ -141,15 +140,6 @@ void readLuaArray(lua_State *L)
 ```
 
 #### 修改数组
-
-同理，lua_rawset(L,t,key)等价于
-
-```cpp
-lua_pushnumber(L,key); //此时的栈 table->value->key
-lua_insert(L,-2);  //调用完后的栈： table->key->value (table[key]=value)
-lua_rawset(L,t);
-```
-相应的修改数组的代码可以修改为:
 
 ```cpp
 int writeLuaArray(lua_State *L)
