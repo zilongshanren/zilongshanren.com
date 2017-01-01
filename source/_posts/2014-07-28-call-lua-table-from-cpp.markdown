@@ -128,25 +128,25 @@ me = { name = "zilongshanren", age = 27}
 
 ```cpp
     //从Lua里面取得me这个table，并压入栈
-    lua_getglobal(L, "me");
-    if (!lua_istable(L, -1)) {
-        CCLOG("error! me is not a table");
+    lua_getglobal(lua_state, "me");
+    if (!lua_istable(lua_state, -1)) {
+        std::cout << "error! me is not a table";
     }
     //往栈里面压入一个key:name
-    lua_pushstring(L, "name");
+    lua_pushstring(lua_state, "name");
     //取得-2位置的table，然后把栈顶元素弹出，取出table[name]的值并压入栈
-    lua_gettable(L, -2);
+    lua_gettable(lua_state, -2);
     //输出栈顶的name
-    CCLOG("name = %s", lua_tostring(L, -1));
-    stackDump(L);
+    std::cout << "name = " << lua_tostring(lua_state, -1);
+    stackDump(lua_state);
     //把栈顶元素弹出去
-    lua_pop(L, 1);
+    lua_pop(lua_state, 1);
     //压入另一个key:age
-    lua_pushstring(L, "age");
-   //取出-2位置的table,把table[age]的值压入栈
-    lua_gettable(L, -2);
-    stackDump(L);
-    CCLOG("age = %td", lua_tointeger(L, -1));
+    lua_pushstring(lua_state, "age");
+    //取出-2位置的table,把table[age]的值压入栈
+    lua_gettable(lua_state, -2);
+    stackDump(lua_state);
+    std::cout << "age = " << lua_tointeger(lua_state, -1);
 ```
 
 Lua5.1还引入了一个新方法：
