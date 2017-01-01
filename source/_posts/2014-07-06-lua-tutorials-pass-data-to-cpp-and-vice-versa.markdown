@@ -17,6 +17,8 @@ tags:
 
 这是我的Lua系列教程的第二篇，本篇文章主要介绍C++和Lua相互传递数据。如果你还不知道怎么在c/c++里面调用Lua脚本的话，请参考[这篇文章](https://zilongshanren.com/blog/2014-06-28-embeded-lua-tutorial-one.html).
 本文主要介绍基本数据类型的传递，比如整形(int)，字符串(string)、数字(number)及bool值。
+
+本系列教程源码地址：https://github.com/zilongshanren/LuaCppBindingDemo
 <!-- more -->
 
 ## 加载并运行Lua脚本
@@ -49,7 +51,7 @@ static const luaL_Reg lualibs[] =
 ### 运行Lua脚本
 
 ```cpp
-    std::string scriptPath = FileUtils::getInstance()->fullPathForFilename("hello.lua");
+    std::string scriptPath = "lesson2.lua";
     int status = luaL_loadfile(lua_state, scriptPath.c_str());
     std::cout << " return: " << status << std::endl;
     int result = 0;
@@ -97,7 +99,7 @@ int luaAdd(lua_State *lua_state , int x, int y)
     //调用lua函数,这里的2是参数的个数，1是返回值的个数
     lua_call(lua_state, 2, 1);
     //从栈顶读取返回值,注意这里的参数是-1
-    sum = lua_tointeger(lua_state, -1);
+    sum = lua_tonumber(lua_state, -1);
     //最后我们把返回值从栈顶拿掉
     lua_pop(lua_state, 1);
     return sum;
@@ -146,11 +148,9 @@ myname = "子龙山人"
    lua_createtable(lua_state, 2, 0);
     lua_pushnumber(lua_state, 1);
     lua_pushnumber(lua_state, 49);
-//    lua_settable(lua_state, -3);
     lua_rawset(lua_state, -3);
     lua_pushnumber(lua_state, 2);
     lua_pushstring(lua_state, "Life is a beach");
-//    lua_settable(lua_state, -3);
     lua_rawset(lua_state, -3);
     lua_setglobal(lua_state, "arg");
 ```
@@ -221,7 +221,6 @@ return temp,9,1
 
 下一篇文章，我们将介绍一下C++调用Lua的Table。
 
-本文源代码:[传送门](http://git.oschina.net/zilongshanren/Lua-Tutorials)
 
 ## Reference
 
