@@ -100,8 +100,8 @@ plugins:
 - hexo-generator-feed
 
 # duoshuo
-duoshuo_shortname: zilongshanren2
+# duoshuo_shortname: zilongshanren2
 
-baidu_tongji: true
+# baidu_tongji: true
 
 # disqus_shortname: zilongshanren
