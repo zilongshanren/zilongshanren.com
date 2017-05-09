@@ -1,0 +1,29 @@
+#+TITLE: learning-how-to-learn
+#+AUTHOR: guanghui
+#+EMAIL: guanghui8827@gmail.com
+#+DATE: 2017-05-09
+#+LAYOUT: post
+#+TAGS: learning
+#+CATEGORIES: learning
+#+DESCRIPTON:
+
+test
+
+#+BEGIN_HTML
+<!--more-->
+#+END_HTML
+
+你好啊，这个东西不错哦
+
+hehelo
+
+very good expericen when writing with org mode and emacs
+
+good one
+
+
+very good haha
+
+it is good
+
+good

@@ -99,6 +99,13 @@ plugins:
 - hexo-tag-video
 - hexo-generator-feed
 
+org:
+  emacs: '/Applications/Emacs.app/Contents/MacOS/Emacs'
+  common: |
+    #+OPTIONS: toc:t
+    #+BIND: org-html-postamble \"Last Updated %C.</br>Render by <a href='https://github.com/CodeFalling/hexo-renderer-org'>hexo-renderer-org</a> with %c\"
+  cachedir: './hexo-org-cache/'
+
 # duoshuo
 # duoshuo_shortname: zilongshanren2
 
