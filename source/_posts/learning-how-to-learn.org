@@ -1,9 +1,10 @@
-#+TITLE: learning-how-to-learn
+#+TITLE: Learning how to learn
 #+DATE: 2017-05-09
 #+LAYOUT: post
 #+TAGS: learning
 #+CATEGORIES: learning
 #+DESCRIPTON: learning how to learn
+
 
 
 #+BEGIN_HTML
