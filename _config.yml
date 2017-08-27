@@ -96,8 +96,6 @@ toc:
 
 #plugins
 plugins:
-- hexo-tag-video
-- hexo-generator-feed
 
 org:
   emacs: '/Applications/Emacs.app/Contents/MacOS/Emacs'
