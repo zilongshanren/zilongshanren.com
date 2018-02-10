@@ -4,6 +4,13 @@ date: 2015-08-02 15:27:52
 
 ## Experience
 
+### Happy Mahjong
+Company: Tecent
+
+Period: 2017.8 ~ present
+
+Role: Developer
+
 ### Cocos Creator
 Home Page: [http://www.cocos.com/download/creator/](http://www.cocos.com/download/creator/)
 
@@ -12,7 +19,7 @@ Introduction：
 Cocos Creator is a free cross-platform game development editor supporting Cocos2d-js, 
 which helps developers to  build 2D and 3D game scenes, edit game UI and other game resources quickly and efficiency.
 
-Period: 2015.11 ~ Present
+Period: 2015.11 ~ 2017.7
 
 Role: The Core Developer
 
@@ -30,7 +37,7 @@ Introduction：
 
 Cocos2d-x is a suite of open-source, cross-platform, game-development tools used by thousands of developers all over the world.
 
-Period: 2013.7 ~ Present
+Period: 2013.7 ~ 2017.7
 
 Role: The Core Developer
 
