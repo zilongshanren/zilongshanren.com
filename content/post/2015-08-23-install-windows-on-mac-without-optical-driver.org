@@ -1,0 +1,100 @@
+#+TITLE: Mac 无光驱安装 Windows 10
+#+DATE: 2015-08-23
+#+SETUPFILE: ~/4gamers.cn/setupfile.org
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: Mac Windows
+#+JEKYLL_TAGS: Mac Windows10
+#+JEKYLL_PUBLISHED: true
+
+我的旧 Mac 电脑的型号是 13 inch 2011 late，它是有光驱的。后来因为我的硬盘坏了，我换了一个 1T 的机械硬盘。
+不过，当时的 SSD 已经比较便宜了，于是我给它加装了一块三星的 120G SSD。因为电脑配置是 i5+8G 内存，瓶颈在硬盘。（更深层次的
+原因其实是－－穷。。。不然这么折腾干嘛，直接 15 寸顶配 retina 走起。） 不过没了光驱，你会发现安装系统变得很麻烦了，只能通过 U 盘来安装了。
+
+本文就是记录我是怎么使用 U 盘来安装 Windows 10 的。
+
+{{{more}}}
+
+* Hack Boot Camp Assistant
+因为 2011 年的 Macbook Pro 本来是有光驱的，所以默认 Boot Camp Assistant 没有提供 U 盘安装方式。
+当你打开 Boot Camp Assistant 的时候，你是看不到下面的选项的：
+
+#+BEGIN_EXAMPLE
+Create a Windows 7 or later version install disk
+#+END_EXAMPLE
+
+取而代之的是下面的警告：
+
+#+BEGIN_EXAMPLE
+There is no optical drive（因为我们把光驱拆了）
+#+END_EXAMPLE
+
+此时，我们需要来 Hack 一下 Boot Camp Assistant。
+
+1. 打开 About this  Mac -> System Report，找到 Boot ROM Version 后面的字符串，例如：MBP101.00EE.B09(这个是 15 寸电脑上面的，13 寸的会有所不同）
+
+2. 同时找到 Model Identifier:	MacBookPro10,1(我的 2011 年的笔记本是 MacBookPro8,1)
+
+3. 打开 Application 下面的 Utilities 文件夹，找到 Boot Camp Assistant.app
+
+4. 右键“Show Packages contents”，然后找到 Info.plist 文件
+
+5. 在 DARequiredROMVersions 里面添加你的 Boot ROM Version
+
+6. 在 PreUSBBootSupportedModels 里面添加你的 Model Identifier，并且把 PreUSBBootSupportedModels 改成 USBBootSupportedModels
+
+7. 保存 Info.plist 并重新启动 Boot Camp Assistant
+
+现在你就可以使用 Boot Camp Assistant 来制作安装盘了。（当然如果你还有其它 Mac 电脑，也可以不用这么折腾，直接在另外的电脑上面制作安装盘即可）
+
+
+* Burn the ISO to USB
+这一步是非常简单的，你需要准备一个 Windows 10 的安装 ISO，同时准备一个大于 4G 的 U 盘，最好是 8G 以上。
+
+然后把 U 盘里面的东西备份好。打开 Boot Camp Assistant，插上 U 盘，选择 Create a Windows 7 or later version install disk。
+
+接下来按照提示走就好了。（注意在开始界面不要勾选下面两个选项就行了。）
+
+[[https://zilongshanren.com/img/2015-08-23-install-windows-on-mac-without-optical-driver_bootcamp.png]]
+
+
+* Configure the GPT disk and EFI loader
+因为在 Mac 上面使用 EFI 需要 GUID 分区表（简称 GPT），而不是传统的 BIOS/MBR 分区表。而到目前为止，
+Windows 只能在 MBR 的磁盘上面安装，通常都是使用 Boot Camp Assistant 来创建一个带 MBR 的分
+区来安装双系统。
+
+因为从 Windows 8 以后开始支持 EFI 的方式来安装了，所以这让我们这些无光驱党看到了希望。
+
+（不过有个巨坑，EFI 方式安装的 Windows 10 是没有声音的。所以，这篇文章介绍的东西，其实是然并卵。不过 2013 年
+以后的笔记本是没问题的，所以如果是 2013 年之前的笔记本还是老老实实用光驱安装 Windows7 吧）
+
+安装过程如下：
+
+1. 准备一个新的磁盘分区（格式化成 NTFS）
+
+2. 生成 GPT with protective MBR 的分区表（默认是 GPT with hybrid MBR）
+
+3. 进入到 Windows 10 安装程序后，通过 Diskpart 命令手动挂载 EFI 分区
+
+具体细节见本文最后的参考文章。
+
+** 安装失败的可能原因
+1. USB 必须是 MBR 分区表（使用 Boot Camp Assistant 制作的启动盘默认是符合要求的）
+
+2. 目标磁盘必须是 GPT
+
+3. 目标磁盘不能包含一个 hybrid MBR，需要使用工具处理成 GPT with protective MBR（具体方法见文章后面的参考文章）
+
+* 安装 Ubuntu
+大家也可以用这种方式安装 Ubuntu，不过烧制 Ubuntu 的安装盘和 Windows 的略有不同，不需要 Hack Boot Camp Assistant。
+具体方法见：[[http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-mac-osx][How to create a bootable USB stick on OS X | Ubuntu]]
+
+制作好安装盘后，同样的是分区，分完区以后，插上启动盘并重启。待听到“咚”的一声后，按住 Option 键不放，等出现启动磁盘
+管理工具的时候，选择 U 盘开始安装即可。安装的时候可以把之前分好的区重新格式化成 Ubuntu 需要的文件格式。
+
+* 总结
+因为这个安装过程着实让我吃不了少苦头，这里记录一下，希望对有需要的朋友能有所帮助。
+
+
+* Reference
+
+[[http://jmeosbn.github.io/blog/windows-8.1-efi-install/][Windows 8.1 - EFI install - jmeosbn]]

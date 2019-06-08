@@ -1,0 +1,248 @@
+#+TITLE: 理解 Javascript This 关键字
+#+DATE: 2016-03-14
+#+SETUPFILE: ~/4gamers.cn/setupfile.org
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: Javascript
+#+JEKYLL_TAGS: Javascript
+#+JEKYLL_PUBLISHED: true
+
+在我最早接触 Javascript 的时候，This 关键字着实让我摸不着头脑。还有与 This 相关的一些函数，比如 bind，call 和 apply 也
+是难以掌握。本文试图用几个简单的例子来理解 This 关键字。
+
+本文内容大纲：
+
+1. This 绑定的内容与函数无关，而与函数的执行环境有关。
+2. 函数的 This 绑定的内容可以通过 bind，apply 和 call 函数来动态进行修改。
+3. 巧用闭包可以消除不必要的 This 动态绑定，提高代码的可读性。
+
+{{{more}}}
+
+* This 绑定内容与函数无关，而与执行环境有关
+在[[http://zilongshanren.com/blog/2016-03-13-understand-javascript-scope-and-scope-chain.html][上篇文章]] 中，我们提到了，一个函数在调用时会创建一个活动对象，而此活动对象中还包含一个非常重要的信息，即 This
+变量。
+
+我们先看下面这个例子：
+
+
+#+BEGIN_SRC js
+  var name = "zilong";
+
+  var myfunc = function() {
+      console.log(this.name);
+  }
+
+  myfunc();
+#+END_SRC
+
+当我们调用 myfunc 函数时，Js 引擎会创建一个执行上下文，同时会初始化一个作用域链，此作用域链为：
+
+
+#+BEGIN_EXAMPLE
+[[scope chain]] = [
+{
+    Active Object {
+         arguments: ...
+         this: [global Object],
+         ...
+    },
+     global Object: {
+          name: 'zilong'
+          ...
+     }
+}
+]
+#+END_EXAMPLE
+
+所以，当我们执行 console.log(this.name)的时候，this 绑定的是全局对象，而我们之前定义的 name 就是属于全局变量。
+
+我们再看一下下面这个例子：
+
+
+#+BEGIN_SRC js
+  var name = "zilong";
+  var sex = "man";
+
+  var myfunc = function(name) {
+      this.name = name;
+  }
+
+  myfunc.prototype.print = function() {
+      console.log(this.name);
+      console.log(this.sex);
+      console.log(sex);
+  }
+
+  var obj = new myfunc("hello");
+  obj.print();
+#+END_SRC
+
+RESULTS:
+: hello
+: undefined
+: man
+
+当我们执行 obj 对象的 print 函数的时候，我们的执行上下文的作用域链是这样的：
+
+
+#+BEGIN_EXAMPLE
+[[scope chain]] = [
+{
+    Active Object {
+         arguments: ...
+         this: obj,
+         ...
+    },
+     global Object: {
+          name: 'zilong',
+          sex: 'man',
+          ...
+     }
+}
+]
+#+END_EXAMPLE
+
+从这个作用域链，我们可以很清楚地知道上面代码的输出结果。
+
+* This 绑定的内容可以被动态修改
+同样的是上面那个例子，我们稍微修改一下：
+
+#+BEGIN_SRC js
+  var name = "zilong";
+  var sex = "man";
+
+  var myfunc = function(name) {
+      this.name = name;
+  }
+
+  myfunc.prototype.print = function() {
+      console.log(this.name);
+      console.log(this.sex);
+      console.log(sex);
+  }.bind(this);
+
+  var obj = new myfunc("hello");
+  obj.print();
+#+END_SRC
+
+RESULTS:
+: zilong
+: man
+: man
+
+我们通过给 myfunc.prototype.print 函数添加了 bind 的调用，我们发现输出的结果完全不同了。因为此时的 this 绑定的是
+global 对象了。
+
+同样的，如果我们把代码改成下面的样子：
+
+
+#+BEGIN_SRC js
+  var name = "zilong";
+  var sex = "man";
+
+  var myfunc = function(name) {
+      this.name = name;
+  }
+
+  myfunc.prototype.print = function() {
+      console.log(this.name);
+      console.log(this.sex);
+      console.log(sex);
+  };
+
+  var obj = new myfunc("hello");
+  myfunc.prototype.print.call(obj, "hello");
+#+END_SRC
+
+RESULTS:
+: hello
+: undefined
+: man
+
+这个输出结果与我们直接调用 obj.print 是一样的。
+
+但是如果我们改成:
+
+
+#+BEGIN_SRC js
+  var obj = new myfunc("hello");
+  myfunc.prototype.print.call(this, "hello");
+// 下面的 window 和 this 是等价的。
+//  myfunc.prototype.print.call(window, "hello");
+#+END_SRC
+
+输出结果会是：
+
+
+RESULTS:
+: zilongshanren
+: man
+: man
+
+使用 bind 可以显式指定函数调用时的 this 绑定，而使用 call 可以指定 this 对象的指向，另外，还可以使用 apply 来修改 this 的
+绑定。call 和 apply 的区别就是 call 后面传参使用的是逗号分隔的参数，而 apply 传递的则是一个参数数组。
+
+
+* 巧用闭包消除 This 动态绑定，提高代码可读性
+假设我们要把一个外部环境的 this 变量传递到一个内部函数去使用，一般我们会这么做：
+
+
+#+BEGIN_SRC js
+  var a = 10;
+  var obj = {
+      a : 1,
+      b : 2,
+
+      sum : function() {
+          var addA = function(a) {
+              return  this.a + a;
+          }.bind(this);
+
+          return addA(this.b);
+      }
+  }
+
+  console.log(obj.sum());
+
+#+END_SRC
+
+RESULTS:
+: 3
+
+在声明 addA 的时候，我们使用了 bind(this)，那么 addA 函数内部的 this.a 指向的是 obj 对象的 a 变量。如果我们不使用 bind 的话，
+this 默认指向的是 window 对象，那么输出的结果就是 12 了。
+
+一般情况下面，此时 sum 函数里面的 3 个 this 就容易把人搞晕了，我们通常会通过添加一个 self 或者 that 局部变量来增加代码的
+可读性，同时也不用手动去调用 bind 函数。
+
+#+BEGIN_SRC js
+  var a = 10;
+  var obj = {
+      a : 1,
+      b : 2,
+
+      sum : function() {
+          var self = this;
+
+          var addA = function(a) {
+              return  self.a + a;
+          };
+
+          return addA(this.b);
+      }
+  }
+
+  console.log(obj.sum());
+
+#+END_SRC
+
+RESULTS:
+: 3
+
+这里面的 self 变量利用了闭包的特性，同时让代码更加具有可读性，也消除了不必要的 bind(this)调用。
+
+* 小结
+其实 This 并不复杂，只是跟我们熟悉的面向对象语言有差异罢了，理解了执行上下文，作用域链和活动对象的概念，This 也就
+明了了。
+
+* Reference
+** https://toddmotto.com/understanding-the-this-keyword-in-javascript/

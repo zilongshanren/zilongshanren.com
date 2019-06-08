@@ -1,0 +1,160 @@
+#+TITLE: 使用 Org-mode 来写博客
+#+DATE: 2015-07-19
+#+SETUPFILE: ~/4gamers.cn/setupfile.org
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: org
+#+JEKYLL_PUBLISHED: true
+#+JEKYLL_TAGS: Org-mode Octopress
+#+JEKYLL_COMMENTS: true
+
+本文将介绍如何使用 Org-mode 在 Emacs 里面写博客。因为我的博客系统采用的是 Octopress，Org-mode 自带的 publish 功能太
+简单，所以，我决定在已有的博客上面添加 Org-mode 的支持。当然，和我一样有这个需求的人不止一个，我通过 Google 很快
+就找到了一个现成的方案。 [[https://github.com/yoshinari-nomura/org-octopress][yoshinari-nomura/org-octopress]] :+1: 
+
+本文就是使用 org-octopress 来完成的。这是 org-mode 的示例。
+
+{{{more}}}
+
+** Why Org-mode:question: 
+*** 它比 Markdown 功能更加强大:dog: 
+作为一门标识语言，Org-mode 的功能要比 Markdown 强大得多，它支持 GTD，项目管理，记笔记，文学编程等，它让你
+可以用纯文本来管理你的生活（[[http://doc.norang.ca/org-mode.html][Org Mode - Organize Your Life In Plain Text!]]）。
+
+*** 和 Emacs 无缝集成:round_pushpin: 
+因为我现在的主要编程环境都在 Emacs 里面，而论到对 Org-mode 的支持力度，Emacs 无出其右。虽然现在 Vim 党和 Sublime 党
+都有相应的 Org-mode 移植插件，但是体验都太差。
+
+另外，我可以自己定义一些快捷操作，比如抓取 Chrome 浏览器里的链接直接插入到 Blog 里面，比如调用截图程序，
+自动保存图片到博客的相应目录同时上传到七牛云存储。当然，我还可以做的更多。
+
+这种自由的写博客的感觉，只有 Emacs 可以让你拥有。
+*** 支持文学编程
+因为我经常需要在博客里面贴代码，使用 Org-mode，代码片断可以有代码高亮。另外，我可以直接在 Org-mode 里面
+执行这些代码片断，这个功能太爽了。
+*** 我正在学习 Org-mode
+我目前还在学习 Org-mode，学习一样东西最好的办法就是一直用它。一方面有利于学以致用，另一方面也减少学习痛苦，
+是保持学习激情的好方法。Org-mode 和 Emacs 一样，都是属于刚开始没啥卵用，后面越用越爽的类型。
+
+** How to configure Org-octopress
+配置 Org-octopress 的方法很简单，我们只需要从 Melpa 上面安装最新版本的 Org-octopress 即可。
+
+然后在你的.emacs 配置里面添加下面的代码：
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-octopress-directory-top       "~/4gamers.cn/source")
+  (setq org-octopress-directory-posts     "~/4gamers.cn/source/_posts")
+  (setq org-octopress-directory-org-top   "~/4gamers.cn/source")
+  (setq org-octopress-directory-org-posts "~/4gamers.cn/source/blog")
+  (setq org-octopress-setup-file          "~/4gamers.cn/setupfile.org")
+#+END_SRC
+
+这里我的 Octopress 博客的根目录是 ~4gamers.cn~ ，你需要根据自己的情况来修改这个地址。
+
+接下来，你需要修改你的博客里面的 ~_config.yml~ ，它里面的 ~permalink~ 修改成下面的样子：
+
+#+BEGIN_EXAMPLE
+  permalink: /blog/:year-:month-:day-:title.html
+#+END_EXAMPLE
+
+接下来，你就可以调用 ~org-octopress~ 了。此时会打开一个 org-octopress-summary-mode 的 buffer，你可以
+根据提示很容易地创建一篇文章的模板。
+
+最后，当你写完博客以后，可以用 ~C-c C-e P x~ 来选择导出 octopress 工程，然后就可以输入 ~rake preview~ 来本地预览你的文章了。
+
+** Some tips
+*** 让文章支持评论
+在文章的最开头，添加下列开关：
+
+   #+BEGIN_EXAMPLE
+     #+JEKYLL_COMMENTS: true
+   #+END_EXAMPLE
+
+*** 配置 spacemacs
+通过配置下面的设置，可以让 ~org-octopress~ 的操作更爽。
+
+   #+BEGIN_SRC emacs-lisp
+     (evilify org-octopress-summary-mode org-octopress-summary-mode-map)
+     (add-hook 'org-octopress-summary-mode-hook
+               #'(lambda () (local-set-key (kbd "q") 'bury-buffer)))
+   #+END_SRC
+
+*** 自动截图，保存图片到博客的相应目录，并且插入一个图片链接
+
+#+BEGIN_SRC emacs-lisp
+(defun zilongshanren//insert-org-or-md-img-link (prefix imagename)
+  (if (equal (file-name-extension (buffer-file-name)) "org")
+      (insert (format "[[%s][%s%s]]" imagename prefix imagename))
+    (insert (format "![%s](%s%s)" imagename prefix imagename))))
+
+(defun zilongshanren/capture-screenshot (basename)
+  "Take a screenshot into a time stamped unique-named file in the
+  same directory as the org-buffer/markdown-buffer and insert a link to this file."
+  (interactive "sScreenshot name: ")
+  (if (equal basename "")
+      (setq basename (format-time-string "%Y%m%d_%H%M%S")))
+  (setq fullpath
+        (concat (file-name-directory (buffer-file-name))
+                "../images/posts/"
+                (file-name-base (buffer-file-name))
+                "_"
+                basename))
+  (setq relativepath
+        (concat (file-name-base (buffer-file-name))
+                "_"
+                basename
+                ".png"))
+  (if (file-exists-p (file-name-directory fullpath))
+      (progn
+        (call-process "screencapture" nil nil nil "-s" (concat fullpath ".png"))
+        (zilongshanren//insert-org-or-md-img-link "https://zilongshanren.com/img/" relativepath))
+    (progn
+      (call-process "screencapture" nil nil nil "-s" (concat basename ".png"))
+      (zilongshanren//insert-org-or-md-img-link "./" (concat basename ".png"))))
+  (insert "\n"))
+#+END_SRC
+
+这个截图程序只有在写博客的时候才会把图片保存到对应的博客存放图片的目录，其它时候都是在当前目录保存图片。
+
+下面这个截图就是使用上面的函数生成的，不过我还把它上传到了自己的七牛云存储上面。（如果你需要使用七牛，
+请把 guanghui.qiniudn.com 改成你的七牛数据空间地址。）
+
+[[https://zilongshanren.com/img/2015-07-19-add-org-mode-support_test-img.png]]
+
+另外，如果使用的是 org 或者 markdown，最终插入 buffer 里面的链接格式也有做相应的调整。
+
+*** 自动捕获当前 Chrome 的 Tab 页的 URL 并插入到文章中
+如果是 Mac 用户，只需要安装 Org-mac-link 这个插件即可，使用方法也非常简单，只需要调用以下命令：
+
+
+#+BEGIN_SRC emacs-lisp
+  org-mac-grab-link
+#+END_SRC
+*** 去除 Org 导出的 HTML 中的多余的空格
+
+#+BEGIN_SRC emacs-lisp
+  (defadvice org-html-paragraph (before org-html-paragraph-advice
+                                        (paragraph contents info) activate)
+    "Join consecutive Chinese lines into a single long line without
+  unwanted space when exporting org-mode to html."
+    (let* ((origin-contents (ad-get-arg 1))
+           (fix-regexp "[[:multibyte:]]")
+           (fixed-contents
+            (replace-regexp-in-string
+             (concat
+              "\\(" fix-regexp "\\) *\n *\\(" fix-regexp "\\)") "\\1\\2" origin-contents)))
+
+      (ad-set-arg 1 fixed-contents)))
+#+END_SRC
+
+
+
+** Conclusion
+通过给 Octopress 添加 Org-mode 的支持，我感觉写博客的欲望又增加了。哈哈，不过坚持写博客还是很难的说。。。:disappointed_relieved: 
+
+Happy hacking!:smile: 
+
+** Reference
+
+1. [[http://elvestar.com/notes/org-mode/#sec-7][Emacs Org Mode]]
+   
+2. [[http://segmentfault.com/a/1190000000444374][使用七牛储存 Octopress 图片 - SegmentFault]]

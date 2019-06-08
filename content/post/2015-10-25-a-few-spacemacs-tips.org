@@ -1,0 +1,46 @@
+#+TITLE: 关于 Spacemacs 的 Tips
+#+DATE: 2015-10-25
+#+SETUPFILE: ~/4gamers.cn/setupfile.org
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: Emacs
+#+JEKYLL_TAGS: Emacs
+#+JEKYLL_PUBLISHED: true
+
+因为 Spacemacs 需要下载大量的 package，而中国大陆的网络环境不是很稳定，容易导致一些 package 在下载的过程中
+byte-compile 出错，所以很多人会遇到一些特别奇怪的错误。
+
+我本人也被这个坑了好几次了，所以写文章记录一下。
+
+{{{more}}}
+
+**  could not load evil-indent-textobject
+
+这是一系列的错误，根本原因就是下载下来的 package load 出错了，或者根本没有下载成功。
+
+一般的解决方法是先去.emacs/elpa 目录去查找这个 package，检查这个 package 是否已经成功下载。（成功下载指的是对应的.el 文件和.elc 文件都存在）
+
+其次，在启动 Emacs 以后，运行 byte-compile-file 来重新编译这个 package 下面所有的文件。因为 Emacs 默认是加载 elc 文件。
+
+一般情况下，上面的方法可以解决 60%以上的 package 加载错误。
+
+最后，通过 emacs --debug-init 来启动，通过 error trace 来定位问题所在。
+
+如果你还是解决不了问题，可以 fork 我的配置，然后把 Spacemacs 更新到最新就可以用了。
+
+** Spacemacs 启动速度特别慢
+这个真是冤枉啊！！
+
+其实罪魁祸首是 Helm 这个 package。
+
+你只需要在你的.spacemacs 或者.spacemacs.d/init.el 文件中的 user-init 方法中添加下列代码后，重启 Spacemacs 即可：
+
+#+BEGIN_SRC emacs-lisp
+  ;; https://github.com/syl20bnr/spacemacs/issues/2705
+  (setq tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+#+END_SRC
+
+至于是什么原因导致的，我具体也不清楚，大家可以去看看上面的 issue 链接。
+
+** Happy Hacking
+最后祝大家使用 Spacemacs 开心。
+
