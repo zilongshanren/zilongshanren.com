@@ -1,0 +1,156 @@
+<html>
+  <head>
+	<link rel="stylesheet" href="jquery-ui-1.10.4.custom.min.css">
+	<script  src="./jquery-1.10.2.js"></script>
+	<script  src="./jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="./webgl_utils.js"></script>
+	<script tyep="text/javascript" src="./gl-matrix-min.js"></script>
+	<style type="text/css">
+	  #slider {
+		  margin: 10px;
+	  }
+	  .ui-slider-horizontal {
+		  height: 9px;
+		  width: 200px;
+	  }
+	  .ui-slider .ui-slider-handle {
+		  height: 15px;
+		  width: 5px;
+		  padding-left: 5px;
+	  }
+    </style>
+	
+
+	<script  type="x-shader/x-vertex" id="vertex-shader">
+	  attribute vec2 a_position;
+	  uniform mat4 u_ModelViewMatrix;
+	  uniform mat4 u_PMatrix;
+
+	  void main()
+	  {
+		gl_Position = u_PMatrix * u_ModelViewMatrix * vec4(a_position,0.0,1.0);
+	  }
+	  
+	</script>
+
+	<script  type="x-shader/x-fragment" id="fragment-shader">
+	  //this line must be added
+	  precision mediump float;
+	  uniform vec4 u_color;
+	  void main()
+	  {
+	   gl_FragColor =  u_color;
+	  }
+	</script>
+
+  </head>
+  <body onLoad="onWebGLLoaded();"> 
+	<canvas id="canvas" width='480' height='320'></canvas>
+    <div>
+	  拖动这个滑块:	<div id="slider" ></div>
+	</div>
+
+	<script type="text/javascript">
+	  
+
+	  var gl;
+	  var sliderValue = 1;
+	  var mvMatrix = mat4.create();
+	  var pMatrix = mat4.create();
+	  var mvMatrixLocation;
+	  var pMatrixLocation;
+	  var u_color;
+	  var program;
+
+	  function setupWebGL()
+	  {
+		<!--  prepare the gl context-->
+		gl = createGLContext('canvas');
+
+		gl.enable(gl.DEPTH_TEST);
+		gl.clearColor( 0,1,0,1);
+		<!-- gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); -->
+
+		<!-- create shader program -->
+		program = createProgramFromElementId(gl,"vertex-shader","fragment-shader");
+		gl.useProgram(program);
+		  
+		<!-- init uniform location -->
+		u_color = gl.getUniformLocation(program,"u_color");
+		  
+		mvMatrixLocation = gl.getUniformLocation(program, "u_ModelViewMatrix");
+        pMatrixLocation = gl.getUniformLocation(program, "u_PMatrix");
+		  
+		<!-- create projection matrix -->
+		<!-- mat4.identity(pMatrix); -->
+		var fov = 60 * 3.1415926 / 180;
+		var zEye = 320 / 1.1566;
+		mat4.perspective(pMatrix, fov , 480/320, 10, zEye + 160);
+		<!-- alert(mat4.str(pMatrix)) -->
+		mat4.identity(mvMatrix);
+		<!-- mat4.scale(mvMatrix,mvMatrix,[1,1,0]); -->
+		<!-- mat4.rotate(mvMatrix,mvMatrix,90 * 3.14 / 180,[0,0,1]); -->
+		<!-- must set -z to some property value  -->
+		mat4.lookAt(mvMatrix, [240,160,zEye],[240,160,0],[0,1,0]);
+		<!-- mat4.translate(mvMatrix,mvMatrix, [0,0,-10]); -->
+		return gl;
+	  }
+
+	  function initBuffers(gl)
+      {
+		  var vertexBuffer = gl.createBuffer();
+		  gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+		  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0,0, 480,0, 240,320]), gl.STATIC_DRAW);
+      }
+
+	  function updateUnifroms(gl)
+	  {
+		  gl.uniformMatrix4fv(pMatrixLocation, false, pMatrix);
+		  gl.uniformMatrix4fv(mvMatrixLocation, false, mvMatrix);
+		  sliderValue = $("#slider").slider("value");
+		  gl.uniform4f(u_color,sliderValue,0,0,1);
+	  }
+
+	  function drawScene(gl)
+	  {
+		  gl.viewport(0,0,480,320);
+		  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+		  
+		  
+		  var positionLocation = gl.getAttribLocation(program, "a_position");
+		  gl.enableVertexAttribArray(positionLocation);
+		  gl.vertexAttribPointer(positionLocation,2, gl.FLOAT, false,0,0);
+		  
+		  updateUnifroms(gl);
+		  
+		  gl.drawArrays(gl.TRIANGLES,0,3);
+      }
+	  
+
+	  function onWebGLLoaded()
+	  {
+		  gl = setupWebGL();
+		  initBuffers(gl);
+		  drawScene(gl);
+	  }
+
+
+	  $("#slider").slider({
+		  orientation: "horizontal",
+		  max: 1,
+		  min: 0,
+		  step:0.1,
+		  value: 0.5,
+		  slide : function(event, ui) { 
+			  sliderValue =  $("#slider").slider("value");
+			  drawScene(gl);
+		  } 
+	  });
+	  
+
+      
+
+	</script>
+  </body>
+</html>
+

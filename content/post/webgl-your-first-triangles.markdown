@@ -1,9 +1,8 @@
 ---
 comments: true
-date: 2014-06-07 07:15:14+00:00 +08:00
+date: 2014-06-07 
 slug: webgl-your-first-triangles
 title: WebGL教程：你的第一个三角形(1)
-wordpress_id: 158
 categories:
 - WebGL
 tags:

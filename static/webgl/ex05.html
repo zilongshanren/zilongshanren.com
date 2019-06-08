@@ -1,0 +1,220 @@
+<html>
+  <head>
+	<link rel="stylesheet" href="jquery-ui-1.10.4.custom.min.css">
+	<script  src="./jquery-1.10.2.js"></script>
+	<script  src="./jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="./webgl_utils.js"></script>
+	<script tyep="text/javascript" src="./gl-matrix-min.js"></script>
+	<style type="text/css">
+	  #slider {
+		  margin: 10px;
+	  }
+	  .ui-slider-horizontal {
+		  height: 9px;
+		  width: 200px;
+	  }
+	  .ui-slider .ui-slider-handle {
+		  height: 15px;
+		  width: 5px;
+		  padding-left: 5px;
+	  }
+    </style>
+	
+
+	<script  type="x-shader/x-vertex" id="vertex-shader">
+	  attribute vec3 a_position;
+	  attribute vec4 a_color;
+	  uniform mat4 u_ModelViewMatrix;
+	  uniform mat4 u_PMatrix;
+	 
+      varying vec4 v_color;
+
+	  void main()
+	  {
+		gl_Position = u_PMatrix * u_ModelViewMatrix * vec4(a_position,1.0);
+	    v_color = a_color;
+	  }
+	  
+	</script>
+
+	<script  type="x-shader/x-fragment" id="fragment-shader">
+	  //this line must be added
+	  precision mediump float;
+	  varying vec4 v_color;
+
+	  void main()
+	  {
+	   gl_FragColor =  v_color;
+	  }
+	</script>
+
+  </head>
+  <body onLoad="onWebGLLoaded();"> 
+	<canvas id="canvas" width='480' height='320'></canvas>
+
+	<script type="text/javascript">
+	  
+
+	  var gl;
+	  var mvMatrix = mat4.create();
+	  var pMatrix = mat4.create();
+	  var mvMatrixLocation;
+	  var pMatrixLocation;
+	  var u_color;
+	  var program;
+	  var vertexBuffer;
+	  var colorBuffer;
+	  var indexBuffer;
+
+	  function setupWebGL()
+	  {
+		<!--  prepare the gl context-->
+		gl = createGLContext('canvas');
+
+		gl.enable(gl.DEPTH_TEST);
+		gl.clearColor( 0,1,0,1);
+	   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); 
+
+		<!-- create shader program -->
+		program = createProgramFromElementId(gl,"vertex-shader","fragment-shader");
+		gl.useProgram(program);
+		  
+		<!-- init uniform location -->
+		u_color = gl.getUniformLocation(program,"u_color");
+		  
+		mvMatrixLocation = gl.getUniformLocation(program, "u_ModelViewMatrix");
+        pMatrixLocation = gl.getUniformLocation(program, "u_PMatrix");
+		  
+		<!-- create projection matrix -->
+		<!-- mat4.identity(pMatrix); -->
+		var fov = 60 * 3.1415926 / 180;
+		var zEye = 320 / 1.1566;
+		mat4.perspective(pMatrix, fov , 480/320, 0.1, 40);
+		<!-- alert(mat4.str(pMatrix)) -->
+		mat4.identity(mvMatrix);
+		mat4.lookAt(mvMatrix, [0,0,2],[0,0,0],[0,1,0]);
+		mat4.translate(mvMatrix,mvMatrix, [0,0,-3]); 
+		return gl;
+	  }
+
+	  function initBuffers()
+      {
+	     indexBuffer = gl.createBuffer();
+	     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,indexBuffer);
+	      
+		  vertexBuffer = gl.createBuffer();
+		  gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+	                      //front
+	      var vertecies = [1,-1,0,1,0,0,1,
+						   1,1,0,0,1,0,1,
+						   -1,1,0,0,0,1,1,
+						   -1,-1,0,0,0,0,1,
+						   //back
+						   1,1,-2,1,0,0,1,
+						   -1,-1,-2,0,1,0,1,
+						   1,-1,-2,0,0,1,1,
+						   -1,1,-2,0,0,0,1,
+						   //left
+						   -1,-1,0,1,0,0,1,
+						   -1,1,0,0,1,0,1,
+						   -1,1,-2,0,0,1,1,
+						   -1,-1,-2,0,0,0,1,
+						   //right
+						   1,-1,-2,1,0,0,1,
+						   1,1,-2,0,1,0,1,
+						   1,1,0,0,0,1,1,
+						   1,-1,0,0,0,0,1,
+						   //top
+						   1,1,0,1,0,0,1,
+						   1,1,-2,0,1,0,1,
+						   -1,1,-2,0,0,1,1,
+						   -1,1,0,0,0,0,1,
+						   //bottom
+						   1,-1,-2,1,0,0,1,
+						   1,-1,0,0,1,0,1,
+						   -1,-1,0,0,0,1,1,
+						   -1,-1,-2,0,0,0,1
+						   ];
+	      var index = [0,1,2,//front
+					   2,3,0,
+					   //back
+					   4,5,6,
+					   4,5,7,
+					   //left
+					   8,9,10,
+					   10,11,8,
+					   //right
+					   12,13,14,
+					   14,15,12,
+					   //top
+					   16,17,18,
+					   18,19,16,
+					   //bottom
+					   20,21,22,
+					   22,23,20
+					   ];
+	      var vertexData = new Float32Array(vertecies);
+		  gl.bufferData(gl.ARRAY_BUFFER, vertexData, gl.STATIC_DRAW);
+	      gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(index),
+						gl.STATIC_DRAW);
+      }
+
+	  function updateUnifroms()
+	  {
+		  gl.uniformMatrix4fv(pMatrixLocation, false, pMatrix);
+		  gl.uniformMatrix4fv(mvMatrixLocation, false, mvMatrix);
+	  }
+
+		  
+	  function drawScene(timestep)
+	  {
+		  gl.viewport(0,0,480,320);
+		  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+		  
+		  
+	      gl.bindBuffer(gl.ARRAY_BUFFER,vertexBuffer);
+	      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+
+		  var positionLocation = gl.getAttribLocation(program, "a_position");
+		  gl.enableVertexAttribArray(positionLocation);
+	    var step = Float32Array.BYTES_PER_ELEMENT;
+  
+	   gl.vertexAttribPointer(positionLocation,3, gl.FLOAT, false,7*step,0);
+		var colorLocation = gl.getAttribLocation(program,"a_color");
+	    gl.enableVertexAttribArray(colorLocation);
+	      gl.vertexAttribPointer(colorLocation,4,gl.FLOAT,false, 7*step,3*step);
+
+		var degree = 0;
+	     degree = degree + 3.14 / 360;
+
+		mat4.rotate(mvMatrix,mvMatrix,degree,[1,1,1]);
+
+		  updateUnifroms();
+	      gl.drawElements(gl.TRIANGLES,36,gl.UNSIGNED_SHORT,0);
+      }
+	  
+
+	  function onWebGLLoaded()
+	  {
+		  setupWebGL();
+		  initBuffers();
+	      
+           fpsInterval = 1000/60;
+           then = Date.now();
+           startTime = then;
+
+			(function animloop(time){
+		        now = Date.now();
+                elapsed = now - then;
+		       if(elapsed > fpsInterval){
+					drawScene(time);
+		       }
+				requestAnimationFrame(animloop);
+		   })();
+	  }
+	 
+      
+
+	</script>
+  </body>
+</html>

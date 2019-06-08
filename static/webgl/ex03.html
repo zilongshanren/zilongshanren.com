@@ -1,0 +1,76 @@
+<html>
+    <canvas id ='c' width='500' height='400'></canvas>
+
+<script id="2d-vertex-shader" type="x-shader/x-vertex">
+  attribute vec2 pos;
+  uniform vec2 u_resolution;
+  void main()
+  {
+      //converted from 0-1
+      vec2 normalize = pos / u_resolution;
+      //converted from -1 ~ +1
+      vec2 clipping = normalize * 2.0 - 1.0;
+      gl_Position = vec4(clipping * vec2(1,-1),0,1);
+  }
+  </script>
+
+<script id="2d-fragment-shader" type="x-shader/x-fragment">
+  //must add this line
+  precision mediump float;
+  uniform vec4 u_color;
+
+  void main()
+  {
+      gl_FragColor = u_color;
+  }
+  </script>
+
+	<script type="text/javascript" src="webgl_utils.js"> </script>
+
+    <script>
+	  function onWebGLLoaded()
+	  {
+	    var gl = createGLContext('c');
+
+		gl.clearColor(1, 1, 0, 1);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+
+		var vertexBuffer = gl.createBuffer();
+		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+		
+		<!-- 	var vertices = [-1,-1, -1,1, 1,-1, -1,1, 1,-1, 1,1]; -->
+		<!--  change them to pixels -->
+		<!-- draw a square at the center of canvas with size = 20,20 pixel -->
+		<!-- var vertices = [50,100, 100,100, 50, 150, 50, 150, 100, 150, 100,100]; -->
+		<!-- gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices),gl.STATIC_DRAW); -->
+		<!-- setupRectangle(gl, 50,50, 100,100); -->
+
+		vertexBuffer.itemSize = 2;
+		vertexBuffer.numItems = 6;
+		
+		//get string from script tag
+		
+		var program = createProgramFromElementId(gl, "2d-vertex-shader", "2d-fragment-shader");
+		gl.useProgram(program);
+							
+        var resolution = gl.getUniformLocation(program, 'u_resolution');
+        gl.uniform2f(resolution, 400, 320);
+
+		var colorLocation = gl.getUniformLocation(program, "u_color");
+		gl.uniform4f(colorLocation, Math.random(), Math.random(), Math.random(), 1.0);
+
+		program.vertexPosAttrib = gl.getAttribLocation(program,'pos');
+		gl.enableVertexAttribArray(program.vertexPosAttrib);
+		gl.vertexAttribPointer(program.vertexPosAttrib, vertexBuffer.itemSize, gl.FLOAT, false, 0, 0);
+		
+		for(var i = 0; i < 50; ++i){
+			setupRectangle(gl,randomInt(300), randomInt(300), randomInt(300), randomInt(300));
+            gl.uniform4f(colorLocation, Math.random(), Math.random(), Math.random(), 1.0);
+			gl.drawArrays(gl.TRIANGLE_STRIP,0,vertexBuffer.numItems);
+		}
+	}
+
+    </script>
+	<body onload="onWebGLLoaded();">
+	  </body>
+</html>

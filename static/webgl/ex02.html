@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <canvas id ='c' width='480' height='320'></canvas>
+	<script src='webgl_utils.js'></script>
+    <script>
+	    var canvas = document.getElementById('c');
+        var names = ["webgl", 
+                 "experimental-webgl", 
+                  "webkit-3d", 
+                  "moz-webgl"];
+
+		var gl;
+		for (var i = 0; i < names.length; ++i) {
+          try {
+              gl = canvas.getContext(names[i]);
+          } 
+          catch(e) {}
+          if (gl) break;
+		}
+		if (gl == null){
+         alert("WebGL is not available");
+		}
+  
+
+		gl.clearColor(0,0,0.8,1);
+		gl.clear(gl.COLOR_BUFFER_BIT);
+
+		var vertexBuffer = gl.createBuffer();
+		gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+		var vertices = [-1.0, 0, 1, 0, 0, 1];
+		gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices),gl.STATIC_DRAW);
+		
+
+		//setup for the vertex shader and fragment shader
+		var vs = 'attribute vec2 pos;' +
+		'void main(){ gl_Position = vec4(pos,0,1);}';
+		var fs = 'precision mediump float;' +
+		'void main(){ gl_FragColor = vec4(0.0,0.8,0,1.0);}';
+
+		var program = createProgram(gl,vs,fs);
+		
+
+		gl.useProgram(program);
+		program.vertexPosAttrib = gl.getAttribLocation(program,'pos');
+		gl.enableVertexAttribArray(program.vertexPosAttrib);
+		gl.vertexAttribPointer(program.vertexPosAttrib, 2, gl.FLOAT, false, 0, 0);
+							
+
+		gl.drawArrays(gl.TRIANGLES,0,3);
+
+
+    </script>
+</html>
