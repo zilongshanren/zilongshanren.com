@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-07-03 15:21:39+00:00 +08:00
+date: 2014-07-03
 slug: 'how to write one blog post each week'
 title: 如何坚持每周写一篇博客
 wordpress_id: 381

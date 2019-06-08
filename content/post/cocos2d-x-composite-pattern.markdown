@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-18 13:55:10+00:00 +08:00
+date: 2014-06-18
 slug: cocos2d-x-composite-patterns
 title: 'Cocos2D-X设计模式: 组合模式'
 wordpress_id: 112

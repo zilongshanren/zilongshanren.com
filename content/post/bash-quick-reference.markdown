@@ -1,6 +1,6 @@
 ---
 title: "Bash使用心得"
-date: 2014-12-14 22:23:47 +08:00
+date: 2014-12-14
 comments: true
 categories: 
 - bash

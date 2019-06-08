@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-08-11 14:36:38+00:00 +08:00
+date: 2014-08-11
 slug: 'bind a simple cpp class in lua'
 title: Lua教程:绑定一个简单的C++类(6)
 wordpress_id: 755

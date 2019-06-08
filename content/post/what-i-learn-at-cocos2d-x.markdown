@@ -1,6 +1,6 @@
 ---
 title: "Things I Have Learned at Cocos2D-X Team"
-date: 2014-09-14 19:05:46 +08:00
+date: 2014-09-14
 comments: true
 categories:
 - programming life

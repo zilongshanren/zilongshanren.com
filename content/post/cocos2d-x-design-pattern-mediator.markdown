@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-20 14:52:32+00:00 +08:00
+date: 2014-06-20
 slug: cocos2d-x-design-pattern-mediator
 title: Cocos2D-X设计模式:中介者模式
 wordpress_id: 114

@@ -1,6 +1,6 @@
 ---
 title: "《Mastering Emacs》读后感"
-date: 2015-05-25 21:01:38 +08:00
+date: 2015-05-25
 comments: true
 categories: [ Emacs]
 ---

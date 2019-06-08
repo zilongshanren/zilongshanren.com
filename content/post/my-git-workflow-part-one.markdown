@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-25 15:03:36+00:00 +08:00
+date: 2014-06-25
 slug: 'my git workflow part one'
 title: 我的Git工作流(上)
 wordpress_id: 224

@@ -1,6 +1,6 @@
 ---
 title: "A bite of Python"
-date: 2014-09-21 21:22:46 +08:00
+date: 2014-09-21
 comments: true
 categories: [ python]
 ---

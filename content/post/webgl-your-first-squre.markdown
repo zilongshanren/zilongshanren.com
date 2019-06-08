@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-07-20 13:08:59+00:00 +08:00
+date: 2014-07-20
 slug: webGL your first cube'
 title: WebGL教程:你的第一个立方体(3)
 wordpress_id: 465

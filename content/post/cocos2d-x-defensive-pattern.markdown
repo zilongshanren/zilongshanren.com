@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-15 13:50:05+00:00 +08:00
+date: 2014-06-15
 slug: cocos2d-x-defensive-programming
 title: Cocos2D-X设计模式：防御式编程模式
 wordpress_id: 106

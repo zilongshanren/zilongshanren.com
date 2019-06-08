@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-08-31 22:52:22+00:00 +08:00
+date: 2014-08-31
 slug: 'how to use cmake to compile static library'
 title: 使用CMake编译跨平台静态库
 wordpress_id: 827

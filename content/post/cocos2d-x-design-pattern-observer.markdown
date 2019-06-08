@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-20 14:51:47+00:00 +08:00
+date: 2014-06-20
 slug: cocos2d-x-design-patterns-observer
 title: Cocos2D-X设计模式：观察者模式
 wordpress_id: 110

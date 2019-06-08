@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-07-01 14:20:54+00:00 +08:00
+date: 2014-07-01
 slug: 'opengl es2.0 tutorials your first cube'
 title: OpenGL ES2.0教程：你的第一个立方体(5)
 wordpress_id: 429

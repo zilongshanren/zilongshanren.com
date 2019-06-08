@@ -1,6 +1,6 @@
 ---
 title: "Bad Smell"
-date: 2014-10-12 21:45:40 +08:00
+date: 2014-10-12
 comments: true
 categories:
 - programming life

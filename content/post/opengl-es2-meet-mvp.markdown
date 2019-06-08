@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-15 15:47:51+00:00 +08:00
+date: 2014-06-15
 slug: opengl-es2-meet-mvp
 title: OpenGL ES2.0教程:初识MVP(3)
 categories:

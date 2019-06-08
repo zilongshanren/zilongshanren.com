@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-08-05 14:37:58+00:00 +08:00
+date: 2014-08-05
 slug: 'talking about learning new thing'
 title: 学习新东西
 wordpress_id: 708

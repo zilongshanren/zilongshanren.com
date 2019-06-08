@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-07-06 08:52:42+00:00 +08:00
+date: 2014-07-06
 slug: pass lua to cpp and vise verse
 title: Lua教程:C++和Lua相互传递数据(2)
 categories:

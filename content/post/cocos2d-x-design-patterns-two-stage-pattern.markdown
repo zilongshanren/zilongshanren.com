@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-07 03:59:05+00:00 +08:00
+date: 2014-06-07
 slug: cocos2d-x-design-pattern-two-stage-creation
 title: Cocos2D-X 设计模式：二段构建模式
 wordpress_id: 88

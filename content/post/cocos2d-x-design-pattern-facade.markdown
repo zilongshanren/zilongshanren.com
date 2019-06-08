@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-10 14:53:10+00:00 +08:00
+date: 2014-06-10
 slug: cocos2d-x-design-patterns-facade
 title: Cocos2D-X设计模式:外观模式
 wordpress_id: 99

@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-07-12 15:17:43+00:00 +08:00
+date: 2014-07-12
 slug: opengl-es2-0-texturing-mapping
 title: OpenGL ES2.0教程:纹理贴图(6)
 wordpress_id: 551

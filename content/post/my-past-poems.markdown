@@ -1,6 +1,9 @@
+---
+comments: true
 title: 以前写的诗
-date: 2017-04-19 13:52:21
-tags: life
+date: 2017-04-19 
+tags: 
+- life
 ---
 
 <!-- toc -->

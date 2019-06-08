@@ -1,6 +1,6 @@
 ---
 title: "高标准与不完美"
-date: 2014-09-29 21:57:11 +08:00
+date: 2014-09-29
 comments: true
 categories:
 - programming life

@@ -1,6 +1,6 @@
 ---
 title: 给Octopress添加Emoji支持
-date: 2015-07-03 23:01:07 +08:00
+date: 2015-07-03
 comments: true
 categories: [ Blog]
 ---

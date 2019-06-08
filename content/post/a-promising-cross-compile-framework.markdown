@@ -1,6 +1,6 @@
 ---
 title: "一套交叉编译脚本"
-date: 2014-11-02 21:35:51 +08:00
+date: 2014-11-02
 comments: true
 categories: 
 - cross compile

@@ -1,6 +1,6 @@
 ---
 title: "Be Great or Nothing"
-date: 2014-11-16 22:48:11 +08:00
+date: 2014-11-16
 comments: true
 categories: 
 - programming life

@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-07-15 14:06:19+00:00 +08:00
+date: 2014-07-15
 slug: 'setup gitlab on ubuntu aliyun'
 title: 阿里云ubuntu12.04搭建自己的gitlab
 wordpress_id: 489

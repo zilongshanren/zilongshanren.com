@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-08-10 14:29:28+00:00 +08:00
+date: 2014-08-10
 slug: 'cpp operate Lua string'
 title: Lua教程:C/C++操作Lua数组和字符串(5)
 wordpress_id: 705

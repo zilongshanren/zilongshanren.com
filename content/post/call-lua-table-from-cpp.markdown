@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-07-28 14:29:14+00:00 +08:00
+date: 2014-07-28
 slug: 'call lua table from cpp'
 title: Lua教程：C/C++调用Lua的Table(3)
 wordpress_id: 641

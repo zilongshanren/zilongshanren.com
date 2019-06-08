@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-05-31 07:22:56+00:00 +08:00
+date: 2014-05-31
 slug: opengl-es-2-0-your-first-triangles
 title: OpenGL ES 2.0教程：你的第一个三角形(1)
 wordpress_id: 55

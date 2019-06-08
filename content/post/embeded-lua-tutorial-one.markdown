@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-28 15:23:57+00:00 +08:00
+date: 2014-06-28
 slug: embed-lua-tutorials-one
 title: 'Lua教程: C++嵌入Lua脚本(1)'
 categories:

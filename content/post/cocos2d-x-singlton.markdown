@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-01 08:47:04+00:00 +08:00
+date: 2014-06-01
 slug: cocos2d-x-singleton
 title: Cocos2D-X设计模式:单例模式
 wordpress_id: 78

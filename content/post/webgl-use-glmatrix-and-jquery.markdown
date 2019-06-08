@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-28 15:05:45+00:00 +08:00
+date: 2014-06-28
 slug: webgl-use-glmatrix-and-jquery
 title: WebGL教程:使用glMatrix和JQuery(2)
 wordpress_id: 354

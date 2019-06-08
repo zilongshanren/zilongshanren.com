@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-07 14:49:04+00:00 +08:00
+date: 2014-06-07
 slug: 'make-your-own-vim-super-weapon'
 title: 打造属于自己的Vim神器:后记
 wordpress_id: 118

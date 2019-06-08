@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-08-24 02:23:16+00:00 +08:00
+date: 2014-08-24
 slug: 'emacs the editor of a life time'
 title: Emacs, The Editor of a Life Time
 wordpress_id: 351

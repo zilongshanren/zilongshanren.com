@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-20 14:57:52+00:00 +08:00
+date: 2014-06-20
 slug: cocos2d-x-design-patterns-delegation
 title: Cocos2D-X设计模式:委托模式
 wordpress_id: 116

@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-19 13:42:20+00:00 +08:00
+date: 2014-06-19
 slug: 'make-your-own-vim-weapon'
 title: 打造属于自己的Vim神器
 wordpress_id: 261

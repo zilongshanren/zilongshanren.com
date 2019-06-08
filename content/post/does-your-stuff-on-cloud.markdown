@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-07-07 14:24:18+00:00 +08:00
+date: 2014-07-07
 slug: 'does you stuff all on cloud'
 title: 程序猿：你的"家当"都在云上吗？
 wordpress_id: 532

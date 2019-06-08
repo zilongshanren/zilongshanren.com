@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-07-30 04:04:53+00:00 +08:00
+date: 2014-07-30
 slug: 'Lua call cpp functions'
 title: Lua教程：Lua调用C/C++函数(4)
 wordpress_id: 680

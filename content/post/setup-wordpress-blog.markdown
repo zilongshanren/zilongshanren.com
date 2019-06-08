@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-19 14:23:44+00:00 +08:00
+date: 2014-06-19
 slug: 'setup-wordpress-blog'
 title: 搭建wordpress博客
 wordpress_id: 267

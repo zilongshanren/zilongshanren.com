@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-22 01:52:41+00:00 +08:00
+date: 2014-06-22
 slug: opengl-es2-0-use-vbo
 title: OpenGL ES2.0教程:使用VBO索引(4)
 wordpress_id: 331

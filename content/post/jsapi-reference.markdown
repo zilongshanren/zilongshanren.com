@@ -1,6 +1,6 @@
 ---
 comments: true
-date: 2014-06-07 13:50:20+00:00 +08:00
+date: 2014-06-07
 slug: jsapi-reference
 title: JSAPI用户手册翻译
 wordpress_id: 120
