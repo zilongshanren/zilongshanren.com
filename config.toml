@@ -34,6 +34,11 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   identifier = "home"
   url = "/"
 [[menu.main]]
+  name = "LearnEmacs"
+  weight = 15
+  identifier = "emacs"
+  url = "/LearnEmacs/"
+[[menu.main]]
   name = "Archives"
   weight = 20
   identifier = "archives"
@@ -48,6 +53,11 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   weight = 40
   identifier = "categories"
   url = "/categories/"
+[[menu.main]]
+  name = "About"
+  weight = 50
+  identifier = "about"
+  url = "/about/"
 
 [params]
   version = "4.x"           # Used to give a friendly message when you have an incompatible update
@@ -59,7 +69,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   gitRepo = ""
 
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
-  logoTitle = "子龙山人的技术博客"        # default: the title value    # 默认值: 上面设置的title值
+  logoTitle = "子龙山人"        # default: the title value    # 默认值: 上面设置的title值
   keywords = ["Emacs", "Cocos2d","Graphics"]
   description = "子龙山人的技术博客"
 
