@@ -194,6 +194,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
     c-twitter = "https://twitter.com/zilongshanren"
     d-facebook = "https://www.facebook.com/zilongshanren"
     e-linkedin = "https://www.linkedin.com/in/zilongshanren"
+    f-douban = "https://www.douban.com/people/quguanghui/"
     g-github = "https://github.com/zilongshanren"
     h-weibo = "https://www.weibo.com/zilongshanren"
     i-zhihu = "https://www.zhihu.com/people/zilongshanren/"
