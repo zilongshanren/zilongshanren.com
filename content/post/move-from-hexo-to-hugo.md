@@ -1,6 +1,7 @@
 +++
 title = "博客从 hexo 迁移到 hugo"
-lastmod = 2019-06-14T08:02:16+08:00
+date = 2019-06-11T09:07:00+08:00
+lastmod = 2019-06-14T09:07:14+08:00
 tags = ["blog", "hugo"]
 categories = ["blog"]
 draft = false
