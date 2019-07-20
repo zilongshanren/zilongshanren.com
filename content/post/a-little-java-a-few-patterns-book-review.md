@@ -1,7 +1,9 @@
 +++
 title = "《a little java a few patterns》读书笔记"
 date = 2019-07-06T14:29:00+08:00
-lastmod = 2019-07-06T15:05:41+08:00
+lastmod = 2019-07-07T22:53:21+08:00
+tags = ["reading"]
+categories = ["reading"]
 draft = false
 author = "zilongshanren"
 +++
