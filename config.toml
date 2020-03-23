@@ -147,8 +147,8 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
     clientSecret = ""       # Your client secret
 
   [params.utterances]       # https://utteranc.es/
-    owner = "zilongshanren"              # Your GitHub ID
-    repo = "zilongshanren.com"               # The repo to store comments
+    owner = ""              # Your GitHub ID
+    repo = ""               # The repo to store comments
 
   [params.gitalk]           # Gitalk is a comment system based on GitHub issues. see https://github.com/gitalk/gitalk
     owner = ""              # Your GitHub ID
@@ -160,14 +160,14 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   # You can get your appid and appkey from https://leancloud.cn
   # more info please open https://valine.js.org
   [params.valine]
-    enable = false
-    appId = '你的appId'
-    appKey = '你的appKey'
+    enable = true
+    appId = '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz'
+    appKey = 'qVkxNVrkxjNujG8KmGlbmbWN'
     notify = false  # mail notifier , https://github.com/xCss/Valine/wiki
     verify = false # Verification code
     avatar = 'mm' 
     placeholder = '说点什么吧...'
-    visitor = false
+    visitor = true
 
   [params.flowchartDiagrams]# see https://blog.olowolo.com/example-site/post/js-flowchart-diagrams/
     enable = false
