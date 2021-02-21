@@ -5,7 +5,7 @@ date: 2015-08-02 15:27:52
 
 ## Experience
 
-### Happy Mahjong
+### Lightspeed & Quantum Studios Group(光子工作室群)
 Company: Tecent
 
 Period: 2017.8 ~ present
@@ -55,3 +55,10 @@ Accomplishments:
 
 1. [Cocos2D权威指南](http://item.jd.com/11206205.html)
 2. [游戏编程模式](http://www.epubit.com.cn/book/details/4184)
+
+## 联系方式
+微信号： zilongshanren
+
+公众号：ILoveGameDev
+
+![officialAccount](/img/wechatOfficialAccount.jpg ) 
