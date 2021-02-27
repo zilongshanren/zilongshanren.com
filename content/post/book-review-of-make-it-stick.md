@@ -1,6 +1,6 @@
 +++
 title = "book review of make it stick"
-lastmod = 2019-07-15T08:26:10+08:00
+lastmod = 2021-02-25T23:47:57+08:00
 tags = ["reading"]
 categories = ["reading"]
 draft = true
