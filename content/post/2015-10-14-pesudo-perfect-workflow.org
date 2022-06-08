@@ -1,6 +1,5 @@
 #+TITLE: 我的工作流
 #+DATE: 2015-10-14
-#+SETUPFILE: ~/4gamers.cn/setupfile.org
 #+JEKYLL_LAYOUT: post
 #+JEKYLL_CATEGORIES: workflow
 #+JEKYLL_TAGS: workflow 
