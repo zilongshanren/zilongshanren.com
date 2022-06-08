@@ -1,7 +1,7 @@
 +++
-title = "配置全新的 Macbook Pro M1 下 Emacsg 开发环境"
+title = "配置全新的 Macbook Pro M1 下 Emacs 开发环境"
 date = 2022-06-08T22:29:00+08:00
-lastmod = 2022-06-08T22:42:32+08:00
+lastmod = 2022-06-08T22:43:04+08:00
 draft = false
 author = "zilongshanren"
 +++
