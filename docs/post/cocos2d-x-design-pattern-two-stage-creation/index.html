@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cocos2D-X 设计模式：二段构建模式 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="乍一看标题，大家可能会觉得很奇怪，神马是“二段构建模式”呢？ 所谓二段构建，就是指创建对象时不是直接通过构建函数来分配内存并完成初始化操作。取" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/cocos2d-x-design-pattern-two-stage-creation/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Cocos2D-X 设计模式：二段构建模式" />
+<meta property="og:description" content="乍一看标题，大家可能会觉得很奇怪，神马是“二段构建模式”呢？ 所谓二段构建，就是指创建对象时不是直接通过构建函数来分配内存并完成初始化操作。取" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/cocos2d-x-design-pattern-two-stage-creation/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-07T00:00:00+00:00" />
+
+<meta itemprop="name" content="Cocos2D-X 设计模式：二段构建模式">
+<meta itemprop="description" content="乍一看标题，大家可能会觉得很奇怪，神马是“二段构建模式”呢？ 所谓二段构建，就是指创建对象时不是直接通过构建函数来分配内存并完成初始化操作。取"><meta itemprop="datePublished" content="2014-06-07T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-07T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2987">
+<meta itemprop="keywords" content="Cocos2d-x,design pattern," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cocos2D-X 设计模式：二段构建模式"/>
+<meta name="twitter:description" content="乍一看标题，大家可能会觉得很奇怪，神马是“二段构建模式”呢？ 所谓二段构建，就是指创建对象时不是直接通过构建函数来分配内存并完成初始化操作。取"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Cocos2D-X 设计模式：二段构建模式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-07 </span>
+        <div class="post-category">
+            <a href="/categories/cocos2d-x/"> Cocos2d-x </a>
+            <a href="/categories/design-pattern/"> design pattern </a>
+            </div>
+          <span class="more-meta"> 约 2987 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1应用场景">1.应用场景：</a></li>
+    <li><a href="#2分析为什么要使用此模式">2.分析为什么要使用此模式？</a></li>
+    <li><a href="#3使用此模式的优缺点是什么">3.使用此模式的优缺点是什么？</a></li>
+    <li><a href="#4此模式的定义及一般实现">4.此模式的定义及一般实现</a></li>
+    <li><a href="#5在游戏开发中如何运用此模式">5.在游戏开发中如何运用此模式</a></li>
+    <li><a href="#6此模式经常与哪些模式配合使用">6.此模式经常与哪些模式配合使用</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>乍一看标题，大家可能会觉得很奇怪，神马是“二段构建模式”呢？</p>
+<p>所谓二段构建，就是指创建对象时不是直接通过构建函数来分配内存并完成初始化操作。取而代之的是，构造函数只负责分配内存，而初始化的工作则由一些名为initXXX的成员方法来完成。然后再定义一些静态类方法把这两个阶段组合起来，完成最终对象的构建。因为在《Cocoa设计模式》一书中，把此惯用法称之为“Two Stage Creation”，即“二段构建”。</p>
+<p>2014.6.1号更新：</p>
+<p>Cocos2D-X 3.0以后的二段构造更纯粹了，它把所有类的构造函数、析构函数以及init方法全部变成protected方法。强制开发者只能通过create工厂方法来创建对象。这样做的好处有两个：一、可以更好地配合Cocos2D-X内部提供的基于引用计数的内存管理模型，因为create方法按照约定会返回一个autorelease对象。二、create工厂方法可以有参数，比如createWithFileName,createWithSpriteFrameName，这样比构造函数更具有可读性。因为构造函数的重载可读性真的很差。这一点，我特别喜欢Objective-C的中缀表达式语法，虽然要多写一些字符，但是可读性真的很棒。</p>
+<!-- raw HTML omitted -->
+<h2 id="1应用场景">1.应用场景：</h2>
+<p>二段构建在cocos2d-x里面随处可见，自从3.0版本以后，所有的二段构建方法的签名都改成create了。这样做的好处是一方面统一接口，方便记忆，另一方面是以前的类似Cocoa的命名规范不适用c++，容易引起歧义。下面以Sprite为类，来具体阐述二段构建的过程，请看下列代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Sprite</span><span class="o">*</span> <span class="n">Sprite</span><span class="o">::</span><span class="n">create</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Sprite</span> <span class="o">*</span><span class="n">sprite</span> <span class="o">=</span> <span class="k">new</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">nothrow</span><span class="p">)</span> <span class="n">Sprite</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">sprite</span> <span class="o">&amp;&amp;</span> <span class="n">sprite</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sprite</span><span class="o">-&gt;</span><span class="n">autorelease</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">sprite</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CC_SAFE_DELETE</span><span class="p">(</span><span class="n">sprite</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如上面代码中的注释所示，创建一个sprite明显被分为两个步骤：1.使用new来创建内存；2.使用initXXX方法来完成初始化。</p>
+<p>因为Sprite的构造函数也有初始化的功能，所以，我们再来看看Sprite的构建函数实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="n">Sprite</span><span class="o">::</span><span class="n">Sprite</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">:</span> <span class="n">_shouldBeHidden</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">,</span> <span class="n">_texture</span><span class="p">(</span><span class="k">nullptr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">,</span> <span class="n">_insideBounds</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>很明显，这个构建函数所做的初始化工作非常有限，仅仅是在初始化列表里面初始化了m_pobTexture和m_bShouldBeHidden两个变量。实际的初始化工作大部分都放在initXXX系列方法中，大家可以动手去查看源代码。</p>
+<h2 id="2分析为什么要使用此模式">2.分析为什么要使用此模式？</h2>
+<p>这种二段构建对于C++程序员来说，其实有点别扭。因为c++的构造函数在设计之初就是用来分配内存+初始化对象的。如果再搞个二段构建，实则是多此一举。但是，在objective-c里面是没有构造函数这一说的，所以，在Cocoa的编程世界里，二段构建被广泛采用。而cocos2d-x当初是从cocos2d-iphone移植过来了，为了保持最大限度的代码一致性，所以保留了这种二段构建方式。这样可以方便移植cocos2d-iphone的游戏，同时也方便cocos2d-iphone的程序员快速上手cocos2d-x。</p>
+<p>不过在后来，由于c++天生不具备oc那种可以指定每一个参数的名称的能力，所以，cocos2d-x的设计者决定使用c++的函数重载来解决这个问题。这也是后来为什么2.0版本以后，都使用create函数的重载版本了。</p>
+<p>虽然接口签名改掉了，但是本质并没有变化，还是使用的二段构建。二段构建并没有什么不好，只是更加突出了对象需要初始化。在某种程度上也可以说是一种设计强化。因为忘记初始化是一切莫名其妙的bug的罪魁祸首。同时，二段构建出来的对象都是autorelease的对象，而autorelease对象是使用引用计数来管理内存的。客户端程序员在使用此接口创建对象的时候，无需关心具体实现细节，只要知道使用create方法可以创建并初始化一个自动释放内存的对象即可。</p>
+<p>在一点，在《Effective Java》一书中，也有提到。为每一个类提供一个静态工厂方法来代替构造函数，它有以下三个优点：</p>
+<ul>
+<li>
+<p>与构造函数不同，静态方法有名字，而构造函数只能通过参数重载。</p>
+</li>
+<li>
+<p>它每次被调用的时候，不一定都创建一个新的对象。比如boolean.valueof(boolean)。</p>
+</li>
+<li>
+<p>它还可以返回原类型的子类型对象。</p>
+</li>
+</ul>
+<p>因此，使用二段构建的原因有如下几点：- 兼容性、历史遗留原因。（这也再次印证了一句话，一切系统都是遗留系统，呵呵）</p>
+<ul>
+<li>
+<p>二段构建有其自身独有的优势。</p>
+</li>
+<li>
+<p>构造函数执行期间是不能调用virtual函数的（即使调用了virtual，编译器也会用静态调用机制而不是virtual机制，详见Effective C＋＋条款9），如果不用二段建构方式，在基类的构造函数里就不能调用virtual函数实现子类需要定制化的功能，比如当需要采用模板方法这样的设计模式做初始化的时候。但如果使用二段建构，就可以把这部分放在init()里，实现了初始化时使用模板方法的方式。构造函数里无法通过irtual函数实现虚函数机制，但init函数调用的时候，就可以调用virtual函数了（感谢nichos）</p>
+</li>
+<li>
+<p>如果在构造函数中调用可能异常退出的函数，那么当异常发生，函数调用栈马上弹出，直到找到try cathc为止。也就是说分配出的内存来不急释放(在构造函数里发生异常，甚至连分配出的内存指针都拿不到)，函数执行就中止了。进行两段构造可以提供一个进行try catch的机会，Symbian的两段构造+清除栈的处理方式比这里提到的策略安全的多。（感谢omega）</p>
+</li>
+</ul>
+<h2 id="3使用此模式的优缺点是什么">3.使用此模式的优缺点是什么？</h2>
+<p>优点：</p>
+<ul>
+<li>
+<p>显示分开内存分配和初始化阶段，让初始化地位突出。因为程序员一般不会忘记分配内存，但却常常忽略初始化的作用。</p>
+</li>
+<li>
+<p>见上面分析《Effective Java》的第1条：“为每一个类提供一个静态工厂方法来代替构造函数”</p>
+</li>
+<li>
+<p>除了完成对象构建，还可以管理对象内存。</p>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>1.不如直接使用构造函数来得直白、明了，违反直觉，但这个是相对的。</li>
+</ul>
+<h2 id="4此模式的定义及一般实现">4.此模式的定义及一般实现</h2>
+<p>定义：将一个对象的构建分为两个步骤来进行：1.分配内存 2.初始化它的一般实现如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">Test</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//静态工厂方法
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">static</span> <span class="n">Test</span><span class="o">*</span> <span class="n">create</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Test</span> <span class="o">*</span><span class="n">pTest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Test</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">pTest</span> <span class="o">&amp;&amp;</span> <span class="n">pTest</span><span class="o">-&gt;</span><span class="n">init</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//这里还可以做其它操作，比如cocos2d-x里面管理内存
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">return</span> <span class="n">pTest</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Test</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//在构造函数初始化列表里面初始化一些成员变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">bool</span> <span class="nf">init</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//这里初始化对象成员
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//这里定义数据成员
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="5在游戏开发中如何运用此模式">5.在游戏开发中如何运用此模式</h2>
+<p>这个也非常简单，就是今后在使用cocos2d-x的时候，如果你继承Sprite实现自定义的精灵，你也需要按照“二段构建”的方式，为你的类提供一个静态工厂方法，同时编写相应的初始化方法。当然，命名规范最好和cocos2d-x统一，即静态工厂方法为create，而初始化方法为initXXXX。</p>
+<h2 id="6此模式经常与哪些模式配合使用">6.此模式经常与哪些模式配合使用</h2>
+<p>由于此模式在GoF的设计模式中并未出现，所以暂时不讨论与其它模式的关系。</p>
+<p>最后看看cocos2d-x创始人王哲对于为什么要设计成二段构建的看法：</p>
+<p>“其实我们设计二段构造时首先考虑其优势而非兼容cocos2d-iphone. 初始化时会遇到图片资源不存在等异常，而C++构造函数无返回值，只能用try-catch来处理异常，启用try-catch会使编译后二进制文件大不少，故需要init返回bool值。Symbian, Bada SDK，objc的alloc + init也都是二阶段构造”。</p>
+<p>欢迎读者批评指正，</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-07
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cocos2d-x/">Cocos2d-x</a>
+          <a href="/tags/design-pattern/">design pattern</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/cocos2d-x-design-patterns-manager/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Cocos2D-X设计模式：管理者模式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/jsapi-reference/">
+            <span class="next-text nav-default">JSAPI用户手册翻译</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/cocos2d-x-design-pattern-two-stage-creation/" class="leancloud_visitors" data-flag-title="Cocos2D-X 设计模式：二段构建模式">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

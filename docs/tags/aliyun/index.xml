@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aliyun on 子龙山人</title>
+    <link>https://zilongshanren.com/tags/aliyun/</link>
+    <description>Recent content in aliyun on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 15 Jul 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/tags/aliyun/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>阿里云ubuntu12.04搭建自己的gitlab</title>
+      <link>https://zilongshanren.com/post/setup-gitlab-on-ubuntu-aliyun/</link>
+      <pubDate>Tue, 15 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/setup-gitlab-on-ubuntu-aliyun/</guid>
+      <description>我对Github太爱了，但是它的私有仓库要钱，而且是每个月7美金，对于一个上有老下有小的屌丝来说，还是能省则省吧。 况且，我不是有一台阿里云的</description>
+    </item>
+    
+  </channel>
+</rss>

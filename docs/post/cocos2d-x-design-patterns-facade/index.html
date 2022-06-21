@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cocos2D-X设计模式:外观模式 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="1.应用场景 Cocos2d-x里面有一个非常明显的地方使用了外观模式，它就是SimpleAudioEngine。因为它为CocosDensh" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/cocos2d-x-design-patterns-facade/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Cocos2D-X设计模式:外观模式" />
+<meta property="og:description" content="1.应用场景 Cocos2d-x里面有一个非常明显的地方使用了外观模式，它就是SimpleAudioEngine。因为它为CocosDensh" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/cocos2d-x-design-patterns-facade/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-10T00:00:00+00:00" />
+
+<meta itemprop="name" content="Cocos2D-X设计模式:外观模式">
+<meta itemprop="description" content="1.应用场景 Cocos2d-x里面有一个非常明显的地方使用了外观模式，它就是SimpleAudioEngine。因为它为CocosDensh"><meta itemprop="datePublished" content="2014-06-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-10T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1600">
+<meta itemprop="keywords" content="Cocos2d-x,design pattern," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cocos2D-X设计模式:外观模式"/>
+<meta name="twitter:description" content="1.应用场景 Cocos2d-x里面有一个非常明显的地方使用了外观模式，它就是SimpleAudioEngine。因为它为CocosDensh"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Cocos2D-X设计模式:外观模式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-10 </span>
+        <div class="post-category">
+            <a href="/categories/cocos2d-x/"> Cocos2d-x </a>
+            <a href="/categories/design-pattern/"> design pattern </a>
+            </div>
+          <span class="more-meta"> 约 1600 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1应用场景">1.应用场景</a></li>
+    <li><a href="#2使用外观模式的优缺点">2.使用外观模式的优缺点</a></li>
+    <li><a href="#3外观模式的定义及一般实现">3.外观模式的定义及一般实现</a>
+      <ul>
+        <li><a href="#定义">定义：</a></li>
+        <li><a href="#实现摘至维基百科">实现(摘至维基百科)：</a></li>
+      </ul>
+    </li>
+    <li><a href="#4游戏开发中如何运用此模式">4.游戏开发中如何运用此模式</a></li>
+    <li><a href="#5外观模式与其它模式的关系">5.外观模式与其它模式的关系</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="1应用场景">1.应用场景</h2>
+<p>Cocos2d-x里面有一个非常明显的地方使用了外观模式，它就是SimpleAudioEngine。因为它为CocosDenshion这个子系统的一组接口提供了一个一致的界面，同时定义了一个高层接口，方便客户使用该子系统。</p>
+<p>对于大多数用户来讲，游戏中操作声音，无非就是播放背景音乐和音效。CocosDenshion这个子系统封装了OpenAL，屏蔽了OpenAL操作声音的低级API。它提供了CDSoundEngine、CDAudioManager两个类来操作和管理声音。具体这两个类是如何工作的这里就不再讨论了，感兴趣的读者可以自行去研究相关代码。虽然CocosDenshion子系统已经封装了低级的操作声音的API，但是对于用户来讲，还是得了解该系统内部的类是如何一起协作来完成声音处理任务的。这样会加大用户使用此子系统的难度，同时，也使得客户程序与该子系统紧密耦合了。假如哪一天该子系统内部实现有所变化，这势必会影响到调用它的客户程序。众所周知，操作游戏音乐的代码是分散在游戏代码各处的，那样会造成“散弹式”修改。这是个严重的代码坏味道，需要引起警觉，果断重构之！</p>
+<!-- raw HTML omitted -->
+<p>而外观模式就可以完美地解决此问题，SimpleAudioEngine就是最好的例子。如果使用过SimpleAudioEngine的人会发现，它实在是太简单了。但是，SimpleAudioEngine并不是万能的，比如，它就无法实现循环播放音效的功能。但是，没有关系，你可以使用CDSoundEngine来实现这个功能。</p>
+<p>请注意，SimpleAudioEngine并没有增加新的功能，而只是把子系统现有的类进行组合来完成一些常用的任务，简化客户程序的使用。子系统对于外观类是不知情的，即子系统不会包含外观类的指针。</p>
+<h2 id="2使用外观模式的优缺点">2.使用外观模式的优缺点</h2>
+<p>优点：</p>
+<p>1）它对客户屏蔽子系统组件，因而减少了客户处理的对象的数目，并使得子系统使用起来更加方便。</p>
+<p>2）它实现了子系统与客户之间的松耦合关系，而子系统内部的功能组件往往是紧密耦合的，这样当子系统功能组件发生变化的时候，只需要修改外观类的实现就可以了，避免了程序代码的“散弹式”修改。</p>
+<p>3）同时，外观类并不限制客户直接使用子系统的功能组件，如果客户想使用子系统的更加高级的功能，可以越过外观类直接访问子系统的类。</p>
+<p>缺点：</p>
+<p>1）过多的或者不太合理的Façade也容易让人迷惑。到底是调用Façade好呢，还是直接调用子系统的模块好呢。</p>
+<h2 id="3外观模式的定义及一般实现">3.外观模式的定义及一般实现</h2>
+<p>UML图：</p>
+<p><img src="https://zilongshanren.com/img/FacadeDesignPattern1.png" alt="uml"></p>
+<h3 id="定义">定义：</h3>
+<p>为子系统中的一组接口提供一个一致的界面，它定义了一个高层接口，这个接口使得子系统更加容易使用。它很好地体现了“最少知识原则”。</p>
+<p>它的本质是：封装交互、简化调用。</p>
+<h3 id="实现摘至维基百科">实现(摘至维基百科)：</h3>
+<p>考虑下面一个例子：</p>
+<p>设计你（You）如何与一台计算机（facade）进行交互，而计算机是一个非常复杂的系统，它内部包含CPU、HardDrive等。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cm">/* Complex parts */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CPU</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">void</span> <span class="nf">freeze</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">void</span> <span class="nf">jump</span><span class="p">(</span><span class="kt">long</span> <span class="n">position</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="p">()</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Memory</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">void</span> <span class="nf">load</span><span class="p">(</span><span class="kt">long</span> <span class="n">position</span><span class="p">,</span> <span class="n">byte</span><span class="p">[]</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">HardDrive</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">byte</span><span class="p">[]</span> <span class="n">read</span><span class="p">(</span><span class="kt">long</span> <span class="n">lba</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/* Facade */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Computer</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="n">CPU</span> <span class="n">cpu</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="n">Memory</span> <span class="n">memory</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span> <span class="n">HardDrive</span> <span class="n">hardDrive</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="nf">Computer</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">cpu</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CPU</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">memory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Memory</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">hardDrive</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HardDrive</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">void</span> <span class="nf">startComputer</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cpu</span><span class="p">.</span><span class="n">freeze</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">memory</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">BOOT_ADDRESS</span><span class="p">,</span> <span class="n">hardDrive</span><span class="p">.</span><span class="n">read</span><span class="p">(</span><span class="n">BOOT_SECTOR</span><span class="p">,</span> <span class="n">SECTOR_SIZE</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cpu</span><span class="p">.</span><span class="n">jump</span><span class="p">(</span><span class="n">BOOT_ADDRESS</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cpu</span><span class="p">.</span><span class="n">execute</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/* Client */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">You</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Computer</span> <span class="n">facade</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Computer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">facade</span><span class="p">.</span><span class="n">startComputer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="4游戏开发中如何运用此模式">4.游戏开发中如何运用此模式</h2>
+<p>游戏开发过程中，暂时还没发现此模式的明显用法。不过，模式不是说学习了一定要马上就用到，那样会导致过度设计。如果读者开发游戏过程中，积累出一套比较成熟的框架，而这个框架又可以划分多个子系统，比如碰撞子系统、网络子系统、数据持久化子系统等。当外部使用此子系统时，操作的类过多，理解起来特别复杂时，这时候就可以考虑引入一个Façade类，来简化客户程序与子系统之间的调用关系。</p>
+<h2 id="5外观模式与其它模式的关系">5.外观模式与其它模式的关系</h2>
+<p><!-- raw HTML omitted -->通常来讲只需要一个外观类，所以可以采用单例模式。<!-- raw HTML omitted --></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-10
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cocos2d-x/">Cocos2d-x</a>
+          <a href="/tags/design-pattern/">design pattern</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/opengl-es2-meet-mvp/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">OpenGL ES2.0教程:初识MVP(3)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/cocos2d-x-design-patterns-manager/">
+            <span class="next-text nav-default">Cocos2D-X设计模式：管理者模式</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/cocos2d-x-design-patterns-facade/" class="leancloud_visitors" data-flag-title="Cocos2D-X设计模式:外观模式">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>WebGL教程:使用glMatrix和JQuery(2) - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="上篇文章介绍了如何使用WebGL来绘制一个三角形。从那个教程中，我们可以看出，其实WebGL只是一个2D API,我们只需要在Vertex Sh" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/webgl-use-glmatrix-and-jquery/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="WebGL教程:使用glMatrix和JQuery(2)" />
+<meta property="og:description" content="上篇文章介绍了如何使用WebGL来绘制一个三角形。从那个教程中，我们可以看出，其实WebGL只是一个2D API,我们只需要在Vertex Sh" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/webgl-use-glmatrix-and-jquery/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-28T00:00:00+00:00" />
+
+<meta itemprop="name" content="WebGL教程:使用glMatrix和JQuery(2)">
+<meta itemprop="description" content="上篇文章介绍了如何使用WebGL来绘制一个三角形。从那个教程中，我们可以看出，其实WebGL只是一个2D API,我们只需要在Vertex Sh"><meta itemprop="datePublished" content="2014-06-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2772">
+<meta itemprop="keywords" content="glMatrix.js,jquery,welgl," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="WebGL教程:使用glMatrix和JQuery(2)"/>
+<meta name="twitter:description" content="上篇文章介绍了如何使用WebGL来绘制一个三角形。从那个教程中，我们可以看出，其实WebGL只是一个2D API,我们只需要在Vertex Sh"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">WebGL教程:使用glMatrix和JQuery(2)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-28 </span>
+        <div class="post-category">
+            <a href="/categories/webgl/"> WebGL </a>
+            </div>
+          <span class="more-meta"> 约 2772 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#下载和安装glmatrixjs">下载和安装glMatrix.js</a></li>
+    <li><a href="#编写一些重用的功能">编写一些重用的功能</a></li>
+    <li><a href="#定义自己的script标签">定义自己的script标签</a></li>
+    <li><a href="#model-view-projection变换">Model View Projection变换</a></li>
+    <li><a href="#集成jquery">集成Jquery</a></li>
+    <li><a href="#结语">结语</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p><a href="http://zilongshanren.com/blog/2014-06-07-webgl-your-first-triangles.html">上篇文章</a>介绍了如何使用WebGL来绘制一个三角形。从那个教程中，我们可以看出，其实WebGL只是一个<a href="http://games.greggman.com/game/webgl-fundamentals/">2D API</a>,我们只需要在Vertex Shader里面指定绘制图元的裁剪坐标系的坐标(取值范围从-1到+1)，同时在Fragment Shader里面指定顶点最终的像素颜色即可。如果要实现3D效果，必须由程序员自己来指定3D空间坐标变换，即Model-View-Projection变换。</p>
+<p>而WebGL本身是不提供数学库来做这些事情的，所以我们需要借助一些第三方的库（当然，也可以自己编写，但是效率可能会有问题,除非是学习，否则建议不要自己写）。现在Js的数学库比较多，而本教程主要介绍如何使用<a href="https://github.com/toji/gl-matrix">glMatrix.js</a>来做MVP变换，在文章的最后，我们通过集成Jquery可以让3D场景更具有交互性。（当然，本教程只是通过往场景里面添加一个slider来改变三角形的颜色）</p>
+<!-- raw HTML omitted -->
+<p>在继续阅读教程之前，可以先看看本教程最终的样子：(别忘了拖动两下滑块哦）</p>
+<!-- raw HTML omitted -->
+<h2 id="下载和安装glmatrixjs">下载和安装glMatrix.js</h2>
+<p>下载glMatrix很简单，直接去<a href="http://glmatrix.net/">glMatrix.js首页</a>上下载最新版本即可，当然也可以去<a href="https://github.com/toji/gl-matrix">github</a>上面下载。当前的最新发布版本是v2.2.1，它与之前的API相比有一些不同。具体的内容在glMatrix.js首页上面都有介绍，这里就不赘述了。当然，这也导致了我们如果去看网上<a href="http://learningwebgl.com/blog/?page_id=1217">其它一些教程</a>的时候，可能使用的是老版本的glMatrix.js。大家注意对照<a href="http://glmatrix.net/docs/2.2.0/">最新版本的API文档</a>来进行编程即可。
+因为是js库，所以安装过程基本为0。只需要把解压缩里面的dist目录下面的gl-matrix-min.js拷贝到我们的工程目录下面，并在html文件里面引入即可:</p>
+<h2 id="编写一些重用的功能">编写一些重用的功能</h2>
+<p>因为每一个WebGL程序都需要以下二个步骤：</p>
+<ul>
+<li>
+<p>从canvas获取WebGL上下文</p>
+</li>
+<li>
+<p>创建vertex shader和fragment shader并链接成一个shader program</p>
+</li>
+</ul>
+<p>所以这里，我们把这些操作封装成函数并放到webgl_utils.js里面:</p>
+<p>首先是从canvas里面获取WebGL上下文:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">function</span> <span class="nf">createGLContext</span><span class="p">(</span><span class="n">canvasId</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">var</span> <span class="n">canvas</span> <span class="o">=</span> <span class="n">document</span><span class="p">.</span><span class="n">getElementById</span><span class="p">(</span><span class="n">canvasId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">var</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#34;webgl&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">               <span class="s">&#34;experimental-webgl&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">               <span class="s">&#34;webkit-3d&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">               <span class="s">&#34;moz-webgl&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">var</span> <span class="n">gl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">names</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">gl</span> <span class="o">=</span> <span class="n">canvas</span><span class="p">.</span><span class="n">getContext</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">catch</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">throw</span><span class="p">(</span><span class="s">&#34;contex can&#39;t be created!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">gl</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">gl</span> <span class="o">==</span> <span class="n">null</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">alert</span><span class="p">(</span><span class="s">&#34;WebGL is not available&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">gl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，是创建shader program的函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">//根据shdaer的str和type来创建vertex shader和fragment shader
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">function</span> <span class="nf">createShader</span><span class="p">(</span><span class="n">gl</span><span class="p">,</span> <span class="n">str</span><span class="p">,</span> <span class="n">type</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">var</span> <span class="n">shader</span> <span class="o">=</span> <span class="n">gl</span><span class="p">.</span><span class="n">createShader</span><span class="p">(</span><span class="n">type</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">gl</span><span class="p">.</span><span class="n">shaderSource</span><span class="p">(</span><span class="n">shader</span><span class="p">,</span><span class="n">str</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">gl</span><span class="p">.</span><span class="n">compileShader</span><span class="p">(</span><span class="n">shader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">gl</span><span class="p">.</span><span class="n">getShaderParameter</span><span class="p">(</span><span class="n">shader</span><span class="p">,</span> <span class="n">gl</span><span class="p">.</span><span class="n">COMPILE_STATUS</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="n">gl</span><span class="p">.</span><span class="n">getShaderInfoLog</span><span class="p">(</span><span class="n">shader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">shader</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//使用vertex shader和fragment shader来创建shader program
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">function</span> <span class="nf">createProgram</span><span class="p">(</span><span class="n">gl</span><span class="p">,</span> <span class="n">vstr</span><span class="p">,</span><span class="n">fstr</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">var</span> <span class="n">program</span> <span class="o">=</span> <span class="n">gl</span><span class="p">.</span><span class="n">createProgram</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">var</span> <span class="n">vshader</span> <span class="o">=</span> <span class="n">createShader</span><span class="p">(</span><span class="n">gl</span><span class="p">,</span><span class="n">vstr</span><span class="p">,</span><span class="n">gl</span><span class="p">.</span><span class="n">VERTEX_SHADER</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">var</span> <span class="n">fshader</span> <span class="o">=</span> <span class="n">createShader</span><span class="p">(</span><span class="n">gl</span><span class="p">,</span> <span class="n">fstr</span><span class="p">,</span> <span class="n">gl</span><span class="p">.</span><span class="n">FRAGMENT_SHADER</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">gl</span><span class="p">.</span><span class="n">attachShader</span><span class="p">(</span><span class="n">program</span><span class="p">,</span><span class="n">vshader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">gl</span><span class="p">.</span><span class="n">attachShader</span><span class="p">(</span><span class="n">program</span><span class="p">,</span><span class="n">fshader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">gl</span><span class="p">.</span><span class="n">linkProgram</span><span class="p">(</span><span class="n">program</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">gl</span><span class="p">.</span><span class="n">getProgramParameter</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="n">gl</span><span class="p">.</span><span class="n">LINK_STATUS</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="n">gl</span><span class="p">.</span><span class="n">getProgramInfoLog</span><span class="p">(</span><span class="n">program</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">program</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有了这两个函数，我们每一次编写一个WebGL的程序的时候就不用重复造轮子了。另外，由于之前的vertex shader和fragment shader都是直接硬编码为字符串的，这样书写极为不便，同时也很难维护。</p>
+<h2 id="定义自己的script标签">定义自己的script标签</h2>
+<p>本节我们将使用自定义的标签来放置vertex shader和fragment shader.</p>
+<p>因为html5的标准规定，如果script标签里面的type不是text/javascript或者src=&quot;&hellip;&ldquo;之类的话，浏览器会把这段script标签里面的内容解析成文本。</p>
+<p>因此，我们自定义两种type分别用来存放vertex shader和fragment shader：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">      <span class="c1">//下面是vertex shader的定义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="o">&lt;</span><span class="n">script</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;x-shader/x-vertex&#34;</span> <span class="n">id</span><span class="o">=</span><span class="s">&#34;vertex-shader&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">attribute</span> <span class="n">vec2</span> <span class="n">a_position</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">uniform</span> <span class="n">mat4</span> <span class="n">u_ModelViewMatrix</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">uniform</span> <span class="n">mat4</span> <span class="n">u_PMatrix</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">u_PMatrix</span> <span class="o">*</span> <span class="n">u_ModelViewMatrix</span> <span class="o">*</span> <span class="n">vec4</span><span class="p">(</span><span class="n">a_position</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="c1">//下面是fragment shader的定义
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">&lt;</span><span class="n">script</span> <span class="n">type</span><span class="o">=</span><span class="s">&#34;x-shader/x-fragment&#34;</span> <span class="n">id</span><span class="o">=</span><span class="s">&#34;fragment-shader&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">//this line must be added
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="n">precision</span> <span class="n">mediump</span> <span class="kt">float</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">uniform</span> <span class="n">vec4</span> <span class="n">u_color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">       <span class="n">gl_FragColor</span> <span class="o">=</span>  <span class="n">u_color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后，为了方便使用，我还封装了下面的函数用来从script id来创建shader program.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">function</span> <span class="nf">createProgramFromElementId</span><span class="p">(</span><span class="n">gl</span><span class="p">,</span> <span class="n">vertexId</span><span class="p">,</span> <span class="n">fragmentId</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">var</span> <span class="n">vertex</span> <span class="o">=</span> <span class="n">document</span><span class="p">.</span><span class="n">getElementById</span><span class="p">(</span><span class="n">vertexId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">var</span> <span class="n">fragment</span> <span class="o">=</span> <span class="n">document</span><span class="p">.</span><span class="n">getElementById</span><span class="p">(</span><span class="n">fragmentId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="n">createProgram</span><span class="p">(</span><span class="n">gl</span><span class="p">,</span><span class="n">vertex</span><span class="p">.</span><span class="n">text</span><span class="p">,</span> <span class="n">fragment</span><span class="p">.</span><span class="n">text</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="model-view-projection变换">Model View Projection变换</h2>
+<p>在讨论Model View Projection变换之前，我们先指定Model坐标吧。这次为了简单起见，我们还是绘制一个三角形，只是这三角形的坐标不再是设备坐标系空间（normalized device space）的坐标了，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="n">function</span> <span class="nf">initBuffers</span><span class="p">(</span><span class="n">gl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="n">var</span> <span class="n">vertexBuffer</span> <span class="o">=</span> <span class="n">gl</span><span class="p">.</span><span class="n">createBuffer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">          <span class="n">gl</span><span class="p">.</span><span class="n">bindBuffer</span><span class="p">(</span><span class="n">gl</span><span class="p">.</span><span class="n">ARRAY_BUFFER</span><span class="p">,</span> <span class="n">vertexBuffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="n">gl</span><span class="p">.</span><span class="n">bufferData</span><span class="p">(</span><span class="n">gl</span><span class="p">.</span><span class="n">ARRAY_BUFFER</span><span class="p">,</span> <span class="k">new</span> <span class="n">Float32Array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">480</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span><span class="mi">320</span><span class="p">]),</span> <span class="n">gl</span><span class="p">.</span><span class="n">STATIC_DRAW</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们的canvas大小是480*320,这是一个横版iPhone4S的大小。我们这里定义的三角形坐标正好是canvas的左下角，右下角和中间最顶端的点。这个坐标我们暂且把它称之为模型坐标。而这三个点最终在normalized device space的坐标系应该是(-1,-1),(1,-1)和(0,1)。我们可以经过Model-to-View和View-to-Projection变换把(0,0),(480,0)和(240,320)这三个点变换为(-1,-1),(1,-1)和(0,1)。</p>
+<p>首先，介绍的是Model-to-View变换。在介绍这个变换之前，让我们先粗略地讲一下OpenGL的照相机原理。它其实就是模拟人的眼睛看周围世界的方式。而Model-to-View变换就是把模型空间变换成Camera空间。就好比，现在你的身后有个人，你想要看到他，你必须转过身去，或者他跑到你面前来。不管是哪种方式，都需要应用ModelView变换。</p>
+<p>在OpenGL里面是使用glLookAt这个函数来进行ModelView变换的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="n">var</span> <span class="n">mvMatrix</span> <span class="o">=</span> <span class="n">mat4</span><span class="p">.</span><span class="n">create</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">var</span> <span class="n">zEye</span> <span class="o">=</span> <span class="mi">320</span> <span class="o">/</span> <span class="mf">1.1566</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">mat4</span><span class="p">.</span><span class="n">lookAt</span><span class="p">(</span><span class="n">mvMatrix</span><span class="p">,</span> <span class="p">[</span><span class="mi">240</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="n">zEye</span><span class="p">],[</span><span class="mi">240</span><span class="p">,</span><span class="mi">160</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里的代码与cocos2d-x当中的ModelView变换是一模一样的（我表示拿来主义哈）。mat4.lookAt的第一个参数是一个out型参数，后面三个参数的意义分别是eye,center和up,即眼睛所在的位置，眼睛注意的物体的中心点位置和头的方向。这个解释不是很精确，强烈建议大家<a href="http://blog.db-in.com/cameras-on-opengl-es-2-x/">阅读10遍这篇文章</a>.</p>
+<p>模型视图变换完以后，此时的坐标已经在camera范围内了，但是最终opengl需要的是normalized device space坐标系的坐标，那个坐标系的取值范围是-1到+1.因此我们需要做一次View-to-Projection变换来把视图坐标系变换到normalized device space坐标系。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">var</span> <span class="n">fov</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mf">3.1415926</span> <span class="o">/</span> <span class="mi">180</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">mat4</span><span class="p">.</span><span class="n">perspective</span><span class="p">(</span><span class="n">pMatrix</span><span class="p">,</span> <span class="n">fov</span> <span class="p">,</span> <span class="mi">480</span><span class="o">/</span><span class="mi">320</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">zEye</span> <span class="o">+</span> <span class="mi">160</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这段代码也没啥好解释的，建议<a href="https://user.xmission.com/~nate/tutors.html">看看这个</a>就明白了.记得要下载可执行程序跑起来看看哦。</p>
+<p>最后就是把这两个matrix通过uniform的形式传给vertex shader啦:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">mvMatrixLocation</span> <span class="o">=</span> <span class="n">gl</span><span class="p">.</span><span class="n">getUniformLocation</span><span class="p">(</span><span class="n">program</span><span class="p">,</span><span class="s">&#34;u_ModelViewMatrix&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">pMatrixLocation</span> <span class="o">=</span> <span class="n">gl</span><span class="p">.</span><span class="n">getUniformLocation</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="s">&#34;u_PMatrix&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">gl</span><span class="p">.</span><span class="n">uniformMatrix4fv</span><span class="p">(</span><span class="n">pMatrixLocation</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="n">pMatrix</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">gl</span><span class="p">.</span><span class="n">uniformMatrix4fv</span><span class="p">(</span><span class="n">mvMatrixLocation</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="n">mvMatrix</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="集成jquery">集成Jquery</h2>
+<p>接下来，我们往场景里面添加一个slider，用来控制三角形的红色通道的颜色值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="o">&lt;</span><span class="n">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="err">拖动这个滑块</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">div</span> <span class="n">id</span><span class="o">=</span><span class="s">&#34;slider&#34;</span> <span class="o">&gt;&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">$</span><span class="p">(</span><span class="s">&#34;#slider&#34;</span><span class="p">).</span><span class="n">slider</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">          <span class="nl">orientation</span><span class="p">:</span> <span class="s">&#34;horizontal&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nl">max</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nl">min</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nl">step</span><span class="p">:</span><span class="mf">0.1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nl">value</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nl">slide</span> <span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">ui</span><span class="p">)</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">              <span class="n">sliderValue</span> <span class="o">=</span>  <span class="err">$</span><span class="p">(</span><span class="s">&#34;#slider&#34;</span><span class="p">).</span><span class="n">slider</span><span class="p">(</span><span class="s">&#34;value&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">              <span class="n">drawScene</span><span class="p">(</span><span class="n">gl</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在拖动滑块的时候，我们调用了drawScene来重绘整个OpenGL场景 。</p>
+<h2 id="结语">结语</h2>
+<p>最后，附上本教程的<a href="http://git.oschina.net/zilongshanren/Learning-WebGL/blob/master/ex04.html">源码</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-28
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/glmatrix.js/">glMatrix.js</a>
+          <a href="/tags/jquery/">jquery</a>
+          <a href="/tags/welgl/">welgl</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/embed-lua-tutorials-one/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Lua教程: C&#43;&#43;嵌入Lua脚本(1)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/my-git-workflow-part-two/">
+            <span class="next-text nav-default">我的Git工作流(下)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/webgl-use-glmatrix-and-jquery/" class="leancloud_visitors" data-flag-title="WebGL教程:使用glMatrix和JQuery(2)">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

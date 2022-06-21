@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Lua教程: C&#43;&#43;嵌入Lua脚本(1) - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="本系列教程主要介绍如何在C/C&#43;&#43;程序里面嵌入Lua脚本，我打算从以下几个方面来介绍： 如何在C/C&#43;&#43;里面嵌入Lua脚本 Lua访问C/C&#43;&#43;" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/embed-lua-tutorials-one/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Lua教程: C&#43;&#43;嵌入Lua脚本(1)" />
+<meta property="og:description" content="本系列教程主要介绍如何在C/C&#43;&#43;程序里面嵌入Lua脚本，我打算从以下几个方面来介绍： 如何在C/C&#43;&#43;里面嵌入Lua脚本 Lua访问C/C&#43;&#43;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/embed-lua-tutorials-one/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-28T00:00:00+00:00" />
+
+<meta itemprop="name" content="Lua教程: C&#43;&#43;嵌入Lua脚本(1)">
+<meta itemprop="description" content="本系列教程主要介绍如何在C/C&#43;&#43;程序里面嵌入Lua脚本，我打算从以下几个方面来介绍： 如何在C/C&#43;&#43;里面嵌入Lua脚本 Lua访问C/C&#43;&#43;"><meta itemprop="datePublished" content="2014-06-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2000">
+<meta itemprop="keywords" content="Lua," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Lua教程: C&#43;&#43;嵌入Lua脚本(1)"/>
+<meta name="twitter:description" content="本系列教程主要介绍如何在C/C&#43;&#43;程序里面嵌入Lua脚本，我打算从以下几个方面来介绍： 如何在C/C&#43;&#43;里面嵌入Lua脚本 Lua访问C/C&#43;&#43;"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Lua教程: C&#43;&#43;嵌入Lua脚本(1)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-28 </span>
+        <div class="post-category">
+            <a href="/categories/lua/"> Lua </a>
+            </div>
+          <span class="more-meta"> 约 2000 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#mac项目集成lua">Mac项目集成Lua</a>
+      <ul>
+        <li><a href="#准备工作">准备工作</a></li>
+        <li><a href="#c调用lua文件">C++调用Lua文件</a></li>
+        <li><a href="#新建lua文件">新建Lua文件</a></li>
+        <li><a href="#编译并运行">编译并运行</a></li>
+      </ul>
+    </li>
+    <li><a href="#ios项目集成lua">IOS项目集成Lua</a></li>
+    <li><a href="#android项目集成lua">Android项目集成Lua</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>本系列教程主要介绍如何在C/C++程序里面嵌入Lua脚本，我打算从以下几个方面来介绍：</p>
+<ul>
+<li>
+<p>如何在C/C++里面嵌入Lua脚本</p>
+</li>
+<li>
+<p>Lua访问C/C++数据结构（这里面要介绍类，结构体，函数，变量，枚举等数据类型在lua里面如何访问）</p>
+</li>
+<li>
+<p>C/C++访问Lua的数据，主要是基本数据类型，函数和Table</p>
+</li>
+<li>
+<p>Cocos2D-X里面的Lua绑定（含自动绑定与手动绑定）</p>
+</li>
+<li>
+<p>Cocos2D-x里面Lua和C/C++相互调用</p>
+</li>
+<li>
+<p>Cocos2D-x里面Lua和Java相互调用</p>
+</li>
+<li>
+<p>Cocos2D-x里面Lua和Objective-C相互调用</p>
+</li>
+</ul>
+<p>本系列教程不会过多地介绍Lua的基本语法，关于Lua基本语法的学习，推荐<a href="http://www.amazon.com/Programming-Second-Edition-Roberto-Ierusalimschy/dp/8590379825">《Programming In Lua》</a>。 如有纰漏，欢迎指出，谢谢。</p>
+<p>本系列教程源码地址：https://github.com/zilongshanren/LuaCppBindingDemo</p>
+<!-- raw HTML omitted -->
+<h2 id="mac项目集成lua">Mac项目集成Lua</h2>
+<h3 id="准备工作">准备工作</h3>
+<p>首先，新建一个控制台应用程序。 打开Xcode,New-&gt;Project-&gt;OSX-&gt;Command Line Tool，取名为Lesson01如下图所示：
+<img src="https://zilongshanren.com/img/newMacProject.jpg" alt="newMac"></p>
+<p>接下来，我们需要下载<a href="http://www.lua.org/download.html">lua5.3.3</a>.下载完后，解压缩，然后cd到刚刚解压缩的路径下面，输入make macosx，这样便可以生成Mac下面的lib文件。</p>
+<p>接下来把刚刚解压缩的文件夹拷贝到你新建的工程下面，然后设置include路径和library路径。（注意，这里是不需要把头文件添加到Xcode里面的，只要指定include路径，编译的时候，编译器会自动去找的。）</p>
+<p><img src="https://zilongshanren.com/img/searchpath.png" alt="searchpath"></p>
+<p>因为我的Lua文件夹的路径是:xxxx/Lesson01/lua-5.2.3，所以，我把search path和library path分别设置为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">//search path
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">$</span><span class="p">(</span><span class="n">SRCROOT</span><span class="p">)</span><span class="o">/</span><span class="n">Lesson01</span><span class="o">/</span><span class="n">lua</span><span class="o">-</span><span class="mf">5.2.3</span><span class="o">/</span><span class="n">src</span><span class="o">/</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//library path
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">$</span><span class="p">(</span><span class="n">PROJECT_DIR</span><span class="p">)</span><span class="o">/</span><span class="n">Lesson01</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面是我的工程与lua之间的目录结构，liblua.a文件是从src里面拷贝出来的。（前面我们使用make macosx生成出来的）</p>
+<p><img src="https://zilongshanren.com/img/luapath.png" alt="luapath"></p>
+<p><strong>注意：如果直接添加lua的所有源码，则会编译报错。因为lua.c里面也有一个main函数。这个main函数是用来生成可执行程序的。</strong>
+<strong>另外，如果是添加其它第三方的库，也可以参考这个方法，添加search path和library path</strong></p>
+<h3 id="c调用lua文件">C++调用Lua文件</h3>
+<p>首先，打开main.cpp，并包含以下头文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;lua.hpp&#34;</span><span class="cp">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果此时编译不报错，则说明你之前设置的search path是正确的，如果报错，请自行调整search path。</p>
+<p>这里面的lua.hpp的内容如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">extern</span> <span class="s">&#34;C&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;lua.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;lualib.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;lauxlib.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这才是大多数Lua教程里的代码嘛。然后在main函数里面添加以下内容：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="c1">//1. 初始化Lua虚拟机
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">lua_State</span> <span class="o">*</span><span class="n">lua_state</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_state</span> <span class="o">=</span> <span class="n">luaL_newstate</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//2.设置待注册的Lua标准库，这个库是给你的Lua脚本用的
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//因为接下来我们只想在Lua脚本里面输出hello world，所以只引入基本库就可以了
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">static</span> <span class="k">const</span> <span class="n">luaL_Reg</span> <span class="n">lualibs</span><span class="p">[]</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="s">&#34;base&#34;</span><span class="p">,</span> <span class="n">luaopen_base</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//3.注册Lua标准库并清空栈
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">const</span> <span class="n">luaL_Reg</span> <span class="o">*</span><span class="n">lib</span> <span class="o">=</span> <span class="n">lualibs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(;</span> <span class="n">lib</span><span class="o">-&gt;</span><span class="n">func</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="n">lib</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">luaL_requiref</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="n">lib</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span> <span class="n">lib</span><span class="o">-&gt;</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">lua_pop</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//4、运行hello.lua脚本
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">luaL_dofile</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="s">&#34;hello.lua&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//5. 关闭Lua虚拟机
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">lua_close</span><span class="p">(</span><span class="n">lua_state</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="新建lua文件">新建Lua文件</h3>
+<p>选择New-&gt;File-&gt;Other，然后命名为hello.lua， 以下是hello.lua里面的内容:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">print</span> <span class="s">&#34;Hello World&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="编译并运行">编译并运行</h3>
+<p>此时编译并运行，这时可能看不到控制台输出&quot;Hello World&quot;。因为你的Lua脚本没有拷贝到程序里面去，我们需要再设置一下。如下图所示：
+（注意：subpath 要清空，copy only when installing 去掉打勾）</p>
+<p><img src="https://zilongshanren.com/img/copylua.png" alt="copylua"></p>
+<p>这时，编译并运行，你会得到如下结果 ：
+<img src="https://zilongshanren.com/img/luaresult.png" alt="luaresult"></p>
+<p>接下来，我们讲讲IOS项目怎么集成Lua。</p>
+<h2 id="ios项目集成lua">IOS项目集成Lua</h2>
+<p>IOS项目集成Lua的方式与Mac大同小异，顺便补充一句，Lua本质上是一个c程序，任何平台下面集成相应c库的方法都是适用的。</p>
+<p>这里我主要写一些注意事项吧：</p>
+<ol>
+<li>
+<p>我们刚才编译好的macosx库只能给mac程序用，ios需要单独编译（当然，windows和linux也需要再单独编译，编译方法见下载的lua-5.2.3/doc/readme.html）</p>
+</li>
+<li>
+<p>编译ios可以通过添加一个static library，然后把所有的Lua文件添加到这个Library里面。最后，让主项目依赖这个Library就可以了。</p>
+</li>
+<li>
+<p>直接使用luaL_dofile(lua_state, &ldquo;hello.lua&rdquo;)是行不通的，因为ios项目的资源路径在一个沙盒里。我们必须取得全路径才可以访问到这个hello.lua文件。以cocos2d-x为例，我们可以使用下面的代码获得hello.lua的全路径，然后再传递给Lua虚拟机。</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">scriptPath</span> <span class="o">=</span> <span class="n">FileUtils</span><span class="o">::</span><span class="n">getInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">fullPathForFilename</span><span class="p">(</span><span class="s">&#34;hello.lua&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">status</span> <span class="o">=</span> <span class="n">luaL_loadfile</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="n">scriptPath</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="android项目集成lua">Android项目集成Lua</h2>
+<p>Android集成Lua需要使用Android.mk把Lua打包成一个静态库，然后在项目里面包含这个Lua模块。具体的做法可以参考cocos2d-x。</p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>
+<p><a href="http://www.acamara.es/blog/2012/08/running-a-lua-5-2-script-from-c/">http://www.acamara.es/blog/2012/08/running-a-lua-5-2-script-from-c/</a></p>
+</li>
+<li>
+<p><a href="http://lua-users.org/wiki/SampleCode">Lua sample code</a></p>
+</li>
+<li>
+<p><a href="http://gamedevgeek.com/tutorials/getting-started-with-lua/">Getting started with lua</a></p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-28
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/lua/">Lua</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/opengl-es2.0-tutorials-your-first-cube/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">OpenGL ES2.0教程：你的第一个立方体(5)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/webgl-use-glmatrix-and-jquery/">
+            <span class="next-text nav-default">WebGL教程:使用glMatrix和JQuery(2)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/embed-lua-tutorials-one/" class="leancloud_visitors" data-flag-title="Lua教程: C&#43;&#43;嵌入Lua脚本(1)">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

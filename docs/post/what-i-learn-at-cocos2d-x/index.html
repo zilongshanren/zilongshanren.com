@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Things I Have Learned at Cocos2D-X Team - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="我是去年7月加入的Cocos2D-X团队，从今年2月份正式进入Cocos2D-x引擎团队，负责维护GUI框架。之前我一直在做技术推广，写英文" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/what-i-learn-at-cocos2d-x/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Things I Have Learned at Cocos2D-X Team" />
+<meta property="og:description" content="我是去年7月加入的Cocos2D-X团队，从今年2月份正式进入Cocos2D-x引擎团队，负责维护GUI框架。之前我一直在做技术推广，写英文" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/what-i-learn-at-cocos2d-x/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-09-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-09-14T00:00:00+00:00" />
+
+<meta itemprop="name" content="Things I Have Learned at Cocos2D-X Team">
+<meta itemprop="description" content="我是去年7月加入的Cocos2D-X团队，从今年2月份正式进入Cocos2D-x引擎团队，负责维护GUI框架。之前我一直在做技术推广，写英文"><meta itemprop="datePublished" content="2014-09-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-09-14T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4244">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Things I Have Learned at Cocos2D-X Team"/>
+<meta name="twitter:description" content="我是去年7月加入的Cocos2D-X团队，从今年2月份正式进入Cocos2D-x引擎团队，负责维护GUI框架。之前我一直在做技术推广，写英文"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Things I Have Learned at Cocos2D-X Team</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-09-14 </span>
+        <div class="post-category">
+            <a href="/categories/programming-life/"> programming life </a>
+            </div>
+          <span class="more-meta"> 约 4244 字 </span>
+          <span class="more-meta"> 预计阅读 9 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#cross-platform-development-is-not-easy">Cross-Platform Development is Not Easy</a></li>
+    <li><a href="#learn-by-solving-problems">Learn By Solving Problems</a></li>
+    <li><a href="#document-driven-development">Document Driven Development</a></li>
+    <li><a href="#test-driven-development">Test Driven Development</a></li>
+    <li><a href="#be-careful-about-refactoring">Be Careful About Refactoring</a></li>
+    <li><a href="#be-patient-about-the-error-message">Be Patient About the Error Message</a></li>
+    <li><a href="#dont-break-back-compatibility">Don&rsquo;t Break Back Compatibility</a></li>
+    <li><a href="#self-code-review-before-sending-pr">Self Code Review Before Sending PR</a></li>
+    <li><a href="#discuss-the-solution-with-team-members">Discuss the Solution with Team Members</a></li>
+    <li><a href="#always-keep-an-eye-on-side-effect">Always Keep an Eye on Side Effect</a></li>
+    <li><a href="#give-respect-to-the-existing-code-base">Give Respect to the Existing Code Base</a></li>
+    <li><a href="#even-ricardo-might-write-buggy-code">Even Ricardo Might write buggy code</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>我是去年7月加入的Cocos2D-X团队，从今年2月份正式进入Cocos2D-x引擎团队，负责维护GUI框架。之前我一直在做技术推广，写英文教程、演讲、偶尔上课是我的全部工作。
+期间，我最骄傲的产出是出色地完成了Doxygen自动提取C++源码，然后生成Js/Lua/Cpp可以切换的API文档。</p>
+<!-- raw HTML omitted -->
+<p>如果对此不了解的同学，可以根据下图所示，点击<a href="http://www.cocos2d-x.org/wiki/Reference">此链接把玩一下</a></p>
+<p><img src="https://zilongshanren.com/img/api-reference.png" alt="api-reference"></p>
+<p>对于王哲交给我的GUI框架改进任务，目前来说，效果我不是特别满意。原因非常的多，我也不在这里展开了。（PS：如果大家对现在的GUI有什么要吐槽的，
+欢迎大家在本文最后给我留言，或者去Github提issue，如果是好的建议，我一定会采纳.）</p>
+<p>本文主要是总结我这大半年来，在参与Cocos2D-X引擎的维护和GUI框架改进过程中的一些心得体会。</p>
+<h2 id="cross-platform-development-is-not-easy">Cross-Platform Development is Not Easy</h2>
+<p>跨平台开发不容易。</p>
+<p>因为Cocos2D-X是一个跨平台的游戏引擎，采用它来开发游戏可以极大地节约维护多个平台的游戏源码所带来的高昂维护成本。但是，你们知道吗？跨平台引擎的开发真的不容易，比我们
+想像的要难很多。我指的不是单纯的技术复杂度，而是平台的多样性(Win32, Mac, Linux)、终端设备的多样式(苹果，小米，华为，三星，HTC等等)和终端操作系统(Android,iOS,WP8)的多样性，导致维护成本的极大提升。
+就拿实现视频播放控件来说，单纯地实现iOS或者Android都还算比较简单，但是如果你想要实现全平台的视频播放控件，你就要付出非常多的努力。当然我们可以采用第三方库，比如ffmpeg，但是据我所知，
+ffmpeg的开源协议是有问题的，我们不能使用。就算能够使用，集成进来也要花费非常多的时间去保证各个平台的可用性（因为我们的第三方库要使用预编译库，所以你要编译各种平台的静态库，这些静态库还分flat包，non-flat包，32bit,64bit,arm，x86等）。
+我之前有写过用<a href="http://zilongshanren.com/blog/2014-09-01-how-to-use-cmake-to-compile-static-library.html">CMake</a>可以减少很多工作量，但是，还是非常之麻烦。</p>
+<p>另外，有些效果在国内外某些Android厂商的某些机型上面就是与众不同，比如某米的2s版本，还有某星的9100版本，我们还需要在代码里面专门针对这些奇葩机型去做处理。</p>
+<p>功能实现总归可以通过代码解决，但是尼玛一台电脑要编译，运行，测试，然后修改代码，再编译，运行，测试那么多平台。你知道这个过程要多久吗？我的15寸MacbookPro，安装windows8虚拟机，编译一次win32的工程，需要10-20分钟不等。
+编译一次Android需要5-10分钟不等，编译一次Linux需要10-20分钟不等,编译一次Mac要5-10分钟不等。有时候为了改一个bug，你会发现自己有一半的时候是在编译等待。当然，这个期间我们可以去干点别的，但是电脑此时是很卡的（特别是虚拟机编译Windows工程的时候），写代码肯定是没戏了。
+只能逛论坛回答开发者提问，或者Review自己写的代码。</p>
+<h2 id="learn-by-solving-problems">Learn By Solving Problems</h2>
+<p>通过解决问题来学习。</p>
+<p>因为我的技能加点有限，进入引擎团队以后，我需要学习更多与引擎相关的技术。虽然我的C++还可以，OpenGL也略懂一些。但是，要想干好这份工作，必须要进一步加强自身的学习，
+尤其是OpenGL ES 2.0和Lua的学习。 因为现在是工作，再也不是学生时代有大把的时间来啃厚厚的书本来学习知识了。那种方法虽然可以系统地学习某些知识，但是也有一个明显的
+缺点，那就是效率不高，看完容易忘，动手能力不强。</p>
+<p>我个人是一个非常喜欢通过看书来学习知识的人，我也从看书中获益良多。但是，现在我发现，面对一个未知的领域，最好的学习方式就是把脚伸出去，让它浸湿(Make you foot wet.)
+其实就是通过解决问题的过程来学习。</p>
+<p>比如OpenGL ES 2.0的学习，我可以自己尝试写一些简单的绘制三角形和立方体，纹理映射什么的。这些知识可以通过网络上的教程来学习。学到这些知识以后，最好的方法就是立马运用到实际的工作
+当中去。因为我是在维护引擎，所以必然会每天与这些OpenGL ES 代码打交道，久而久之，自然就知道这些代码是怎么回事了。还有Lua的学习也是如此，学会基本的Lua语法和绑定规则之后，有助于
+了解和掌握Lua绑定的原理，知其所以然.</p>
+<p>还有，关于CMake的学习，如果我先抱着一本CMake的参考手册去看，估计看了半个月还不一定能编译出一个外部库的全部静态库版本。但是，我按照做中学的方法，在掌握了基本的CMake的语法之后，
+通过解决实际工作中的问题，加速了我对CMake的运用和理解。</p>
+<p>最近我在学习Lisp和Emacs，我发现此法亦非常行之有效。解决问题的过程，我们不仅要寻找知识，更需要把寻找到的知识与自己已经掌握的知识相结合并加以运用，最后才能得出解决方案。而这个过程是
+我们学习的捷径。</p>
+<h2 id="document-driven-development">Document Driven Development</h2>
+<p>文档驱动开发。</p>
+<p>最近几天英文论坛里面有几个用户调查，是我的一个美国同事发起的，调查的问题大概是“开发者最希望引擎提供什么功能之类的话题”。结果，关于文档的抱怨是最多的。
+由于cn.cocos2d-x.org上线后，我想国内的用户对于cocos2d-x的文档需求应该没有老外那么饥渴。但是由于引擎版本升级过快，很多文档也面临地不准确和过时的尴尬境地。</p>
+<p>文档，这是Cocos2D系列引擎的一块软肋。由于Cocos2D-X主要由国人主导，那么编写英文文档就更加受限制了。虽然引擎团队内部，大部分人的英文水平都不错，但是只要不是Native，
+写起来就会感觉诸多不适。再说，即使是使用中文，要想写好一篇简洁明了、言之有物的文档也是非常不容易的。</p>
+<p>不说文档的问题了，文档我们会慢慢解决的。</p>
+<p>让我们来谈谈“文档驱动开发”吧。什么是“文档驱动开发”呢？简而言之，就是要开发一个功能，先写好设计和功能说明文档，然后再开发。这个看似很奇葩的流程，实则对于开源项目非常有益。
+之前的New Render和New Event Dispatcher都是如此开发出来的。先写文档后写代码有非常多的好处：</p>
+<p>首先，写文档可以理清自己的思路，思绪一直在头脑里面打转，不如用笔写下来。我以前有个同学，喜欢与我讨论自己的思路，经过一篇争论之后，他就灵光一闪，跑去编码了。</p>
+<p>其次，写文档可以传达设计给团队其他成员。当其他成员了解了你的想法以后，就更容易在设计阶段就指出方案中存在的不足，避免后续不停地打补丁来解决代码中的bug。</p>
+<p>最后，这份文档后面还可以加以修饰变成用户文档，减轻后续的文档任务.</p>
+<h2 id="test-driven-development">Test Driven Development</h2>
+<p>测试驱动开发.</p>
+<p>这个大家已经很熟悉了。这里我拿出来讲，主要是因为Cocos2D-X项目的特殊性，因为它是一个供其它程序员使用的程序。它不是一个游戏产品，而是一个中间件。
+引擎对于代码的质量要求非常地高，Bug是绝对不容许的。当然，代码只要是人写的，也不可能没有Bug。只是我们要尽量在开发阶段把Bug数量减少到最低。</p>
+<p>我添加的每一个Feature都需要有对应的测试代码，修复的每一个Bug也需要对应的测试代码。当然，想要做到先写测试，后写代码，这个目前我还无法完全做到。</p>
+<p>没有测试的代码，很容易在重构和添加新功能之后遭受破坏。测试是非常重要的。</p>
+<h2 id="be-careful-about-refactoring">Be Careful About Refactoring</h2>
+<p>重构需谨慎!</p>
+<p>我刚开始接手GUI框架的时候，我一口气列举了它的N多“罪状”。当然，我对它的印象或多或少也受到了开发者对此GUI框架的评价。
+我极不情愿地接手维护这样的“烂代码”，决心“重构之”！</p>
+<p>但是我高估了自己，低估了这佗代码。意大利面条式的代码我之前只在教科书上面看到，虽然如此，但当我真正面对它的时候，我还是显得苍白无力。</p>
+<p>在几次大的重构中，我都引入了一些小Bug。虽然这些Bug修复起来也很容易，但是由于测试例不全，再加上我考虑问题的方式不周全，这些Bug给开发者带去了
+不好的印象。</p>
+<p>重构一定要建立在已有代码的测试例健全的基础之上，否则，贸然重构就像刀口上舔血，迟早割伤自己的舌头。</p>
+<h2 id="be-patient-about-the-error-message">Be Patient About the Error Message</h2>
+<p>要耐心阅读出错消息。</p>
+<p>很多时候，我们会听到有人在群里跪求大神帮忙解决一个错误。然后不管3721，截个异常的trace过来，或者贴上一大串代码。因为出错了，心里自然就慌了。但是优秀的程序员，
+他在这个时候表现出来的一定是淡定！他会认真阅读出错消息，然后分析可能的出错原因，试图通过简单地修改代码来排查错误。最后，实在不行，他会悠然地打开google，输入刚刚的出错消息。
+然后刚好这个问题在stackoverflow里面有人也问到了，打开一看，果然，问题解决了。</p>
+<p>程序一定会出错。但是不要怕，一定要耐心阅读错误消息，哪怕它再长，哪怕它全是英文，也没什么大不了的。善于阅读出错消息和源码，我相信这一点对成为一个专业程序员是非常重要的。</p>
+<h2 id="dont-break-back-compatibility">Don&rsquo;t Break Back Compatibility</h2>
+<p>一定不要破坏向后兼容性！</p>
+<p>虽然这么说，但是我们还是一次又一次地在工程目录、环境搭建、命名规则等方面破坏了向后兼容性。虽然我们每一次的破坏向后兼容性都是出于改进现有代码的质量，但是这给我们的开发者带来了非常大的困扰。</p>
+<p>且不说大量的教程和文档，因为破坏了向后兼容性，导致它们全部失效。另外，开发者如果想自己升级引擎，也是非常的痛苦。</p>
+<p>我今后写的代码一定不能破坏向后兼容性，除非是万不得已的情况下，请大家监督!</p>
+<h2 id="self-code-review-before-sending-pr">Self Code Review Before Sending PR</h2>
+<p>在提交Pull Request之前自己先Review代码。</p>
+<p>写的再好的代码也有考虑问题不全面的时候，所以在提交PR之前，一定要记得Review自己的代码。因为是自己Review自己的代码，所以有可能效果不会特别好。但是，有Review总比没有Review要强。</p>
+<p>另外，在Review的时候，可以着重关注代码的风格是否与引擎保持一致。Review代码的时候也多转换一下思路，多从开发者的角度来想问题。</p>
+<h2 id="discuss-the-solution-with-team-members">Discuss the Solution with Team Members</h2>
+<p>与团队成员讨论解决方案。</p>
+<p>团队的力量是无穷的。与团队成员一起讨论已有的解决方案，可以促进知识在团队里面的传播，同时还可以完善和改进一些方案。
+俗话说“三个臭皮匠，顶过一个诸葛亮”。</p>
+<h2 id="always-keep-an-eye-on-side-effect">Always Keep an Eye on Side Effect</h2>
+<p>留心“副作用”。</p>
+<p>很多时候，我们在修复一些Bug的时候，都有可能带来“副作用”。这些副作用往往还隐藏地特别深，所以，我们需要更完善的测试来保障代码的正确性。</p>
+<h2 id="give-respect-to-the-existing-code-base">Give Respect to the Existing Code Base</h2>
+<p>尊重已有代码。</p>
+<p>哪怕你手里的代码你再看不顺眼，但是起码它是可以跑的。那么这样的代码就一定有可取之处。我们要对代码怀有敬畏之心，要尊重之前维护这份代码的人。
+维护代码本身已属不易，且码且珍惜。</p>
+<h2 id="even-ricardo-might-write-buggy-code">Even Ricardo Might write buggy code</h2>
+<p>即使大神也会犯错。</p>
+<p>代码都是人写的，只要是人写的代码就一定会有Bug，大神也不例外。 所以，谦虚谨慎，多包容别人，其实就是包容明天的自己。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-09-14
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/a-bite-of-python/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">A bite of Python</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/migrate-to-octopress/">
+            <span class="next-text nav-default">迁移博客到Octopress</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/what-i-learn-at-cocos2d-x/" class="leancloud_visitors" data-flag-title="Things I Have Learned at Cocos2D-X Team">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

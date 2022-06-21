@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>WebGL教程:你的第一个立方体(3) - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="在上一篇文章中，我们介绍了如何使用glMatrix.js来处理3D图形里面的数学运算，主要谈到了MVP的应用。同时，我们还简单地提到了如何使" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/webgl-your-first-cube/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="WebGL教程:你的第一个立方体(3)" />
+<meta property="og:description" content="在上一篇文章中，我们介绍了如何使用glMatrix.js来处理3D图形里面的数学运算，主要谈到了MVP的应用。同时，我们还简单地提到了如何使" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/webgl-your-first-cube/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-07-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-07-20T00:00:00+00:00" />
+
+<meta itemprop="name" content="WebGL教程:你的第一个立方体(3)">
+<meta itemprop="description" content="在上一篇文章中，我们介绍了如何使用glMatrix.js来处理3D图形里面的数学运算，主要谈到了MVP的应用。同时，我们还简单地提到了如何使"><meta itemprop="datePublished" content="2014-07-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-07-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1717">
+<meta itemprop="keywords" content="welgl," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="WebGL教程:你的第一个立方体(3)"/>
+<meta name="twitter:description" content="在上一篇文章中，我们介绍了如何使用glMatrix.js来处理3D图形里面的数学运算，主要谈到了MVP的应用。同时，我们还简单地提到了如何使"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">WebGL教程:你的第一个立方体(3)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-07-20 </span>
+        <div class="post-category">
+            <a href="/categories/webgl/"> WebGL </a>
+            </div>
+          <span class="more-meta"> 约 1717 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#vbo和ibo">VBO和IBO</a></li>
+    <li><a href="#绑定vbo和ibo并传递数据">绑定VBO和IBO并传递数据</a></li>
+    <li><a href="#vertex-shader">vertex shader</a></li>
+    <li><a href="#绘制立方体">绘制立方体</a></li>
+    <li><a href="#传递颜色数据">传递颜色数据</a></li>
+    <li><a href="#animation-loop">Animation Loop</a></li>
+    <li><a href="#程序运行结果">程序运行结果:</a></li>
+    <li><a href="#结语">结语</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>在<a href="http://zilongshanren.com/blog/2014-06-28-webgl-use-glmatrix-and-jquery.html">上一篇文章</a>中，我们介绍了如何使用glMatrix.js来处理3D图形里面的数学运算，主要谈到了MVP的应用。同时，我们还简单地提到了如何使用JQuery来丰富我们的WebGL应用。</p>
+<p>本文将介绍如何使用WebGL来制作一个旋转的立方体。在这篇教程里面，我们会提到以下内容：</p>
+<ul>
+<li>
+<p>VBO(Vertex Buffer Object)和IBO（Index Buffer Object）</p>
+</li>
+<li>
+<p>如何绘制3D立方体</p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="vbo和ibo">VBO和IBO</h2>
+<p>VBO就是我们常说的“顶点缓冲区对象”，这个在之前的三角形教程中已经介绍过了。而IBO则是索引缓冲区对象，全称是Index Buffer Object。它主要用来保存顶点的索引数据。</p>
+<p>如果我们不使用IBO，而直接使用VBO的话，那么要绘制一个立方体，一共需要6*6=36个顶点。而使用IBO的话，每一个面只需要4个顶点即可，因为两个相邻的三角形是共用两个顶点的。任何复杂的几何模型都可以通过指定顶点和顶点索引定义出来。</p>
+<p>首先，让我们看一下立方体的顶点数据定义，这里我们使用的是javascript数组：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">var</span> <span class="n">vertecies</span> <span class="o">=</span> 
+</span></span><span class="line"><span class="cl"> <span class="c1">//front
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">//back
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">//left
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">//right
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">//top
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">//botto
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">];</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>每一个顶点有x,y,z三个坐标，每一个面由两个三角形组成，所以需要6个顶点。不过我们可以这里使用的是IBO来共用顶点，所以每个面只需要4个顶点即可。下面是IBO的定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">var</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="c1">//front
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>         <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="c1">//back
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>         <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="c1">//left
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>         <span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="c1">//right
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>         <span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="c1">//top
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>         <span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="c1">//bottom
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>         <span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">         <span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">20</span>
+</span></span><span class="line"><span class="cl">        <span class="p">];</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="绑定vbo和ibo并传递数据">绑定VBO和IBO并传递数据</h2>
+<p>首先，当然是创建VBO和IBO了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">//创建并绑定IBO
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">indexBuffer</span> <span class="o">=</span> <span class="n">gl</span><span class="p">.</span><span class="n">createBuffer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">gl</span><span class="p">.</span><span class="n">bindBuffer</span><span class="p">(</span><span class="n">gl</span><span class="p">.</span><span class="n">ELEMENT_ARRAY_BUFFER</span><span class="p">,</span><span class="n">indexBuffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//创建并绑定VBO
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">vertexBuffer</span> <span class="o">=</span> <span class="n">gl</span><span class="p">.</span><span class="n">createBuffer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">gl</span><span class="p">.</span><span class="n">bindBuffer</span><span class="p">(</span><span class="n">gl</span><span class="p">.</span><span class="n">ARRAY_BUFFER</span><span class="p">,</span> <span class="n">vertexBuffer</span><span class="p">);</span>  
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接来是往这两个buffer里面填充数据，WebGL是不能直接把Js的数组传递给GPU的，必须把它们转换成WebGL规定的类型，比如Float32Array和Uint16Array。
+具体的代码如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">//传递顶点数据给VBO
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">var</span> <span class="n">vertexData</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Float32Array</span><span class="p">(</span><span class="n">vertecies</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">gl</span><span class="p">.</span><span class="n">bufferData</span><span class="p">(</span><span class="n">gl</span><span class="p">.</span><span class="n">ARRAY_BUFFER</span><span class="p">,</span> <span class="n">vertexData</span><span class="p">,</span> <span class="n">gl</span><span class="p">.</span><span class="n">STATIC_DRAW</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//传递顶点索引数据给IBO
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">gl</span><span class="p">.</span><span class="n">bufferData</span><span class="p">(</span><span class="n">gl</span><span class="p">.</span><span class="n">ELEMENT_ARRAY_BUFFER</span><span class="p">,</span> <span class="k">new</span> <span class="n">Uint16Array</span><span class="p">(</span><span class="n">index</span><span class="p">),</span> <span class="n">gl</span><span class="p">.</span><span class="n">STATIC_DRAW</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="vertex-shader">vertex shader</h2>
+<p>指定vertex shader如何读取VBO和IBO里面的数据。
+这次我们使用gl.vertexAttribPointer函数时需要注意，最后一个参数是读取数据时的起始偏移量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">   <span class="n">var</span> <span class="n">positionLocation</span> <span class="o">=</span> <span class="n">gl</span><span class="p">.</span><span class="n">getAttribLocation</span><span class="p">(</span><span class="n">program</span><span class="p">,</span> <span class="s">&#34;a_position&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">gl</span><span class="p">.</span><span class="n">enableVertexAttribArray</span><span class="p">(</span><span class="n">positionLocation</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">gl</span><span class="p">.</span><span class="n">vertexAttribPointer</span><span class="p">(</span><span class="n">positionLocation</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">gl</span><span class="p">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="绘制立方体">绘制立方体</h2>
+<p>要绘制立方体，只需要调用gl.drawElements这个函数即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">gl</span><span class="p">.</span><span class="n">drawElements</span><span class="p">(</span><span class="n">gl</span><span class="p">.</span><span class="n">TRIANGLES</span><span class="p">,</span><span class="mi">36</span><span class="p">,</span><span class="n">gl</span><span class="p">.</span><span class="n">UNSIGNED_SHORT</span><span class="p">,</span><span class="mi">0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意这个函数的第1个参数是指绘制几何图元的类型，第2个参数是指索引的个数，第3个参数一定要是gl.UNSIGNED_SHORT或者gl.UNSIGNED_BYTE中的一个，最后一个参数是指索引数据的读取起始偏移量。</p>
+<p>这样子绘制出来的立方体它是没有颜色的，如果我们需要每一个顶点指定颜色，则还需要创建一个VBO，然后绑定这个VBO，再通过vertex shader把这个颜色数据传递过去。</p>
+<h2 id="传递颜色数据">传递颜色数据</h2>
+<p>如果按照传递的c/c++程序的做法，我们一般会定义一个顶点属性的结构体：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">typedef</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">position</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">color</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="n">Vertex</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>但是，js里面是不能这些定义的。我们可以直接把顶点和颜色放置在一个数组里面就行了:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="n">var</span> <span class="n">vertecies</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="c1">//back
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                   <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="c1">//left
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                   <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="c1">//right
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                   <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="c1">//top
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                   <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="c1">//bottom
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                   <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl">                   <span class="p">];</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时，如果使用gl.vertexAttribPointer时，strid的计算如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="n">var</span> <span class="n">step</span> <span class="o">=</span> <span class="n">Float32Array</span><span class="p">.</span><span class="n">BYTES_PER_ELEMENT</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stride</span> <span class="o">=</span> <span class="n">step</span> <span class="o">*</span> <span class="p">(</span><span class="n">vertex</span> <span class="n">component</span> <span class="n">Count</span> <span class="o">+</span> <span class="n">color</span> <span class="n">component</span> <span class="n">count</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>比如，本例中，每一个顶点属性是7个数（3个顶点+4个颜色位）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">   <span class="n">gl</span><span class="p">.</span><span class="n">vertexAttribPointer</span><span class="p">(</span><span class="n">positionLocation</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">gl</span><span class="p">.</span><span class="n">FLOAT</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="mi">7</span> <span class="o">*</span> <span class="n">step</span> <span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">var</span> <span class="n">colorLocation</span> <span class="o">=</span> <span class="n">gl</span><span class="p">.</span><span class="n">getAttribLocation</span><span class="p">(</span><span class="n">program</span><span class="p">,</span><span class="s">&#34;a_color&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">gl</span><span class="p">.</span><span class="n">enableVertexAttribArray</span><span class="p">(</span><span class="n">colorLocation</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="n">gl</span><span class="p">.</span><span class="n">vertexAttribPointer</span><span class="p">(</span><span class="n">colorLocation</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">gl</span><span class="p">.</span><span class="n">FLOAT</span><span class="p">,</span><span class="nb">false</span><span class="p">,</span> <span class="mi">7</span> <span class="o">*</span> <span class="n">step</span> <span class="p">,</span><span class="mi">3</span> <span class="o">*</span> <span class="n">step</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="animation-loop">Animation Loop</h2>
+<p>使用requestAnimationFrame制作Animation Loop,避免使用setTimeOut方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">fpsInterval</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">/</span><span class="mi">60</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">then</span> <span class="o">=</span> <span class="n">Date</span><span class="p">.</span><span class="n">now</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">startTime</span> <span class="o">=</span> <span class="n">then</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">function</span> <span class="n">animloop</span><span class="p">(</span><span class="n">time</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">now</span> <span class="o">=</span> <span class="n">Date</span><span class="p">.</span><span class="n">now</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">elapsed</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="n">then</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="n">elapsed</span> <span class="o">&gt;</span> <span class="n">fpsInterval</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">drawScene</span><span class="p">(</span><span class="n">time</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">requestAnimationFrame</span><span class="p">(</span><span class="n">animloop</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">})();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="程序运行结果">程序运行结果:</h2>
+<!-- raw HTML omitted -->
+<p>本文源代码：<a href="http://git.oschina.net/zilongshanren/Learning-WebGL/blob/master/ex05.html">传送门</a></p>
+<h2 id="结语">结语</h2>
+<p>这里的顶点数据我们除了使用Javascript数组来存取外，还可以使用json格式的数据。由于json可以给不同的数据命名，比如一个立方体的数据可以描述为以下json文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;vertex&#34;</span> <span class="o">:</span> <span class="p">{</span><span class="n">xxx</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;color&#34;</span> <span class="o">:</span> <span class="p">{</span><span class="n">xxx</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;texCoord&#34;</span> <span class="o">:</span> <span class="p">{</span><span class="n">xxx</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;normal&#34;</span> <span class="o">:</span> <span class="p">{</span><span class="n">xxx</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>另外，json文件还可以使用AJAX来加载，这样我们就可以把需要绘制的顶点数据存在服务器上，需要的时候发一个AJAX请求即可。该方法特别适合于复杂模型的加载。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-07-20
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/welgl/">welgl</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/call-lua-table-from-cpp/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Lua教程：C/C&#43;&#43;调用Lua的Table(3)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/setup-gitlab-on-ubuntu-aliyun/">
+            <span class="next-text nav-default">阿里云ubuntu12.04搭建自己的gitlab</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/webgl-your-first-cube/" class="leancloud_visitors" data-flag-title="WebGL教程:你的第一个立方体(3)">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

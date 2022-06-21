@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>高标准与不完美 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="这段时间一直在折腾Cocos2D-X第三方库的自动编译脚本，目前引擎差不多集成了20个左右的第三方库，80%都是使用的预编译库，也有一直直接" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/high-standard-and-imperfect/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="高标准与不完美" />
+<meta property="og:description" content="这段时间一直在折腾Cocos2D-X第三方库的自动编译脚本，目前引擎差不多集成了20个左右的第三方库，80%都是使用的预编译库，也有一直直接" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/high-standard-and-imperfect/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-09-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-09-29T00:00:00+00:00" />
+
+<meta itemprop="name" content="高标准与不完美">
+<meta itemprop="description" content="这段时间一直在折腾Cocos2D-X第三方库的自动编译脚本，目前引擎差不多集成了20个左右的第三方库，80%都是使用的预编译库，也有一直直接"><meta itemprop="datePublished" content="2014-09-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-09-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2051">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="高标准与不完美"/>
+<meta name="twitter:description" content="这段时间一直在折腾Cocos2D-X第三方库的自动编译脚本，目前引擎差不多集成了20个左右的第三方库，80%都是使用的预编译库，也有一直直接"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">高标准与不完美</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-09-29 </span>
+        <div class="post-category">
+            <a href="/categories/programming-life/"> programming life </a>
+            </div>
+          <span class="more-meta"> 约 2051 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#没有银弹">没有银弹！</a></li>
+    <li><a href="#追求高标准">追求高标准</a></li>
+    <li><a href="#容忍不完美">容忍不完美</a></li>
+    <li><a href="#结语">结语</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>这段时间一直在折腾Cocos2D-X第三方库的自动编译脚本，目前引擎差不多集成了20个左右的第三方库，80%都是使用的预编译库，也有一直直接使用的源码(比如Box2D,Spine)。 但是，我们的最终目标肯定是要全平台全部使用预编译好的第三方库，因为这样可以加速引擎本身的编译时间。另外，为什么要折腾这些编译脚本呢？主要是为了以后更新和升级第三方库方便。毕竟那么多平台，如果每个开发者都要自己手动去编译，就太浪费时间了。</p>
+<p>本文主要是记录此过程中的一些心得体会。</p>
+<!-- raw HTML omitted -->
+<h2 id="没有银弹">没有银弹！</h2>
+<p>之前我写过一篇文章<a href="http://zilongshanren.com/blog/2014-09-01-how-to-use-cmake-to-compile-static-library.html">《使用CMake编译跨平台静态库》</a>，当时主要是为了解决Box2D,Chipmunk和Spine的静态库编译问题。当时，感觉用CMake太爽了，一个CMakeLists.txt配置好以后，把编译脚本复制粘贴，然后改几个参数，立马刷刷ios/mac/android/linux的静态库都编译出来了。于是乎，我坚信所有的第三方库都可以如此轻松都定。直到我在编译jpeg, png, webp,tiff的时候，我被坑到了。</p>
+<p>首先，这些库都是自带编译脚本的（autoconf那一套）。它们编译用到的部分配置头文件都需要在configure的时候动态去生成，这导致我们在编写Android.mk或者CMakeLists.txt的时候,会遇到头文件不存在的问题。</p>
+<p>其次，关于CMake方案.我在用android cmake toolchain的时候，发现无法生成对应系统的头文件。因为每个平台的头文件可能不尽相同，需要区别对待。（虽然这些包含头文件的名字一样，但是里面内容可能有细微差别的）当然，这也可能是我自己的配置问题，因为同样的CMake，ios/mac/linux是没问题的。</p>
+<p>最后，我发现还是得靠Android NDK的standalone toolchain配合这些第三方库的编译脚本，然后通过传递特定的参数来编译最靠谱。</p>
+<p>因此，我总结出来：如果是那种头文件跟平台无关的第三方库，那么直接使用之前的CMake方式是最简单的。如果有依赖，则还是使用它们自带的编译系统比较省事。这也说明了一个道理，没有银弹啊！</p>
+<p>扯到这个问题，我又想到了我之前使用Vim，后来转到Emacs，但是我还在用IDE。没有银弹啊！</p>
+<h2 id="追求高标准">追求高标准</h2>
+<p>在编写这些编译脚本的时候，因为shell脚本本身的语法比较简单，编写起来也比较随意。所以，我没有过多地关注代码风格，通用性什么的。因为每次编译都要耗费不少时间，好不容易编译成功了，哪来时间考虑这些问题啊，早被&quot;胜利&quot;冲昏头脑了。</p>
+<p>但是，我后面回来检查之前写好的一些脚本，发现里面还带有自己的本地路径，而不是通过程序去获取的。这对于一个自称是专业程序员的人来讲，是很难堪的。</p>
+<p>一定得坚持高标准来做事，让自己看起来专业一点，这是一种Bigger,Bigger一定不能low.</p>
+<p>很多时候，我们一件事情没有做到最好，可能都是源于没能坚持高标准的做事风格。写代码不坚持高标准，一不留神，可能风格就走样了。做Code Review，做着做着，可能随便看看就完事了。写文章，写着写着，可能就水了。</p>
+<p>为了不让自己堕落，以后做事情一定得坚持高标准。哪怕花更多的时间和精力，做完并做好一件事情肯定要比不断地进行很多未完成的事情要强。</p>
+<h2 id="容忍不完美">容忍不完美</h2>
+<p>容忍不完美还得从强迫症说起。相信很多人都有升级软件的强迫症，看到手机图标上面有一个红色，表示有升级版本，立马就点击升级了。也不管这次升级到底是解决了什么bug，提高了易用性?或是有很牛比的功能？这个新版本真的是你想要的吗？我之前就因为升级小米系统，结果root没有了。再次想root的时候，手机变砖了。于是我坐车去小米之家去维修，结果耗费了大半天的时间。真的是“不作死就不会死啊”!</p>
+<p>另外，还体现在，操作系统一定要是最新的（有时候连beta版本也不放过），引擎版本一定要更新最新的。下载一个软件，可能3个月不用，但是打开如果提示有新版本就一定会升级之类的。</p>
+<p>但是，频繁升级真的很坑。浪费了大量时间不说，还会经常破坏你的正常工作流程。比如不兼容啦，比如新的bug啦。</p>
+<p>就比如，我使用了Emacs以后，我就想什么事情都在Emacs里面完成。因为有人不是说Emacs是操作系统吗？不过真的很坑，什么浏览网页，写邮件，聊天之类的，还是喜欢用外部的应用来解决。虽然我也配置好了，但是说实话，使用的机会很少。</p>
+<p>使用CMake以后，我想让所有的第三方库都支持CMake,但是现在还是两者并存。这是一种和谐的不完美。</p>
+<p>还有学习C++，有时候我们就想吃透她的全部，然后再去写代码（呵呵~）。</p>
+<p>还有学习Cocos2D-X，总感觉自己还有很多东西不了解,还有很多教程没有看完，总想等自己对Cocos2D-X了解的差不多了再动手写代码。</p>
+<p>但是，这样会降低效率的。此时，我们要能够容忍这些不完美。然后在实践中，不断地学习，不断地一点点地去完善之，使之趋于完美。</p>
+<h2 id="结语">结语</h2>
+<p>每个人的时间和精力都是有限的，如何让自己的时间和精力变得更高效，这是值得自己深思的问题。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-09-29
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/bad-smell/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Bad Smell</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/a-bite-of-python/">
+            <span class="next-text nav-default">A bite of Python</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/high-standard-and-imperfect/" class="leancloud_visitors" data-flag-title="高标准与不完美">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

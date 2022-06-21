@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vim on 子龙山人</title>
+    <link>https://zilongshanren.com/tags/vim/</link>
+    <description>Recent content in Vim on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 16 Aug 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我是怎么同时掌握 Vim 和 Emacs 的?</title>
+      <link>https://zilongshanren.com/post/2015-08-16-how-could-i-master-vim-and-emacs/</link>
+      <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-08-16-how-could-i-master-vim-and-emacs/</guid>
+      <description>Table of Contents 我是怎么学会 Vim 的 我与 Mac 结缘 打造 Vim 神器 我是怎么学会 Emacs 的 Evil Prelude Spacemacs 现在我在用 Vim 还是 Emacs 给初学者的建议 总结 看到这个标题，肯定会有人站出来说，“异教</description>
+    </item>
+    
+    <item>
+      <title>打造属于自己的Vim神器</title>
+      <link>https://zilongshanren.com/post/make-your-own-vim-weapon/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/make-your-own-vim-weapon/</guid>
+      <description>Why Vim? 为什么要使用Vim？ 让我们先看看其他人怎么说： Vim就像学钢琴一样，一旦学会，终身受益无穷。 这些话都是出自vim高手之口，对于Vim新手</description>
+    </item>
+    
+    <item>
+      <title>打造属于自己的Vim神器:后记</title>
+      <link>https://zilongshanren.com/post/make-your-own-vim-super-weapon/</link>
+      <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/make-your-own-vim-super-weapon/</guid>
+      <description>一年以前，我写下了《如何打造属于自己的vim神器》并且录制了相应的Vim使用视频。 当时收到了大量vim爱好者的好评和反馈，在这一年里，我也对</description>
+    </item>
+    
+  </channel>
+</rss>

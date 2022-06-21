@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>为什么我的游戏发热量很高 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="一般谈到游戏为什么会发热，我们首先想到的就是CPU占用过高。因为在我们的常识里面，当自己笔记本电脑的CPU风扇疯狂转动的时候，肯定就是到了可以『煮鸡蛋』的时候了 😂
+但是移动设备除了CPU以外，还有其他因素可能比CPU更耗电。
+" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/why-my-game-drain-my-device-s-battery-life/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="为什么我的游戏发热量很高" />
+<meta property="og:description" content="一般谈到游戏为什么会发热，我们首先想到的就是CPU占用过高。因为在我们的常识里面，当自己笔记本电脑的CPU风扇疯狂转动的时候，肯定就是到了可以『煮鸡蛋』的时候了 😂
+但是移动设备除了CPU以外，还有其他因素可能比CPU更耗电。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/why-my-game-drain-my-device-s-battery-life/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-06-16T20:19:00+08:00" />
+<meta property="article:modified_time" content="2019-06-16T20:19:24+08:00" />
+
+<meta itemprop="name" content="为什么我的游戏发热量很高">
+<meta itemprop="description" content="一般谈到游戏为什么会发热，我们首先想到的就是CPU占用过高。因为在我们的常识里面，当自己笔记本电脑的CPU风扇疯狂转动的时候，肯定就是到了可以『煮鸡蛋』的时候了 😂
+但是移动设备除了CPU以外，还有其他因素可能比CPU更耗电。"><meta itemprop="datePublished" content="2019-06-16T20:19:00+08:00" />
+<meta itemprop="dateModified" content="2019-06-16T20:19:24+08:00" />
+<meta itemprop="wordCount" content="1328">
+<meta itemprop="keywords" content="gamedev," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="为什么我的游戏发热量很高"/>
+<meta name="twitter:description" content="一般谈到游戏为什么会发热，我们首先想到的就是CPU占用过高。因为在我们的常识里面，当自己笔记本电脑的CPU风扇疯狂转动的时候，肯定就是到了可以『煮鸡蛋』的时候了 😂
+但是移动设备除了CPU以外，还有其他因素可能比CPU更耗电。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">为什么我的游戏发热量很高</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-06-16 </span>
+        <div class="post-category">
+            <a href="/categories/gamedev/"> gamedev </a>
+            </div>
+          <span class="more-meta"> 约 1328 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#为什么要关心设备电量消耗">为什么要关心设备电量消耗</a></li>
+    <li><a href="#哪些因素影响移动设备电量消耗和发热">哪些因素影响移动设备电量消耗和发热</a></li>
+    <li><a href="#如何优化游戏电量消耗">如何优化游戏电量消耗</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>一般谈到游戏为什么会发热，我们首先想到的就是CPU占用过高。因为在我们的常识里面，当自己笔记本电脑的CPU风扇疯狂转动的时候，肯定就是到了可以『煮鸡蛋』的时候了 😂</p>
+<p>但是移动设备除了CPU以外，还有其他因素可能比CPU更耗电。</p>
+<h2 id="为什么要关心设备电量消耗">为什么要关心设备电量消耗</h2>
+<p>移动设备对于电量的使用是非常克制的，操作系统层面就做了很多耗电的优化。由于移动设备的电池容量有限，智能手机一天一充已然成为常态。</p>
+<p>像Google和Apple都会给App的开者编写应用耗电优化的指南。但是，作为游戏开发者，鲜有这方面的指导。我们大多数时候只关心游戏内存占用和游戏帧率，而忽视了游戏耗电。</p>
+<p>其实我们是需要关心自己游戏的耗电的，如果你的游戏耗电太高，让用户手机滚烫，一来会影响用户的游戏体验（长时间过高的温度还会损害用户手机的寿命，同时影响游戏性能）,二来用户手机都没电了就会变相减少玩游戏的时间，对于一些高arp值的游戏来说，游戏省电尤为重要。</p>
+<h2 id="哪些因素影响移动设备电量消耗和发热">哪些因素影响移动设备电量消耗和发热</h2>
+<p>游戏设备的电量消耗大头其实还是屏幕，特别是现在手机尺寸都很大，分辨都很高，适当地调节用户的屏幕亮度，或者在用户操作空闲的时候，让游戏屏幕的亮度降下来是非常省电的。</p>
+<p>但是，这个只影响省电，跟发热可能还没有太直接的关系。</p>
+<p>一般来说，移动设备的系统资源主要分为：CPU，GPU, 内存，SSD（闪存），网络等，对于这些系统资源的大量频繁的I/O操作是导致移动设备发热的主要原因。(有可能不对，如有错误，欢迎斧正)</p>
+<p>CPU如果占用太高，肯定是会影响游戏的发热的。但是通常情况下面，我们的CPU和GPU占用都不高，但是还是发烫。这时候，你可能要关心IO操作了。</p>
+<p>因为移动设备的CPU和GPU是共享同一块内存的，当你的游戏的Draw call数量比较大时，这意味着你会更频繁地修改GPU这个状态机的状态，而这些状态的修改需要通过memcpy等方式在CPU
+和GPU之间进行数据传输，而这些数据的传输非常耗电。</p>
+<p>这里，其实就是我们经常说的带宽瓶颈。这个带宽就像高速公路一样，CPU和GPU的数据都要从这里通过，如果这些「数据通道」很忙，那你的手机系统自然发热量就大。</p>
+<p>减少不必要的IO操作(读写文件，数据库等)，最大化Batch Draw Call，同时减少网络操作（网络也是一种IO）才能让你的游戏耗电变得更低。</p>
+<h2 id="如何优化游戏电量消耗">如何优化游戏电量消耗</h2>
+<p>这里有一个非常实用的技巧：优化你的游戏Draw call，保证Draw call数量最低，减少CPU
+里面的复杂操作（减少计算或者移到GPU进行计算），保持你的游戏的帧率可以跑满60帧。</p>
+<p>然后，如果你的游戏不是格斗类等对FPS要求特别高的话，可以把游戏降帧为30帧。</p>
+<p>降到30帧，玩家一般是感觉不到差异的，但是却可以让你的游戏的CPU和GPU都空闲下来。</p>
+<p>如果上面的操作都解救不了你，可以尝试用Xcode连上你的手机，然后逐一Check上面我们提到的系统资源的消耗情况，对症下药。</p>
+<h2 id="总结">总结</h2>
+<p>最近我们的游戏因为blend func的修改导致draw call数量大增，结果发热量也大增。通过
+profiler查看，CPU和GPU占用并不高，游戏FPS也调成30帧了，而且帧率也比较稳定。</p>
+<p>最后，通过优化Draw call数量，完美解决了iOS设备发热过高的问题。</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-06-16
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/gamedev/">gamedev</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/a-little-java-a-few-patterns-book-review/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">《a little java a few patterns》读书笔记</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/move-from-hexo-to-hugo/">
+            <span class="next-text nav-default">博客从 hexo 迁移到 hugo</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/why-my-game-drain-my-device-s-battery-life/" class="leancloud_visitors" data-flag-title="为什么我的游戏发热量很高">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

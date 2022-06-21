@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cross compile on 子龙山人</title>
+    <link>https://zilongshanren.com/categories/cross-compile/</link>
+    <description>Recent content in cross compile on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 02 Nov 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/cross-compile/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一套交叉编译脚本</title>
+      <link>https://zilongshanren.com/post/a-promising-cross-compile-framework/</link>
+      <pubDate>Sun, 02 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/a-promising-cross-compile-framework/</guid>
+      <description>现在移动平台非常火热，我们在使用C/C++开发一些移动应用的时候，经常可能需要将一些第三方c/c++库编译成对应的iOS/Android/W</description>
+    </item>
+    
+  </channel>
+</rss>

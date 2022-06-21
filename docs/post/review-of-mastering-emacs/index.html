@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>《Mastering Emacs》读后感 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="本文主要记录我的《Mastering Emacs》的读书心得，上图取自Google，在《Mastering Emacs》一书第五章篇头有引用。 P" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/review-of-mastering-emacs/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="《Mastering Emacs》读后感" />
+<meta property="og:description" content="本文主要记录我的《Mastering Emacs》的读书心得，上图取自Google，在《Mastering Emacs》一书第五章篇头有引用。 P" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/review-of-mastering-emacs/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2015-05-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-05-25T00:00:00+00:00" />
+
+<meta itemprop="name" content="《Mastering Emacs》读后感">
+<meta itemprop="description" content="本文主要记录我的《Mastering Emacs》的读书心得，上图取自Google，在《Mastering Emacs》一书第五章篇头有引用。 P"><meta itemprop="datePublished" content="2015-05-25T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2015-05-25T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1335">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《Mastering Emacs》读后感"/>
+<meta name="twitter:description" content="本文主要记录我的《Mastering Emacs》的读书心得，上图取自Google，在《Mastering Emacs》一书第五章篇头有引用。 P"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">《Mastering Emacs》读后感</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-05-25 </span>
+        <div class="post-category">
+            <a href="/categories/emacs/"> Emacs </a>
+            </div>
+          <span class="more-meta"> 约 1335 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#此书与作者博客的关系">此书与作者博客的关系</a></li>
+    <li><a href="#阅读体会">阅读体会</a></li>
+    <li><a href="#结语">结语</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p><img src="https://zilongshanren.com/img/linus-talk-emacs.jpeg" alt="linua-emacs-talk"></p>
+<p>本文主要记录我的《Mastering Emacs》的读书心得，上图取自Google，在《Mastering Emacs》一书第五章篇头有引用。</p>
+<p>PS:该书是周六晚上才发布的，目前只有<a href="https://www.masteringemacs.org/article/my-ebook-mastering-emacs-now-out">电子版</a>. 由于该书有点小贵，我在Hick的群里面组织了团购，最后有8人参团，平均每人25。虽然从某种程度算说，这也是盗版。但是，我想说的是，我们尽力了。</p>
+<!-- raw HTML omitted -->
+<h2 id="此书与作者博客的关系">此书与作者博客的关系</h2>
+<p>介绍Emacs的书本来就很少，在阅读本书之前，我只读过一本<a href="http://www.amazon.com/Writing-GNU-Emacs-Extensions-Glickstein/dp/1565922611">Write GNU Emacs Extensions</a>. 其它大部分时候，我都是在阅读别人的博客和一些starter kit学习和使用Emacs.在作者宣传他要写这样一本书的时候，我立马就订阅了邮件通知。（订阅可以享受20%的折扣，可惜买的时候我并没有使用优惠链接，不过无所谓啦。）</p>
+<p>本书所介绍的内容与作者的博客交集很少，大部分内容都是全新的。所以，也算得上是良心之作。不过全书不到280页，对于Emacs这么庞大的系统而言，确实也显得单薄。而epub书的排版也不是非常好，pdf在手机上面勉强可以阅读，但是建议还是用电脑阅读效果会比较好。</p>
+<p>这么短小精悍的一本书，一天时间足以阅读完了。实际上，我也是用了一天的时间。当然，我中间有两章是泛读，因为对于我而言，能收吸收的内容不多。最主要的原因还是因为我是Evil用户，而且是有经验的Emacser，书中介绍的内容大多数对我无用。</p>
+<h2 id="阅读体会">阅读体会</h2>
+<p>本书在一开始介绍了该书的目标读者主要是初学Emacs或者尝试了多次Emacs未能入教的人。当然，作者也说了，有一定经验的Emacser也能学到一些东西。（我确实学到了一些。）</p>
+<p>本书主要分以下四个部分介绍Emacs:</p>
+<ul>
+<li>
+<p>Emacs专业术语，安装配置Emacs，Ask Emacs the Right Question。</p>
+</li>
+<li>
+<p>Emacs移动理论：介绍了如何移动光标，如何移动窗口，buffer，bookmark, search and index.（我用Evil，所以，我采用的是略读）</p>
+</li>
+<li>
+<p>Emacs编辑理论: yank, kill, transpose, align and format text.（我用Evil，所以我采用的是略读）</p>
+</li>
+<li>
+<p>Emacs实践：主要介绍了shell, dired, tramp and working with large files.</p>
+</li>
+</ul>
+<p>我认为这里最有价值的就是“Ask Emacs the Right Question.” 作者详细地介绍了如何使用Emacs自带的帮助系统来学习Emacs.</p>
+<p>以version control为例：</p>
+<p>首先，通过info-apropos，搜索version control，然后可以得到一些info page。然后得知这些命令都是以vc-开头的命令。</p>
+<p>然后以apropos-command(C-h a)搜索^vc-,可以列出所有以vc开头的命令。 通过这些命令，可以看到它们的key binding大多数是C-x v开头的，通过输入C-x v C-h可以进一步列出所有以C-x v开头的快捷键组合。</p>
+<p>最后可以通过C-h f, C-h v 和C-h k来查看相应的函数，变量和keybinding的值。</p>
+<p>本书最后列出了一些不错的博客链接，其中很多链接都是我每天必读的。现在在这里也分享一下：</p>
+<ul>
+<li>
+<p><a href="%5Bhttp://sachachua.com/blog/%5D">http://sachachua.com/blog/</a></p>
+</li>
+<li>
+<p><a href="http://irreal.org/blog/">http://irreal.org/blog/</a></p>
+</li>
+<li>
+<p><a href="http://endlessparentheses.com/">http://endlessparentheses.com/</a></p>
+</li>
+<li>
+<p><a href="http://www.lunaryorn.com/">http://www.lunaryorn.com/</a></p>
+</li>
+<li>
+<p><a href="http://batsov.com/">http://batsov.com/</a></p>
+</li>
+<li>
+<p><a href="http://kitchingroup.cheme.cmu.edu/blog/">http://kitchingroup.cheme.cmu.edu/blog/</a></p>
+</li>
+<li>
+<p><a href="http://planet.emacsen.org/">http://planet.emacsen.org/</a></p>
+</li>
+</ul>
+<p>最后，我本人再推荐几个：</p>
+<ul>
+<li>
+<p><a href="http://emacsist.com/">http://emacsist.com/</a> (Hick 维护)</p>
+</li>
+<li>
+<p><a href="http://xahlee.org/">http://xahlee.org/</a></p>
+</li>
+<li>
+<p><a href="http://blog.binchen.org/">http://blog.binchen.org/</a></p>
+</li>
+<li>
+<p><a href="http://tuhdo.github.io/">http://tuhdo.github.io/</a></p>
+</li>
+</ul>
+<p>当然还有该书作者的博客啦： <a href="https://www.masteringemacs.org/">https://www.masteringemacs.org/</a></p>
+<h2 id="结语">结语</h2>
+<p>作为Emacs领域内为数不多的入门书，我认为Emacser还是有必要读一下的，特别是作者对于&quot;Ask Emacs the Right Question&quot;的讨论， 相信会让你受益匪浅。Happy hacking :)</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2015-05-25
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/add-emoji-to-my-blog/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">给Octopress添加Emoji支持</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/bash-quick-reference/">
+            <span class="next-text nav-default">Bash使用心得</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/review-of-mastering-emacs/" class="leancloud_visitors" data-flag-title="《Mastering Emacs》读后感">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

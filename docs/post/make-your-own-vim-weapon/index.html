@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>打造属于自己的Vim神器 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="Why Vim? 为什么要使用Vim？ 让我们先看看其他人怎么说： Vim就像学钢琴一样，一旦学会，终身受益无穷。 这些话都是出自vim高手之口，对于Vim新手" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/make-your-own-vim-weapon/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="打造属于自己的Vim神器" />
+<meta property="og:description" content="Why Vim? 为什么要使用Vim？ 让我们先看看其他人怎么说： Vim就像学钢琴一样，一旦学会，终身受益无穷。 这些话都是出自vim高手之口，对于Vim新手" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/make-your-own-vim-weapon/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-19T00:00:00+00:00" />
+
+<meta itemprop="name" content="打造属于自己的Vim神器">
+<meta itemprop="description" content="Why Vim? 为什么要使用Vim？ 让我们先看看其他人怎么说： Vim就像学钢琴一样，一旦学会，终身受益无穷。 这些话都是出自vim高手之口，对于Vim新手"><meta itemprop="datePublished" content="2014-06-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-19T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3121">
+<meta itemprop="keywords" content="vim," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="打造属于自己的Vim神器"/>
+<meta name="twitter:description" content="Why Vim? 为什么要使用Vim？ 让我们先看看其他人怎么说： Vim就像学钢琴一样，一旦学会，终身受益无穷。 这些话都是出自vim高手之口，对于Vim新手"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">打造属于自己的Vim神器</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-19 </span>
+        <div class="post-category">
+            <a href="/categories/vim/"> Vim </a>
+            </div>
+          <span class="more-meta"> 约 3121 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-vim">Why Vim?</a></li>
+    <li><a href="#why-not-vim">Why not Vim?</a></li>
+    <li><a href="#how-to-make-vim-as-an-ide">How to make Vim as an IDE?</a></li>
+    <li><a href="#recommended-plugins">Recommended plugins</a>
+      <ul>
+        <li><a href="#basic-plugins">Basic plugins</a></li>
+        <li><a href="#bonus-plugins">Bonus Plugins</a></li>
+      </ul>
+    </li>
+    <li><a href="#troubleshootings">Troubleshootings</a></li>
+    <li><a href="#further-reading">Further Reading</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<h2 id="why-vim">Why Vim?</h2>
+<p>为什么要使用Vim？</p>
+<p>让我们先看看其他人怎么说：</p>
+<!-- raw HTML omitted -->
+<p>Vim就像学钢琴一样，一旦学会，终身受益无穷。</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>这些话都是出自vim高手之口，对于Vim新手，可能暂时没办法体会。而我使用Vim也有一段时间了，肯定不能算是高手，但至少也是一个熟手。</p>
+<p>我现在主要使用Vim来编写c/c++、js、lua代码,我觉得非常方便，比Xcode和Eclise都强（调试部分可能相对弱一点）。当然，我还使用Vim来修改其它文档，比如Html、XML、文本文件等。现在我正在使用Vim书写本篇博文，非常酷，非常爽！</p>
+<p>我转成Vim党的感受，一句话：</p>
+<!-- raw HTML omitted -->
+<p>现在，我客观地说明一下Vim的一些好处：</p>
+<ul>
+<li>
+<p>跨平台、支持N（N&gt;40)种编程语言</p>
+</li>
+<li>
+<p>可安装各种插件，也可以编写自定义的插件，编辑器功能可无限扩展。</p>
+</li>
+<li>
+<p>配合Git管理Vim配置和插件,可极大地提高编辑器的适配性</p>
+</li>
+<li>
+<p>小巧、安装方便、开源、免费</p>
+</li>
+<li>
+<p>可打造出属于自已的个性化IDE工作环境，提高生产率</p>
+</li>
+</ul>
+<h2 id="why-not-vim">Why not Vim?</h2>
+<p>为什么不使用Vim？</p>
+<p>可能有以下几种声音：</p>
+<ul>
+<li>
+<p>Vim过时了，用Vim就是找虐，别装比了，专心学好数据结构与算法吧。</p>
+</li>
+<li>
+<p>我是Java党，我只用Eclipse，也能安装各种插件。我是.Net党，我喜欢强大的VS,也有牛比的插件（如VC助手)</p>
+</li>
+<li>
+<p>我是果粉，我喜欢Xcode的优雅，也是免费的，有苹果罩着，LLVM代码补全用着超爽。</p>
+</li>
+<li>
+<p>我也知道用Vim或者Emacs很强大，但是学习曲线真的很陡，我还是老老实实用我的IDE吧。</p>
+</li>
+<li>
+<p>我在用TextMate、Notepad++、Sumbline text 2，我用着很爽，这些也是神器，我不需要Vim。</p>
+</li>
+</ul>
+<p>我在这里不去说现代的IDE有什么不好，或者Vim相比于这些IDE来说有哪些优点。我知道这样说，又马上会引起一场语言之争，编辑器大战出来。其实，真的是没必要去纠结用什么开发工具,也没必要纠结用什么语言。</p>
+<p>只是我觉得程序员天生就是用来折腾的。有牛人讲过一句话：</p>
+<!-- raw HTML omitted -->
+<p>现在，我也呼吁一下吧：从现在起，学习一门新的文本编辑工具Vim，它跟你之前所用到的编辑器体验完全不一样。它的Modal Editing是独一无二的，程序员值得拥有。而且你不用每年换一个编辑器，因为你只需要一个Vim编辑器。你越了解它，越使用它，就越会对它爱不释手。</p>
+<p>让我们一起来折腾吧！Vim, the Killer! Oh~Ye.:)</p>
+<h2 id="how-to-make-vim-as-an-ide">How to make Vim as an IDE?</h2>
+<!-- raw HTML omitted -->
+<p>很多人不使用Vim的原因很简单，除了不习惯它的Modal Editing之外，更多的是觉得它算不上一个IDE。但是，稍微对Vim有过了解的朋友都知道，Vim是可以被打造成一个IDE的，而且是专门属于自己的IDE。</p>
+<p>为什么要使用IDE，请看<a href="http://stackoverflow.com/questions/208193/why-should-i-use-an-ide">此贴</a></p>
+<p>博客园的池建强写了一系列的博文《谁说Vim不是IDE》（<a href="http://www.cnblogs.com/chijianqiang/archive/2012/10/30/vim-1.html">一</a>、<a href="http://www.cnblogs.com/chijianqiang/archive/2012/10/31/vim-2.html">二</a>、<a href="http://www.cnblogs.com/chijianqiang/archive/2012/11/06/vim-3.html">三</a>、<a href="http://www.cnblogs.com/chijianqiang/archive/2012/12/17/vim-4.html">四</a>。）有兴趣的朋友可以去看看，看完后你会发现，原来Vim也可以变成IDE。：）</p>
+<p>关于如何把Vim打造成一个IDE，只要你现在随便谷歌一下，你肯定能找到一大堆贴子。但是，由于Vim历史悠久，有许多贴之已经过时了。</p>
+<p>其中最主要的变化有:</p>
+<ul>
+<li>
+<p>有些插件有新的替代插件了（因为站在巨人肩膀上的缘故）</p>
+</li>
+<li>
+<p>安装和管理插件的方式变了，以前是手动复制相应目录和文件，现在改为插件管理器+Github了。</p>
+</li>
+<li>
+<p>有些插件已经不推荐使用了</p>
+</li>
+</ul>
+<p>但是，Vim社区总是很活跃的。目前，已经有牛人把最新的Vim配置方式分享出来了。我找到了3篇，大家可以参考一下。（不过都是英文哦）</p>
+<ul>
+<li>
+<p><a href="http://oblita.com/blog/2012/08/30/vim-the-killer/"> Vim, The Killer </a></p>
+</li>
+<li>
+<p><a href="http://haridas.in/vim-as-your-ide.html">Vim as your IDE</a></p>
+</li>
+<li>
+<p><a href="https://github.com/mbrochh/vim-as-a-python-ide">Vim as a python IDE</a></p>
+</li>
+</ul>
+<p>其实可以列举的还有很多，国内也有许多优秀的Vimer，欢迎你们推荐优秀的设置Vim为IDE的教程或者文章，Thanks.:)</p>
+<h2 id="recommended-plugins">Recommended plugins</h2>
+<p>没有安装插件的Vim算不了什么，但是，一旦安装好插件，Vim立马就牛比了。这里，作为一名cocos2d-x游戏程序员，我给大家推荐一些插件，关于插件的用法，大家可以查看help文档，我这里就不赘述了。</p>
+<h3 id="basic-plugins">Basic plugins</h3>
+<p><a href="https://github.com/tpope/vim-pathogen">Pathogen</a>:该插件用来管理Vim的插件，可以让插件的安装与卸载更加方便。配合Github和Submodule效果更佳。（2014-6-19号更新:现在我用Vundle了，更方便。）</p>
+<p><a href="https://github.com/scrooloose/nerdtree">NerdTree</a>:该插件会生成工程目录树</p>
+<p><a href="https://github.com/majutsushi/tagbar">TagBar</a>:该插件生成函数、变量列表。之前有一个插件叫TagList，我觉得那个有点不好用，推荐TagBar</p>
+<p><a href="https://github.com/SirVer/ultisnips">UltiSnips</a>:类似TextMate的snippets，之前有个插件叫SnipMate，这个基于SnipMate，比SnipMate要强很多。强烈推荐。</p>
+<p><a href="https://github.com/tpope/vim-commentary.git">vim-commentary</a>:注释代码的插件。</p>
+<p><a href="https://github.com/scrooloose/syntastic">syntastic</a>:保存文件时检查语法的插件。</p>
+<p><a href="https://github.com/tpope/vim-fugitive.git">fugitive</a>:方便在Vim里面使用Git的插件。</p>
+<p><a href="https://github.com/altercation/vim-colors-solarized">vim-colors-solarized</a>:Vim颜色配色方案。</p>
+<p><a href="https://github.com/kien/ctrlp.vim.git">ctrlp</a>：搜索目录下的文件，类似功能的插件有Comment-T，我喜欢ctrlp，因为它不依赖于ruby，且是轻量级的.</p>
+<p><a href="https://github.com/Raimondi/delimitMate.git">delimitMate</a>:成对生成(),{},[]</p>
+<p><a href="https://github.com/tpope/vim-surround.git">vim-surround</a>：给文本添加“外套”，呵呵，试试就知道有多强大了。</p>
+<p><a href="https://github.com/ervandew/supertab">supertab</a>:让tab键可以飞起来。</p>
+<p><a href="https://github.com/vim-scripts/a.vim">a</a>:让cpp文件在.h和.cpp文件中切换。</p>
+<p><a href="https://github.com/vim-scripts/bufexplorer.zip">buferexplorer</a>:方便浏览buffer的插件。</p>
+<p><a href="https://github.com/oblitum/clang_complete">clangComplete</a>:自动代码补全的插件，比OmniCppComplete好N多，速度有一点影响。不过配合neocomplcache，加上这个版本，效率还不错。</p>
+<p><a href="https://github.com/Shougo/neocomplcache">neocomplcache</a>:关键字补全、文件路径补全、tag补全等等，各种，非常好用，速度超快。</p>
+<p><a href="https://github.com/osyo-manga/neocomplcache-clang_complete">neocomplcache-clang</a>:解决clang_complete和neocomplcache的冲突。</p>
+<p><a href="https://github.com/magic-dot-files/TagHighlight"> TagHightlight </a>:根据生成的Tag文件，高亮类、变量、函数和关键字。</p>
+<h3 id="bonus-plugins">Bonus Plugins</h3>
+<p><a href="https://github.com/oblitum/bufkill.git">bufkill</a>:让nerdTree在最后一个buffer窗口关闭时，不让其缩放。</p>
+<p><a href="https://github.com/oblitum/vimprj">vimprj</a>:方便管理工程相关的vim配置。参考如何设置Vim为IDE中的第一篇E文。</p>
+<p><a href="https://github.com/tpope/vim-unimpaired">vim-unimpaired</a>:一些不错的配置，可以让[]发挥奇效。</p>
+<p><a href="https://github.com/Lokaltog/vim-powerline">vim-powerline</a>:超有爱的状态栏。</p>
+<p><a href="https://github.com/kana/vim-textobj-line">vim-textobj-line</a>:文本对象插件，可以操纵当前行。</p>
+<p>更多插件，可以到我的Github上面去查看。可以从本博右上角Fork Me on Github处进入。当然，如果各种Vimer有什么好的插件，也欢迎推荐给我。</p>
+<h2 id="troubleshootings">Troubleshootings</h2>
+<p>这部分主要记录我在打造神器的过程中遇到的一些问题：</p>
+<ul>
+<li>
+<p>Vim版本最好用gvim或者macvim，然后从源码编译最好。最好是支持python,ruby,cscope等,大部分vim发行版本都是支持这些特性的。</p>
+</li>
+<li>
+<p>使用Excubert-ctags和<a href="https://github.com/mozilla/doctorjs">DoctorJs</a>来生成tag文件，配合cscope效果好。如果是mac用户，自带的ctags不管用，需要用homebrew或者macport来安装</p>
+</li>
+<li>
+<p>配置pyclewn时，安装需要指定Editor和home设置。运行的时候，如果要让GDB支持tty，还需要重新安装GDB，最好是homebrew或者macport来安装。安装好之后，要给gdb添加codesigning。</p>
+</li>
+<li>
+<p>windows版本下有些配置可能不太一样，特别是vimrc文件的配置，跟*nix系统不太一样。可以考虑用has(win32)之类的代码来区分vimrc配置。这样可以让vim运行在多个平台上。</p>
+</li>
+</ul>
+<h2 id="further-reading">Further Reading</h2>
+<p>强烈推荐阅读：<a href="http://pragprog.com/book/dnvim/practical-vim">《Practical Vim》</a></p>
+<p>推荐视频网站三个：<a href="http://www.vimcasts.org/">Vimcasts.org</a>,<a href="http://net.tutsplus.com/sessions/vim-essential-plugins/">essential vim plugins</a>和<a href="http://wiht.link/Vi-intro">Derek Wyatt&rsquo;s Blog</a></p>
+<p>国内站点推荐三个：<a href="http://www.vimer.cn/">vimer世界</a>,<a href="http://easwy.com/blog/archives/advanced-vim-skills-catalog/">易水的博客</a>,<a href="http://www.newsmth.net/bbsdoc.php?board=VIM">水木清华社区</a></p>
+<p>最后推荐一个vimrc设置技巧网站<a href="http://www.vimbits.com/">vimbits</a>,这个网站会选出最流行的vimrc配置，大家可以时不时去上面淘金。当然，如果你发现好用的vimrc配置，也记得一定要分享出来啊。社区需要你！</p>
+<h2 id="references">References</h2>
+<p>Google + Wiki. :)</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-19
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/vim/">vim</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/setup-wordpress-blog/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">搭建wordpress博客</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/cocos2d-x-composite-patterns/">
+            <span class="next-text nav-default">Cocos2D-X设计模式: 组合模式</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/make-your-own-vim-weapon/" class="leancloud_visitors" data-flag-title="打造属于自己的Vim神器">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

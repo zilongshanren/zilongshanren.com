@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>OpenGL ES 2.0教程：你的第一个三角形(1) - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="前言 学习程序世界里面的任何一项技能都有一个HelloWorld，而OpenGL的HelloWorld就是自己画一个三角形。当然，在 cocos" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/opengl-es-2-0-your-first-triangles/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="OpenGL ES 2.0教程：你的第一个三角形(1)" />
+<meta property="og:description" content="前言 学习程序世界里面的任何一项技能都有一个HelloWorld，而OpenGL的HelloWorld就是自己画一个三角形。当然，在 cocos" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/opengl-es-2-0-your-first-triangles/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-05-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-05-31T00:00:00+00:00" />
+
+<meta itemprop="name" content="OpenGL ES 2.0教程：你的第一个三角形(1)">
+<meta itemprop="description" content="前言 学习程序世界里面的任何一项技能都有一个HelloWorld，而OpenGL的HelloWorld就是自己画一个三角形。当然，在 cocos"><meta itemprop="datePublished" content="2014-05-31T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-05-31T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1951">
+<meta itemprop="keywords" content="Cocos2d-x,opengl," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenGL ES 2.0教程：你的第一个三角形(1)"/>
+<meta name="twitter:description" content="前言 学习程序世界里面的任何一项技能都有一个HelloWorld，而OpenGL的HelloWorld就是自己画一个三角形。当然，在 cocos"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">OpenGL ES 2.0教程：你的第一个三角形(1)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-05-31 </span>
+        <div class="post-category">
+            <a href="/categories/cocos2d-x/"> Cocos2d-x </a>
+            <a href="/categories/opengl-es/"> OpenGL ES </a>
+            </div>
+          <span class="more-meta"> 约 1951 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#正文">正文</a>
+      <ul>
+        <li><a href="#准备工作">准备工作</a></li>
+        <li><a href="#发送customcommand">发送CustomCommand</a></li>
+        <li><a href="#结束语">结束语</a></li>
+        <li><a href="#推荐阅读">推荐阅读</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<h2 id="前言">前言</h2>
+<p>学习程序世界里面的任何一项技能都有一个HelloWorld，而OpenGL的HelloWorld就是自己画一个三角形。当然，在
+cocos2d-x里面使用DrawPrimitives可以轻松画出一个三角形。但是，我们这一次希望只通过底层的图形API就能够绘制一个三
+角形。</p>
+<!-- raw HTML omitted -->
+<h2 id="正文">正文</h2>
+<h3 id="准备工作">准备工作</h3>
+<p>首先，是创建一个新的工程(注意我这里使用的版本是3.7. Update: Tuesday, June 16, 2015)。打开命令行工具，然后输入下列命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">cocos</span> <span class="k">new</span> <span class="o">-</span><span class="n">l</span> <span class="n">cpp</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果对于上述命令不了解的用户，请<a href="http://cocos2d-x.org/wiki/How_to_Start_A_New_Cocos2D-X_Game">猛戳这里</a>.</p>
+<p>编译并运行成功，然后把HelloWorldScene.cpp里面的init函数修改成下面的样子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">HelloWorld</span><span class="o">::</span><span class="n">init</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//////////////////////////////
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// 1. super init first
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="n">Layer</span><span class="o">::</span><span class="n">init</span><span class="p">()</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时，再编译运行之。你将会得到以下界面。</p>
+<p><img src="https://zilongshanren.com/img/cocos2d-x-es-1.0.png" alt="first"></p>
+<h3 id="发送customcommand">发送CustomCommand</h3>
+<p>由于Cocos2D-X 从3.0开始引入了一种新的渲染机制，所有的OpenGL渲染代码不再放到每一个node的draw函数里面，而是通过各种RenderCommand封装起来，然后添加到一个渲染队列里面去，最后在每一帧结束时把所有的这些命令都渲染出来。具体细节，大家可以参考<a href="http://cocos2d-x.org/wiki/Cocos2d_v30_renderer_pipeline_roadmap">这个文档</a>.</p>
+<p>首先，打开HelloWorldScene.h，添加一个onDraw函数，一个CustomCommand成员变量，并且重载Layer的visit函数，代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="k">class</span> <span class="nc">HelloWorld</span> <span class="o">:</span> <span class="k">public</span> <span class="n">cocos2d</span><span class="o">::</span><span class="n">Layer</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span><span class="o">:</span> 
+</span></span><span class="line"><span class="cl">        <span class="c1">//其它函数省略
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">virtual</span> <span class="kt">void</span> <span class="n">visit</span><span class="p">(</span><span class="n">Renderer</span> <span class="o">*</span><span class="n">renderer</span><span class="p">,</span> <span class="k">const</span> <span class="n">Mat4</span><span class="o">&amp;</span> <span class="n">parentTransform</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">parentFlags</span><span class="p">)</span> <span class="k">override</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kt">void</span> <span class="nf">onDraw</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">CustomCommand</span> <span class="n">_command</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后我们实现这个visit函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">HelloWorld</span><span class="o">::</span><span class="n">visit</span><span class="p">(</span><span class="n">cocos2d</span><span class="o">::</span><span class="n">Renderer</span> <span class="o">*</span><span class="n">renderer</span><span class="p">,</span> <span class="k">const</span> <span class="n">Mat4</span> <span class="o">&amp;</span><span class="n">transform</span><span class="p">,</span><span class="kt">uint32_t</span> <span class="n">parentFlags</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Layer</span><span class="o">::</span><span class="n">visit</span><span class="p">(</span><span class="n">renderer</span><span class="p">,</span> <span class="n">transform</span><span class="p">,</span> <span class="n">parentFlags</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_command</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">_globalZOrder</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_command</span><span class="p">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">CC_CALLBACK_0</span><span class="p">(</span><span class="n">HelloWorld</span><span class="o">::</span><span class="n">onDraw</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Director</span><span class="o">::</span><span class="n">getInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">getRenderer</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">addCommand</span><span class="p">(</span><span class="o">&amp;</span><span class="n">_command</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里要稍微解释一下。由于此函数是个重载的虚函数，所以我们在函数的最开始调用了父类的visit函数。如果你不调用父类的visit函数，那么当你往HelloWorldScene里面添加节点的时候，它们是不会被渲染出来的。（这个留给读者自己去完成）</p>
+<p>然后，我们使用_globalZOrder和一个std::function来初始化CustomCommand。_globalZOrder会影响渲染的顺序，这个在后面的博文中再详细探讨。而std::function会在CustomCommand被render队列处理的时候被调用。最后我们把该CustomCommand添加到renderer里面去。</p>
+<p>最后，让我们看看onDraw函数，它是整个绘制三角形的核心。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">HelloWorld</span><span class="o">::</span><span class="n">onDraw</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//获得当前HelloWorld的shader
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">auto</span> <span class="n">glProgram</span> <span class="o">=</span> <span class="n">getGLProgram</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">       <span class="c1">//使用此shader
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">glProgram</span><span class="o">-&gt;</span><span class="n">use</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">       <span class="c1">//设置该shader的一些内置uniform,主要是MVP，即model-view-project矩阵
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">glProgram</span><span class="o">-&gt;</span><span class="n">setUniformsForBuiltins</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">size</span> <span class="o">=</span> <span class="n">Director</span><span class="o">::</span><span class="n">getInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">getWinSize</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//指定将要绘制的三角形的三个顶点，分别位到屏幕左下角，右下角和正中间的顶端
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">float</span> <span class="n">vertercies</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">//第一个点的坐标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                                <span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>   <span class="c1">//第二个点的坐标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                               <span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">};</span>  <span class="c1">//第三个点的坐标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//指定每一个顶点的颜色，颜色值是RGBA格式的，取值范围是0-1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">float</span> <span class="n">color</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>    <span class="c1">//第一个点的颜色，绿色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                            <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1">//第二个点的颜色, 红色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                             <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">};</span>  <span class="c1">//第三个点的颜色， 蓝色
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//激活名字为position和color的vertex attribute
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">GL</span><span class="o">::</span><span class="n">enableVertexAttribs</span><span class="p">(</span><span class="n">GL</span><span class="o">::</span><span class="n">VERTEX_ATTRIB_FLAG_POSITION</span> <span class="o">|</span> <span class="n">GL</span><span class="o">::</span><span class="n">VERTEX_ATTRIB_FLAG_COLOR</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//分别给position和color指定数据源
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">GLProgram</span><span class="o">::</span><span class="n">VERTEX_ATTRIB_POSITION</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">GL_FLOAT</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vertercies</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">GLProgram</span><span class="o">::</span><span class="n">VERTEX_ATTRIB_COLOR</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">GL_FLOAT</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//绘制三角形，所谓的draw call就是指这个函数调用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">glDrawArrays</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//通知cocos2d-x 的renderer，让它在合适的时候调用这些OpenGL命令
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//如果出错了，可以使用这个函数来获取出错信息
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">CHECK_GL_ERROR_DEBUG</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果你现在直接运行程序，会crash。这是因为我们还没有指定Shader，所以下面的调用会失败：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">glProgram</span> <span class="o">=</span> <span class="n">getGLProgram</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">glProgram</span><span class="o">-&gt;</span><span class="n">use</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">glProgram</span><span class="o">-&gt;</span><span class="n">setUniformsForBuiltins</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来，让我们在HelloWorldScene.cpp的init方法中加入下列代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">this</span><span class="o">-&gt;</span><span class="n">setGLProgram</span><span class="p">(</span><span class="n">GLProgramCache</span><span class="o">::</span><span class="n">getInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">getGLProgram</span><span class="p">(</span><span class="n">GLProgram</span><span class="o">::</span><span class="n">SHADER_NAME_POSITION_COLOR</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个调用的含义是从Cocos2D-X的shader缓存中取出一个带有position和color顶点属性的shader，然后传给HelloWorld这个Layer.如果你是第一次接触OpenGL ES,看到这句话肯定无法理解，不过没有关系，后面的文章我们逐步讲清楚。如果你等不及，也可以先看我在文章最后推荐的链接。</p>
+<p>接下来，运行一下程序.恭喜你，你的第一个漂亮的三角形完成啦，还算简单吧：）</p>
+<p><img src="https://zilongshanren.com/img/cocos2d-x-es-1.1.png" alt="cocos2d-x-es-1.1"></p>
+<h3 id="结束语">结束语</h3>
+<p>为了保持第一篇文章的简单性，我只在画三角形的代码里面给了一些注释，因为我并不想一开始就涉及到OpenGL底层的一些细节，而且有些内容我一时半会儿也很难说清楚。所以，我会在文章的最后给出一些参考链接，强烈推荐大家在看完本文后，有时间就多看一看这些链接，相信对理解上面的代码有帮助。下一篇文章中，我将给大家介绍如何编写自己的shader，包括vertex attribute, uniform，vertex shader， fragment shader等内容。如果您对本文有什么建议或者意义，欢迎在下方评论。</p>
+<h3 id="推荐阅读">推荐阅读</h3>
+<ol>
+<li><a href="http://learnopengl.com/">http://learnopengl.com/</a></li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-05-31
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cocos2d-x/">Cocos2d-x</a>
+          <a href="/tags/opengl/">opengl</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/cocos2d-x-singleton/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Cocos2D-X设计模式:单例模式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/opengl-es-2-0-your-first-triangles/" class="leancloud_visitors" data-flag-title="OpenGL ES 2.0教程：你的第一个三角形(1)">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

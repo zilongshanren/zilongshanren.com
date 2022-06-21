@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>learning on 子龙山人</title>
+    <link>https://zilongshanren.com/categories/learning/</link>
+    <description>Recent content in learning on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 09 May 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何高效学习</title>
+      <link>https://zilongshanren.com/post/learning-how-to-learn/</link>
+      <pubDate>Tue, 09 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/learning-how-to-learn/</guid>
+      <description>TL;DR IT 行业是一个变化非常快的行业，它需要我们持续去学习新的知识和技能。 但是， 工作以后，我们经常会发现自己学习的东西很少了，倒不是没有时间去学习</description>
+    </item>
+    
+  </channel>
+</rss>

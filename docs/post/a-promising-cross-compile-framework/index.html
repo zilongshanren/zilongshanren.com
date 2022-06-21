@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>一套交叉编译脚本 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="现在移动平台非常火热，我们在使用C/C&#43;&#43;开发一些移动应用的时候，经常可能需要将一些第三方c/c&#43;&#43;库编译成对应的iOS/Android/W" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/a-promising-cross-compile-framework/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="一套交叉编译脚本" />
+<meta property="og:description" content="现在移动平台非常火热，我们在使用C/C&#43;&#43;开发一些移动应用的时候，经常可能需要将一些第三方c/c&#43;&#43;库编译成对应的iOS/Android/W" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/a-promising-cross-compile-framework/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-11-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-11-02T00:00:00+00:00" />
+
+<meta itemprop="name" content="一套交叉编译脚本">
+<meta itemprop="description" content="现在移动平台非常火热，我们在使用C/C&#43;&#43;开发一些移动应用的时候，经常可能需要将一些第三方c/c&#43;&#43;库编译成对应的iOS/Android/W"><meta itemprop="datePublished" content="2014-11-02T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-11-02T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1847">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="一套交叉编译脚本"/>
+<meta name="twitter:description" content="现在移动平台非常火热，我们在使用C/C&#43;&#43;开发一些移动应用的时候，经常可能需要将一些第三方c/c&#43;&#43;库编译成对应的iOS/Android/W"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">一套交叉编译脚本</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-11-02 </span>
+        <div class="post-category">
+            <a href="/categories/cross-compile/"> cross compile </a>
+            </div>
+          <span class="more-meta"> 约 1847 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#问题描述">问题描述</a></li>
+    <li><a href="#交叉编译一般步骤">交叉编译一般步骤</a></li>
+    <li><a href="#解决办法">解决办法</a></li>
+    <li><a href="#结论">结论</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>现在移动平台非常火热，我们在使用C/C++开发一些移动应用的时候，经常可能需要将一些第三方c/c++库编译成对应的iOS/Android/WP/Tizen上面的静态库。
+之前我介绍过<a href="http://zilongshanren.com/blog/2014-09-01-how-to-use-cmake-to-compile-static-library.html">如何使用CMake来编译跨平台库</a>。
+那种方法有一个局限性，它只针对一些提供了CMake支持或者源码本身不需要configure的库来说，使用会非常方便，但是如果库本身没有提供CMake或者
+在编译之前需要configure的库，使用起来就会很麻烦了。最好的做法，其实是重用它本身提供的编译系统，然后提供交叉编译所需要的一些参数即可。</p>
+<!-- raw HTML omitted -->
+<h2 id="问题描述">问题描述</h2>
+<p>对于提供了configure/make/make install编译系统的库来说，交叉编译只需要指定&ndash;build, &ndash;host，然后提供CC,CXX,AR,LD,RANLIB,STRIP等编译所需要的变量，最后可能还需要指定arch，CFLAGS，CXXFLAGS和LDFLAGS即可。</p>
+<p>而对于提供了CMake支持的库来说，我们只需要为CMake提供一个交叉编译所需要的toolchain文件即可。一般来说，一个CMake的toolchain文件如下所示:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#
+</span></span></span><span class="line"><span class="cl"><span class="cp"># CMake Toolchain file for crosscompiling on ARM.
+</span></span></span><span class="line"><span class="cl"><span class="cp">#
+</span></span></span><span class="line"><span class="cl"><span class="cp"># This can be used when running cmake in the following way:
+</span></span></span><span class="line"><span class="cl"><span class="cp">#  cd build/
+</span></span></span><span class="line"><span class="cl"><span class="cp">#  cmake .. -DCMAKE_TOOLCHAIN_FILE=../cross-arm-linux-gnueabihf.cmake
+</span></span></span><span class="line"><span class="cl"><span class="cp">#
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span><span class="p">(</span><span class="n">CROSS_PATH</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="n">linaro</span><span class="o">-</span><span class="n">arm</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnueabihf</span><span class="o">-</span><span class="mf">4.7</span><span class="o">-</span><span class="mf">2013.02</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mi">20130221</span><span class="n">_linux</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp"># Target operating system name.
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="n">set</span><span class="p">(</span><span class="n">CMAKE_SYSTEM_NAME</span> <span class="n">Linux</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp"># Name of C compiler.
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="n">set</span><span class="p">(</span><span class="n">CMAKE_C_COMPILER</span> <span class="s">&#34;${CROSS_PATH}/bin/arm-linux-gnueabihf-gcc&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span><span class="p">(</span><span class="n">CMAKE_CXX_COMPILER</span> <span class="s">&#34;${CROSS_PATH}/bin/arm-linux-gnueabihf-g++&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp"># Where to look for the target environment. (More paths can be added here)
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="n">set</span><span class="p">(</span><span class="n">CMAKE_FIND_ROOT_PATH</span> <span class="s">&#34;${CROSS_PATH}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp"># Adjust the default behavior of the FIND_XXX() commands:
+</span></span></span><span class="line"><span class="cl"><span class="cp"># search programs in the host environment only.
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="n">set</span><span class="p">(</span><span class="n">CMAKE_FIND_ROOT_PATH_MODE_PROGRAM</span> <span class="n">NEVER</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp"># Search headers and libraries in the target environment only.
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="n">set</span><span class="p">(</span><span class="n">CMAKE_FIND_ROOT_PATH_MODE_LIBRARY</span> <span class="n">ONLY</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里重要的是指定编译器，sysroot和编译时的CFLAGS，CXXFLAGS等参数。具体就不在这里展开了。</p>
+<p>为什么我要研究这些东西呢？因为cocos2d-x现在依赖20多个第三方库，如果全部采用源码的形式，那开发编译的时间会变得非常长。为了减少编译等待时间，我们一般会把第三方库事先编译好，形成一堆.a文件。然后在程序运行的时候，指定链接参数给链接器就ok了。</p>
+<p>但是，目前我们这些库都是临时编译的。当时编译的脚本没有保留下来了，也就是不清楚编译时候所指定的参数。
+另外，编译各个平台下面的静态库，这本身也不是一件简单的事。如果没有相关经验，可能会无从下手。所以，我们为了解决这个问题，现在新建了一个仓库<a href="https://github.com/cocos2d/cocos2d-x-3rd-party-libs-src">cocos2d-x-3rd-party-libs-src</a>. 这个仓库会把cocos2d-x所需要编译的第三方库的编译脚本全部保存在这里，如果哪一天，我们需要升级第三方库，或者发现现有的第三方库有问题，也可以从编译脚本找问题。</p>
+<h2 id="交叉编译一般步骤">交叉编译一般步骤</h2>
+<p>一般来讲，我们编译一个第三方库有以下几个步骤。</p>
+<ol>
+<li>
+<p>下载第三方库的源码（一般下载稳定版本）</p>
+</li>
+<li>
+<p>阅读它自带的Install或者Readme文件，看看如何在本机上编译这个库</p>
+</li>
+<li>
+<p>如果在本机上不能顺利编译的，可能需要自己给第三方库写patch，这样做的好处是，下次别人下载这个库，只要应用你的patch就可以顺利编译了。</p>
+</li>
+<li>
+<p>指定交叉编译器，sysroot, CFLAGS, CXXFLAG等参数</p>
+</li>
+<li>
+<p>./configure, make, make install就搞定了。</p>
+</li>
+</ol>
+<p>一套成形的脚本看起来，大概是<a href="https://github.com/minggo/png/blob/master/build_libpng.sh">这样子的</a>.</p>
+<h2 id="解决办法">解决办法</h2>
+<p>如果我们为每一个库都编写这样一套脚本，那会显得非常浪费。因为基本上每个平台的脚本都大同小异，如果可以把共用的部分抽取出来就最好了。
+要抽取出公共的部分其实是有难度的，但是世界上做这件事情的人绝对不只你一个。本着不重复造轮子的原则，我们直接把<a href="https://github.com/videolan/vlc/tree/master/contrib/src">VLC</a>
+所使用的编译系统拿来改造一下就ok啦。</p>
+<p>这套系统主要组成如下</p>
+<ol>
+<li>
+<p>它有一个bootstrap脚本，主要用来配置一些交叉编译的平台参数，如果是Android，则需要指定NDK路径，ANDROID ABI和ANDROID API的版本，是否使用neon等。</p>
+</li>
+<li>
+<p>一堆rules.mk文件，每一个第三库都会编译一个rules.mk文件，用来指定交叉编译时的参数</p>
+</li>
+<li>
+<p>一个SHA512SUMS文件，主要用来对下载的第三库进行md5的验证。</p>
+</li>
+<li>
+<p>一些patch，这部分是可选的。当下载的第三方库在编译时遇到困难时可能需要自己编译一些patch.编写patch非常简单，使用git diff &gt; xxx.patch即可。</p>
+</li>
+</ol>
+<p>具体的文档介绍，请看<a href="https://github.com/cocos2d/cocos2d-x-3rd-party-libs-src/blob/master/contrib/src/README">README文件</a></p>
+<h2 id="结论">结论</h2>
+<p>编译链接这件事情，其实我之前是没有整得非常清楚的。尤其是configure, make, makefile, cmake这些东西。通过这次折腾这堆编译脚本，我学到了很多东西，对编译链接理解地更加深入了。
+另外，我觉得在做任何一件比较棘手的事情之前，先想想是否别人也会遇到同样的问题。他们是怎么解决的，站在巨人的肩膀上会看得更远。
+还有，Don&rsquo;t repeat yourself!</p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>
+<p><a href="http://www.jfranken.de/homepages/johannes/vortraege/make.en.html">Introduction to making makefile</a></p>
+</li>
+<li>
+<p><a href="http://www.gnu.org/software/make/manual/make.html#Overview">GNU make reference</a></p>
+</li>
+<li>
+<p><a href="https://github.com/videolan/vlc/tree/master/contrib/src">VLC github</a></p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-11-02
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/great-or-nothing/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Be Great or Nothing</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/bad-smell/">
+            <span class="next-text nav-default">Bad Smell</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/a-promising-cross-compile-framework/" class="leancloud_visitors" data-flag-title="一套交叉编译脚本">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

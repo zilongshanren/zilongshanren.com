@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>octopress on 子龙山人</title>
+    <link>https://zilongshanren.com/categories/octopress/</link>
+    <description>Recent content in octopress on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 08 Sep 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/octopress/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>迁移博客到Octopress</title>
+      <link>https://zilongshanren.com/post/migrate-to-octopress/</link>
+      <pubDate>Mon, 08 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/migrate-to-octopress/</guid>
+      <description>各位看到这篇文章的时候，我其实已经迁移完博客了。(文章全部迁移完毕，部分文章图片不完整，我会稍后修复，另外评论只能稍后再迁移了。) 迁移博客跟</description>
+    </item>
+    
+  </channel>
+</rss>

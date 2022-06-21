@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>wordpress on 子龙山人</title>
+    <link>https://zilongshanren.com/tags/wordpress/</link>
+    <description>Recent content in wordpress on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 19 Jun 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>搭建wordpress博客</title>
+      <link>https://zilongshanren.com/post/setup-wordpress-blog/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/setup-wordpress-blog/</guid>
+      <description>更新：（2016-10-15） 目前我已经使用 hexo 来搭建静态 blog，使用 org + emacs 来写博客，所以 wordpress 已不推荐。 前言 写这篇博客的目的主要有两点： 备忘录</description>
+    </item>
+    
+  </channel>
+</rss>

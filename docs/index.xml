@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>子龙山人</title>
+    <link>https://zilongshanren.com/</link>
+    <description>Recent content on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 19 Jun 2022 15:58:00 +0800</lastBuildDate><atom:link href="https://zilongshanren.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>3D 手游性能优化技巧</title>
+      <link>https://zilongshanren.com/post/3d-mobile-game-optimization-tips/</link>
+      <pubDate>Sun, 19 Jun 2022 15:58:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/3d-mobile-game-optimization-tips/</guid>
+      <description>前言 随着 3D 手游的品质要求越来越高，游戏画面表现越来越好，对于性能优化的需求也越来越迫切。但是手机硬件平台有其自身独特的特性&amp;ndash;资源</description>
+    </item>
+    
+    <item>
+      <title>配置全新的 Macbook Pro M1 下 Emacs 开发环境</title>
+      <link>https://zilongshanren.com/post/setup-macbook-pro-m1/</link>
+      <pubDate>Wed, 08 Jun 2022 22:29:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/setup-macbook-pro-m1/</guid>
+      <description>准备工作 拿到一台全新的 Macbook Pro M1, 第一件事情就是先更新一下系统，保证一些常用的软件环境是最新的。 比如苹果在最新的系统版本 12.3 的时候移除了对 python2.7 的支持，</description>
+    </item>
+    
+    <item>
+      <title>如何自学计算机编程</title>
+      <link>https://zilongshanren.com/post/how-to-self-learning-cs/</link>
+      <pubDate>Thu, 30 Dec 2021 22:54:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/how-to-self-learning-cs/</guid>
+      <description>众所周知，现在计算机是“宇宙机”，很多人想转计算机，但是真正能够学好计算机编程的人非常少。不少的人选择了去培训机构突击几个月，然后找一份搬砖</description>
+    </item>
+    
+    <item>
+      <title>从头开始搭建 Discourse 论坛</title>
+      <link>https://zilongshanren.com/post/setup-a-discourse-forum-from-scratch/</link>
+      <pubDate>Sun, 07 Mar 2021 20:29:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/setup-a-discourse-forum-from-scratch/</guid>
+      <description>前言 在国内安装 Discourse 论坛其实是一件挺困难的事情,因为网络不太好，而且 Github 访问经常会抽风，导致安装非常容易失败。所以，想要尝试在国内 VPS 安装 Discourse 的同学，</description>
+    </item>
+    
+    <item>
+      <title>在腾讯工作三年总结</title>
+      <link>https://zilongshanren.com/post/three-years-in-tencent/</link>
+      <pubDate>Sun, 21 Feb 2021 17:59:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/three-years-in-tencent/</guid>
+      <description>不知不觉，来腾讯工作已经超过 3 年了，由于工作比较忙，在深圳的生活节奏很快，一直没有时间来写博客。今天，趁着周末有空，也来总结一下我在腾讯这 3</description>
+    </item>
+    
+    <item>
+      <title>编程之道：自动洗碗机</title>
+      <link>https://zilongshanren.com/post/auto-wash-your-bowls/</link>
+      <pubDate>Sat, 10 Aug 2019 22:54:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/auto-wash-your-bowls/</guid>
+      <description>在上一篇文章 中，我提到了一些开发过程中非常容易被忽略和轻视的工作，比如代码整理， commit 整理，添加测试等。做好这些工作不仅仅需要专业的知识，还需要</description>
+    </item>
+    
+    <item>
+      <title>编程之道：饭后洗碗</title>
+      <link>https://zilongshanren.com/post/wash-bowls-after-launch/</link>
+      <pubDate>Sat, 20 Jul 2019 11:13:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/wash-bowls-after-launch/</guid>
+      <description>&lt;p&gt;从今天起，我将写一系列《编程之道》的文章，主要用来记录我这些年来写代码的感悟。这些文章主要聚焦在如何写好代码。更多的是『道』&amp;mdash; 最佳实践，而不是『术』。写代码并不是一件非常难的事情，但是写『好代码』却没有那么简单。它需要我们拥有『足够的知识』和『超强的自律』。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《a little java a few patterns》读书笔记</title>
+      <link>https://zilongshanren.com/post/a-little-java-a-few-patterns-book-review/</link>
+      <pubDate>Sat, 06 Jul 2019 14:29:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/a-little-java-a-few-patterns-book-review/</guid>
+      <description>&lt;p&gt;这本书其实看完有一段时间了，今天来做个总结。在此之前，想为该作者 Friedman 的其他书籍打个广告，我目前看过《The Little Schemer》&amp;mdash;-神书，看完（并实践完）能让你对递归有更深的理解，同时还能学习一门 Lisp 方言。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>为什么我的游戏发热量很高</title>
+      <link>https://zilongshanren.com/post/why-my-game-drain-my-device-s-battery-life/</link>
+      <pubDate>Sun, 16 Jun 2019 20:19:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/why-my-game-drain-my-device-s-battery-life/</guid>
+      <description>&lt;p&gt;一般谈到游戏为什么会发热，我们首先想到的就是CPU占用过高。因为在我们的常识里面，当自己笔记本电脑的CPU风扇疯狂转动的时候，肯定就是到了可以『煮鸡蛋』的时候了 😂&lt;/p&gt;
+&lt;p&gt;但是移动设备除了CPU以外，还有其他因素可能比CPU更耗电。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>博客从 hexo 迁移到 hugo</title>
+      <link>https://zilongshanren.com/post/move-from-hexo-to-hugo/</link>
+      <pubDate>Tue, 11 Jun 2019 09:07:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/move-from-hexo-to-hugo/</guid>
+      <description>&lt;h2 id=&#34;为什么又迁移博客&#34;&gt;为什么又迁移博客&lt;/h2&gt;
+&lt;p&gt;熟悉我的朋友可能会发现，我几乎每隔一段时间都会换一个博客平台 😂&lt;/p&gt;
+&lt;p&gt;从最早的Wordpress到Octopress，再到Hexo，最后到如今的Hugo，博客没写多少，博客平台却折腾不少。&lt;/p&gt;
+&lt;p&gt;每一次折腾完后，我都会写下一篇类似的文章，讲我的迁移过程，而且似乎每次都声称这是最后一次折腾Blog了 😂&lt;/p&gt;
+&lt;p&gt;因为我自己是个不折不扣的工具控，可能天生就爱折腾。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Clean Architecture》读书笔记</title>
+      <link>https://zilongshanren.com/post/summary-of-clean-architecture/</link>
+      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/summary-of-clean-architecture/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;一前言&#34;&gt;一、前言&lt;/h2&gt;
+&lt;p&gt;软件架构非常重要，架构的主要目的是最小化系统开发和维护的人力成本，提高开发人员的开发效率。&lt;/p&gt;
+&lt;p&gt;软件设计和软件构架有本质区别，架构更关心软件的高层设计，怎么定义系统和模块的边界，而设计更关心底层的实现细节。&lt;/p&gt;
+&lt;p&gt;优雅的架构通常不是那么容易就获得的，他需要开发人员去争取、去斗争、去追求。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>如何高效学习</title>
+      <link>https://zilongshanren.com/post/learning-how-to-learn/</link>
+      <pubDate>Tue, 09 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/learning-how-to-learn/</guid>
+      <description>TL;DR IT 行业是一个变化非常快的行业，它需要我们持续去学习新的知识和技能。 但是， 工作以后，我们经常会发现自己学习的东西很少了，倒不是没有时间去学习</description>
+    </item>
+    
+    <item>
+      <title>以前写的诗</title>
+      <link>https://zilongshanren.com/post/my-past-poems/</link>
+      <pubDate>Wed, 19 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/my-past-poems/</guid>
+      <description>恰同学少年，意气风发，偶得诗词几首，今存档于此。 满江红 重九夜半，竟凭栏，触目断愁肠。晓忆婵娟，丝成万缕，欲剪还乱。 二三年情爱与恨，四五万字喜</description>
+    </item>
+    
+    <item>
+      <title>21 天学会 Emacs（下）</title>
+      <link>https://zilongshanren.com/post/2016-08-21-learn-emacs-21-days-part-two/</link>
+      <pubDate>Sun, 21 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2016-08-21-learn-emacs-21-days-part-two/</guid>
+      <description>Table of Contents 引子 非 Vim/Emacs 党学习路径 Vim 党学习路径 Emacs 新手党学习路径 总结 TL;DR 21 天学会 Emacs 系列完美收官，你们再也不用追网剧了，我再也不用被人追着更新啦！ 引子 去年十</description>
+    </item>
+    
+    <item>
+      <title>优化 Cocos2d-x 游戏性能</title>
+      <link>https://zilongshanren.com/post/2016-07-24-optimize-graphics-performance-of-cocos2d-x-games/</link>
+      <pubDate>Sun, 24 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2016-07-24-optimize-graphics-performance-of-cocos2d-x-games/</guid>
+      <description>Table of Contents Golden rules 查找游戏性能瓶颈，然后优化瓶颈 总是使用工具来查找性能瓶颈，而不是靠猜 查找 GPU 性能瓶颈的工具 查找 CPU 性能瓶颈的工具 熟悉你的移动设备和你使</description>
+    </item>
+    
+    <item>
+      <title>21天学会 Emacs（上）</title>
+      <link>https://zilongshanren.com/post/2016-06-12-master-emacs-in-21-days/</link>
+      <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2016-06-12-master-emacs-in-21-days/</guid>
+      <description>Table of Contents 为什么我要录制这个系列视频 我真的可以 21 天学会 Emacs 吗？ 给 Emacs 新手的建议 后续学习建议 结语 经过了漫长的 3个月等待，《21 天学会 Emacs 系列》的上半部分</description>
+    </item>
+    
+    <item>
+      <title>拥抱 HTTPS 和 HTTP/2</title>
+      <link>https://zilongshanren.com/post/2016-06-08-embrace-https-and-http2/</link>
+      <pubDate>Wed, 08 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2016-06-08-embrace-https-and-http2/</guid>
+      <description>Table of Contents 我为什么要使用 HTTPS 你为什么不用 HTTPS 如何为自己的网站添加 HTTPS 遇到的一些问题和解决方案 结语 Reference 为了方便国内的 Emacs 党交流，前段时间跟社区里面几个小伙伴</description>
+    </item>
+    
+    <item>
+      <title>理解 Javascript This 关键字</title>
+      <link>https://zilongshanren.com/post/2016-03-13-undertand-javascript-this-keyword/</link>
+      <pubDate>Mon, 14 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2016-03-13-undertand-javascript-this-keyword/</guid>
+      <description>Table of Contents This 绑定内容与函数无关，而与执行环境有关 This 绑定的内容可以被动态修改 巧用闭包消除 This 动态绑定，提高代码可读性 小结 Reference 在我最早接触 Javascript 的时候，Th</description>
+    </item>
+    
+    <item>
+      <title>理解 Javascript 作用域和作用域链</title>
+      <link>https://zilongshanren.com/post/2016-03-13-understand-javascript-scope-and-scope-chain/</link>
+      <pubDate>Sun, 13 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2016-03-13-understand-javascript-scope-and-scope-chain/</guid>
+      <description>Table of Contents Javascript 作用域 Javascript 作用域链 变量提升 小结 Reference 上篇文章 在介绍 Javascript 闭包的时候提到了“闭包创建时所处的环境信息”，但是并没有说明这些信息到底是什么。 也多亏</description>
+    </item>
+    
+    <item>
+      <title>理解 Javascript 的闭包</title>
+      <link>https://zilongshanren.com/post/2016-02-28-understand-javascript-closure/</link>
+      <pubDate>Sun, 28 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2016-02-28-understand-javascript-closure/</guid>
+      <description>Table of Contents 什么是闭包？ 闭包有什么作用？ 如何正确地使用闭包？ 闭包的性能如何？ 小结 Reference 因为最近几个月一直在做 Cocos Creator 这个项目，大部分时间都在与 Javascript 打交道，所</description>
+    </item>
+    
+    <item>
+      <title>21 天学会 Emacs</title>
+      <link>https://zilongshanren.com/learnemacs/</link>
+      <pubDate>Sun, 13 Dec 2015 22:45:28 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/learnemacs/</guid>
+      <description>21 天学会 Emacs 电子书在线阅读： http://book.emacs-china.org/ 21 天学会 Emacs 所有视频 Youtube：https://www.youtube.com/watch?v=0hpVuoy</description>
+    </item>
+    
+    <item>
+      <title>Spacemacs Rocks</title>
+      <link>https://zilongshanren.com/post/2015-12-06-spacemacs-rocks/</link>
+      <pubDate>Sun, 06 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-12-06-spacemacs-rocks/</guid>
+      <description>Table of Contents 前言 Spacemacs Happy Hacking Spacemacs Rocks! 本文是对 Spacemacs Rocks 第一季系列视频的一个小节，同时打个广告，欢迎对 Emacs 和 Spacemacs 感兴趣的朋友加入 emacs-cn 的 slack 聊天组 https://slacki</description>
+    </item>
+    
+    <item>
+      <title>这些年伴随我的一些好习惯</title>
+      <link>https://zilongshanren.com/post/2015-11-23-a-few-good-habit-i-keep-for-years/</link>
+      <pubDate>Mon, 23 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-11-23-a-few-good-habit-i-keep-for-years/</guid>
+      <description>Table of Contents 每天坚持学习 1-2 小时 坚持阅读英文资料 不断改进自己的工具箱 积极融入社区 小结 本文我试图回顾一下这些年伴随我的一些好习惯，我会按照我认为的重要</description>
+    </item>
+    
+    <item>
+      <title>关于写博客的一些思考</title>
+      <link>https://zilongshanren.com/post/2015-11-15-when-to-blog/</link>
+      <pubDate>Sun, 15 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-11-15-when-to-blog/</guid>
+      <description>Table of Contents 写博客到底写些什么 可以是翻译看过的好文章 可以是读书笔记和心得体会 可以是攻克难题的步骤和答案 可以是自己已经熟练掌握了的东西 如何坚持写博客</description>
+    </item>
+    
+    <item>
+      <title>The best way to teach others Emacs</title>
+      <link>https://zilongshanren.com/post/2015-11-07-the-best-way-to-teach-others-emacs/</link>
+      <pubDate>Sat, 07 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-11-07-the-best-way-to-teach-others-emacs/</guid>
+      <description>Table of Contents 不要在安利的时候说 Emacs 可以做任何事情。 不要安利对方快捷键使用和无鼠标操作方式 要安利 Emacs 是一个编程平台 安利 Emacs 的正确方式： 第一步：找到一个对 Emacs</description>
+    </item>
+    
+    <item>
+      <title>Things I Wish I Know When I Am Learning Emacs</title>
+      <link>https://zilongshanren.com/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/</link>
+      <pubDate>Sat, 31 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/</guid>
+      <description>Table of Contents 一定要使用 Starter Kit Package 管理和依赖 按键绑定 按键绑定的覆盖问题 快捷键太多，记不住怎么办？ 有问题问 Emacs Happy Hacking 当我在学习 Emacs 的时候，有一些事情，我希望有人</description>
+    </item>
+    
+    <item>
+      <title>关于 Spacemacs 的 Tips</title>
+      <link>https://zilongshanren.com/post/2015-10-25-a-few-spacemacs-tips/</link>
+      <pubDate>Sun, 25 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-10-25-a-few-spacemacs-tips/</guid>
+      <description>Table of Contents could not load evil-indent-textobject Spacemacs 启动速度特别慢 Happy Hacking 因为 Spacemacs 需要下载大量的 package，而中国大陆的网络环境不是很稳定，容易导致一些 package 在下载的过程中 byte-compile 出错，所</description>
+    </item>
+    
+    <item>
+      <title>Emacs 当前文件快速查找内容</title>
+      <link>https://zilongshanren.com/post/2015-10-15-nagivate-quickly-in-the-current-buffer/</link>
+      <pubDate>Thu, 15 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-10-15-nagivate-quickly-in-the-current-buffer/</guid>
+      <description>Table of Contents Evil search Swiper Helm-swoop Helm-semantic-or-imenu occur 最后 使用 Emacs 也已经两年多了，积累了不少经验，也一直在安利，不过效果不佳。是时候跟大家分享一些我使用 Emacs 的技巧了，不求安利，只求</description>
+    </item>
+    
+    <item>
+      <title>我的工作流</title>
+      <link>https://zilongshanren.com/post/2015-10-14-pesudo-perfect-workflow/</link>
+      <pubDate>Wed, 14 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-10-14-pesudo-perfect-workflow/</guid>
+      <description>本文要介绍的工作流是我最近才想出来的， 当然也借鉴了不少其他人的经验，但是，这不是重点，重点是此工作流要解决我目前遇到的问题。 我的问题主要有：</description>
+    </item>
+    
+    <item>
+      <title>三个 Git 问题(下)</title>
+      <link>https://zilongshanren.com/post/2015-09-21-three-git-question-2/</link>
+      <pubDate>Mon, 21 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-09-21-three-git-question-2/</guid>
+      <description>Table of Contents Merge 的测试代码 Rebase 的测试代码 小结 在上篇文章中，我们介绍了 Git 内部存储对象的方式，以及为什么不要用 Git 去管理大的二进制文件。 本文将继续探讨上篇文</description>
+    </item>
+    
+    <item>
+      <title>三个 Git 问题（上）</title>
+      <link>https://zilongshanren.com/post/2015-09-12-three-git-question/</link>
+      <pubDate>Sat, 12 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-09-12-three-git-question/</guid>
+      <description>Table of Contents 什么是文件快照 为什么 Git 切换分支特别快？ 为什么不推荐使用 Git 保存二进制大文件 参考文献 本系列文章主要回答三个 Git 问题: 为什么不推荐用 Git 保存二进</description>
+    </item>
+    
+    <item>
+      <title>最近读过的好书</title>
+      <link>https://zilongshanren.com/post/2015-09-05-rencently-read-books/</link>
+      <pubDate>Sat, 05 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-09-05-rencently-read-books/</guid>
+      <description>Table of Contents 周鸿祎自述－－我的互联网方法论 浪潮之巅 科技行业没有百年老店 差异化竞争 一些定律 乔布斯传 程序员的呐喊 异类 从 0 到 1 总结 本文主要记录我近两个月</description>
+    </item>
+    
+    <item>
+      <title>像极客一样使用 Mac</title>
+      <link>https://zilongshanren.com/post/2015-08-30-use-mac-like-a-geek/</link>
+      <pubDate>Sun, 30 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-08-30-use-mac-like-a-geek/</guid>
+      <description>Table of Contents 命令行工具 iTerm2 Tmux Percol Zsh 编辑器之神 Vim 编辑器 － Emacs 改键工具 Mac 本身 Karabiner - Software for OS X Keyboard Maestro 7.0.1: Work Faster with Macros for Mac OS X 统计工具 GUI 工具 Beyond Compare Source Tree Sublime Text Mou 总结 Mac 是属于程序员</description>
+    </item>
+    
+    <item>
+      <title>Mac 无光驱安装 Windows 10</title>
+      <link>https://zilongshanren.com/post/2015-08-23-install-windows-on-mac-without-optical-driver/</link>
+      <pubDate>Sun, 23 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-08-23-install-windows-on-mac-without-optical-driver/</guid>
+      <description>Table of Contents Hack Boot Camp Assistant Burn the ISO to USB Configure the GPT disk and EFI loader 安装失败的可能原因 安装 Ubuntu 总结 Reference 我的旧 Mac 电脑的型号是 13 inch 2011 late，它是有光驱的。后来因为我的硬盘坏了，</description>
+    </item>
+    
+    <item>
+      <title>我是怎么同时掌握 Vim 和 Emacs 的?</title>
+      <link>https://zilongshanren.com/post/2015-08-16-how-could-i-master-vim-and-emacs/</link>
+      <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-08-16-how-could-i-master-vim-and-emacs/</guid>
+      <description>Table of Contents 我是怎么学会 Vim 的 我与 Mac 结缘 打造 Vim 神器 我是怎么学会 Emacs 的 Evil Prelude Spacemacs 现在我在用 Vim 还是 Emacs 给初学者的建议 总结 看到这个标题，肯定会有人站出来说，“异教</description>
+    </item>
+    
+    <item>
+      <title>工作两年总结(下)</title>
+      <link>https://zilongshanren.com/post/2015-08-09-postmotem-of-two-years-work-part2/</link>
+      <pubDate>Sun, 09 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-08-09-postmotem-of-two-years-work-part2/</guid>
+      <description>Table of Contents 不够专注 不够关心细节 不够主动争取 没有按需学习 做正确的事,不要做容易的事 小结 本文是工作两年总结（上） | 子龙山人 的续，主要介绍我这两年经历</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://zilongshanren.com/about/</link>
+      <pubDate>Sun, 02 Aug 2015 15:27:52 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/about/</guid>
+      <description>Experience Lightspeed &amp;amp; Quantum Studios Group(光子工作室群) Company: Tecent Period: 2017.8 ~ present Role: Developer Cocos Creator Home Page: http://www.cocos.com/download/creator/ Introduction： Cocos Creator is a free cross-platform game development editor supporting Cocos2d-js, which helps developers to build 2D and 3D game scenes, edit game UI and other</description>
+    </item>
+    
+    <item>
+      <title>迁移博客到 Hexo</title>
+      <link>https://zilongshanren.com/post/2015-08-02-migrate-blog-to-hexo/</link>
+      <pubDate>Sun, 02 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-08-02-migrate-blog-to-hexo/</guid>
+      <description>Table of Contents 为什么要迁移到 Hexo 迁移过程 迁移 Org-Octopress 修改 permalink。 修改 Org-Octopress 的根路径 需要导出的文件要放到 source 目录，但是需要添加 skip_render 信息。 Emacs 集成 小结 本文主要</description>
+    </item>
+    
+    <item>
+      <title>工作两年总结（上）</title>
+      <link>https://zilongshanren.com/post/2015-07-26-postmotem-of-two-years-programming-career/</link>
+      <pubDate>Sun, 26 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-07-26-postmotem-of-two-years-programming-career/</guid>
+      <description>Table of Contents 收获 掌握 Emacs 掌握 Git 和 Github 掌握 Jenkins 持续集成 对编程语言和程序设计有了更深的理解 编程语言 程序设计 Do more, promise less 小结 本文主要是对我两年程序员生涯的一些心得</description>
+    </item>
+    
+    <item>
+      <title>使用 Org-mode 来写博客</title>
+      <link>https://zilongshanren.com/post/2015-07-19-add-org-mode-support/</link>
+      <pubDate>Sun, 19 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-07-19-add-org-mode-support/</guid>
+      <description>Table of Contents Why Org-mode❓ 它比 Markdown 功能更加强大🐶 和 Emacs 无缝集成📍 支持文学编程 我正在学习 Org-mode How to configure Org-octopress Some tips 让文章支持评论 配置 spacemacs 自动截图，保存图片到博客</description>
+    </item>
+    
+    <item>
+      <title>给Octopress添加Emoji支持</title>
+      <link>https://zilongshanren.com/post/add-emoji-to-my-blog/</link>
+      <pubDate>Fri, 03 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/add-emoji-to-my-blog/</guid>
+      <description>&lt;p&gt;我非常喜欢emoji，所以，我决定给自己的博客也添加emoji支持。&lt;/p&gt;
+&lt;p&gt;Update: Saturday, October 15, 2016&lt;/p&gt;
+&lt;p&gt;目前 emoji 的功能已被我折腾 hexo 给废了，这篇博客仅供参考。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《Mastering Emacs》读后感</title>
+      <link>https://zilongshanren.com/post/review-of-mastering-emacs/</link>
+      <pubDate>Mon, 25 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/review-of-mastering-emacs/</guid>
+      <description>本文主要记录我的《Mastering Emacs》的读书心得，上图取自Google，在《Mastering Emacs》一书第五章篇头有引用。 P</description>
+    </item>
+    
+    <item>
+      <title>Bash使用心得</title>
+      <link>https://zilongshanren.com/post/bash-quick-reference/</link>
+      <pubDate>Sun, 14 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/bash-quick-reference/</guid>
+      <description>由于前段时间一直在做Bash和Makefile脚本的编写，所以，本文主要是记录一些Bash使用心得. 有人可能会问了，现在Python这么流行</description>
+    </item>
+    
+    <item>
+      <title>Be Great or Nothing</title>
+      <link>https://zilongshanren.com/post/great-or-nothing/</link>
+      <pubDate>Sun, 16 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/great-or-nothing/</guid>
+      <description>最近工作上比较忙，博客更新的也没以前那么频繁了。本来计划每周一篇的博客写作，最终还是没有完成。(还是自己比较懒，偶尔会有一些拖延症。) 近来一</description>
+    </item>
+    
+    <item>
+      <title>一套交叉编译脚本</title>
+      <link>https://zilongshanren.com/post/a-promising-cross-compile-framework/</link>
+      <pubDate>Sun, 02 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/a-promising-cross-compile-framework/</guid>
+      <description>现在移动平台非常火热，我们在使用C/C++开发一些移动应用的时候，经常可能需要将一些第三方c/c++库编译成对应的iOS/Android/W</description>
+    </item>
+    
+    <item>
+      <title>Bad Smell</title>
+      <link>https://zilongshanren.com/post/bad-smell/</link>
+      <pubDate>Sun, 12 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/bad-smell/</guid>
+      <description>国庆七天假，为了回家，我于万军丛中抢到了回家的高铁票，终于踏上了回乡之路。在家里没网上，除了带小孩以外，我还阅读完了一本关于Emacs Lis</description>
+    </item>
+    
+    <item>
+      <title>高标准与不完美</title>
+      <link>https://zilongshanren.com/post/high-standard-and-imperfect/</link>
+      <pubDate>Mon, 29 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/high-standard-and-imperfect/</guid>
+      <description>这段时间一直在折腾Cocos2D-X第三方库的自动编译脚本，目前引擎差不多集成了20个左右的第三方库，80%都是使用的预编译库，也有一直直接</description>
+    </item>
+    
+    <item>
+      <title>A bite of Python</title>
+      <link>https://zilongshanren.com/post/a-bite-of-python/</link>
+      <pubDate>Sun, 21 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/a-bite-of-python/</guid>
+      <description>周五的时候，我的一个朋友让我帮忙写一个小工具。这个小工具要完成的功能如下： 指定方差与均值，生成相应的随机数，默认生成一组随机数(默认为10个</description>
+    </item>
+    
+    <item>
+      <title>Things I Have Learned at Cocos2D-X Team</title>
+      <link>https://zilongshanren.com/post/what-i-learn-at-cocos2d-x/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/what-i-learn-at-cocos2d-x/</guid>
+      <description>我是去年7月加入的Cocos2D-X团队，从今年2月份正式进入Cocos2D-x引擎团队，负责维护GUI框架。之前我一直在做技术推广，写英文</description>
+    </item>
+    
+    <item>
+      <title>迁移博客到Octopress</title>
+      <link>https://zilongshanren.com/post/migrate-to-octopress/</link>
+      <pubDate>Mon, 08 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/migrate-to-octopress/</guid>
+      <description>各位看到这篇文章的时候，我其实已经迁移完博客了。(文章全部迁移完毕，部分文章图片不完整，我会稍后修复，另外评论只能稍后再迁移了。) 迁移博客跟</description>
+    </item>
+    
+    <item>
+      <title>使用CMake编译跨平台静态库</title>
+      <link>https://zilongshanren.com/post/how-to-use-cmake-to-compile-static-library/</link>
+      <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/how-to-use-cmake-to-compile-static-library/</guid>
+      <description>在开始介绍如何使用CMake编译跨平台的静态库之前，先讲讲我在没有使用CMake之前所趟过的坑。因为很多开源的程序，比如png，都是自带编译</description>
+    </item>
+    
+    <item>
+      <title>Emacs, The Editor of a Life Time</title>
+      <link>https://zilongshanren.com/post/emacs-the-editor-of-a-life-time/</link>
+      <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/emacs-the-editor-of-a-life-time/</guid>
+      <description>最近看了一个关于Emacs的视频，视频的标题为The Editor of a Life Time。一个程序员，使用Emacs 31年了，不得不说让人很震撼。认识我的朋友都</description>
+    </item>
+    
+    <item>
+      <title>Lua教程:绑定一个简单的C&#43;&#43;类(6)</title>
+      <link>https://zilongshanren.com/post/bind-a-simple-cpp-class-in-lua/</link>
+      <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/bind-a-simple-cpp-class-in-lua/</guid>
+      <description>本文是最后一篇C/C++与Lua交互的教程，在此之后，我们会结合Cocos2D-X来介绍Lua绑定。本文主要介绍如何绑定一个简单的C++类到</description>
+    </item>
+    
+    <item>
+      <title>Lua教程:C/C&#43;&#43;操作Lua数组和字符串(5)</title>
+      <link>https://zilongshanren.com/post/cpp-operate-lua-string/</link>
+      <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cpp-operate-lua-string/</guid>
+      <description>本文将介绍如何在C/C++里面操作Lua的数组和字符串类型，同时还会介绍如何在C/C++函数里面存储Lua状态（registry和upval</description>
+    </item>
+    
+    <item>
+      <title>学习新东西</title>
+      <link>https://zilongshanren.com/post/talking-about-learning-new-thing/</link>
+      <pubDate>Tue, 05 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/talking-about-learning-new-thing/</guid>
+      <description>对于程序员而言，最大的痛苦莫过于对着层出不穷的新语言、新技术和新框架疲于奔命了。 就拿cocos2d-x来说，有些人可能2.x都才刚刚上手，3</description>
+    </item>
+    
+    <item>
+      <title>Lua教程：Lua调用C/C&#43;&#43;函数(4)</title>
+      <link>https://zilongshanren.com/post/lua-call-cpp-functions/</link>
+      <pubDate>Wed, 30 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/lua-call-cpp-functions/</guid>
+      <description>本教程将介绍如何在Lua里面调用c/c++函数。 在Lua里面调用c/c++函数其实是比较简单，本文将通过两个示例演示具体的做法：一个是求平均</description>
+    </item>
+    
+    <item>
+      <title>Lua教程：C/C&#43;&#43;调用Lua的Table(3)</title>
+      <link>https://zilongshanren.com/post/call-lua-table-from-cpp/</link>
+      <pubDate>Mon, 28 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/call-lua-table-from-cpp/</guid>
+      <description>从写上一篇Lua的文章到现在，已经过去半月有余了，是时候让自己的Lua状态refresh一下了。本教程将介绍Lua的栈及基本栈操作，同时还有</description>
+    </item>
+    
+    <item>
+      <title>WebGL教程:你的第一个立方体(3)</title>
+      <link>https://zilongshanren.com/post/webgl-your-first-cube/</link>
+      <pubDate>Sun, 20 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/webgl-your-first-cube/</guid>
+      <description>在上一篇文章中，我们介绍了如何使用glMatrix.js来处理3D图形里面的数学运算，主要谈到了MVP的应用。同时，我们还简单地提到了如何使</description>
+    </item>
+    
+    <item>
+      <title>阿里云ubuntu12.04搭建自己的gitlab</title>
+      <link>https://zilongshanren.com/post/setup-gitlab-on-ubuntu-aliyun/</link>
+      <pubDate>Tue, 15 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/setup-gitlab-on-ubuntu-aliyun/</guid>
+      <description>我对Github太爱了，但是它的私有仓库要钱，而且是每个月7美金，对于一个上有老下有小的屌丝来说，还是能省则省吧。 况且，我不是有一台阿里云的</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES2.0教程:纹理贴图(6)</title>
+      <link>https://zilongshanren.com/post/opengl-es2-0-texturing-mapping/</link>
+      <pubDate>Sat, 12 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es2-0-texturing-mapping/</guid>
+      <description>在上一篇文章中，我们介绍了如何绘制一个立方体，里面涉及的知识点有VBO(Vertex Buffer Object)、IBO(Index Buffer Object)和M</description>
+    </item>
+    
+    <item>
+      <title>程序猿：你的&#34;家当&#34;都在云上吗？</title>
+      <link>https://zilongshanren.com/post/does-you-stuff-all-on-cloud/</link>
+      <pubDate>Mon, 07 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/does-you-stuff-all-on-cloud/</guid>
+      <description>最近我一直在想一个问题，作为一个程序猿，我的“家当”都在云上面吗？ 在扯这个话题之前，先来陈列一下我目前有哪些家当。 首当其冲的应该是我的代码，</description>
+    </item>
+    
+    <item>
+      <title>Lua教程:C&#43;&#43;和Lua相互传递数据(2)</title>
+      <link>https://zilongshanren.com/post/pass-lua-to-cpp-and-vise-verse/</link>
+      <pubDate>Sun, 06 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/pass-lua-to-cpp-and-vise-verse/</guid>
+      <description>这是我的Lua系列教程的第二篇，本篇文章主要介绍C++和Lua相互传递数据。如果你还不知道怎么在c/c++里面调用Lua脚本的话，请参考这篇</description>
+    </item>
+    
+    <item>
+      <title>如何坚持每周写一篇博客</title>
+      <link>https://zilongshanren.com/post/how-to-write-one-blog-post-each-week/</link>
+      <pubDate>Thu, 03 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/how-to-write-one-blog-post-each-week/</guid>
+      <description>如何坚持每周写一篇博客呢？ 在回答这个问题之前,让我们先来看看这个问题是怎么由来的？ 我在我的微博好友justbilt首页中无意中看到下面这段话</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES2.0教程：你的第一个立方体(5)</title>
+      <link>https://zilongshanren.com/post/opengl-es2.0-tutorials-your-first-cube/</link>
+      <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es2.0-tutorials-your-first-cube/</guid>
+      <description>在上篇文章中，我们介绍了VBO索引的使用，使用VBO索引可以有效地减少顶点个数,优化内存，提高程序效率。 本教程将带领大家一起走进3D&amp;nda</description>
+    </item>
+    
+    <item>
+      <title>Lua教程: C&#43;&#43;嵌入Lua脚本(1)</title>
+      <link>https://zilongshanren.com/post/embed-lua-tutorials-one/</link>
+      <pubDate>Sat, 28 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/embed-lua-tutorials-one/</guid>
+      <description>本系列教程主要介绍如何在C/C++程序里面嵌入Lua脚本，我打算从以下几个方面来介绍： 如何在C/C++里面嵌入Lua脚本 Lua访问C/C++</description>
+    </item>
+    
+    <item>
+      <title>WebGL教程:使用glMatrix和JQuery(2)</title>
+      <link>https://zilongshanren.com/post/webgl-use-glmatrix-and-jquery/</link>
+      <pubDate>Sat, 28 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/webgl-use-glmatrix-and-jquery/</guid>
+      <description>上篇文章介绍了如何使用WebGL来绘制一个三角形。从那个教程中，我们可以看出，其实WebGL只是一个2D API,我们只需要在Vertex Sh</description>
+    </item>
+    
+    <item>
+      <title>我的Git工作流(下)</title>
+      <link>https://zilongshanren.com/post/my-git-workflow-part-two/</link>
+      <pubDate>Thu, 26 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/my-git-workflow-part-two/</guid>
+      <description>在上篇文章中,我谈到了我日常使用Git作为个人项目管理工具的一些基本用法。同时，我还简单地谈了一下使用Git作为个人项目管理工具的好处。但是</description>
+    </item>
+    
+    <item>
+      <title>我的Git工作流(上)</title>
+      <link>https://zilongshanren.com/post/my-git-workflow-part-one/</link>
+      <pubDate>Wed, 25 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/my-git-workflow-part-one/</guid>
+      <description>这篇文章主要是记录一下我自己的Git工作流。 我从2010年下半年开始接触Git起，到今天也有快4年的时间了。在接触Git之前，版本控制系统里</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES2.0教程:使用VBO索引(4)</title>
+      <link>https://zilongshanren.com/post/opengl-es2-0-use-vbo/</link>
+      <pubDate>Sun, 22 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es2-0-use-vbo/</guid>
+      <description>在上一篇文章中，我们介绍了uniform和模型-视图-投影变换，相信大家对于OpenGL ES 2.0应该有一点感觉了。在这篇文章中，我们不再画三</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式：观察者模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-observer/</link>
+      <pubDate>Fri, 20 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-observer/</guid>
+      <description>1、应用场景 前面在介绍单例模式的时候，提到了一个类NotificationCenter，它除了应用单例模式以外，还应用了观察者模式。Noti</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式:委托模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-delegation/</link>
+      <pubDate>Fri, 20 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-delegation/</guid>
+      <description>前言： 前一篇文章讨论了cocos2d-x里面的中介者模式，但是，由于概念把握上面的偏差，我把GoF的中介者模式搞混淆了。幸好有读者给我提出了</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式:中介者模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-design-pattern-mediator/</link>
+      <pubDate>Fri, 20 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-design-pattern-mediator/</guid>
+      <description>上周写了关于cocos2d-x里面的观察者模式，文章最后提到一个应用场景：“你的GameScene里面有两个layer，一个gameLaye</description>
+    </item>
+    
+    <item>
+      <title>搭建wordpress博客</title>
+      <link>https://zilongshanren.com/post/setup-wordpress-blog/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/setup-wordpress-blog/</guid>
+      <description>更新：（2016-10-15） 目前我已经使用 hexo 来搭建静态 blog，使用 org + emacs 来写博客，所以 wordpress 已不推荐。 前言 写这篇博客的目的主要有两点： 备忘录</description>
+    </item>
+    
+    <item>
+      <title>打造属于自己的Vim神器</title>
+      <link>https://zilongshanren.com/post/make-your-own-vim-weapon/</link>
+      <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/make-your-own-vim-weapon/</guid>
+      <description>Why Vim? 为什么要使用Vim？ 让我们先看看其他人怎么说： Vim就像学钢琴一样，一旦学会，终身受益无穷。 这些话都是出自vim高手之口，对于Vim新手</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式: 组合模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-composite-patterns/</link>
+      <pubDate>Wed, 18 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-composite-patterns/</guid>
+      <description>在开始挖掘cocos2d-x里面的组合模式之前，我先武断地下个结论： “几乎所有与GUI相关的框架设计都应用了组合设计模式”。（PS：大家注意</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式：防御式编程模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-defensive-programming/</link>
+      <pubDate>Sun, 15 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-defensive-programming/</guid>
+      <description>声明：防御式编程是提高程序代码质量的一种手段，它不能算是真正意义上的模式。但是，这里，我还是要给它冠之以“模式”二字。 原因有三： cocos2</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES2.0教程:初识MVP(3)</title>
+      <link>https://zilongshanren.com/post/opengl-es2-meet-mvp/</link>
+      <pubDate>Sun, 15 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es2-meet-mvp/</guid>
+      <description>在上一篇文章中，我在介绍vertex shader的时候挖了一个坑：CC_MVPMatrix。它其实是一个uniform，每一个cocos2d</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式:外观模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-facade/</link>
+      <pubDate>Tue, 10 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-facade/</guid>
+      <description>1.应用场景 Cocos2d-x里面有一个非常明显的地方使用了外观模式，它就是SimpleAudioEngine。因为它为CocosDensh</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式：管理者模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-manager/</link>
+      <pubDate>Mon, 09 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-manager/</guid>
+      <description>管理者（Manager）就是专门负责管理其它类的实例的类，比如Cocoa里面的NSFontManager、NSInputManager、NS</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X 设计模式：二段构建模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-design-pattern-two-stage-creation/</link>
+      <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-design-pattern-two-stage-creation/</guid>
+      <description>乍一看标题，大家可能会觉得很奇怪，神马是“二段构建模式”呢？ 所谓二段构建，就是指创建对象时不是直接通过构建函数来分配内存并完成初始化操作。取</description>
+    </item>
+    
+    <item>
+      <title>JSAPI用户手册翻译</title>
+      <link>https://zilongshanren.com/post/jsapi-reference/</link>
+      <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/jsapi-reference/</guid>
+      <description>本文档主要涵盖如何嵌入SpiderMonkey javascript引擎到你自己的c++程序中。 JavaScript在浏览器端已经被广泛使用了</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES2.0教程：编写自己的shader(2)</title>
+      <link>https://zilongshanren.com/post/opengl-es20-write-your-own-shader/</link>
+      <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es20-write-your-own-shader/</guid>
+      <description>在上篇文章中，我给大家介绍了如何在cocos2d-x里面绘制一个三角形，当时我们使用的是cocos2d-x引擎自带的shader和一些辅助函</description>
+    </item>
+    
+    <item>
+      <title>WebGL教程：你的第一个三角形(1)</title>
+      <link>https://zilongshanren.com/post/webgl-your-first-triangles/</link>
+      <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/webgl-your-first-triangles/</guid>
+      <description>本人最近正在学习WebGL，所以想借着自己写《Cocos2D-X OpenGLES 2.0教程系列》的同时再应用到WebGL上面来。一来可以加深自己的理解，二</description>
+    </item>
+    
+    <item>
+      <title>打造属于自己的Vim神器:后记</title>
+      <link>https://zilongshanren.com/post/make-your-own-vim-super-weapon/</link>
+      <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/make-your-own-vim-super-weapon/</guid>
+      <description>一年以前，我写下了《如何打造属于自己的vim神器》并且录制了相应的Vim使用视频。 当时收到了大量vim爱好者的好评和反馈，在这一年里，我也对</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式:单例模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-singleton/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-singleton/</guid>
+      <description>本系列文章我将和大家一起来发掘cocos2d-x中所使用到的设计模式。 (老实说，这些文章都是老文章了，但是旧瓶装新酒，不管是对自己还是对他人</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES 2.0教程：你的第一个三角形(1)</title>
+      <link>https://zilongshanren.com/post/opengl-es-2-0-your-first-triangles/</link>
+      <pubDate>Sat, 31 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es-2-0-your-first-triangles/</guid>
+      <description>前言 学习程序世界里面的任何一项技能都有一个HelloWorld，而OpenGL的HelloWorld就是自己画一个三角形。当然，在 cocos</description>
+    </item>
+    
+  </channel>
+</rss>

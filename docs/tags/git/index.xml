@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on 子龙山人</title>
+    <link>https://zilongshanren.com/tags/git/</link>
+    <description>Recent content in Git on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 21 Sep 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>三个 Git 问题(下)</title>
+      <link>https://zilongshanren.com/post/2015-09-21-three-git-question-2/</link>
+      <pubDate>Mon, 21 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-09-21-three-git-question-2/</guid>
+      <description>Table of Contents Merge 的测试代码 Rebase 的测试代码 小结 在上篇文章中，我们介绍了 Git 内部存储对象的方式，以及为什么不要用 Git 去管理大的二进制文件。 本文将继续探讨上篇文</description>
+    </item>
+    
+    <item>
+      <title>三个 Git 问题（上）</title>
+      <link>https://zilongshanren.com/post/2015-09-12-three-git-question/</link>
+      <pubDate>Sat, 12 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-09-12-three-git-question/</guid>
+      <description>Table of Contents 什么是文件快照 为什么 Git 切换分支特别快？ 为什么不推荐使用 Git 保存二进制大文件 参考文献 本系列文章主要回答三个 Git 问题: 为什么不推荐用 Git 保存二进</description>
+    </item>
+    
+    <item>
+      <title>我的Git工作流(下)</title>
+      <link>https://zilongshanren.com/post/my-git-workflow-part-two/</link>
+      <pubDate>Thu, 26 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/my-git-workflow-part-two/</guid>
+      <description>在上篇文章中,我谈到了我日常使用Git作为个人项目管理工具的一些基本用法。同时，我还简单地谈了一下使用Git作为个人项目管理工具的好处。但是</description>
+    </item>
+    
+    <item>
+      <title>我的Git工作流(上)</title>
+      <link>https://zilongshanren.com/post/my-git-workflow-part-one/</link>
+      <pubDate>Wed, 25 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/my-git-workflow-part-one/</guid>
+      <description>这篇文章主要是记录一下我自己的Git工作流。 我从2010年下半年开始接触Git起，到今天也有快4年的时间了。在接触Git之前，版本控制系统里</description>
+    </item>
+    
+  </channel>
+</rss>

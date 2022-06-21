@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>programming on 子龙山人</title>
+    <link>https://zilongshanren.com/categories/programming/</link>
+    <description>Recent content in programming on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 30 Dec 2021 22:54:00 +0800</lastBuildDate><atom:link href="https://zilongshanren.com/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何自学计算机编程</title>
+      <link>https://zilongshanren.com/post/how-to-self-learning-cs/</link>
+      <pubDate>Thu, 30 Dec 2021 22:54:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/how-to-self-learning-cs/</guid>
+      <description>众所周知，现在计算机是“宇宙机”，很多人想转计算机，但是真正能够学好计算机编程的人非常少。不少的人选择了去培训机构突击几个月，然后找一份搬砖</description>
+    </item>
+    
+    <item>
+      <title>编程之道：饭后洗碗</title>
+      <link>https://zilongshanren.com/post/wash-bowls-after-launch/</link>
+      <pubDate>Sat, 20 Jul 2019 11:13:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/wash-bowls-after-launch/</guid>
+      <description>&lt;p&gt;从今天起，我将写一系列《编程之道》的文章，主要用来记录我这些年来写代码的感悟。这些文章主要聚焦在如何写好代码。更多的是『道』&amp;mdash; 最佳实践，而不是『术』。写代码并不是一件非常难的事情，但是写『好代码』却没有那么简单。它需要我们拥有『足够的知识』和『超强的自律』。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

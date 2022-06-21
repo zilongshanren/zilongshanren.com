@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>搭建wordpress博客 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="更新：（2016-10-15） 目前我已经使用 hexo 来搭建静态 blog，使用 org &#43; emacs 来写博客，所以 wordpress 已不推荐。 前言 写这篇博客的目的主要有两点： 备忘录" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/setup-wordpress-blog/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="搭建wordpress博客" />
+<meta property="og:description" content="更新：（2016-10-15） 目前我已经使用 hexo 来搭建静态 blog，使用 org &#43; emacs 来写博客，所以 wordpress 已不推荐。 前言 写这篇博客的目的主要有两点： 备忘录" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/setup-wordpress-blog/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-19T00:00:00+00:00" />
+
+<meta itemprop="name" content="搭建wordpress博客">
+<meta itemprop="description" content="更新：（2016-10-15） 目前我已经使用 hexo 来搭建静态 blog，使用 org &#43; emacs 来写博客，所以 wordpress 已不推荐。 前言 写这篇博客的目的主要有两点： 备忘录"><meta itemprop="datePublished" content="2014-06-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-19T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2094">
+<meta itemprop="keywords" content="wordpress," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="搭建wordpress博客"/>
+<meta name="twitter:description" content="更新：（2016-10-15） 目前我已经使用 hexo 来搭建静态 blog，使用 org &#43; emacs 来写博客，所以 wordpress 已不推荐。 前言 写这篇博客的目的主要有两点： 备忘录"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">搭建wordpress博客</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-19 </span>
+        <div class="post-category">
+            <a href="/categories/wordpress/"> Wordpress </a>
+            </div>
+          <span class="more-meta"> 约 2094 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#准备工作">准备工作</a>
+      <ul>
+        <li><a href="#购买域名和服务器">购买域名和服务器</a></li>
+        <li><a href="#备案">备案</a></li>
+      </ul>
+    </li>
+    <li><a href="#阿里云服务器配置">阿里云服务器配置</a></li>
+    <li><a href="#wordpress搭建">wordpress搭建</a></li>
+    <li><a href="#wordpress搭建完必做的几件事">wordpress搭建完必做的几件事</a></li>
+    <li><a href="#杂顶">杂顶</a></li>
+    <li><a href="#遇到的问题">遇到的问题</a></li>
+    <li><a href="#结语">结语</a></li>
+    <li><a href="#推荐阅读">推荐阅读</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>更新：（2016-10-15）
+<strong>目前我已经使用 hexo 来搭建静态 blog，使用 org + emacs 来写博客，所以 wordpress 已不推荐。</strong></p>
+<h2 id="前言">前言</h2>
+<p>写这篇博客的目的主要有两点：</p>
+<ul>
+<li>
+<p>备忘录。自己前后折腾过几次wordpress，每次折腾起来都要耗费半天时间。</p>
+</li>
+<li>
+<p>给wordpress新手一些启发。主要是能让大家少走弯路。</p>
+</li>
+</ul>
+<p>下面，我具体讲一下我的建站过程。</p>
+<!-- raw HTML omitted -->
+<h2 id="准备工作">准备工作</h2>
+<h3 id="购买域名和服务器">购买域名和服务器</h3>
+<p>我现在用的.cn域名是每年50左右，推荐一次性购买三年以上。（偷偷的告诉你，博主买了十年哦。），服务器用的阿里云的云主机，费用为每个月50块左右 。如果你想拥有自己的服务器和网站，那么大约每个月要从牙缝里面省出55块钱。这点钱对于一个程序员来讲，应该是九牛一毛。千万不要省不得，这是一项<a href="http://peter8015.iteye.com/blog/2077459">值得的投资</a>。
+购买域名推荐<a href="http://www.net.cn/">万网</a>和<a href="http://www.godaddy.com/">Godaddy</a>，具体购买过程这个就不啰嗦了。</p>
+<h3 id="备案">备案</h3>
+<p>因为是选用的国内的主机，所以备案这个环节是躲不过的。当然也有朋友不想购买国内的主机，可以选择在Github上面用Github Page来搭建自己的博客。说到这里，我再多说两句。我的<a href="http://blog.zilongshanren.com">英文网站</a>就是托管在Github上面的，采用的<a href="http://octopress.org/">octopress</a>，我现在主要用Emacs+org-mode来写英文博客，还是挺爽的。
+如果是购买的阿里云的主机，记得一定要去阿里云备案（好像有点废话）。如果不备案，到时候wordpress博客搭建好，域名解析是会出问题的。就是你输入服务器ip可以访问网站，但是域名是死活跳不过去的。博主就在这里坑了好久。。
+备案的时候至少准备1个月吧，有点耐心吧，具体备案的注意事项阿里云里面有详细说明。如果你填的资料比较敏感，阿里云的客服会打电话给你，教你巧妙地修改来顺利通过管局的审核。</p>
+<h2 id="阿里云服务器配置">阿里云服务器配置</h2>
+<p>阿里云购买的时候可以选择操作系统，尽量拣自己熟悉的系统选吧。全部是linux系统，不过这难不倒坚强的程序员。服务器刚买来的时候多少是要打磨一下才会比较好用。
+因为是阿里云，所以一般的ubuntu装机后的必备操作很多是不需要的，比如更换源这种事。
+我主要对服务器做的配置有以下几点：</p>
+<ul>
+<li>
+<p>更新软件包 apt-get update</p>
+</li>
+<li>
+<p>安装Git</p>
+</li>
+<li>
+<p>安装Vim，同时使用<a href="https://github.com/andyque/dotfiles">我的vim仓库</a>一秒钟土枪变神器。</p>
+</li>
+<li>
+<p><a href="https://gist.github.com/andyque/9290567">配置ssh</a>，这样客户端访问可以免输密码。因为阿里云的密码要求很严格，那种密码我根本记不住。</p>
+</li>
+</ul>
+<p>至此，对于搭建wordpress博客而言，配置就这些了。（当然，我买服务器不可能只是为了写博客啦，写点游戏服务端程序不是蛮好的嘛！）</p>
+<h2 id="wordpress搭建">wordpress搭建</h2>
+<p>我这次搭建wordpress的方案是目前来说比较时髦的方案：LEMP(Ubuntu12.04 + php + nginx + mysql).</p>
+<p>具体搭建方案可以参考下面两个链接：<a href="https://www.digitalocean.com/community/articles/how-to-install-wordpress-with-nginx-on-ubuntu-12-04">链接一</a>,  <a href="https://www.digitalocean.com/community/articles/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-12-04">链接二</a></p>
+<h2 id="wordpress搭建完必做的几件事">wordpress搭建完必做的几件事</h2>
+<p>这里是重点了。</p>
+<ul>
+<li>
+<p>选择一个喜欢的主题。博主选择是twentytwelve，简洁，我喜欢。</p>
+</li>
+<li>
+<p>安装必备的插件。</p>
+<ul>
+<li>
+<p>Akismet （防垃圾评论神器）</p>
+</li>
+<li>
+<p>All In One SEO Pack （SEO你懂的）</p>
+</li>
+<li>
+<p>Jetpack Markdown (使用markdown写博客）</p>
+</li>
+<li>
+<p>WP Super Cache （优化wordpress的）</p>
+</li>
+<li>
+<p>WPJAM 七牛镜像存储 （cdn加速你的网站访问）</p>
+</li>
+<li>
+<p>UpdraftPlus Backup （可以定期把我的博客和数据库备份到Google Driver上面）</p>
+</li>
+<li>
+<p>Disqus(社会化评论插件，wordpress自带的评论太丑了!!!)
+其它还有一些插件，不是很必备，就不罗列了，大家可以去搜索引擎上面找自己想要的插件。建议不要安装太多插件，怕影响网站性能。同时，插件安装以最小满足需求为原则，能不用插件就尽量不用，不要贪大求全。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>去除google字体。（这个是必须中的必须啊，否则你的网站访问速度跟蜗牛一样。）具体方法，可以google一下。</p>
+</li>
+<li>
+<p>配置SMTP，可以通过在服务器里面用apt-get install sendmail就可以了。也可以安装一个插件Configure SMTP。如果不配置，新用户注册或者评论我们是收不到邮件的。</p>
+</li>
+<li>
+<p>用<a href="http://zhanzhang.baidu.com/optimization/index">百度站长工具</a>检查一下网站的访问速度，给出一些页面优化建议，并根据这些建议去做一些优化。比如GZip。</p>
+</li>
+<li>
+<p>定制一些Page和Widget，让网站变得更加美观。</p>
+</li>
+</ul>
+<h2 id="杂顶">杂顶</h2>
+<ol>
+<li>设定域名URL重定向
+因为我以前一直是用zilongshanren.com这个博客在写文章，现在转到新域名了，很多朋友可能还不知道这个域名。所以，我做了URL转发。你在浏览器里面输入zilongshanren.com会自动跳转到4gamers.cn这个域名。具体做法如下：
+修改/etc/nginx/sites-available/wordpress文件（假设你的站点在nginx里面叫wordpress），然后添加下面一段话就好了：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">server</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="n">server_name</span>  <span class="n">zilongshanren</span><span class="p">.</span><span class="n">com</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="n">rewrite</span> <span class="o">^</span><span class="p">(.</span><span class="o">*</span><span class="p">)</span> <span class="nl">http</span><span class="p">:</span><span class="c1">//zilongshanren.com$1 permanent;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后，只需要把zilongshanren.com这个域名的A记录也解析到阿里云服务器的ip。至于为什么要换域名，因为4gamers = for gamers,比zilongshanren.com好记，简单易输入。</p>
+<h2 id="遇到的问题">遇到的问题</h2>
+<ol>
+<li>博客的mysql经常挂掉，<a href="http://hongjiang.info/aliyun-vps-mysql-aborting/">解决办法</a></li>
+</ol>
+<h2 id="结语">结语</h2>
+<p>最后，别忘了每周都至少更新一篇博客，否则一个月55块白白浪费了呀。如果大家在建站过程中遇到什么问题，欢迎在下方留言，我知道的话一定知无不言。</p>
+<h2 id="推荐阅读">推荐阅读</h2>
+<ul>
+<li>
+<p><a href="http://blog.csdn.net/zqtsx/article/details/24729485">如何正确配置Nginx+PHP及正确的nginx URL重写</a></p>
+</li>
+<li>
+<p><a href="http://blog.csdn.net/zqtsx/article/details/24657373">nginx泛域名解析并禁止IP访问，禁止多余www.泛域名访问</a></p>
+</li>
+<li>
+<p><a href="https://rtcamp.com/wordpress-nginx/tutorials/">https://rtcamp.com/wordpress-nginx/tutorials/</a></p>
+</li>
+<li>
+<p><a href="https://rtcamp.com/wordpress-nginx/tutorials/single-site/wp-super-cache/">https://rtcamp.com/wordpress-nginx/tutorials/single-site/wp-super-cache/</a></p>
+</li>
+<li>
+<p><a href="http://wordpress.org/support/topic/working-nginx-rewrite-rules-for-wordpress-multisite-3x-wp-super-cache">http://wordpress.org/support/topic/working-nginx-rewrite-rules-for-wordpress-multisite-3x-wp-super-cache</a></p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-19
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/wordpress/">wordpress</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/cocos2d-x-design-pattern-mediator/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Cocos2D-X设计模式:中介者模式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/make-your-own-vim-weapon/">
+            <span class="next-text nav-default">打造属于自己的Vim神器</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/setup-wordpress-blog/" class="leancloud_visitors" data-flag-title="搭建wordpress博客">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cocos2D-X设计模式: 组合模式 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="在开始挖掘cocos2d-x里面的组合模式之前，我先武断地下个结论： “几乎所有与GUI相关的框架设计都应用了组合设计模式”。（PS：大家注意" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/cocos2d-x-composite-patterns/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Cocos2D-X设计模式: 组合模式" />
+<meta property="og:description" content="在开始挖掘cocos2d-x里面的组合模式之前，我先武断地下个结论： “几乎所有与GUI相关的框架设计都应用了组合设计模式”。（PS：大家注意" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/cocos2d-x-composite-patterns/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-18T00:00:00+00:00" />
+
+<meta itemprop="name" content="Cocos2D-X设计模式: 组合模式">
+<meta itemprop="description" content="在开始挖掘cocos2d-x里面的组合模式之前，我先武断地下个结论： “几乎所有与GUI相关的框架设计都应用了组合设计模式”。（PS：大家注意"><meta itemprop="datePublished" content="2014-06-18T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-18T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1001">
+<meta itemprop="keywords" content="Cocos2d-x,design pattern," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cocos2D-X设计模式: 组合模式"/>
+<meta name="twitter:description" content="在开始挖掘cocos2d-x里面的组合模式之前，我先武断地下个结论： “几乎所有与GUI相关的框架设计都应用了组合设计模式”。（PS：大家注意"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Cocos2D-X设计模式: 组合模式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-18 </span>
+        <div class="post-category">
+            <a href="/categories/cocos2d-x/"> Cocos2d-x </a>
+            <a href="/categories/design-pattern/"> design pattern </a>
+            </div>
+          <span class="more-meta"> 约 1001 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1应用场景">1、应用场景</a></li>
+    <li><a href="#2使用该模式的优缺点">2、使用该模式的优缺点</a></li>
+    <li><a href="#3模式定义及一般实现">3、模式定义及一般实现</a></li>
+    <li><a href="#4游戏开发中如何运用此模式">4、游戏开发中如何运用此模式</a></li>
+    <li><a href="#5与其它模式的关系">5、与其它模式的关系</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>在开始挖掘cocos2d-x里面的组合模式之前，我先武断地下个结论：</p>
+<p>“几乎所有与GUI相关的框架设计都应用了组合设计模式”。（PS：大家注意我的用词，是“几乎所有”，给自己留条后路，哈哈）</p>
+<!-- raw HTML omitted -->
+<h2 id="1应用场景">1、应用场景</h2>
+<p>Cocoa编程框架APPKit和UIKit都应用了组合模式，各种各样的View及其派生类组成了一棵树状结构的层级视图，而这里面就应用了组合模式。当然，Cocos2D-x里面的Node组织方式也采用的是这个方法，最终游戏界面中的Nodes也会形成一棵树。</p>
+<p>说到树，我们马上就会想到树根，树干和树叶。一棵树一般只包含一个根，若干树干和大量的叶子。同时，树干长在树根上，树叶长在树干上。（PS：这有点废话了，不过读者莫急，耐着性着往下看。）对应于Cocos2d-x里面，就是一个游戏有一个主场景GameScene，它是树根，然后它有若干个树干（GameLayer、HudLayer、InputLayer、BackgroundLayer和LevelLayer等），最后，每一个树干又包含若干个树叶（比如sprite、particles、font、TiledMap nodes、etc）。</p>
+<p><img src="https://zilongshanren.com/img/tree-nodes-labeled.png" alt="tree-node"></p>
+<p>说完了这些，你可能会问了，这跟组合模式有毛关系啊。好，组合模式正式登场！</p>
+<p>cocos2d-x里面的CCScene、CCLayer、CCNode派生类(不含CCLayer和CCScene)共同组成了一个树形结构，这样我们便可以以一致地方式来处理这些类，比如addChild、removeChild和getChildren。处理“整体-部分关系”（通常是树形结构），并且能够以一致地方式来对待整体与部分，这不正是组合模式的应用场景吗。</p>
+<h2 id="2使用该模式的优缺点">2、使用该模式的优缺点</h2>
+<p>优点：</p>
+<p>1）、优化处理递归或分级数据结构。</p>
+<p>2）、一致地对待组合对象与单个对象，可以简化客户端调用</p>
+<p>缺点：</p>
+<p>1）、如果是透明实现的组合模式，单个对象也会包含组合对象的方法，这样会给客户端调用造成麻烦，因为单个对象实际上是不会实现这些组合对象的方法的。</p>
+<h2 id="3模式定义及一般实现">3、模式定义及一般实现</h2>
+<p>模式定义：</p>
+<p>将对象组合成树形结构以表示“部分整体”的层次结构。组合模式使得用户对单个对象和使用具有一致性。</p>
+<p>UML类图：</p>
+<p><img src="https://zilongshanren.com/img/600px-Composite_UML_class_diagram_fixed.png" alt="diagram"></p>
+<p>一般实现：参考<a href="http://www.cnblogs.com/tiandsp/archive/2012/06/26/2563575.html">这篇文章</a></p>
+<h2 id="4游戏开发中如何运用此模式">4、游戏开发中如何运用此模式</h2>
+<p>因为游戏开发不是设计框架，基本上使用组合模式的情形不多。但是，如果有递归或者树形结构的对象关系，都可以考虑使用组合模式。</p>
+<h2 id="5与其它模式的关系">5、与其它模式的关系</h2>
+<p>暂不讨论</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-18
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cocos2d-x/">Cocos2d-x</a>
+          <a href="/tags/design-pattern/">design pattern</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/make-your-own-vim-weapon/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">打造属于自己的Vim神器</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/cocos2d-x-defensive-programming/">
+            <span class="next-text nav-default">Cocos2D-X设计模式：防御式编程模式</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/cocos2d-x-composite-patterns/" class="leancloud_visitors" data-flag-title="Cocos2D-X设计模式: 组合模式">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

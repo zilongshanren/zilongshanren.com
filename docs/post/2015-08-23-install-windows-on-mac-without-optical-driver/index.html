@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Mac 无光驱安装 Windows 10 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="Table of Contents Hack Boot Camp Assistant Burn the ISO to USB Configure the GPT disk and EFI loader 安装失败的可能原因 安装 Ubuntu 总结 Reference 我的旧 Mac 电脑的型号是 13 inch 2011 late，它是有光驱的。后来因为我的硬盘坏了，" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/2015-08-23-install-windows-on-mac-without-optical-driver/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Mac 无光驱安装 Windows 10" />
+<meta property="og:description" content="Table of Contents Hack Boot Camp Assistant Burn the ISO to USB Configure the GPT disk and EFI loader 安装失败的可能原因 安装 Ubuntu 总结 Reference 我的旧 Mac 电脑的型号是 13 inch 2011 late，它是有光驱的。后来因为我的硬盘坏了，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/2015-08-23-install-windows-on-mac-without-optical-driver/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2015-08-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-08-23T00:00:00+00:00" />
+
+<meta itemprop="name" content="Mac 无光驱安装 Windows 10">
+<meta itemprop="description" content="Table of Contents Hack Boot Camp Assistant Burn the ISO to USB Configure the GPT disk and EFI loader 安装失败的可能原因 安装 Ubuntu 总结 Reference 我的旧 Mac 电脑的型号是 13 inch 2011 late，它是有光驱的。后来因为我的硬盘坏了，"><meta itemprop="datePublished" content="2015-08-23T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2015-08-23T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1349">
+<meta itemprop="keywords" content="Mac,Windows10," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mac 无光驱安装 Windows 10"/>
+<meta name="twitter:description" content="Table of Contents Hack Boot Camp Assistant Burn the ISO to USB Configure the GPT disk and EFI loader 安装失败的可能原因 安装 Ubuntu 总结 Reference 我的旧 Mac 电脑的型号是 13 inch 2011 late，它是有光驱的。后来因为我的硬盘坏了，"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Mac 无光驱安装 Windows 10</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-08-23 </span>
+        <div class="post-category">
+            <a href="/categories/mac/"> Mac </a>
+            <a href="/categories/windows/"> Windows </a>
+            </div>
+          <span class="more-meta"> 约 1349 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">Hack Boot Camp Assistant</a></li>
+<li><a href="#orgheadline2">Burn the ISO to USB</a></li>
+<li><a href="#orgheadline3">Configure the GPT disk and EFI loader</a>
+<ul>
+<li><a href="#orgheadline4">安装失败的可能原因</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline5">安装 Ubuntu</a></li>
+<li><a href="#orgheadline6">总结</a></li>
+<li><a href="#orgheadline7">Reference</a></li>
+</ul>
+</div>
+</div>
+<p>
+我的旧 Mac 电脑的型号是 13 inch 2011 late，它是有光驱的。后来因为我的硬盘坏了，我换了一个 1T 的机械硬盘。不过，当时的 SSD 已经比较便宜了，于是我给它加装了一块三星的 120G SSD。因为电脑配置是 i5+8G 内存，瓶颈在硬盘。（更深层次的原因其实是－－穷。。。不然这么折腾干嘛，直接 15 寸顶配 retina 走起。） 不过没了光驱，你会发现安装系统变得很麻烦了，只能通过 U 盘来安装了。
+</p>
+
+<p>
+本文就是记录我是怎么使用 U 盘来安装 Windows 10 的。
+</p>
+
+<p>
+<!-- more -->
+</p>
+
+<div id="orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Hack Boot Camp Assistant</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+因为 2011 年的 Macbook Pro 本来是有光驱的，所以默认 Boot Camp Assistant 没有提供 U 盘安装方式。当你打开 Boot Camp Assistant 的时候，你是看不到下面的选项的：
+</p>
+
+<pre class="example">
+Create a Windows 7 or later version install disk
+</pre>
+
+<p>
+取而代之的是下面的警告：
+</p>
+
+<pre class="example">
+There is no optical drive（因为我们把光驱拆了）
+</pre>
+
+<p>
+此时，我们需要来 Hack 一下 Boot Camp Assistant。
+</p>
+
+<ol class="org-ol">
+<li>打开 About this  Mac -&gt; System Report，找到 Boot ROM Version 后面的字符串，例如：MBP101.00EE.B09(这个是 15 寸电脑上面的，13 寸的会有所不同）</li>
+
+<li>同时找到 Model Identifier:    MacBookPro10,1(我的 2011 年的笔记本是 MacBookPro8,1)</li>
+
+<li>打开 Application 下面的 Utilities 文件夹，找到 Boot Camp Assistant.app</li>
+
+<li>右键“Show Packages contents”，然后找到 Info.plist 文件</li>
+
+<li>在 DARequiredROMVersions 里面添加你的 Boot ROM Version</li>
+
+<li>在 PreUSBBootSupportedModels 里面添加你的 Model Identifier，并且把 PreUSBBootSupportedModels 改成 USBBootSupportedModels</li>
+
+<li>保存 Info.plist 并重新启动 Boot Camp Assistant</li>
+</ol>
+
+<p>
+现在你就可以使用 Boot Camp Assistant 来制作安装盘了。（当然如果你还有其它 Mac 电脑，也可以不用这么折腾，直接在另外的电脑上面制作安装盘即可）
+</p>
+</div>
+</div>
+
+
+<div id="orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Burn the ISO to USB</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+这一步是非常简单的，你需要准备一个 Windows 10 的安装 ISO，同时准备一个大于 4G 的 U 盘，最好是 8G 以上。
+</p>
+
+<p>
+然后把 U 盘里面的东西备份好。打开 Boot Camp Assistant，插上 U 盘，选择 Create a Windows 7 or later version install disk。
+</p>
+
+<p>
+接下来按照提示走就好了。（注意在开始界面不要勾选下面两个选项就行了。）
+</p>
+
+
+<div class="figure">
+<p><img src="https://zilongshanren.com/img/2015-08-23-install-windows-on-mac-without-optical-driver_bootcamp.png" alt="2015-08-23-install-windows-on-mac-without-optical-driver_bootcamp.png" />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="orgheadline3" class="outline-2">
+<h2 id="orgheadline3">Configure the GPT disk and EFI loader</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<p>
+因为在 Mac 上面使用 EFI 需要 GUID 分区表（简称 GPT），而不是传统的 BIOS/MBR 分区表。而到目前为止，
+Windows 只能在 MBR 的磁盘上面安装，通常都是使用 Boot Camp Assistant 来创建一个带 MBR 的分区来安装双系统。
+</p>
+
+<p>
+因为从 Windows 8 以后开始支持 EFI 的方式来安装了，所以这让我们这些无光驱党看到了希望。
+</p>
+
+<p>
+（不过有个巨坑，EFI 方式安装的 Windows 10 是没有声音的。所以，这篇文章介绍的东西，其实是然并卵。不过 2013 年以后的笔记本是没问题的，所以如果是 2013 年之前的笔记本还是老老实实用光驱安装 Windows7 吧）
+</p>
+
+<p>
+安装过程如下：
+</p>
+
+<ol class="org-ol">
+<li>准备一个新的磁盘分区（格式化成 NTFS）</li>
+
+<li>生成 GPT with protective MBR 的分区表（默认是 GPT with hybrid MBR）</li>
+
+<li>进入到 Windows 10 安装程序后，通过 Diskpart 命令手动挂载 EFI 分区</li>
+</ol>
+
+<p>
+具体细节见本文最后的参考文章。
+</p>
+</div>
+
+<div id="orgheadline4" class="outline-3">
+<h3 id="orgheadline4">安装失败的可能原因</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+<ol class="org-ol">
+<li>USB 必须是 MBR 分区表（使用 Boot Camp Assistant 制作的启动盘默认是符合要求的）</li>
+
+<li>目标磁盘必须是 GPT</li>
+
+<li>目标磁盘不能包含一个 hybrid MBR，需要使用工具处理成 GPT with protective MBR（具体方法见文章后面的参考文章）</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="orgheadline5" class="outline-2">
+<h2 id="orgheadline5">安装 Ubuntu</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+<p>
+大家也可以用这种方式安装 Ubuntu，不过烧制 Ubuntu 的安装盘和 Windows 的略有不同，不需要 Hack Boot Camp Assistant。具体方法见：<a href="http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-mac-osx">How to create a bootable USB stick on OS X | Ubuntu</a>
+</p>
+
+<p>
+制作好安装盘后，同样的是分区，分完区以后，插上启动盘并重启。待听到“咚”的一声后，按住 Option 键不放，等出现启动磁盘管理工具的时候，选择 U 盘开始安装即可。安装的时候可以把之前分好的区重新格式化成 Ubuntu 需要的文件格式。
+</p>
+</div>
+</div>
+
+<div id="orgheadline6" class="outline-2">
+<h2 id="orgheadline6">总结</h2>
+<div class="outline-text-2" id="text-orgheadline6">
+<p>
+因为这个安装过程着实让我吃不了少苦头，这里记录一下，希望对有需要的朋友能有所帮助。
+</p>
+</div>
+</div>
+
+
+<div id="orgheadline7" class="outline-2">
+<h2 id="orgheadline7">Reference</h2>
+<div class="outline-text-2" id="text-orgheadline7">
+<p>
+<a href="http://jmeosbn.github.io/blog/windows-8.1-efi-install/">Windows 8.1 - EFI install - jmeosbn</a>
+</p>
+</div>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2015-08-23
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/mac/">Mac</a>
+          <a href="/tags/windows10/">Windows10</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2015-08-30-use-mac-like-a-geek/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">像极客一样使用 Mac</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2015-08-16-how-could-i-master-vim-and-emacs/">
+            <span class="next-text nav-default">我是怎么同时掌握 Vim 和 Emacs 的?</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/2015-08-23-install-windows-on-mac-without-optical-driver/" class="leancloud_visitors" data-flag-title="Mac 无光驱安装 Windows 10">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

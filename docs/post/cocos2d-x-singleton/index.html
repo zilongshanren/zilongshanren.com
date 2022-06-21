@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cocos2D-X设计模式:单例模式 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="本系列文章我将和大家一起来发掘cocos2d-x中所使用到的设计模式。 (老实说，这些文章都是老文章了，但是旧瓶装新酒，不管是对自己还是对他人" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/cocos2d-x-singleton/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Cocos2D-X设计模式:单例模式" />
+<meta property="og:description" content="本系列文章我将和大家一起来发掘cocos2d-x中所使用到的设计模式。 (老实说，这些文章都是老文章了，但是旧瓶装新酒，不管是对自己还是对他人" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/cocos2d-x-singleton/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-01T00:00:00+00:00" />
+
+<meta itemprop="name" content="Cocos2D-X设计模式:单例模式">
+<meta itemprop="description" content="本系列文章我将和大家一起来发掘cocos2d-x中所使用到的设计模式。 (老实说，这些文章都是老文章了，但是旧瓶装新酒，不管是对自己还是对他人"><meta itemprop="datePublished" content="2014-06-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5316">
+<meta itemprop="keywords" content="Cocos2d-x,design pattern," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cocos2D-X设计模式:单例模式"/>
+<meta name="twitter:description" content="本系列文章我将和大家一起来发掘cocos2d-x中所使用到的设计模式。 (老实说，这些文章都是老文章了，但是旧瓶装新酒，不管是对自己还是对他人"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Cocos2D-X设计模式:单例模式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-01 </span>
+        <div class="post-category">
+            <a href="/categories/cocos2d-x/"> Cocos2d-x </a>
+            <a href="/categories/design-pattern/"> design pattern </a>
+            </div>
+          <span class="more-meta"> 约 5316 字 </span>
+          <span class="more-meta"> 预计阅读 11 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#应用场景">应用场景</a></li>
+        <li><a href="#使用单例模式的优缺点">使用单例模式的优缺点</a></li>
+        <li><a href="#单例模式的定义">单例模式的定义</a></li>
+        <li><a href="#游戏开发中如何运用此模式呢">游戏开发中如何运用此模式呢？</a></li>
+        <li><a href="#与其它模式的关系">与其它模式的关系</a></li>
+        <li><a href="#推荐阅读">推荐阅读</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>本系列文章我将和大家一起来发掘cocos2d-x中所使用到的设计模式。
+(老实说，这些文章都是老文章了，但是旧瓶装新酒，不管是对自己还是对他人都是有收获的）</p>
+<p>声明：这里发掘模式只是我的个人爱好，通过这个过程，我希望能加深自己对于设计模式运用的理解。关于模式的学习，市面上已经有许多非常好的书籍了。比如《Head First设计模式》、GoF的设计模式，还有《研磨设计模式》等。如果读者对于设计模式完全不了解的话，建议先阅读上面至少一本书籍，了解设计模式之后再阅读本系列文章。这样大家才会有相互交流的共同语言。</p>
+<p>为什么要发掘设计模式呢？因为设计模式本身就是人们在一些面向对象的软件系统里面发掘出来的，在一定的场景之下可以重用的解决方案。通过对模式的挖掘，我可以借此机会学习一下这些优秀的设计思想。因为我觉得，一个好的开源游戏框架除了能给我们开发者带来开发效率的提升以外，还应该被我们吸收其设计思想，这样它的价值才能完整。</p>
+<!-- raw HTML omitted -->
+<p><strong>Update: 2014-6-1</strong></p>
+<p>另外，我目前对于设计模式的理解又有了一些变化。我认为：</p>
+<p>设计模式的最大的作用有两点：其一，它定义了开发者共同交流面向对象设计时的共同语言；其二，它促进了良好面向对象设计原则的普及。</p>
+<p>对我而言，我的设计模式学习过程是这样的：</p>
+<p>“哇~原来代码还可以这样写，我要用13种设计模式实现HelloWorld”
+“我知道，这里可以用一个工厂模式。。。这里适合用策略模式。。。这里可以封装一个命令模式”
+“先实现功能再说，良好的分层和适当的抽象是首要原则，尽量面向接口编程，同时保持接口的简洁性。在开发的过程中不断重构，采用迭代式开发。”
+“哦，原来我这里使用了观察者模式了。。。”</p>
+<p>本系列文章将按照如下思路进行模式挖掘： – 找出某个设计模式的应用场景（类、类结构、对象结构，必要时结合UML类图） – 分析为什么要使用此模式（即设计决策） – 使用此模式的优缺点是什么（任何事务都有两面性，设计模式也不例外） – 此模式的定义及一般实现（这个在GoF的经典书籍里面有，这里借用一下） – 在游戏开发中如何运用此模式（自己对于模式运用场景的理解） – 此模式经常与哪些模式配合使用（这个也基本是从GoF的书籍里面借用了）</p>
+<h3 id="应用场景">应用场景</h3>
+<p>Cocos2D-x 3.0 中的单例如下：Director,TextureCache,SpriteFrameCache,AnimationCache,UserDefault，GLProgramStateCache，ScriptEngineManager，PoolManager，FileUtils，Profiler，SimleAudioEngie，Configuration，Application，GLProgramCache</p>
+<p>为什么会存在这样一些单例呢？</p>
+<p>首先是Director单例，它负责管理初始化OpenGL渲染窗口以及游戏场景的流程控制，它是cocos2dx游戏开发中必不可少的类之一。为什么要把此类设计成单例对象呢？因为，一个游戏只需要有一个游戏窗口就够了，所以，只需要初始化一次OpenGL渲染窗口。而且场景的流程控制功能，也只需要存在一个这样的场景控制对象即可。为了保证Director类只存在一个实例对象，就必须使用单例模式。但是如果我们需要在一个应用当中嵌套多个Cocos2D-X的实例，那么Director类是不能作为单例的。</p>
+<p>接下来是TextureCache单例。此类主要负责加载游戏当中所需要的纹理图片资源，这些资源加载好以后，就可以一直保留在内存里面，当下次再需要使用此纹理的时候，直接返回相应的纹理对象引用就可以了，无需再重复加载。当然，这样做可能会很浪费内存，所以cocos2dx采用了一种引用计数的方式来管理对象内存，当纹理刚被加载进来的时候，引用计数为1。如果使用此纹理对象创建一个精灵，那么此纹理对象引用会加1.如果精灵被释放，则相应的引用计数减1.当纹理的引用计数变为0的时候，纹理所占用的内存自然就会被释放掉。这也是为什么在收到内存警告的时候，会调用TextureCache的removeUnusedTextures方法。此方法会将所有引用计数为1的纹理对象全部释放掉。单从字面上看，Cache，即缓存的意思。它以牺牲一定的内存压力为代价，带来的是游戏性能的提升。这种cache技术，在游戏开发中比比皆是。注：IO操作对游戏性能影响非常大，要极力避免！！！</p>
+<p>类似的SpriteFrameCache、AnimationCache和GLProgramCache，它们也都是缓存类，分别负责缓存SpriteFrame、Animation和GLProgram。这样做的原因无非就是为了性能，以空间换时间。</p>
+<p>接下来，看看UserDefault。此类主要是用来保存游戏中的数据用的，它会创建一个xml文件，并把用户自定义的数据以key-value的形式存储到此xml文件中。此类为什么会变成单例类呢？原因也很简单，因为类似这种操作数据文件，或者配置文件的类，通常只需要在程序运行过程中存在一个实例即可。但是，我们真的需要这个单例吗？我们实际开发游戏的过程中，一般也会有自己的数据持久化方法，通常也会被设计成单例类。其实如果只是几个数据持久化方法，完全可以用几个匿名名字空间中的函数来解决。</p>
+<p>ScriptEngineManager，此类包含一个实现了ScriptEngineProtocl接口的对象引用，它可以帮助我们方便地找到LuaEngine对象。这里单例的作用纯粹变成了LuaEngine的一个全局访问点了。为什么不直接把LuaEngine作为单例对象呢？是否在某些情况之下，可能需要创建多个LuaEngine对象？如果考虑到cocos2d-x还可以同时支持其它的脚本引擎，那也可以相应的把另外的脚本引擎设计成单例类。当然，这样做无疑会使引擎里面的单例过多。考虑到单例模式近年来被广大开发者所诟病，已将其列入“反模式”。这里引用CCScriptEngineManager单例类，给其它引擎对象提供访问的惟一全局点，这也不失为一个办法。不知我的推测是否正确？</p>
+<p>PoolManager，此类是用来管理AutoReleasePool对象栈的。因为cocos2d-x采用的是基于引用计数的方式来管理动态内存，所以采用引用计数的被托管对象都被放入一个当前的autoReleasePool里面去了。当Director的mainLoop每次更新的时候，都会调用PoolManager的pop方法，把当前autoReleasePool里面的所有autoRelease对象的托管状态设置为false，同时把该autoReleasePool清空，而清空的时候则会调用autoReleasePool里面所有对象的release方法来释放内存。此类为什么要设计与单例呢？因为多个地方需要引用此类，为了方便引用，所以设计成单例。</p>
+<p>然后是FileUtils类。该类是一个工具类。工具类和配置文件类，它们绝大多数情况也都是设计成单例的。因为它们没有存在多个实例的必要。同时，它们也可以实现为一组类方法，这样无需创建对象也能够使用。</p>
+<p>然后是Profiler类，该类负责cocos2d的性能其运行情况分析，也是一个工具类。所以它设计成单例类的理由与FileUtils类差不多。这个单例也显得有点多余，用名字简单+一些全局函数就可以解决了。</p>
+<p>Configuration类也被设计成了单例对象，此类主要负责管理cocos2d-x的一些OpenGL变量信息。这些信息本可以通过定义一些宏，或者通过一些全局变量来解决的。这里设计成单例类也是更加“面向对象”的体现。因为这些配置信息根本不需存在多个对象。此类，完全可以变成Director类的一个内部私有类，然后通过Director来提供访问点。</p>
+<p>Application类的设计初衷是获得平台相关的一些信息，最重要的是运行游戏的主循环（main loop）。一个游戏只需要一个应用程序实例，所以设计与单例。</p>
+<p>最后一个是SimpleAudioEngine类，它也被设计成了一个单例类。因为它提供给了开发人员最简单的声音操作接口，可以方便地处理游戏中的背景音乐和音效。此类同时还应用了外观模式，把CocoDenshion子系统中的复杂功能给屏蔽起来了，简化了客户端程序员的调用。该类为什么要设计成单例，是因为到处都要访问它。设计成单例会很方便，而且它与其它对象没有什么联系，不好使用对象组合。</p>
+<h3 id="使用单例模式的优缺点">使用单例模式的优缺点</h3>
+<p>优点：</p>
+<p>1）简单易用，限制一个类只有一个实例，可以降低创建多个对象可能会引起的内存问题的风险，包括内存泄漏、内存占用问题。</p>
+<p>缺点：</p>
+<p>单例模式因为提供了一个全局的访问点，你可以在程序的任何地方轻而易取地访问到，这本身就是一种高耦合的设计。一旦单例改变以后，其它模块都需要修改。另外，单例模式使得对象变成了全局的了。学过面对对象编程的人都知道，全局变量是非常邪恶的，要尽量不要使用。而且单例模式会使得对象的内存在程序结束之前一直存在，在一些使用GC的语言里面，这其实就是一种内存泄漏，因为它们永远都不到释放。当然，也可以通过提供一些特殊的方法来释放单例对象所占用的内存，比如前面提到的XXXCache对象，都有相应的Purge方法。最后，cocos2dx里面实现的单例，99%都不是线程安全的。</p>
+<p>在讨论优缺点的时候，读者想必也看出来了，缺点比优点多多了。这是给大家提个醒，以后使用单例模式的时候要谨慎，不要滥用。因为此模式最容易被滥用。只有真正符合单例模式应用场景的时候，才能考虑。不要为了访问方便，就把任何类都弄成单例，这样，到最后，你会发现你的程序里面就只剩下一堆单例和工厂了。</p>
+<p>此外，单例模式正在消减，比如ActionManager和TouchDispatcher在cocos2d1.0之前也是单例，现在变成了Director类的属性了。而且Riq（cocos2d-iphone的作者）也有在邮件中提到，以后Director对象也会变成非单例，并且允许一个游戏中创建多个游戏窗口。</p>
+<p><strong>2014-6-1号更新：</strong></p>
+<p>大多数时候，我们在考虑实现一个功能的时候，首先想到的一定不要是单例。单例就像全局变量，它会散布在你的程序的各个地方。推荐尽可能地用类函数，名字空间+全局函数，或者内部类来解决。而且使用单例实际上是一种程序员精神懒惰的表现，不想去管理内存，因为想不清楚内存什么时候该释放。反正我只有一个对象，这点内存不算什么。反正我以后对单例是无爱了，大多数使用单例的场景，其实都可以有替代方案。</p>
+<h3 id="单例模式的定义">单例模式的定义</h3>
+<p>保证一个类仅有一个实例，并提供一个访问它的全局的访问点。</p>
+<p>UML图：</p>
+<p><img src="https://zilongshanren.com/img/Singleton.png" alt=""></p>
+<p>它的一般实现如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">Singleton</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">   <span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">//全局访问点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="k">static</span> <span class="n">Singleton</span><span class="o">*</span> <span class="n">SharedSingleton</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">   <span class="p">{</span>
+</span></span><span class="line"><span class="cl">       <span class="k">if</span><span class="p">(</span><span class="nb">NULL</span> <span class="o">==</span> <span class="n">m_spSingleton</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="p">{</span>
+</span></span><span class="line"><span class="cl">           <span class="n">m_spSingleton</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Singleton</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">       <span class="p">}</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="n">m_spSingleton</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">   <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">  <span class="k">static</span> <span class="n">Singleton</span><span class="o">*</span> <span class="n">m_spSingleton</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Singleton</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Singleton</span><span class="p">(</span><span class="k">const</span> <span class="n">Singleton</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Singleton</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">Singleton</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">Singleton</span><span class="o">*</span> <span class="n">Singleton</span><span class="o">::</span><span class="n">m_spSingleton</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意，这里只是最基本的实现，它没有考虑到线程安全，也没有考虑内存释放。但是，这个实现有两个最基本的要素。一：定义一个静态变量，并把构造函数等设置为私有的。二：提供一个全局的访问点给外部访问。</p>
+<h3 id="游戏开发中如何运用此模式呢">游戏开发中如何运用此模式呢？</h3>
+<p>众所周知，游戏开发中离不开游戏数据保存和加载。这些数据包括关卡数据、游戏进行中的状态数据等。这样一些信息很多游戏模块中都需要访问，所以可以为之设置一个单例对象。我武断地认为，客户端游戏开发中，至少需要一个单例对象。因为一个全局的访问点可以方便很多对象之间的交互。根据之前的讨论，也可以把一些时觉需要用到的类引用保存在此单例对象中，不过只需要保存弱引用即可。使用单例，最严重的就是怕内存泄漏，所以，大家尽量不要把单例类设计地太复杂，也不要让它包含过多的动态内存管理工作。</p>
+<h3 id="与其它模式的关系">与其它模式的关系</h3>
+<p><strong>单例模式一般与工厂模式配合使用，因为一般会将工厂类设计成单例对象。</strong></p>
+<p>比如前面提到的各种cache类，它们也可以看作是某种意义上的工厂对象。由于工厂就是负责生产对象的，而cache类都可以根据用户的需要生产出相应的对象。</p>
+<p>最后，看看cocos2d-x创始人王哲对于什么是单例的看法：“这么说吧， 我设计成单例基本就一种抽象情况：独占性资源。比如某个硬件IO （如TouchDispatcher, Accelerometer），比如公用的缓存区（TextureCache, UserDefault）。后来有人抱怨单例类太多，想销毁整个cocos2d instance再重建很麻烦，所以小明和riq就把大量单例类放到Director里面管理。”</p>
+<p><strong>2014-6-1号更新：</strong></p>
+<p>那到底什么时候该使用Singleton，什么时候要避免使用Singleton呢？</p>
+<ol>
+<li>考虑使用的场景
+这个类必须只能有一个实例，且必须只能让客户端通过一个全局的访问点来访问。比如一个日志类。但是日志类可以用面向方面的编程来解决，而且这种解决问题的方法比单例更优雅。</li>
+<li>不该使用的场景 。
+几乎任何场景都不要优先想到单例，虽然使用它刚开始会带来不少好处。但是，随着时间的推移，它的各种弊端就开始显现出来了。另外，在多线程环境中，单例也是个坑。几乎很少有人可以正确地写出一个线程安全的单例类。</li>
+</ol>
+<h3 id="推荐阅读">推荐阅读</h3>
+<ol>
+<li>
+<p><a href="http://stackoverflow.com/questions/4074154/when-should-the-singleton-pattern-not-be-used-besides-the-obvious">http://stackoverflow.com/questions/4074154/when-should-the-singleton-pattern-not-be-used-besides-the-obvious</a></p>
+</li>
+<li>
+<p><a href="http://en.wikipedia.org/wiki/Singleton_pattern">http://en.wikipedia.org/wiki/Singleton_pattern</a></p>
+</li>
+<li>
+<p><a href="http://idiotechie.com/singleton-design-pattern-an-introspection-and-best-practices/">http://idiotechie.com/singleton-design-pattern-an-introspection-and-best-practices/</a></p>
+</li>
+<li>
+<p><a href="http://molecularmusings.wordpress.com/2011/11/11/singleton-is-an-anti-pattern/">http://molecularmusings.wordpress.com/2011/11/11/singleton-is-an-anti-pattern/</a></p>
+</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-01
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cocos2d-x/">Cocos2d-x</a>
+          <a href="/tags/design-pattern/">design pattern</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/make-your-own-vim-super-weapon/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">打造属于自己的Vim神器:后记</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/opengl-es-2-0-your-first-triangles/">
+            <span class="next-text nav-default">OpenGL ES 2.0教程：你的第一个三角形(1)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/cocos2d-x-singleton/" class="leancloud_visitors" data-flag-title="Cocos2D-X设计模式:单例模式">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

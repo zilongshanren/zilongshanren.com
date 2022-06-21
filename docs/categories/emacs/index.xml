@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Emacs on 子龙山人</title>
+    <link>https://zilongshanren.com/categories/emacs/</link>
+    <description>Recent content in Emacs on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 21 Aug 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/emacs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>21 天学会 Emacs（下）</title>
+      <link>https://zilongshanren.com/post/2016-08-21-learn-emacs-21-days-part-two/</link>
+      <pubDate>Sun, 21 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2016-08-21-learn-emacs-21-days-part-two/</guid>
+      <description>Table of Contents 引子 非 Vim/Emacs 党学习路径 Vim 党学习路径 Emacs 新手党学习路径 总结 TL;DR 21 天学会 Emacs 系列完美收官，你们再也不用追网剧了，我再也不用被人追着更新啦！ 引子 去年十</description>
+    </item>
+    
+    <item>
+      <title>21天学会 Emacs（上）</title>
+      <link>https://zilongshanren.com/post/2016-06-12-master-emacs-in-21-days/</link>
+      <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2016-06-12-master-emacs-in-21-days/</guid>
+      <description>Table of Contents 为什么我要录制这个系列视频 我真的可以 21 天学会 Emacs 吗？ 给 Emacs 新手的建议 后续学习建议 结语 经过了漫长的 3个月等待，《21 天学会 Emacs 系列》的上半部分</description>
+    </item>
+    
+    <item>
+      <title>Spacemacs Rocks</title>
+      <link>https://zilongshanren.com/post/2015-12-06-spacemacs-rocks/</link>
+      <pubDate>Sun, 06 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-12-06-spacemacs-rocks/</guid>
+      <description>Table of Contents 前言 Spacemacs Happy Hacking Spacemacs Rocks! 本文是对 Spacemacs Rocks 第一季系列视频的一个小节，同时打个广告，欢迎对 Emacs 和 Spacemacs 感兴趣的朋友加入 emacs-cn 的 slack 聊天组 https://slacki</description>
+    </item>
+    
+    <item>
+      <title>The best way to teach others Emacs</title>
+      <link>https://zilongshanren.com/post/2015-11-07-the-best-way-to-teach-others-emacs/</link>
+      <pubDate>Sat, 07 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-11-07-the-best-way-to-teach-others-emacs/</guid>
+      <description>Table of Contents 不要在安利的时候说 Emacs 可以做任何事情。 不要安利对方快捷键使用和无鼠标操作方式 要安利 Emacs 是一个编程平台 安利 Emacs 的正确方式： 第一步：找到一个对 Emacs</description>
+    </item>
+    
+    <item>
+      <title>Things I Wish I Know When I Am Learning Emacs</title>
+      <link>https://zilongshanren.com/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/</link>
+      <pubDate>Sat, 31 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/</guid>
+      <description>Table of Contents 一定要使用 Starter Kit Package 管理和依赖 按键绑定 按键绑定的覆盖问题 快捷键太多，记不住怎么办？ 有问题问 Emacs Happy Hacking 当我在学习 Emacs 的时候，有一些事情，我希望有人</description>
+    </item>
+    
+    <item>
+      <title>关于 Spacemacs 的 Tips</title>
+      <link>https://zilongshanren.com/post/2015-10-25-a-few-spacemacs-tips/</link>
+      <pubDate>Sun, 25 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-10-25-a-few-spacemacs-tips/</guid>
+      <description>Table of Contents could not load evil-indent-textobject Spacemacs 启动速度特别慢 Happy Hacking 因为 Spacemacs 需要下载大量的 package，而中国大陆的网络环境不是很稳定，容易导致一些 package 在下载的过程中 byte-compile 出错，所</description>
+    </item>
+    
+    <item>
+      <title>Emacs 当前文件快速查找内容</title>
+      <link>https://zilongshanren.com/post/2015-10-15-nagivate-quickly-in-the-current-buffer/</link>
+      <pubDate>Thu, 15 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-10-15-nagivate-quickly-in-the-current-buffer/</guid>
+      <description>Table of Contents Evil search Swiper Helm-swoop Helm-semantic-or-imenu occur 最后 使用 Emacs 也已经两年多了，积累了不少经验，也一直在安利，不过效果不佳。是时候跟大家分享一些我使用 Emacs 的技巧了，不求安利，只求</description>
+    </item>
+    
+    <item>
+      <title>我是怎么同时掌握 Vim 和 Emacs 的?</title>
+      <link>https://zilongshanren.com/post/2015-08-16-how-could-i-master-vim-and-emacs/</link>
+      <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-08-16-how-could-i-master-vim-and-emacs/</guid>
+      <description>Table of Contents 我是怎么学会 Vim 的 我与 Mac 结缘 打造 Vim 神器 我是怎么学会 Emacs 的 Evil Prelude Spacemacs 现在我在用 Vim 还是 Emacs 给初学者的建议 总结 看到这个标题，肯定会有人站出来说，“异教</description>
+    </item>
+    
+    <item>
+      <title>《Mastering Emacs》读后感</title>
+      <link>https://zilongshanren.com/post/review-of-mastering-emacs/</link>
+      <pubDate>Mon, 25 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/review-of-mastering-emacs/</guid>
+      <description>本文主要记录我的《Mastering Emacs》的读书心得，上图取自Google，在《Mastering Emacs》一书第五章篇头有引用。 P</description>
+    </item>
+    
+    <item>
+      <title>Emacs, The Editor of a Life Time</title>
+      <link>https://zilongshanren.com/post/emacs-the-editor-of-a-life-time/</link>
+      <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/emacs-the-editor-of-a-life-time/</guid>
+      <description>最近看了一个关于Emacs的视频，视频的标题为The Editor of a Life Time。一个程序员，使用Emacs 31年了，不得不说让人很震撼。认识我的朋友都</description>
+    </item>
+    
+  </channel>
+</rss>

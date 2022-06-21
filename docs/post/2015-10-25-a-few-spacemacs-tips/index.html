@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>关于 Spacemacs 的 Tips - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="Table of Contents could not load evil-indent-textobject Spacemacs 启动速度特别慢 Happy Hacking 因为 Spacemacs 需要下载大量的 package，而中国大陆的网络环境不是很稳定，容易导致一些 package 在下载的过程中 byte-compile 出错，所" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/2015-10-25-a-few-spacemacs-tips/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="关于 Spacemacs 的 Tips" />
+<meta property="og:description" content="Table of Contents could not load evil-indent-textobject Spacemacs 启动速度特别慢 Happy Hacking 因为 Spacemacs 需要下载大量的 package，而中国大陆的网络环境不是很稳定，容易导致一些 package 在下载的过程中 byte-compile 出错，所" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/2015-10-25-a-few-spacemacs-tips/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2015-10-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-10-25T00:00:00+00:00" />
+
+<meta itemprop="name" content="关于 Spacemacs 的 Tips">
+<meta itemprop="description" content="Table of Contents could not load evil-indent-textobject Spacemacs 启动速度特别慢 Happy Hacking 因为 Spacemacs 需要下载大量的 package，而中国大陆的网络环境不是很稳定，容易导致一些 package 在下载的过程中 byte-compile 出错，所"><meta itemprop="datePublished" content="2015-10-25T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2015-10-25T00:00:00+00:00" />
+<meta itemprop="wordCount" content="507">
+<meta itemprop="keywords" content="Emacs," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="关于 Spacemacs 的 Tips"/>
+<meta name="twitter:description" content="Table of Contents could not load evil-indent-textobject Spacemacs 启动速度特别慢 Happy Hacking 因为 Spacemacs 需要下载大量的 package，而中国大陆的网络环境不是很稳定，容易导致一些 package 在下载的过程中 byte-compile 出错，所"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">关于 Spacemacs 的 Tips</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-10-25 </span>
+        <div class="post-category">
+            <a href="/categories/emacs/"> Emacs </a>
+            </div>
+          <span class="more-meta"> 约 507 字 </span>
+          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">could not load evil-indent-textobject</a></li>
+<li><a href="#orgheadline2">Spacemacs 启动速度特别慢</a></li>
+<li><a href="#orgheadline3">Happy Hacking</a></li>
+</ul>
+</div>
+</div>
+<p>
+因为 Spacemacs 需要下载大量的 package，而中国大陆的网络环境不是很稳定，容易导致一些 package 在下载的过程中
+byte-compile 出错，所以很多人会遇到一些特别奇怪的错误。
+</p>
+
+<p>
+我本人也被这个坑了好几次了，所以写文章记录一下。
+</p>
+
+<p>
+<!-- more -->
+</p>
+
+<div id="orgheadline1" class="outline-2">
+<h2 id="orgheadline1">could not load evil-indent-textobject</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+这是一系列的错误，根本原因就是下载下来的 package load 出错了，或者根本没有下载成功。
+</p>
+
+<p>
+一般的解决方法是先去.emacs/elpa 目录去查找这个 package，检查这个 package 是否已经成功下载。（成功下载指的是对应的.el 文件和.elc 文件都存在）
+</p>
+
+<p>
+其次，在启动 Emacs 以后，运行 byte-compile-file 来重新编译这个 package 下面所有的文件。因为 Emacs 默认是加载 elc 文件。
+</p>
+
+<p>
+一般情况下，上面的方法可以解决 60%以上的 package 加载错误。
+</p>
+
+<p>
+最后，通过 emacs &#x2013;debug-init 来启动，通过 error trace 来定位问题所在。
+</p>
+
+<p>
+如果你还是解决不了问题，可以 fork 我的配置，然后把 Spacemacs 更新到最新就可以用了。
+</p>
+</div>
+</div>
+
+<div id="orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Spacemacs 启动速度特别慢</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+这个真是冤枉啊！！
+</p>
+
+<p>
+其实罪魁祸首是 Helm 这个 package。
+</p>
+
+<p>
+你只需要在你的.spacemacs 或者.spacemacs.d/init.el 文件中的 user-init 方法中添加下列代码后，重启 Spacemacs 即可：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #93a1a1;">;; </span><span style="color: #93a1a1;">https://github.com/syl20bnr/spacemacs/issues/2705</span>
+(<span style="color: #859900; font-weight: bold;">setq</span> tramp-ssh-controlmaster-options <span style="color: #2aa198;">"-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no"</span>)
+</pre>
+</div>
+
+<p>
+至于是什么原因导致的，我具体也不清楚，大家可以去看看上面的 issue 链接。
+</p>
+</div>
+</div>
+
+<div id="orgheadline3" class="outline-2">
+<h2 id="orgheadline3">Happy Hacking</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<p>
+最后祝大家使用 Spacemacs 开心。
+</p>
+</div>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2015-10-25
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/emacs/">Emacs</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Things I Wish I Know When I Am Learning Emacs</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2015-10-15-nagivate-quickly-in-the-current-buffer/">
+            <span class="next-text nav-default">Emacs 当前文件快速查找内容</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/2015-10-25-a-few-spacemacs-tips/" class="leancloud_visitors" data-flag-title="关于 Spacemacs 的 Tips">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

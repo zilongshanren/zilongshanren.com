@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on 子龙山人</title>
+    <link>https://zilongshanren.com/categories/python/</link>
+    <description>Recent content in python on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 21 Sep 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A bite of Python</title>
+      <link>https://zilongshanren.com/post/a-bite-of-python/</link>
+      <pubDate>Sun, 21 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/a-bite-of-python/</guid>
+      <description>周五的时候，我的一个朋友让我帮忙写一个小工具。这个小工具要完成的功能如下： 指定方差与均值，生成相应的随机数，默认生成一组随机数(默认为10个</description>
+    </item>
+    
+  </channel>
+</rss>

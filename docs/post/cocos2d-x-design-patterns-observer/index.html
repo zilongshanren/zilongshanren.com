@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cocos2D-X设计模式：观察者模式 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="1、应用场景 前面在介绍单例模式的时候，提到了一个类NotificationCenter，它除了应用单例模式以外，还应用了观察者模式。Noti" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/cocos2d-x-design-patterns-observer/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Cocos2D-X设计模式：观察者模式" />
+<meta property="og:description" content="1、应用场景 前面在介绍单例模式的时候，提到了一个类NotificationCenter，它除了应用单例模式以外，还应用了观察者模式。Noti" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/cocos2d-x-design-patterns-observer/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-20T00:00:00+00:00" />
+
+<meta itemprop="name" content="Cocos2D-X设计模式：观察者模式">
+<meta itemprop="description" content="1、应用场景 前面在介绍单例模式的时候，提到了一个类NotificationCenter，它除了应用单例模式以外，还应用了观察者模式。Noti"><meta itemprop="datePublished" content="2014-06-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1725">
+<meta itemprop="keywords" content="Cocos2d-x,design pattern," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cocos2D-X设计模式：观察者模式"/>
+<meta name="twitter:description" content="1、应用场景 前面在介绍单例模式的时候，提到了一个类NotificationCenter，它除了应用单例模式以外，还应用了观察者模式。Noti"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Cocos2D-X设计模式：观察者模式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-20 </span>
+        <div class="post-category">
+            <a href="/categories/cocos2d-x/"> Cocos2d-x </a>
+            <a href="/categories/design-pattern/"> design pattern </a>
+            </div>
+          <span class="more-meta"> 约 1725 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1应用场景">1、应用场景</a></li>
+    <li><a href="#2使用此模式的优缺点">2、使用此模式的优缺点</a></li>
+    <li><a href="#3此模式的定义及一般实现">3、此模式的定义及一般实现</a></li>
+    <li><a href="#4游戏开发中如何运用此模式">4、游戏开发中如何运用此模式</a></li>
+    <li><a href="#5此模式与其它模式的关系">5、此模式与其它模式的关系</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="1应用场景">1、应用场景</h2>
+<p>前面在介绍单例模式的时候，提到了一个类NotificationCenter，它除了应用单例模式以外，还应用了观察者模式。NotificationCenter类是观察者模式中的目标对象，而NotificationObserver则是观察者。(注意目前，cocos2d-x 3.0已经把该类deprecated了，替代方案是使用EventDispatcher的Custom Event来替代）</p>
+<p>一个目标对象可以注册多个观察者，当目标对象的状态改变的时候，可以通知观察者对象作出相应的响应。这是标准的观察者模式的实现，但是NotificationCenter稍微有些许差别。</p>
+<!-- raw HTML omitted -->
+<p>首先，NotificationCenter不是通过自身状态改变来通知观察者，而是通过显式地发送观察者感兴趣的消息（postNotification）来通知它们。每一种消息类型可以对应多个观察者，同时，每一个观察者也可以“观察”多个消息类型。其次，观察者定义相应的响应事件同消息类型关联，当某个地方触发postNotification来广播一个消息的时候，NotificationCenter会遍历所有的观察者，判断它们注册的消息类型是否匹配，如果匹配，则触发相应的注册响应事件。最后，该观察者模式采用的是推模型，即由目标对象去通知所有的观察者。</p>
+<p>其实NotificationCenter和NotificationObserver更准确的叫法是：<a href="http://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern">订阅发布模式</a>。</p>
+<h2 id="2使用此模式的优缺点">2、使用此模式的优缺点</h2>
+<p>优点：</p>
+<p>1）实现了目标对象和观察者之间的抽象耦合，在本例中，则是实现了消息与观察者的抽象耦合。可以定义一种消息与消息处理对象的一对多的关系，而不用担心彼此的实现细节。</p>
+<p>2）观察者模式可以定义某种意义上的广播通信机制。</p>
+<p>3）实现订阅者与发布者的松散耦合，同时保障了良好的扩展性。</p>
+<p>缺点：</p>
+<p>1）注册成为NotificationCenter的观察者后，如果忘记调用removeObserver，则会引起内存泄漏。因为addObserver会把观察者的引用计算加1.</p>
+<h2 id="3此模式的定义及一般实现">3、此模式的定义及一般实现</h2>
+<p>定义：</p>
+<p>定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。</p>
+<p>UML图：</p>
+<p><img src="https://zilongshanren.com/img/500px-Observer.svg_.png" alt="observer"></p>
+<p>一般实现：参考NotificationCenter.h和Notification.cpp文件的实现</p>
+<h2 id="4游戏开发中如何运用此模式">4、游戏开发中如何运用此模式</h2>
+<p>我们考虑cocos2d-x中一个非常典型的应用场景，你的GameScene里面有两个layer，一个gameLayer，它包含了游戏中的对象，比如玩家、敌人等。另一个层是HudLayer，它包含了游戏中显示分数、生命值等信息。如何让这两个层相互通信。</p>
+<p>第一种办法，你可以让gameLayer包含一个hudLayer的引用，同时也可以让hudLayer包含一个gameLayer的引用。注意！这里问题出现了，如果两个类都包含彼此的强引用（所谓强引用就是retain），就会引起循环引用的情况，如果其中一个类包含的是弱引用，问题就不会出现。循环引用是使用引用计数管理内存的一个致命弱点，会导致资源永远得不到释放，而且查错起来非常麻烦。</p>
+<p>第二种办法，把gameScene做成一个单例，同时让gameScene包含gameLayer和hudLayer的弱引用，这样就可以直接通过[GameScene sharedInstance].gameLayer或者[GameScene sharedInstance].hudLayer来访问了。</p>
+<p>第三种办法，使用gameLayer-&gt;getParent()获得gameScene，再使用gameScene来获得hudLayer。</p>
+<p>第四种办法，使用NotificationCenter。当hudLayer注册它感兴趣的消息，当gameLayer需要通知hudLayer的时候，只需通过NotificationCenter发送一个对应的消息即可。</p>
+<h2 id="5此模式与其它模式的关系">5、此模式与其它模式的关系</h2>
+<p>观察者模式是实现MVC模式的重要组成部分，一个model可以对应多个views，model就是目标对象，而view则是观察者，当model改变的时候，要通知所有的view也相应的改变。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-20
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cocos2d-x/">Cocos2d-x</a>
+          <a href="/tags/design-pattern/">design pattern</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/opengl-es2-0-use-vbo/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">OpenGL ES2.0教程:使用VBO索引(4)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/cocos2d-x-design-patterns-delegation/">
+            <span class="next-text nav-default">Cocos2D-X设计模式:委托模式</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/cocos2d-x-design-patterns-observer/" class="leancloud_visitors" data-flag-title="Cocos2D-X设计模式：观察者模式">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

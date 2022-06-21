@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>如何自学计算机编程 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="众所周知，现在计算机是“宇宙机”，很多人想转计算机，但是真正能够学好计算机编程的人非常少。不少的人选择了去培训机构突击几个月，然后找一份搬砖" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/how-to-self-learning-cs/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="如何自学计算机编程" />
+<meta property="og:description" content="众所周知，现在计算机是“宇宙机”，很多人想转计算机，但是真正能够学好计算机编程的人非常少。不少的人选择了去培训机构突击几个月，然后找一份搬砖" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/how-to-self-learning-cs/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-12-30T22:54:00+08:00" />
+<meta property="article:modified_time" content="2021-12-30T22:55:06+08:00" />
+
+<meta itemprop="name" content="如何自学计算机编程">
+<meta itemprop="description" content="众所周知，现在计算机是“宇宙机”，很多人想转计算机，但是真正能够学好计算机编程的人非常少。不少的人选择了去培训机构突击几个月，然后找一份搬砖"><meta itemprop="datePublished" content="2021-12-30T22:54:00+08:00" />
+<meta itemprop="dateModified" content="2021-12-30T22:55:06+08:00" />
+<meta itemprop="wordCount" content="2586">
+<meta itemprop="keywords" content="programming," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何自学计算机编程"/>
+<meta name="twitter:description" content="众所周知，现在计算机是“宇宙机”，很多人想转计算机，但是真正能够学好计算机编程的人非常少。不少的人选择了去培训机构突击几个月，然后找一份搬砖"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">如何自学计算机编程</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-12-30 </span>
+        <div class="post-category">
+            <a href="/categories/programming/"> programming </a>
+            </div>
+          <span class="more-meta"> 约 2586 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#学习什么东西">学习什么东西？</a>
+      <ul>
+        <li><a href="#理论学习">理论学习</a></li>
+        <li><a href="#实践学习">实践学习</a></li>
+      </ul>
+    </li>
+    <li><a href="#跟谁学">跟谁学？</a></li>
+    <li><a href="#怎么学">怎么学？</a></li>
+    <li><a href="#一些学习心态">一些学习心态</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>众所周知，现在计算机是“宇宙机”，很多人想转计算机，但是真正能够学好计算机编程的人非常少。不少的人选择了去培训机构突击几个月，然后找一份搬砖的工作作为跳板，希望积累经验过一两年后可以跳槽，实现人生的飞跃。</p>
+<p>理想很丰满，现实很骨感，很多人在工作一两年后还是感觉自己进步很慢，有太多的东西不懂，焦虑感很强，同时也不知道如何进一步提升自己。本文将尝试给读者介绍一条硬核的打怪升级之路。</p>
+<h2 id="学习什么东西">学习什么东西？</h2>
+<p>学校里面教得大多数是理论，而培训机构教的大多数是 API 和框架的使用。前者缺乏实践，而后者则是浮沙筑高台，遇到底层一点的问题就摸瞎。</p>
+<p>首先，对于编程来说，基础是非常关键的，因为上层的东西都是通过抽象一层一层搭建起来的，如果遇到复杂的问题，你往往需要从底层原理出发去寻找答案。</p>
+<p>其次，你光知道理论和能否把理论优雅地落地，这里面又差了好几个层次。为什么很多项目里面都会有大量的屎山代码？我们都学过面向对象，学了设计模式，懂很多设计原则，但是在具体落地的时候，还是把代码写得很乱？</p>
+<p>只有把理论学习和工程实践结合起来才能够让自己的技术水平不断地精进。</p>
+<h3 id="理论学习">理论学习</h3>
+<p>理论学习最核心的部分，其实就是计算机专业里面设置的那些课程：数据结构与算法、操作系统、计算机网络，数据库，分布式系统设计、图形学、编译原理、人工智能与机器学习等等。这些课程的学习，一定要找最好的学习资料，向最好的老师来学习，这样才能够做到事半功倍。而现在全世界范围内的公开课解决了这个问题，这里有一份北京大学的本科生整理的<a href="https://csdiy.wiki/">《CS自学指南》</a>，我觉得不非常不错。</p>
+<p>对于这些课程的学习，如果你不是科班出身的话，一定要刷一遍。如果你是科班出身，也可以不时地刷一刷，提升自己的理论素养，说不定下一次在解决一些系统问题的时候可以给自己带来一些灵感。</p>
+<p>而且这些知识是不会随着技术的发展被淘汰的，至少短时间内是不可能。这意味着你学会了这些知识，它可以管好几十年，这个投入非常地划算。</p>
+<p>理论学习的时间，我认为如果你每天能抽出 2 小时来提升自己的话，理论至少应该占一个小时。当然，在学习方法上面，肯定是做中学效果最好，如果只是看书或者视频而不去实践地话，学习效果会大打折扣。</p>
+<h3 id="实践学习">实践学习</h3>
+<p>关于实践部分，我建议读者一定要有自己的爱好。这个爱好可以是一个编辑器（比如 Emacs），可以是一门语言（比如 Python），可以是一个特定的领域（比如游戏开发）。有了热爱，你才能为之每天甘心付出而不知疲倦。</p>
+<ul>
+<li>
+<p>学习吃饭的技能。一定要学习和使用业内最先进的技术，比如 Web 领域一定要使用 Vue 或者 React，如果你还在学习 JQuery 可能就会比较被动。游戏领域就要学习 Unity3D，Unreal 和 Cocos Creator，学习其他的 GameMaker 之类的技术可能也会比较吃亏，因为用的公司实在是非常之少。这部分你投入的时间一定要占比较大的比重，因为工作中提升自己是最快的，你有动力和意愿去提升。</p>
+</li>
+<li>
+<p>学习可以迁移的技能。尽可能地学习跨平台且开源的技术，不要跟某些私有公司绑定地太死，这样你下次在换工作的时候才会更有优势。</p>
+</li>
+<li>
+<p>学习可以带来复利效应的技能。这些技能可以不断地丰富你的工具箱，让你在面对一个具体问题的时候有更多地可选方案，同时也能帮助你在做一些决策时更有效率，因为你掌握的信息越多，你的决策越有效。</p>
+</li>
+</ul>
+<h2 id="跟谁学">跟谁学？</h2>
+<p>一定要向大师学习，像高手学习。这个行业的人才是非常多的，一定要找到比你厉害的人并且向他们学习。</p>
+<p>那么去哪里找这些人呢？这里我分享我自己的一些小技巧：通过 Github 为出发点，找到知名项目的主要贡献者的个人主页，然后从个人主页中找到他的 Twitter 或者知乎帐号。然后关注他们，看看这些优秀的人每天都在关注些什么东西，读了哪些书，看了哪些演讲视频，目前正在做些什么项目。</p>
+<p>可以经常逛逛 Reddit，Medium 和 Youtube，关注一些你觉得分享内容特别好的创作者，订阅他们的博客 RSS，收听他们的 Podcast（如果有的话），躺在床上不想编程的时候，可以看看他们每年在各种
+XXX Conf 上的演讲，GDC 视频，WWDC 或者 Google IO 的视频，给他们点赞分享，让他们更愿意分享。</p>
+<p>融入到更大的全球社区中去，增长自己的见识，而不要做一个只会面向百度和 CSDN 编程的码农。</p>
+<h2 id="怎么学">怎么学？</h2>
+<p>每个人都有自己的学习方法，有人喜欢看书学习，有人喜欢看视频，有人喜欢看教程。这些都没有问题，但是重要的是，一定要看最有价值的内容，抵制垃圾。</p>
+<p>看书要只看经典，这个在《CS 自学指南》中有提到，Github 上面也有人整理了很多对程序员影响非常大的书单，这些书都可以买来读一读。</p>
+<p>看视频的话，我推荐在学习一些新技术的时候可以使用一下。因为刚开始入门会遇到非常多地障碍，很容易被卡住而停滞不前。看视频可以非常好地解决这个问题，但是不要迷恋看视频来学习。因为视频的信息密度是不如文字版的，同样多的信息量，你看视频可能要比看文字版多出 2-3 倍的时间。不过对于演讲或者会议的视频，这个因为缺少文字版，还是可以多看看。</p>
+<p>我个人是比较喜欢看教程来学习的，一篇好的教程可以帮忙你很快地学会一个东西，让你有一个基础去深入学习下去。这里我强烈推荐 <a href="https://www.raywenderlich.com/">https://www.raywenderlich.com/</a>，我以前翻译了这个网站上面非常多的 Cocos 教程。现在这个网站已经包含了大量的移动开发和游戏开发的教程了，入门首选。（教程比视频更节省时间）</p>
+<p>编程毕竟是一个工程活，想要学好它离不开大量的编码实践，每天保证一定的编码量是非常关键的。程序员练习编码就跟跳水运动员每天练习跳水一样，练习地越多，掌握地就越好。这里的练习指的是有针对性地练习，而不是把简单的 Hello World 练习千百编。要学习不同的编程范式，思考各种技术需要解决的问题和引入的问题，理解每一项技术背后的原理，在思考的基础之上实践效果会更好。</p>
+<p>多与人讨论，多参与开源项目，在 Github 的 Issue 列表上面与全世界最优秀的开发者进行方案的讨论，编程设计的讨论等等。</p>
+<h2 id="一些学习心态">一些学习心态</h2>
+<ul>
+<li>
+<p>终身学习， 不要太着急，<a href="http://daiyuwen.freeshell.org/gb/misc/21-days-cn.html">十年学会编程</a>。</p>
+</li>
+<li>
+<p>集中精力并且管理好自己的精力（看视频放在碎片时间，编码留好大段连续时间），每次学习 1-2 小时，每天保持在学习比偶尔通宵达旦学习要好，细水长流。</p>
+</li>
+<li>
+<p>空杯心态，不断提高自身的认知，可以每年学习一门新的编程语言，学习一个新的工具（比如 Emacs），学习一些新的框架和技术来扩展自己的视野。</p>
+</li>
+<li>
+<p>定时总结输出，写博客，写 Side Project，分享输出会让你的学习更有效率。</p>
+</li>
+<li>
+<p>积极锻炼身体，避免颈椎问题、腰椎问题和眼睛的问题，这个也非常关键。</p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-12-30
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/programming/">programming</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/setup-macbook-pro-m1/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">配置全新的 Macbook Pro M1 下 Emacs 开发环境</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/setup-a-discourse-forum-from-scratch/">
+            <span class="next-text nav-default">从头开始搭建 Discourse 论坛</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/how-to-self-learning-cs/" class="leancloud_visitors" data-flag-title="如何自学计算机编程">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

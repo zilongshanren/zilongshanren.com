@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>c&#43;&#43; on 子龙山人</title>
+    <link>https://zilongshanren.com/tags/c&#43;&#43;/</link>
+    <description>Recent content in c&#43;&#43; on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 11 Aug 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lua教程:绑定一个简单的C&#43;&#43;类(6)</title>
+      <link>https://zilongshanren.com/post/bind-a-simple-cpp-class-in-lua/</link>
+      <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/bind-a-simple-cpp-class-in-lua/</guid>
+      <description>本文是最后一篇C/C++与Lua交互的教程，在此之后，我们会结合Cocos2D-X来介绍Lua绑定。本文主要介绍如何绑定一个简单的C++类到</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>OpenGL ES2.0教程：编写自己的shader(2) - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="在上篇文章中，我给大家介绍了如何在cocos2d-x里面绘制一个三角形，当时我们使用的是cocos2d-x引擎自带的shader和一些辅助函" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/opengl-es20-write-your-own-shader/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="OpenGL ES2.0教程：编写自己的shader(2)" />
+<meta property="og:description" content="在上篇文章中，我给大家介绍了如何在cocos2d-x里面绘制一个三角形，当时我们使用的是cocos2d-x引擎自带的shader和一些辅助函" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/opengl-es20-write-your-own-shader/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-07T00:00:00+00:00" />
+
+<meta itemprop="name" content="OpenGL ES2.0教程：编写自己的shader(2)">
+<meta itemprop="description" content="在上篇文章中，我给大家介绍了如何在cocos2d-x里面绘制一个三角形，当时我们使用的是cocos2d-x引擎自带的shader和一些辅助函"><meta itemprop="datePublished" content="2014-06-07T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-07T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2924">
+<meta itemprop="keywords" content="Cocos2d-x,opengl," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenGL ES2.0教程：编写自己的shader(2)"/>
+<meta name="twitter:description" content="在上篇文章中，我给大家介绍了如何在cocos2d-x里面绘制一个三角形，当时我们使用的是cocos2d-x引擎自带的shader和一些辅助函"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">OpenGL ES2.0教程：编写自己的shader(2)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-07 </span>
+        <div class="post-category">
+            <a href="/categories/cocos2d-x/"> Cocos2d-x </a>
+            <a href="/categories/opengles/"> OpenGLES </a>
+            </div>
+          <span class="more-meta"> 约 2924 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#编写你的第一个vertex-shader">编写你的第一个Vertex Shader</a></li>
+    <li><a href="#编写你的第一个fragment-shader">编写你的第一个Fragment Shader</a></li>
+    <li><a href="#vao和vbo初探">VAO和VBO初探</a></li>
+    <li><a href="#顶点数据是怎么传递的">顶点数据是怎么传递的</a></li>
+    <li><a href="#重用vao">重用VAO</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>在<a href="http://zilongshanren.com/blog/2014-05-31-opengl-es-2-0-your-first-traingles.html">上篇文章</a>中，我给大家介绍了如何在cocos2d-x里面绘制一个三角形，当时我们使用的是cocos2d-x引擎自带的shader和一些辅助函数。在本文中，我将演示一下如何编写自己的shader，同时，我们还会介绍VBO（顶点缓冲区对象）和VAO（顶点数组对象）的基本用法。</p>
+<p>在编写自己的shader之前，我觉得有必要提一下OpenGL渲染管线。
+理解OpenGL渲染管线，对于学习OpenGL非常重要。下面是OpenGL渲染管线的示意图：（图中淡蓝色区域是可以编程的阶段）</p>
+<!-- raw HTML omitted -->
+<p><img src="https://zilongshanren.com/img/RenderingPipeline.png" alt="pipeline"></p>
+<p>此图是从<a href="http://www.opengl.org/wiki/Rendering_Pipeline_Overview">wiki</a>中拿过来的，OpenGL的渲染管线主要包括：</p>
+<ol>
+<li>
+<p>准备顶点数据（通过VBO、VAO和Vertex attribute来传递数据给OpenGL）</p>
+</li>
+<li>
+<p>顶点处理（这里主要由Vertex Shader来完成，从上图中可以看出，它还包括可选的Tessellation和Geometry shader阶段）</p>
+</li>
+<li>
+<p>顶点后处理（主要包括Clipping,顶点坐标归一化和viewport变换）</p>
+</li>
+<li>
+<p>Primitive组装(比如3点组装成一个3角形）</p>
+</li>
+<li>
+<p>光栅化成一个个像素</p>
+</li>
+<li>
+<p>使用Fragment shader来处理这些像素</p>
+</li>
+<li>
+<p>采样处理（主要包括Scissor Test, Depth Test, Blending, Stencil Test等）</p>
+</li>
+</ol>
+<p>更详细的信息可以参考本网站推荐的阅读材料和Wiki。</p>
+<h2 id="编写你的第一个vertex-shader">编写你的第一个Vertex Shader</h2>
+<p>首先是创建一个文件，把它命名为myVertextShader.vert, 并输入下列代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="n">attribute</span> <span class="n">vec4</span> <span class="n">a_position</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">attribute</span> <span class="n">vec4</span> <span class="n">a_color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">varying</span> <span class="n">vec4</span> <span class="n">v_fragmentColor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">CC_MVPMatrix</span> <span class="o">*</span> <span class="n">a_position</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">v_fragmentColor</span> <span class="o">=</span> <span class="n">a_color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>OpenGL Shader Language,简称GLSL，它是一种类似于C语言的专门为GPU设计的语言，它可以放在GPU里面被并行运行。下面我们来简单解释一下这一小段代码。</p>
+<p>首先，每一个Shader程序都有一个main函数，这一点和c语言是一样的。然后这里面有两种类型的变量，一种是attribute，另一种是varying. attribute是从外部传进来的，每一个顶点都会有这两个属性，所以它也叫做vertex attribute（顶点属性）。而varying类型的变量是在vertex shader和fragment shader之间传递数据用的。这里的变量命名规则保持跟c一样就行了，注意gl_开头的变量名是系统内置的变量，所以大家在定义自己的变量名时，请不要以gl_开头。而CC_MVPMatrix是一个mat4类型的变量，它是在cocos2d-x内部设置进来的。这一点，我们后面再谈。</p>
+<p>vertex shader是作用于每一个顶点的，我们本例中有三个点，所以这个vertex shader会被执行三次。</p>
+<h2 id="编写你的第一个fragment-shader">编写你的第一个Fragment Shader</h2>
+<p>首先，新建一个myFragmentShader.frag并输入下列代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="n">varying</span> <span class="n">vec4</span> <span class="n">v_fragmentColor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">v_fragmentColor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>fragment shader中也有一个main函数，同时我们看到这里也声明了一个与vertex shader相同的变量v_fragmentColor。前面我们讲过，这个变量是用来在vertex shader和fragment shader之间传递数据用的。所以，它们的参数类型必须完全相同。如果一个是vec3,一个是vec4，shader编译的时候是会报错的。而gl_FragColor我们知道它肯定是一个系统内置变量了，它的作用是定义最终画在屏幕上面的像素点的颜色。我们回过头去看上一篇文章中画出来的三角形，我们指定的是三个顶点的颜色，分别为Red,Green和Blue，但是最后的三角形的颜色是通过这三个点的颜色插值出来的。因为最终三角形的像素点可不只有三个，理解这一点非常重要。</p>
+<p>最后，让我们修改一下shader progam的创建代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">       <span class="c1">//create my own program
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">auto</span> <span class="n">program</span> <span class="o">=</span> <span class="k">new</span> <span class="n">GLProgram</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">program</span><span class="o">-&gt;</span><span class="n">initWithFilenames</span><span class="p">(</span><span class="s">&#34;myVertextShader.vert&#34;</span><span class="p">,</span> <span class="s">&#34;myFragmentShader.frag&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">program</span><span class="o">-&gt;</span><span class="n">link</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//set uniform locations
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">program</span><span class="o">-&gt;</span><span class="n">updateUniforms</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>编译并运行，此时你会得到和之前效果一样的三角形。</p>
+<p>下图解释了我们的顶点数据是如何渲染成最终屏幕上面的像素的：</p>
+<p><img src="https://zilongshanren.com/img/graphics_pipeline.png" alt="graphics_pipline"></p>
+<h2 id="vao和vbo初探">VAO和VBO初探</h2>
+<p>VBO，全名Vertex Buffer Object。它是GPU里面的一块缓冲区，当我们需要传递数据的时候，可以先向GPU申请一块内存，然后往里面填充数据。最后，再通过调用glVertexAttribPointer把数据传递给Vertex Shader。而VAO，全名为Vertex Array Object，它的作用主要是记录当前有哪些VBO，每个VBO里面绑定的是什么数据，还有每一个vertex attribute绑定的是哪一个VBO。关于VBO和VAO更详细的介绍，请参考<a href="http://blog.sina.com.cn/s/blog_4a657c5a01016f8s.html">此文</a></p>
+<p>使用VBO和VAO的步骤都差不多，步骤如下：</p>
+<ol>
+<li>glGenXXX</li>
+<li>glBindXXX</li>
+</ol>
+<p>让我们修改之前的代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">       <span class="c1">//创建和绑定vao
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">glGenVertexArrays</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">vao</span><span class="p">;);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">glBindVertexArray</span><span class="p">(</span><span class="n">vao</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//创建和绑定vbo
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">glGenBuffers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">vertexVBO</span><span class="p">;);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">vertexVBO</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">size</span> <span class="o">=</span> <span class="n">Director</span><span class="o">::</span><span class="n">getInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">getVisibleSize</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">float</span> <span class="n">vertercies</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">//第一个点的坐标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>   <span class="c1">//第二个点的坐标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">};</span>  <span class="c1">//第三个点的坐标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="kt">float</span> <span class="n">color</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">glBufferData</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">vertercies</span><span class="p">),</span> <span class="n">vertercies</span><span class="p">,</span> <span class="n">GL_STATIC_DRAW</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//获取vertex attribute &#34;a_position&#34;的入口点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">GLuint</span> <span class="n">positionLocation</span> <span class="o">=</span> <span class="n">glGetAttribLocation</span><span class="p">(</span><span class="n">program</span><span class="o">-&gt;</span><span class="n">getProgram</span><span class="p">(),</span> <span class="s">&#34;a_position&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//打开入a_position入口点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="n">positionLocation</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//传递顶点数据给a_position，注意最后一个参数是数组的偏移了。
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">positionLocation</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">GL_FLOAT</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">GLvoid</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//set for color
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">glGenBuffers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">colorVBO</span><span class="p">;);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">colorVBO</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">glBufferData</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">color</span><span class="p">),</span> <span class="n">color</span><span class="p">,</span> <span class="n">GL_STATIC_DRAW</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">GLuint</span> <span class="n">colorLocation</span> <span class="o">=</span> <span class="n">glGetAttribLocation</span><span class="p">(</span><span class="n">program</span><span class="o">-&gt;</span><span class="n">getProgram</span><span class="p">(),</span> <span class="s">&#34;a_color&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="n">colorLocation</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">colorLocation</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">GL_FLOAT</span><span class="p">,</span> <span class="n">GL_FALSE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">GLvoid</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//for safty
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">glBindVertexArray</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ARRAY_BUFFER</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里glBufferData把我们定义好的顶点和颜色数据传给VBO，此时，注意glVertexAttribPointer的最后一个参数，这里传递的都是(GLvoid*)0。而不像之前一样传的是vertex和color的数组地址。<strong>这一点是使用VBO和不使用VBO时要特别注意的。</strong></p>
+<h2 id="顶点数据是怎么传递的">顶点数据是怎么传递的</h2>
+<p>要弄明白程序里面定义的数组是怎么传递到vertex shader的，我们需要先弄清楚vertex attribute。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="n">attribute</span> <span class="n">vec4</span> <span class="n">a_position</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">attribute</span> <span class="n">vec4</span> <span class="n">a_color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">varying</span> <span class="n">vec4</span> <span class="n">v_fragmentColor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">gl_Position</span> <span class="o">=</span> <span class="n">CC_MVPMatrix</span> <span class="o">*</span> <span class="n">a_position</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">v_fragmentColor</span> <span class="o">=</span> <span class="n">a_color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>每一个attribute在vertex shader里面有一个location，它是用来传递数据的入口。我们可以通过下列代码获取这个入口值:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">        <span class="n">GLuint</span> <span class="n">positionLocation</span> <span class="o">=</span> <span class="n">glGetAttribLocation</span><span class="p">(</span><span class="n">program</span><span class="o">-&gt;</span><span class="n">getProgram</span><span class="p">(),</span> <span class="s">&#34;a_position&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="n">positionLocation</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>glGetAttribLocation是用来获得vertex attribute的入口的，在我们要传递数据之前，首先要告诉OpenGL，所以要调用glEnableVertexAttribArray。最后的数据通过glVertexAttribPointer传进来。它的第一个参数就是glGetAttribLocation返回的值。</p>
+<h2 id="重用vao">重用VAO</h2>
+<p>最后，为了不让这些生成和绑定VBO和VAO的操作在每一帧都被执行，我们需要把它放在初始化函数里面。最终我们的draw函数如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">     <span class="k">auto</span> <span class="n">glProgram</span> <span class="o">=</span> <span class="n">getGLProgram</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">glProgram</span><span class="o">-&gt;</span><span class="n">use</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//set uniform values, the order of the line is very important
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">glProgram</span><span class="o">-&gt;</span><span class="n">setUniformsForBuiltins</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">size</span> <span class="o">=</span> <span class="n">Director</span><span class="o">::</span><span class="n">getInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">getWinSize</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//use vao，因为vao记录了每一个顶点属性和缓冲区的状态，所以只需要绑定就可以使用了
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">glBindVertexArray</span><span class="p">(</span><span class="n">vao</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">glDrawArrays</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">glBindVertexArray</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">CHECK_GL_ERROR_DEBUG</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里可以看出，VAO对于简化程序作用是很大的。</p>
+<p>好了，编译并运行，还是原来的三角形。</p>
+<p><img src="https://zilongshanren.com/img/cocos2d-x-es-1.1.png" alt="triangle"></p>
+<p>下一篇文章，我们将讲一下OpenGL各种坐标系及其变换。当然，最重要的是World-to-Model变换，Model-to-View变换和View-to-Projection变换。</p>
+<p>本文<a href="https://git.oschina.net/zilongshanren/Cocos2D-X-OpenGL-ES-2.0/repository/archive?ref=tutorial02">源代码下载</a>, 源代码仓库地址是：<a href="https://git.oschina.net/zilongshanren/Cocos2D-X-OpenGL-ES-2.0">https://git.oschina.net/zilongshanren/Cocos2D-X-OpenGL-ES-2.0</a></p>
+<h2 id="参考资料">参考资料</h2>
+<ol>
+<li>
+<p><a href="http://duriansoftware.com/joe/An-intro-to-modern-OpenGL.-Chapter-1:-The-Graphics-Pipeline.html">http://duriansoftware.com/joe/An-intro-to-modern-OpenGL.-Chapter-1:-The-Graphics-Pipeline.html</a></p>
+</li>
+<li>
+<p><a href="http://opengl.zilongshanren.com/opengl-tutorial/tut02/zh.html">http://opengl.zilongshanren.com/opengl-tutorial/tut02/zh.html</a></p>
+</li>
+<li>
+<p><a href="http://www.opengl.org/wiki/Rendering_Pipeline_Overview">http://www.opengl.org/wiki/Rendering_Pipeline_Overview</a></p>
+</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-07
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cocos2d-x/">Cocos2d-x</a>
+          <a href="/tags/opengl/">opengl</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/jsapi-reference/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">JSAPI用户手册翻译</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/webgl-your-first-triangles/">
+            <span class="next-text nav-default">WebGL教程：你的第一个三角形(1)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/opengl-es20-write-your-own-shader/" class="leancloud_visitors" data-flag-title="OpenGL ES2.0教程：编写自己的shader(2)">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

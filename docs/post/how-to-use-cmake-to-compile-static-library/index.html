@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>使用CMake编译跨平台静态库 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="在开始介绍如何使用CMake编译跨平台的静态库之前，先讲讲我在没有使用CMake之前所趟过的坑。因为很多开源的程序，比如png，都是自带编译" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/how-to-use-cmake-to-compile-static-library/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="使用CMake编译跨平台静态库" />
+<meta property="og:description" content="在开始介绍如何使用CMake编译跨平台的静态库之前，先讲讲我在没有使用CMake之前所趟过的坑。因为很多开源的程序，比如png，都是自带编译" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/how-to-use-cmake-to-compile-static-library/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-08-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-08-31T00:00:00+00:00" />
+
+<meta itemprop="name" content="使用CMake编译跨平台静态库">
+<meta itemprop="description" content="在开始介绍如何使用CMake编译跨平台的静态库之前，先讲讲我在没有使用CMake之前所趟过的坑。因为很多开源的程序，比如png，都是自带编译"><meta itemprop="datePublished" content="2014-08-31T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-08-31T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2319">
+<meta itemprop="keywords" content="CMake," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用CMake编译跨平台静态库"/>
+<meta name="twitter:description" content="在开始介绍如何使用CMake编译跨平台的静态库之前，先讲讲我在没有使用CMake之前所趟过的坑。因为很多开源的程序，比如png，都是自带编译"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">使用CMake编译跨平台静态库</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-08-31 </span>
+        <div class="post-category">
+            <a href="/categories/tools/"> tools </a>
+            </div>
+          <span class="more-meta"> 约 2319 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#为什么要使用cmake">为什么要使用CMake</a></li>
+    <li><a href="#编写cmakeliststxt">编写CMakeLists.txt</a>
+      <ul>
+        <li><a href="#指定头文件和源文件">指定头文件和源文件</a></li>
+        <li><a href="#指定库的名字">指定库的名字</a></li>
+      </ul>
+    </li>
+    <li><a href="#编译linux静态库含64位和32位">编译linux静态库（含64位和32位）</a></li>
+    <li><a href="#编译ios静态库">编译ios静态库</a></li>
+    <li><a href="#编译mac静态库">编译mac静态库</a></li>
+    <li><a href="#编译andoird静态库">编译Andoird静态库</a></li>
+    <li><a href="#编译win32wp8和winrt静态库">编译Win32，wp8和winrt静态库</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>在开始介绍如何使用CMake编译跨平台的静态库之前，先讲讲我在没有使用CMake之前所趟过的坑。因为很多开源的程序，比如png，都是自带编译脚本的。我们可以使用下列脚本来进行编译：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="p">.</span><span class="o">/</span><span class="n">configure</span>  <span class="o">--</span><span class="n">prefix</span><span class="o">=/</span><span class="n">xxx</span><span class="o">/</span><span class="n">xx</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="k">static</span><span class="o">=</span><span class="n">YES</span>
+</span></span><span class="line"><span class="cl"><span class="n">make</span> 
+</span></span><span class="line"><span class="cl"><span class="n">make</span> <span class="n">install</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>相信手动在类Unix系统上面编译过开源程序的同学对上面的命令肯定非常熟悉。但是，如果不配置编译器和一些编译、链接参数，这样的操作，最后编译出来的静态库只能在本系统上面被链接使用。比如你在mac上面运行上面的命令，编译出来的静态库就只能给mac程序链接使用。如果在Linux上面运行上述命令，则也只能给Linux上面的程序所链接使用。如果我们想要在Mac上面编译出ios和android的静态库，就必须要用到交叉编译。</p>
+<!-- raw HTML omitted -->
+<p>要进行交叉编译，一般来说要指定目标编译平台的编译器，通常是指定一个CC环境变量，根据编译的是c库还是c++库，要分别指定C_flags和CXX_flag，当然还需要指定c/c++和系统sdk的头文件包含路径。总之，非常之繁琐，大家可以看一下我之前把png编译到ios和mac上面的静态库所使用的<a href="https://github.com/minggo/png/blob/master/ios_mac/build_libpng.sh">脚本</a>。</p>
+<h2 id="为什么要使用cmake">为什么要使用CMake</h2>
+<p>为什么我们不使用autoconf？为什么我们不使用QMake,JAM,ANT呢？具体原因大家可以参考我在本文最后的参考链接里面的<a href="http://download.csdn.net/detail/sower/6850649">《Mastering CMake》</a>一书的第一章。我自己使用CMake的感受就是：我原来编写bash，配置configure参数，读各个开源库的INSTALL文件(因为不同库的configure参数有差别)，配置各种编译flag，头文件包含等。最后3天时间，折腾了png和jepg两个库的编译。当然，中间我还写了android和linux的编译脚本。而换用CMake以后，我2天时间编译完了Box2D,spine和Chipmunk的编译。并且配置脚本相当简单，添加新的库，基本上只是拷贝脚本，修改一两个参数即可。有了CMake，编译跨平台静态库和生成跨平台可执行程序So Easy！</p>
+<h2 id="编写cmakeliststxt">编写CMakeLists.txt</h2>
+<p>编写一个静态库的CMake配置文件过程如下：（这里我以Box2D为例）</p>
+<h3 id="指定头文件和源文件">指定头文件和源文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">include_directories</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="err">$</span><span class="p">{</span><span class="n">CMAKE_CURRENT_SOURCE_DIR</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">file</span><span class="p">(</span><span class="n">GLOB_RECURSE</span> <span class="n">box2d_source_files</span> <span class="s">&#34;${CMAKE_CURRENT_SOURCE_DIR}/Box2D/*.cpp&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我的CMakeLists.txt和Box2D的文件结构关系如下图所示：</p>
+<p><img src="https://zilongshanren.com/img/box2d-cmake.png" alt="box2d_cmake"></p>
+<p>这里的<code>${CMAKE_CURRENT_SOURCE_DIR}</code>表示CMakeLists.txt所在的目录。而GLOB_RECURSE可以递归地去搜索Box2D目录下面所有的.cpp文件来参与静态库的编译。而include_directories和file指令，显而易见，它们是用来指定静态库的头文件和实现文件。</p>
+<h3 id="指定库的名字">指定库的名字</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">add_library</span><span class="p">(</span><span class="n">Box2D</span> <span class="n">STATIC</span> <span class="err">$</span><span class="p">{</span><span class="n">box2d_source_files</span><span class="p">})</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里add_library表示最终编译为一个库，static表示是静态库，如果想编译动态库，可以修改为shared.
+至此，一个静态库的配置就完成了。当然，因为这个库没有包括其它外部的头文件，所以会比较简单。但这也远比一个Makefile要简单N倍。</p>
+<h2 id="编译linux静态库含64位和32位">编译linux静态库（含64位和32位）</h2>
+<p>编译linux的静态库是非常简单的，只需要安装好cmake以后，运行以下命令即可:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">cmake</span> <span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="n">make</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意，如果是64位的系统，那么这样只能生成64位的静态库。想要编译出32位的静态库，则必须要先安装32位系统的编译工具链。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libx32gcc</span><span class="o">-</span><span class="mf">4.8</span><span class="o">-</span><span class="n">dev</span>
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libc6</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">i386</span>
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">lib32stdc</span><span class="o">++</span><span class="mi">6</span>
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">g</span><span class="o">++-</span><span class="n">multilib</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，只需要指定cxx_flags为-m32即可，对应的CMake的写法为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">set</span><span class="p">(</span><span class="n">CMAKE_CXX_FLAGS</span> <span class="s">&#34;${CMAKE_CXX_FLAGS} -m32&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后用cmake生成makefile并make即可生成32位的静态库</p>
+<h2 id="编译ios静态库">编译ios静态库</h2>
+<p>编译ios库，最好先用cmake生成xcode工程。但是cmake默认的写法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">cmake</span> <span class="o">-</span><span class="n">GXcode</span> <span class="p">.</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>只能生成mac平台的xcode工程，而不能生成ios平台的xcode工程。不过我们可以借助<a href="https://code.google.com/p/ios-cmake/">ios-cmake</a>开源项目。
+下载iOS_32.cmake这个toolchain文件，然后使用下列命令来生成ios工程:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">cmake</span> <span class="o">-</span><span class="n">DCMAKE_TOOLCHAIN_FILE</span><span class="o">=</span><span class="p">..</span><span class="o">/</span><span class="n">toolchain</span><span class="o">/</span><span class="n">iOS_32</span><span class="p">.</span><span class="n">cmake</span>  <span class="o">-</span><span class="n">DCMAKE_IOS_DEVELOPER_ROOT</span><span class="o">=/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode</span><span class="p">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">iPhoneOS</span><span class="p">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span>  <span class="o">-</span><span class="n">GXcode</span> <span class="p">..</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有了ios工程以后，我们就可以调用xcodebuild来生成静态库了:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">xcodebuild</span> <span class="o">-</span><span class="n">project</span> <span class="n">Project</span><span class="p">.</span><span class="n">xcodeproj</span> <span class="o">-</span><span class="n">alltargets</span> <span class="o">-</span><span class="n">sdk</span> <span class="n">iphonesimulator7</span><span class="mf">.1</span> <span class="o">-</span><span class="n">configuration</span> <span class="n">Release</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这条命令会生成一个胖包（armv7、armv7s）。但是默认只会生成32位的胖包。因此，我修改了iOS_32.cmake，让它可以生成64位的静态库。这个文件为<a href="https://github.com/andyque/Box2D-cocos2d-x/blob/master/Box2D/toolchain/iOS_64.cmake">iOS_64.cmake</a>.</p>
+<p>所有的ios静态库（i386,x86_64,armv7,armv7s,arm64）生成完以后，可以用lipo来生成一个胖包，命令如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">lipo</span> <span class="n">lib</span><span class="o">/</span><span class="n">i386</span><span class="o">/</span><span class="n">libBox2D</span><span class="p">.</span><span class="n">a</span> <span class="n">lib</span><span class="o">/</span><span class="n">x86_64</span><span class="o">/</span><span class="n">libBox2D</span><span class="p">.</span><span class="n">a</span> <span class="n">lib</span><span class="o">/</span><span class="n">armv7</span><span class="o">/</span><span class="n">libBox2D</span><span class="p">.</span><span class="n">a</span> <span class="n">lib</span><span class="o">/</span><span class="n">arm64</span><span class="o">/</span><span class="n">libBox2D</span><span class="p">.</span><span class="n">a</span> <span class="o">-</span><span class="n">create</span> <span class="o">-</span><span class="n">output</span> <span class="n">libBox2D</span><span class="p">.</span><span class="n">a</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="编译mac静态库">编译mac静态库</h2>
+<p>这个比较简单，直接<code>Xcode -GXcode</code>，然后用xcodebuild命令即可。</p>
+<h2 id="编译andoird静态库">编译Andoird静态库</h2>
+<p>编译android库我们同样可以引入一个toolchain文件，这里我是从<a href="https://github.com/taka-no-me/android-cmake">android-cmake</a>里面下载的。
+在使用这个toolchain文件之前，我们先要使用ndk自带的make-standalone-toolchain.sh脚本来生成对应平台的toolchain.这个脚本位于你的NDK的路径下面的buil/tools目录下。</p>
+<p>比如要生成arm平台的toolchain，我们可以使用下列命令:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">sh</span> <span class="err">$</span><span class="n">ANDROID_NDK</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">make</span><span class="o">-</span><span class="n">standalone</span><span class="o">-</span><span class="n">toolchain</span><span class="p">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">platform</span><span class="o">=</span><span class="n">android</span><span class="o">-</span><span class="err">$</span><span class="n">ANDROID_API_LEVEL</span> <span class="o">--</span><span class="n">install</span><span class="o">-</span><span class="n">dir</span><span class="o">=</span><span class="p">.</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">toolchain</span> <span class="o">--</span><span class="n">system</span><span class="o">=</span><span class="n">darwin</span><span class="o">-</span><span class="n">x86_64</span> <span class="o">--</span><span class="n">ndk</span><span class="o">-</span><span class="n">dir</span><span class="o">=/</span><span class="n">Users</span><span class="o">/</span><span class="n">guanghui</span><span class="o">/</span><span class="n">AndroidDev</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">ndk</span><span class="o">-</span><span class="n">r9d</span><span class="o">/</span> <span class="o">--</span><span class="n">toolchain</span><span class="o">=</span><span class="n">arm</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">androideabi</span><span class="o">-</span><span class="mf">4.8</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里的<code>$ANDROID_NDK </code>为你的NDK的安装路径。这段命令可以生成arm的toolchain，最终可以编译出armeabi和armeabi-v7a静态库。
+如果想生成x86的toolchain，指需要使用下列命令:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">sh</span> <span class="err">$</span><span class="n">ANDROID_NDK</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">tools</span><span class="o">/</span><span class="n">make</span><span class="o">-</span><span class="n">standalone</span><span class="o">-</span><span class="n">toolchain</span><span class="p">.</span><span class="n">sh</span> <span class="o">--</span><span class="n">platform</span><span class="o">=</span><span class="n">android</span><span class="o">-</span><span class="err">$</span><span class="n">ANDROID_API_LEVEL</span> <span class="o">--</span><span class="n">install</span><span class="o">-</span><span class="n">dir</span><span class="o">=</span><span class="p">.</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">toolchain</span><span class="o">-</span><span class="n">x86</span> <span class="o">--</span><span class="n">system</span><span class="o">=</span><span class="n">darwin</span><span class="o">-</span><span class="n">x86_64</span> <span class="o">--</span><span class="n">ndk</span><span class="o">-</span><span class="n">dir</span><span class="o">=/</span><span class="n">Users</span><span class="o">/</span><span class="n">guanghui</span><span class="o">/</span><span class="n">AndroidDev</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">ndk</span><span class="o">-</span><span class="n">r9d</span><span class="o">/</span> <span class="o">--</span><span class="n">toolchain</span><span class="o">=</span><span class="n">x86</span><span class="o">-</span><span class="mf">4.8</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">export</span> <span class="n">PATH</span><span class="o">=</span><span class="err">$</span><span class="nl">PATH</span><span class="p">:.</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">toolchain</span><span class="o">/</span><span class="n">bin</span>
+</span></span><span class="line"><span class="cl"><span class="k">export</span> <span class="n">ANDROID_STANDALONE_TOOLCHAIN</span><span class="o">=</span><span class="p">.</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">toolchain</span>
+</span></span><span class="line"><span class="cl"><span class="n">cmake</span> <span class="o">-</span><span class="n">DCMAKE_TOOLCHAIN_FILE</span><span class="o">=</span><span class="p">..</span><span class="o">/</span><span class="n">android</span><span class="p">.</span><span class="n">toolchain</span><span class="p">.</span><span class="n">cmake</span> <span class="o">-</span><span class="n">DANDROID_ABI</span><span class="o">=</span><span class="s">&#34;armeabi&#34;</span> <span class="p">..</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="编译win32wp8和winrt静态库">编译Win32，wp8和winrt静态库</h2>
+<p>这里直接使用cmake-gui生成对应的VS工程，然后再手动编译即可。</p>
+<p>关于Box2D完整的跨平台编译脚本可以参考<a href="https://github.com/andyque/Box2D-cocos2d-x">我的Github</a></p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>
+<p><a href="http://mirkokiefer.com/blog/2013/03/cmake-by-example/">cmake by example</a></p>
+</li>
+<li>
+<p><a href="http://download.csdn.net/detail/sower/6850649">mastering cmake pdf</a></p>
+</li>
+<li>
+<p><a href="http://www.kitware.com/source/home/post/136">Meta-configuration of C/C++ projects with CMake</a></p>
+</li>
+<li>
+<p><a href="http://cganime.wordpress.com/2012/09/26/setting-up-android-standalone-toolchain-for-cmake/">Setting up Android standalone toolchain for CMake</a></p>
+</li>
+<li>
+<p><a href="http://flohofwoe.blogspot.com/2014/04/cmake-and-android-ndk.html">cmake and the Android NDK</a></p>
+</li>
+<li>
+<p><a href="https://github.com/taka-no-me/android-cmake">android-cmake</a></p>
+</li>
+<li>
+<p><a href="http://www.srombauts.fr/2011/03/15/cmake-for-android/">CMake for Andrioid</a></p>
+</li>
+<li>
+<p><a href="https://code.google.com/p/ios-cmake/">ios-cmake google code</a></p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-08-31
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cmake/">CMake</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/migrate-to-octopress/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">迁移博客到Octopress</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/emacs-the-editor-of-a-life-time/">
+            <span class="next-text nav-default">Emacs, The Editor of a Life Time</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/how-to-use-cmake-to-compile-static-library/" class="leancloud_visitors" data-flag-title="使用CMake编译跨平台静态库">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

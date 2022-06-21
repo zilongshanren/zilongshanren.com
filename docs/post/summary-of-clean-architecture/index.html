@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>《Clean Architecture》读书笔记 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="0owen" /><meta name="description" content=" 一、前言 软件架构非常重要，架构的主要目的是最小化系统开发和维护的人力成本，提高开发人员的开发效率。
+软件设计和软件构架有本质区别，架构更关心软件的高层设计，怎么定义系统和模块的边界，而设计更关心底层的实现细节。
+优雅的架构通常不是那么容易就获得的，他需要开发人员去争取、去斗争、去追求。
+" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/summary-of-clean-architecture/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="《Clean Architecture》读书笔记" />
+<meta property="og:description" content="
+一、前言
+软件架构非常重要，架构的主要目的是最小化系统开发和维护的人力成本，提高开发人员的开发效率。
+软件设计和软件构架有本质区别，架构更关心软件的高层设计，怎么定义系统和模块的边界，而设计更关心底层的实现细节。
+优雅的架构通常不是那么容易就获得的，他需要开发人员去争取、去斗争、去追求。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/summary-of-clean-architecture/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2018-09-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-09-01T00:00:00+00:00" />
+
+<meta itemprop="name" content="《Clean Architecture》读书笔记">
+<meta itemprop="description" content="
+一、前言
+软件架构非常重要，架构的主要目的是最小化系统开发和维护的人力成本，提高开发人员的开发效率。
+软件设计和软件构架有本质区别，架构更关心软件的高层设计，怎么定义系统和模块的边界，而设计更关心底层的实现细节。
+优雅的架构通常不是那么容易就获得的，他需要开发人员去争取、去斗争、去追求。"><meta itemprop="datePublished" content="2018-09-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-09-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2427">
+<meta itemprop="keywords" content="programming life," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="《Clean Architecture》读书笔记"/>
+<meta name="twitter:description" content="
+一、前言
+软件架构非常重要，架构的主要目的是最小化系统开发和维护的人力成本，提高开发人员的开发效率。
+软件设计和软件构架有本质区别，架构更关心软件的高层设计，怎么定义系统和模块的边界，而设计更关心底层的实现细节。
+优雅的架构通常不是那么容易就获得的，他需要开发人员去争取、去斗争、去追求。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">《Clean Architecture》读书笔记</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-09-01 </span>
+        <div class="post-category">
+            <a href="/categories/programming-life/"> programming life </a>
+            </div>
+          <span class="more-meta"> 约 2427 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一前言">一、前言</a></li>
+    <li><a href="#二编程范式">二、编程范式</a>
+      <ul>
+        <li><a href="#结构化编程">结构化编程：</a></li>
+        <li><a href="#面向对象编程">面向对象编程：</a></li>
+        <li><a href="#函数式编程">函数式编程：</a></li>
+      </ul>
+    </li>
+    <li><a href="#三设计原则更多关心的是design">三、设计原则（更多关心的是Design）</a>
+      <ul>
+        <li><a href="#1-单一职责原则srp">1. 单一职责原则（SRP）：</a></li>
+        <li><a href="#2-开闭原则-ocp">2. 开闭原则 （OCP）</a></li>
+        <li><a href="#3-里氏替换原则-lsp">3. 里氏替换原则 （LSP）</a></li>
+        <li><a href="#4-接口隔离原则isp">4. 接口隔离原则（ISP）</a></li>
+        <li><a href="#5-依赖倒转原则dip">5. 依赖倒转原则（DIP）</a></li>
+      </ul>
+    </li>
+    <li><a href="#四组件原则">四、组件原则</a></li>
+    <li><a href="#五常见的架构设计原则">五、常见的架构设计原则</a></li>
+    <li><a href="#六细节的东西需要有抽象">六、细节的东西需要有抽象</a></li>
+    <li><a href="#七总结">七、总结</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<h2 id="一前言">一、前言</h2>
+<p>软件架构非常重要，架构的主要目的是最小化系统开发和维护的人力成本，提高开发人员的开发效率。</p>
+<p>软件设计和软件构架有本质区别，架构更关心软件的高层设计，怎么定义系统和模块的边界，而设计更关心底层的实现细节。</p>
+<p>优雅的架构通常不是那么容易就获得的，他需要开发人员去争取、去斗争、去追求。</p>
+<p>通常软件有两个维度的要素：功能性和结构性。而大多数时候，国内的研发团队只关心软件的功能性，而忽略结构性。通常这不是开发的错，开发一般话语权不大，被产品和老大推着走。</p>
+<p>所以，软件构架不只在于技术，还关乎管理。如果技术管理的老大在团队中不够强硬，那么就容易出问题。在面对产品和PM的时候，不敢据理力争。</p>
+<p>按照本书的理论，软件开发过程中的事情分为四个维度：</p>
+<ul>
+<li>核心功能（重要且紧急）</li>
+<li>软件构架，代码重构（不紧急且重要）</li>
+<li>非核心功能（紧急但不重要）</li>
+<li>垃圾功能（不紧急也不重要）</li>
+</ul>
+<p>因为在国内的研发团队里面，产品可以无限试错，而开发可以无限加班，PM可以无限压榨。所以，作为技术leader需要硬起来，否则无解，不管是大公司还是小公司。
+大家都是产品的干系人，产品最后好不好，大家有共同的责任。</p>
+<p>另外，在编程方面，leader的眼光和业务能力也很重要。因为他需要及时识别出需求里的变化并采取合理的策略进行代码抽象。</p>
+<p>因为架构是需要演进的，代码是会腐烂的，如果一开始的架子搭的不好，腐烂的速度会变得更快。</p>
+<p>另外，开发人员太自信也是有害的，动不动就重写并不能解决所有问题。</p>
+<p>软件构架不可一促而就，代码结构也是一样，要定期进行重构和代码审查，及时解决代码里面的坏味道。但是如果没有好的开发流程，没有完备的测试，重构和代码审查几乎都是 很难实施的。</p>
+<h2 id="二编程范式">二、编程范式</h2>
+<p>这一节作者讲了主流的三种编程范式，作者强调，这些编程范式并不是增加了开发人员的能力，而是增加了某种约束（或者叫编码自律）。</p>
+<h3 id="结构化编程">结构化编程：</h3>
+<p>在结构化编程出现以前，人们可以自由地使用Goto语句，而结构化编程出现后，有人提出了程序可以只用『顺序』、『选择』和『循环』的组合来完成，Goto语句是有害的。
+程序设计采用自顶向下，逐层分解的方式来设计，最后拆分成的子过程就可以完全用上述三种结构来实现。
+构结化编程限制了你滥用Goto语句的能力，而没有增加什么新功能。</p>
+<h3 id="面向对象编程">面向对象编程：</h3>
+<p>什么是面向对象？有人可能会说是『封装』、『继承』和『多态』。作者认为面向对象的精髓在于多态，它可以优雅地解决软件系统里面的代码依赖问题。
+尽量依赖于抽象和接口，而不是依赖于具体实现，这样就可以非常好地划分系统边界。
+面向对象的封装限制了你直接访问类的数据和函数的能力。OO限制了你直接控制代码流程的能力，通过多态和接口划分的系统接口，你很难破坏。</p>
+<h3 id="函数式编程">函数式编程：</h3>
+<p>函数式编程限制了你的代码副作用，限制了你直接使用赋值语句的能力。现在面向对象的编程范式已经很普遍了，但是软件的质量和bug数量并没有得到有效控制。
+代码副作用随处可见，这些都是导致代码产生各种难以理解的bug的根缘。</p>
+<h2 id="三设计原则更多关心的是design">三、设计原则（更多关心的是Design）</h2>
+<p>这一节讲到的设计原则，更多关注的是代码本身。SOLID原则是对设计模式的一个高度概括，熟练掌握并合理运用这些设计原则，可以让你以无招胜有招。</p>
+<h3 id="1-单一职责原则srp">1. 单一职责原则（SRP）：</h3>
+<p>SRP 不单单指函数或类的功能是单一的内聚的。而是说一个模块（类或函数）只有一个引起它进行变化的原因（这里的变化包括添加新feature，改bug）</p>
+<h3 id="2-开闭原则-ocp">2. 开闭原则 （OCP）</h3>
+<p>代码应该对扩展开放，而对修改关闭。当你往系统中添加新功能时，你只需要添加新的代码，而不用修改现有的代码。如果一个模块经常被修改，那么这个模块很可能破坏了开闭原则。</p>
+<h3 id="3-里氏替换原则-lsp">3. 里氏替换原则 （LSP）</h3>
+<p>里氏替换原则指所有引用其基类的地方必须能够透明地使用其子类而不会破坏系统的功能。此原则可以应用在架构设计的边界定义上面。通过定义一些抽象的基类来
+划分系统的边界，使模块进行解耦。</p>
+<h3 id="4-接口隔离原则isp">4. 接口隔离原则（ISP）</h3>
+<p>代码间的依赖应该尽可能依赖接口，而不是具体实现。但凡涉及到具体细节的部分，尽可能设计成不依赖具体实现接口。</p>
+<h3 id="5-依赖倒转原则dip">5. 依赖倒转原则（DIP）</h3>
+<p>依赖倒转原则强调模块间的依赖要倒置。上层不要直接依赖下层，而应该依赖抽象。</p>
+<h2 id="四组件原则">四、组件原则</h2>
+<p>当系统足够大以后，需要对大系统进行拆分，并由多个团队负责独立开发。这样的话，不同的团队间只能依赖于定义好的系统边界来进行交互，避免在项目开发过程中任何人都可以对项目的任何部分进行修改。</p>
+<p>当然，这种方法不适应于小项目和项目初期。另外面向服务的架构（SOA）也不一定是最好的。</p>
+<h2 id="五常见的架构设计原则">五、常见的架构设计原则</h2>
+<ul>
+<li>分层架构</li>
+<li>分功能架构</li>
+<li>洋葱架构</li>
+<li>正交形架构</li>
+<li>定义子系统的边界</li>
+<li>如果有多个类相互依赖，就定义一个外观类，把它们约束起来。只暴露简单清晰的接口和外部产生依赖。presenters and humber object</li>
+</ul>
+<h2 id="六细节的东西需要有抽象">六、细节的东西需要有抽象</h2>
+<p>软件架构不要依赖细节，作者提到了以下几种细节：</p>
+<ul>
+<li>数据库：各种ORM系统其实就是对细节的一种封装，你的系统在一开始设计的时候，除非客户有明确的需求，否则不要依赖某一个具体的数据库。</li>
+<li>web：你的系统应该可以独立于Web来设计，当你需要出一款桌面GUI版本软件的时候，你不会太痛苦。</li>
+<li>UI：UI是最容易变化的，MVC，MVP，各种MVVM框架都是为了解决这个问题。</li>
+<li>框架：你的核心业务逻辑应该是与框架无关的，最好不要让某一个框架把你的核心业务逻辑打散了，这样会导致依赖特别强，同时维护成本也会大幅增加。</li>
+</ul>
+<h2 id="七总结">七、总结</h2>
+<ul>
+<li>软件架构的目的就是为了解决软件复杂性。架构设计过程中，尽量要把业务逻辑体现在代码逻辑里面。软件构架需要开发人员去争取。</li>
+<li>减少代码间的依赖，减少对框架的依赖和对库的依赖，有效识别出哪些是变化的部分，封装这些变化。</li>
+<li>再好的架构，如果实施的不好，也会破坏。SOLID原则是对编写Clean Code的指导，一定要每一位系统的开发人员都掌握并敬畏。</li>
+<li>架构是需要演化的，一开始定义清楚系统的边界很重要，通过接口隔离和依赖倒置，让模块间的耦合降到最低。</li>
+</ul>
+<p>总之，本书是一本非常不错的书，强烈推荐！</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">0owen</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2018-09-01
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/programming-life/">programming life</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/move-from-hexo-to-hugo/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">博客从 hexo 迁移到 hugo</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/learning-how-to-learn/">
+            <span class="next-text nav-default">如何高效学习</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/summary-of-clean-architecture/" class="leancloud_visitors" data-flag-title="《Clean Architecture》读书笔记">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

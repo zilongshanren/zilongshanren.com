@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>阿里云ubuntu12.04搭建自己的gitlab - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="我对Github太爱了，但是它的私有仓库要钱，而且是每个月7美金，对于一个上有老下有小的屌丝来说，还是能省则省吧。 况且，我不是有一台阿里云的" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/setup-gitlab-on-ubuntu-aliyun/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="阿里云ubuntu12.04搭建自己的gitlab" />
+<meta property="og:description" content="我对Github太爱了，但是它的私有仓库要钱，而且是每个月7美金，对于一个上有老下有小的屌丝来说，还是能省则省吧。 况且，我不是有一台阿里云的" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/setup-gitlab-on-ubuntu-aliyun/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-07-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-07-15T00:00:00+00:00" />
+
+<meta itemprop="name" content="阿里云ubuntu12.04搭建自己的gitlab">
+<meta itemprop="description" content="我对Github太爱了，但是它的私有仓库要钱，而且是每个月7美金，对于一个上有老下有小的屌丝来说，还是能省则省吧。 况且，我不是有一台阿里云的"><meta itemprop="datePublished" content="2014-07-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-07-15T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1117">
+<meta itemprop="keywords" content="Gitlab,aliyun," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="阿里云ubuntu12.04搭建自己的gitlab"/>
+<meta name="twitter:description" content="我对Github太爱了，但是它的私有仓库要钱，而且是每个月7美金，对于一个上有老下有小的屌丝来说，还是能省则省吧。 况且，我不是有一台阿里云的"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">阿里云ubuntu12.04搭建自己的gitlab</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-07-15 </span>
+        <div class="post-category">
+            <a href="/categories/git/"> Git </a>
+            </div>
+          <span class="more-meta"> 约 1117 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#阅读官方文档">阅读官方文档</a></li>
+    <li><a href="#遇到的问题汇总">遇到的问题汇总</a>
+      <ul>
+        <li><a href="#unicorn服务起不来">Unicorn服务起不来</a></li>
+        <li><a href="#gitlab内部错误">gitlab内部错误</a></li>
+        <li><a href="#不能保存工程">不能保存工程</a></li>
+        <li><a href="#不能发送邮件">不能发送邮件</a></li>
+        <li><a href="#提示输入密码">提示输入密码</a></li>
+        <li><a href="#权限不足">权限不足</a></li>
+      </ul>
+    </li>
+    <li><a href="#官方faq">官方FAQ</a></li>
+    <li><a href="#心得体会">心得体会</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>我对Github太爱了，但是它的私有仓库要钱，而且是每个月7美金，对于一个上有老下有小的屌丝来说，还是能省则省吧。
+况且，我不是有一台阿里云的服务器么，我完全可以自己搭一个Gitlab嘛！
+有人可能会说，直接搭一个Git服务器就行了嘛，分分钟搞定的事。（确实，我之前也搭过。）
+但是，如果只是搭建一个Git服务器会有很多弊端：</p>
+<ol>
+<li>
+<p>多人开发一个项目的时候，没办法做Code Review（而使用Gitlab可以发pull request的时候做Code Review）</p>
+</li>
+<li>
+<p>不好与CI服务器集成。</p>
+</li>
+<li>
+<p>权限管理不方便</p>
+</li>
+<li>
+<p>Hook使用不方便</p>
+</li>
+<li>
+<p>没有issue系统，wiki系统</p>
+</li>
+</ol>
+<p><strong>温馨提示：搭建Gitlab的过程非常艰辛，要阅读非常长的英文文档，而且中途N多坑。准备尝试之前，请一定要做好心理准备，保护好自己的键盘(因为安装过程你可能有100次想砸电脑的冲动)。切记！</strong></p>
+<!-- raw HTML omitted -->
+<p>其实我很早就想搭建一个自己的Gitlab服务器了，但是一直没狠下心来。（说白了就是懒嘛。）</p>
+<h2 id="阅读官方文档">阅读官方文档</h2>
+<p>如果你想安装<strong>最新版本的Gitlab</strong>，请一定要<a href="https://github.com/gitlabhq/gitlabhq/blob/master/doc/install/installation.md">阅读官方文档</a>。因为Gitlab社区比较活跃，版本更新比较快，网上的很多教程基本都会过时。所以，切记一定要阅读官方文档 ，博主在这里被坑了！</p>
+<p>不得不提一下，官方文档可能也有坑，不过不要紧，配置完以后，一定要记得执行下面一条命令来检查你的Gitlab是否配置好：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">git</span> <span class="o">-</span><span class="n">H</span> <span class="n">bundle</span> <span class="n">exec</span> <span class="n">rake</span> <span class="nl">gitlab</span><span class="p">:</span><span class="n">check</span> <span class="n">RAILS_ENV</span><span class="o">=</span><span class="n">production</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们看到这个命令前面有sudo -u git -H，建议大家直接使用Git用户登录vps，然后直接运行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">bundle</span> <span class="n">exec</span> <span class="n">rake</span> <span class="nl">gitlab</span><span class="p">:</span><span class="n">check</span> <span class="n">RAILS_ENV</span><span class="o">=</span><span class="n">production</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其实官方文档里面所有的命令，都可以采用类似的方式来弄。避免后面出现权限问题，博主在这里浪费了大量的时间。</p>
+<h2 id="遇到的问题汇总">遇到的问题汇总</h2>
+<h3 id="unicorn服务起不来">Unicorn服务起不来</h3>
+<p>解决办法：手动杀死进程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">netstat</span> <span class="o">-</span><span class="n">tulpn</span> <span class="o">|</span> <span class="nl">grep</span> <span class="p">:</span><span class="mi">8080</span> <span class="n">tcp</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">127.0.0.1</span><span class="o">:</span><span class="mi">8080</span> <span class="mf">0.0.0.0</span><span class="o">:*</span> <span class="n">LISTEN</span> <span class="mi">16429</span><span class="o">/</span><span class="n">unicorn</span><span class="p">.</span><span class="n">rb</span> <span class="o">-</span><span class="n">E</span>
+</span></span><span class="line"><span class="cl"><span class="n">ps</span> <span class="n">aux</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">cupsd</span>
+</span></span><span class="line"><span class="cl"><span class="n">kill</span> <span class="o">-</span><span class="mi">9</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="gitlab内部错误">gitlab内部错误</h3>
+<ul>
+<li><strong>We&rsquo;re sorry, but something went wrong. gitlab</strong></li>
+</ul>
+<p>解决办法：
+运行命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">bundle</span> <span class="n">exec</span> <span class="n">rake</span> <span class="nl">gitlab</span><span class="p">:</span><span class="n">check</span> <span class="n">RAILS_ENV</span><span class="o">=</span><span class="n">production</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>检查所有的错误，然后根据提示去fix all！</p>
+<h3 id="不能保存工程">不能保存工程</h3>
+<ul>
+<li><strong>gitlab Can&rsquo;t save project. Please try again later</strong></li>
+</ul>
+<p>解决办法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="err">安装</span> <span class="n">redit</span> <span class="nl">server</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="nl">http</span><span class="p">:</span><span class="c1">//www.91r.net/ask/16274837.html
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/gitlabhq/gitlabhq/issues/5967
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="err">安装</span><span class="nl">redis如果还不能解决</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"><span class="n">chmod</span> <span class="mi">777</span> <span class="o">-</span><span class="n">R</span> <span class="n">tmp</span>
+</span></span><span class="line"><span class="cl"><span class="n">chmod</span> <span class="mi">777</span> <span class="o">-</span><span class="n">R</span> <span class="k">public</span>
+</span></span><span class="line"><span class="cl"><span class="n">chmod</span> <span class="mi">777</span> <span class="o">-</span><span class="n">R</span> <span class="n">log</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="不能发送邮件">不能发送邮件</h3>
+<ul>
+<li><strong>不能发送邮件</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="nl">http</span><span class="p">:</span><span class="c1">//blog.fizyk.net.pl/blog/configure-gitlab-with-smtp-mail-server.html
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nl">https</span><span class="p">:</span><span class="c1">//github.com/gitlabhq/gitlabhq/issues/5596
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="提示输入密码">提示输入密码</h3>
+<ul>
+<li><code>git push -u orgin master</code>的时候提示输入密码</li>
+</ul>
+<p>其它是权限问题啦，不过下面的链接也可以看看。
+<a href="http://zeusyu.com/blog/gitlab-problem.html">http://zeusyu.com/blog/gitlab-problem.html</a></p>
+<h3 id="权限不足">权限不足</h3>
+<ul>
+<li>remote: error: insufficient permission for adding an object to repository database</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="err">注意使用</span> <span class="n">ls</span> <span class="o">-</span><span class="n">l</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">git</span> <span class="err">来查看</span><span class="nl">owner是否为git</span><span class="p">:</span><span class="n">git</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="err">如果不是，需要使用</span><span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="nl">git</span><span class="p">:</span><span class="n">git</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">git</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="官方faq">官方FAQ</h2>
+<p><a href="https://github.com/gitlabhq/gitlab-public-wiki/wiki/Trouble-Shooting-Guide">官方常见问题解答</a></p>
+<h2 id="心得体会">心得体会</h2>
+<p>虽然整个搭建过程无比之艰辛，几乎占用了我一天的时间，但是最后搭好了，还是很开心滴。最后，如果你买的是512M的乞丐版阿里云，建议一定要升级至1024M内存，同时创建sawpfile，大小1G就够了，否则跑不动就只能呵呵了。</p>
+<p>最后，应大家的要求来几张效果图吧：</p>
+<p><img src="https://zilongshanren.com/img/gitlab_login-300x273.png" alt="gitlab_login"></p>
+<p><img src="https://zilongshanren.com/img/gitlab_repo-300x116.png" alt="gitlab_repo"></p>
+<h2 id="reference">Reference</h2>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-gitlab-as-your-very-own-private-github-clone">https://www.digitalocean.com/community/tutorials/how-to-set-up-gitlab-as-your-very-own-private-github-clone</a>
+<a href="https://blog.huhamhire.com/topics/technic/servers">https://blog.huhamhire.com/topics/technic/servers</a>
+<a href="http://www.pwhack.me/archives/installation_of_gitlab.html">http://www.pwhack.me/archives/installation_of_gitlab.html</a>
+<a href="https://blog.huhamhire.com/viewpost-1120.html">https://blog.huhamhire.com/viewpost-1120.html</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-07-15
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/gitlab/">Gitlab</a>
+          <a href="/tags/aliyun/">aliyun</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/webgl-your-first-cube/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">WebGL教程:你的第一个立方体(3)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/opengl-es2-0-texturing-mapping/">
+            <span class="next-text nav-default">OpenGL ES2.0教程:纹理贴图(6)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/setup-gitlab-on-ubuntu-aliyun/" class="leancloud_visitors" data-flag-title="阿里云ubuntu12.04搭建自己的gitlab">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

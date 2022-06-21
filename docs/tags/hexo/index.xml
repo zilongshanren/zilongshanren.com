@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hexo on 子龙山人</title>
+    <link>https://zilongshanren.com/tags/hexo/</link>
+    <description>Recent content in hexo on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 02 Aug 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>迁移博客到 Hexo</title>
+      <link>https://zilongshanren.com/post/2015-08-02-migrate-blog-to-hexo/</link>
+      <pubDate>Sun, 02 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-08-02-migrate-blog-to-hexo/</guid>
+      <description>Table of Contents 为什么要迁移到 Hexo 迁移过程 迁移 Org-Octopress 修改 permalink。 修改 Org-Octopress 的根路径 需要导出的文件要放到 source 目录，但是需要添加 skip_render 信息。 Emacs 集成 小结 本文主要</description>
+    </item>
+    
+  </channel>
+</rss>

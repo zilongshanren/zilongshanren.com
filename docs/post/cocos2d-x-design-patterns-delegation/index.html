@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cocos2D-X设计模式:委托模式 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="前言： 前一篇文章讨论了cocos2d-x里面的中介者模式，但是，由于概念把握上面的偏差，我把GoF的中介者模式搞混淆了。幸好有读者给我提出了" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/cocos2d-x-design-patterns-delegation/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Cocos2D-X设计模式:委托模式" />
+<meta property="og:description" content="前言： 前一篇文章讨论了cocos2d-x里面的中介者模式，但是，由于概念把握上面的偏差，我把GoF的中介者模式搞混淆了。幸好有读者给我提出了" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/cocos2d-x-design-patterns-delegation/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-20T00:00:00+00:00" />
+
+<meta itemprop="name" content="Cocos2D-X设计模式:委托模式">
+<meta itemprop="description" content="前言： 前一篇文章讨论了cocos2d-x里面的中介者模式，但是，由于概念把握上面的偏差，我把GoF的中介者模式搞混淆了。幸好有读者给我提出了"><meta itemprop="datePublished" content="2014-06-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2822">
+<meta itemprop="keywords" content="Cocos2d-x,design pattern," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cocos2D-X设计模式:委托模式"/>
+<meta name="twitter:description" content="前言： 前一篇文章讨论了cocos2d-x里面的中介者模式，但是，由于概念把握上面的偏差，我把GoF的中介者模式搞混淆了。幸好有读者给我提出了"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Cocos2D-X设计模式:委托模式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-20 </span>
+        <div class="post-category">
+            <a href="/categories/cocos2d-x/"> Cocos2d-x </a>
+            <a href="/categories/design-pattern/"> design pattern </a>
+            </div>
+          <span class="more-meta"> 约 2822 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#一应用场景">一、应用场景</a></li>
+        <li><a href="#二该模式优缺点">二、该模式优缺点</a></li>
+        <li><a href="#三定义及一般实现">三、定义及一般实现</a></li>
+        <li><a href="#四游戏开发中如何运用此模式">四、游戏开发中如何运用此模式</a></li>
+        <li><a href="#五与其它模式的关系">五、与其它模式的关系</a></li>
+        <li><a href="#references">References:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>前言：</p>
+<p><a href="http://zilongshanren.com/blog/2014-06-20-cocos2d-x-design-pattern-mediator.html">前一篇文章</a>讨论了cocos2d-x里面的中介者模式，但是，由于概念把握上面的偏差，我把GoF的中介者模式搞混淆了。幸好有读者给我提出了这个问题，我在上一篇文章中也补充说明了。虽然我谈到的应用场景跟中介者模式有点类似，但是，经典的模式就是模式，我不能随便篡改，更不能张冠李戴。所以，这篇文章我将谈到的是委托模式（delegation pattern），而不是GoF里面的代理模式（Proxy pattern）,虽然delegate也可以翻译成“代理”，但是，为了以示区别，这里使用委托。当然，文章观点如果有误，欢迎大家指出。</p>
+<!-- raw HTML omitted -->
+<p>在讨论cocos2d-x里面的委托模式之前，先来讲讲什么是委托，以及c++里面如何实现委托。委托通常还会跟回调、闭包联系在一起，而委托和委托模式也有一点区别。下面先看看委托模式的例子</p>
+<p>一个打印机类的委托模式实现：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">RealPrinter</span> <span class="p">{</span> <span class="c1">// the &#34;delegate&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">     <span class="kt">void</span> <span class="n">print</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//do something
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>     <span class="p">}</span>
+</span></span><span class="line"><span class="cl"> <span class="p">}</span><span class="err">；</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Printer</span> <span class="p">{</span>      <span class="c1">// the &#34;delegator&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">     <span class="n">Printer</span><span class="p">()</span><span class="o">:</span> <span class="n">p</span><span class="p">(</span><span class="k">new</span> <span class="n">RealPrinter</span><span class="p">()){}</span> <span class="c1">// create the delegate
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>     <span class="kt">void</span> <span class="nf">print</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">       <span class="n">p</span><span class="o">-&gt;</span><span class="n">print</span><span class="p">();</span> <span class="c1">// delegation
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>     <span class="p">}</span>
+</span></span><span class="line"><span class="cl">     <span class="o">~</span><span class="n">Printer</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">       <span class="k">if</span><span class="p">(</span><span class="nb">NULL</span> <span class="o">!=</span> <span class="n">p</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">          <span class="k">delete</span> <span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="n">p</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">       <span class="p">}</span>
+</span></span><span class="line"><span class="cl">     <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">     <span class="n">RealPrinter</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Printer</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Printer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="o">-&gt;</span><span class="n">print</span><span class="p">();</span>  <span class="c1">//client don’t know the exists of delegate class
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">delete</span> <span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Printer这个类要实现打印功能，它不是自己去实现，而是委托RealPrinter这个类来实现。更一般化的示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">PrinterDelegate</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="o">~</span><span class="n">PrinterDelegate</span><span class="p">(){}</span> <span class="c1">// why virtual function , see Effective c++ Item 7.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">print</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">RealPrinter</span> <span class="o">:</span> <span class="k">public</span> <span class="n">PrinterDelegate</span> <span class="p">{</span> <span class="c1">// the &#34;delegate&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">print</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//do something
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Printer</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Printer</span><span class="p">()</span><span class="o">:</span><span class="n">delegate</span><span class="p">(</span><span class="k">new</span> <span class="n">RealPrinter</span><span class="p">){}</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">print</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nb">NULL</span> <span class="o">!=</span> <span class="n">delegate</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">delegate</span><span class="o">-&gt;</span><span class="n">print</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">Printer</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">       <span class="k">if</span><span class="p">(</span><span class="nb">NULL</span> <span class="o">!=</span> <span class="n">delegate</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">          <span class="k">delete</span> <span class="n">delegate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="n">delegate</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">       <span class="p">}</span>
+</span></span><span class="line"><span class="cl">     <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">PrinterDelegate</span> <span class="o">*</span><span class="n">delegate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Printer</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Printer</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="o">-&gt;</span><span class="n">print</span><span class="p">();</span>  <span class="c1">//client don’t know the exists of delegate class
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">delete</span> <span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>看完这个实现之后，相信大家对objc里面的delegate如何用c++实现也差不多有了解了吧。其实很简单，就是一个针对接口编程嘛。</p>
+<p>看完这个实现之后，你可能会说，“切！这就是你说的委托模式啊，也太简单了吧”。不过，我们要把委托更一般化，或者更具体化。用过c＃的朋友都知道，c#里面有一种类型delegate，它可以申明委托方法，从而实现事件驱动编程。具体的内容读者可以谷歌一下“c#的委托和事件”。</p>
+<p>其实委托就是一个方法，但是它可以被当作“First-classvariable”来对待。即函数可以被存储，被传参，还可以从其它函数内部返回。拥有这种特性，同时大量采用这种特性的语言还有javascript，lua等，这也是现在我们津津乐道的函数式编程。那么c++能不能拥有函数式编程体验呢？答案是肯定的。c++中的函数指针，指向成员函数的指针、函数子对象都可以被存储、被传参，还可以从其它函数内部返回。而cocos2d-x里面也是大量采用了这种指向成员函数的指针来实现委托，这个留到后面再讨论。自从c++11的标准发布以后，我们还可以采用lambda表达式。那么c++到底有多少种方式可以实现委托呢？请参考这个<a href="http://stackoverflow.com/questions/9568150/what-is-a-c-delegate">链接</a>。对于更多的实现委托的方式，可以参考文章结尾给出的链接，很重要哦，感兴趣的读者不可错过。看完这些文章，相信读者对于什么是委托、c++里面如何实现委托以及什么是委托模式，它们之间有什么区别应该比较清楚了。</p>
+<p>好了，讲了这么多题外话，现在回到cocos2d-x的委托设计模式发掘中来吧！</p>
+<h3 id="一应用场景">一、应用场景</h3>
+<p>在挖掘委托模式之前，我们先探究一下，什么情况下会使用委托模式。（因为我们前面回答了what和how的问题，现在来研究下when）。如果我们了解了应用委托模式的一般原则和场景，那么接下来的发掘过程会容易很多。</p>
+<p>一个典型的应用场景是GUI编程中，当一个按钮被点击或者一个窗口被关闭时，程序需要做相应的响应，这时候就需要委托了。什么意思呢？因为我们的GUI程序一直在等待用户输入，然后根据用户输入作出相应的响应，在用户没有做出“按下按钮”这个动作之前，我们的程序是不知道如何响应的。这个按钮被按下去的响应动作，在你设计按钮类的时候是无法确定的，必须在客户程序中指定。客户程序实现响应按钮事件的接口，然后注册，这样当事件发生的时候，客户端程序类（相当于委托类）就可以作出定制的处理了。</p>
+<p>这种在运行时刻进行任务委派的功能，在设计框架和可重用的组件的时候非常有用，大名鼎鼎的MVC就大量采用了委托设计模式（观察者模式和策略模式都可以看到是一般化的委托模式）。</p>
+<p>这时候，我们再来挖掘cocos2d-x里面的委托设计模式，其实已经非常简单了。Cocos2d-x里面的CCMenu的响应事件，CCControlButton的响应事件，还有一大堆scheduler的实现，都采用了委托设计模式。它的实现细节就是采用了指向成员函数的指针，不过由于采用了宏定义的方式，所以编写代码还算方便。打开CCObject.h，你可以看到一大堆函数指针和相关的宏定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="n">CCObject</span><span class="o">::</span> <span class="o">*</span><span class="n">SEL_SCHEDULE</span><span class="p">)(</span><span class="kt">float</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="n">CCObject</span><span class="o">::</span> <span class="o">*</span><span class="n">SEL_CallFunc</span><span class="p">)();</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="n">CCObject</span><span class="o">::</span> <span class="o">*</span><span class="n">SEL_CallFuncN</span><span class="p">)(</span><span class="n">CCNode</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="n">CCObject</span><span class="o">::</span> <span class="o">*</span><span class="n">SEL_CallFuncND</span><span class="p">)(</span><span class="n">CCNode</span> <span class="o">*</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="n">CCObject</span><span class="o">::</span> <span class="o">*</span><span class="n">SEL_CallFuncO</span><span class="p">)(</span><span class="n">CCObject</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="n">CCObject</span><span class="o">::</span> <span class="o">*</span><span class="n">SEL_MenuHandler</span><span class="p">)(</span><span class="n">CCObject</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="n">CCObject</span><span class="o">::</span> <span class="o">*</span><span class="n">SEL_EventHandler</span><span class="p">)(</span><span class="n">CCEvent</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="nf">int</span> <span class="p">(</span><span class="n">CCObject</span><span class="o">::</span> <span class="o">*</span><span class="n">SEL_Compare</span><span class="p">)(</span><span class="n">CCObject</span> <span class="o">*</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面列举的是指向成员函数的指针来实现委托，那有没有采用接口来实现委托的呢？答案也是肯定的。在解析CocosBuilder生成的文件的时候，我们定制的类如果要关联成员变量，或者定义控件的响应消息的话，都需要实现相应的委托接口，如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">AnimationsTestLayer</span> <span class="o">:</span><span class="k">public</span> <span class="n">cocos2d</span><span class="o">::</span><span class="n">CCLayer</span>
+</span></span><span class="line"><span class="cl"><span class="p">,</span> <span class="k">public</span> <span class="n">cocos2d</span><span class="o">::</span><span class="n">extension</span><span class="o">::</span><span class="n">CCBSelectorResolver</span>
+</span></span><span class="line"><span class="cl"><span class="p">,</span> <span class="k">public</span> <span class="n">cocos2d</span><span class="o">::</span><span class="n">extension</span><span class="o">::</span><span class="n">CCBMemberVariableAssigner</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="n">cocos2d</span><span class="o">::</span><span class="n">SEL_MenuHandler</span> <span class="n">onResolveCCBCCMenuItemSelector</span><span class="p">(</span><span class="n">CCObject</span> <span class="o">*</span> <span class="n">pTarget</span><span class="p">,</span> <span class="n">cocos2d</span><span class="o">::</span><span class="n">CCString</span> <span class="o">*</span> <span class="n">pSelectorName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="n">cocos2d</span><span class="o">::</span><span class="n">extension</span><span class="o">::</span><span class="n">SEL_CCControlHandler</span> <span class="n">onResolveCCBCCControlSelector</span><span class="p">(</span><span class="n">cocos2d</span><span class="o">::</span><span class="n">CCObject</span> <span class="o">*</span> <span class="n">pTarget</span><span class="p">,</span> <span class="n">cocos2d</span><span class="o">::</span><span class="n">CCString</span> <span class="o">*</span> <span class="n">pSelectorName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">bool</span> <span class="nf">onAssignCCBMemberVariable</span><span class="p">(</span><span class="n">cocos2d</span><span class="o">::</span><span class="n">CCObject</span> <span class="o">*</span> <span class="n">pTarget</span><span class="p">,</span> <span class="n">cocos2d</span><span class="o">::</span><span class="n">CCString</span> <span class="o">*</span> <span class="n">pMemberVariableName</span><span class="p">,</span> <span class="n">cocos2d</span><span class="o">::</span><span class="n">CCNode</span> <span class="o">*</span> <span class="n">pNode</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">onCCControlButtonIdleClicked</span><span class="p">(</span><span class="n">cocos2d</span><span class="o">::</span><span class="n">CCObject</span> <span class="o">*</span> <span class="n">pSender</span><span class="p">,</span> <span class="n">cocos2d</span><span class="o">::</span><span class="n">extension</span><span class="o">::</span><span class="n">CCControlEvent</span> <span class="n">pCCControlEvent</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">onCCControlButtonWaveClicked</span><span class="p">(</span><span class="n">cocos2d</span><span class="o">::</span><span class="n">CCObject</span> <span class="o">*</span> <span class="n">pSender</span><span class="p">,</span> <span class="n">cocos2d</span><span class="o">::</span><span class="n">extension</span><span class="o">::</span><span class="n">CCControlEvent</span> <span class="n">pCCControlEvent</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">onCCControlButtonJumpClicked</span><span class="p">(</span><span class="n">cocos2d</span><span class="o">::</span><span class="n">CCObject</span> <span class="o">*</span> <span class="n">pSender</span><span class="p">,</span> <span class="n">cocos2d</span><span class="o">::</span><span class="n">extension</span><span class="o">::</span><span class="n">CCControlEvent</span> <span class="n">pCCControlEvent</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">onCCControlButtonFunkyClicked</span><span class="p">(</span><span class="n">cocos2d</span><span class="o">::</span><span class="n">CCObject</span> <span class="o">*</span> <span class="n">pSender</span><span class="p">,</span> <span class="n">cocos2d</span><span class="o">::</span><span class="n">extension</span><span class="o">::</span><span class="n">CCControlEvent</span> <span class="n">pCCControlEvent</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="err">｝</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这中间很多代码省略掉了，具体的可以查考cocos2d-x自带的test里面的extensionTest。</p>
+<h3 id="二该模式优缺点">二、该模式优缺点</h3>
+<p>优点：</p>
+<p>1、解耦，将应用相关的内容与框架完全分享出来，在设计可重用的组件的时候特别有用。</p>
+<p>2、可扩展性和可配置性高，而且可以在运行时候切换委托对象，具有很强的灵活性。</p>
+<p>缺点：</p>
+<p>1、采用接口的实现，由于使用了虚函数，所以性能上会有一点损失。虽然采用指向成员函数的指针的方式来实现效率非常高，但是，语法很诡异，使用起来其实还是不太爽的。尽管cocos2d-x已经用宏定义让使用方便了一些。</p>
+<p>2、如果过度使用，容易导致职责分散，导致维护麻烦。</p>
+<h3 id="三定义及一般实现">三、定义及一般实现</h3>
+<p>定义：参考<a href="http://en.wikipedia.org/wiki/Delegation_pattern">维基百科</a>（因为我实在是很难给出一个精确的定义orz）</p>
+<p>一般实现：也请参考<a href="http://en.wikipedia.org/wiki/Delegation_pattern">维基百科</a>（呵呵，其实之前已经在文章最开始的时候给出来了）</p>
+<h3 id="四游戏开发中如何运用此模式">四、游戏开发中如何运用此模式</h3>
+<p>其实就是你要设计一些可重用的组件，或者有些行为在编译的时候无法确定，需要根据运行时环境指定，也可以采用委托。其实说白了，也就是对象组合+针对接口编程的产物。如果遵守了这些良好的设计原则，你的软件系统之中到处可以见到委托的缩影。</p>
+<p>当然，前面讨论的委托还是两个对象之间通信的一种方式。为什么不直接通信呢？因为解耦嘛，你懂的。</p>
+<p>最后，我还是给出一个我自己使用委托设计的可重用的<a href="http://dl.vmall.com/c0of5hl18w">模态对话框类</a>。注意，这里采用的是cocos2d-iphone设计的。读者如果有兴趣，可以改成c++来实现，权当是一次练手的机会啦。</p>
+<h3 id="五与其它模式的关系">五、与其它模式的关系</h3>
+<p>委托模式与mvc、观察者和策略模式有着千丝万缕的联系：）。</p>
+<h3 id="references">References:</h3>
+<p><a href="http://en.wikipedia.org/wiki/Delegation_programming">http://en.wikipedia.org/wiki/Delegation_programming</a></p>
+<p><a href="http://en.wikipedia.org/wiki/Delegation_pattern">http://en.wikipedia.org/wiki/Delegation_pattern</a></p>
+<p><a href="http://allenchou.net/2012/04/easy-c-delegates/">http://allenchou.net/2012/04/easy-c-delegates/</a></p>
+<p><a href="http://allenchou.net/2012/04/function-pointers-vs-member-function-pointers/">http://allenchou.net/2012/04/function-pointers-vs-member-function-pointers/</a></p>
+<p><a href="http://www.codeproject.com/Articles/7150/Member-Function-Pointers-and-the-Fastest-Possible">http://www.codeproject.com/Articles/7150/Member-Function-Pointers-and-the-Fastest-Possible</a></p>
+<p><a href="http://stackoverflow.com/questions/9568150/what-is-a-c-delegate">http://stackoverflow.com/questions/9568150/what-is-a-c-delegate</a></p>
+<p><a href="http://www.cppblog.com/huangwei1024/archive/2010/11/17/133870.html">http://www.cppblog.com/huangwei1024/archive/2010/11/17/133870.html</a></p>
+<p><a href="http://www.codeproject.com/Articles/11464/Yet-Another-C-style-Delegate-Class-in-Standard-C">http://www.codeproject.com/Articles/11464/Yet-Another-C-style-Delegate-Class-in-Standard-C</a></p>
+<p><a href="http://www.codeproject.com/Articles/13287/Fast-C-Delegate">http://www.codeproject.com/Articles/13287/Fast-C-Delegate</a></p>
+<p><a href="http://www.codeproject.com/Articles/11015/The-Impossibly-Fast-C-Delegates">http://www.codeproject.com/Articles/11015/The-Impossibly-Fast-C-Delegates</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-20
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cocos2d-x/">Cocos2d-x</a>
+          <a href="/tags/design-pattern/">design pattern</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/cocos2d-x-design-patterns-observer/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Cocos2D-X设计模式：观察者模式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/cocos2d-x-design-pattern-mediator/">
+            <span class="next-text nav-default">Cocos2D-X设计模式:中介者模式</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/cocos2d-x-design-patterns-delegation/" class="leancloud_visitors" data-flag-title="Cocos2D-X设计模式:委托模式">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
