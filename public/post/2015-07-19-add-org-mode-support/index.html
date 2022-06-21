@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>使用 Org-mode 来写博客 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="Table of Contents Why Org-mode❓ 它比 Markdown 功能更加强大🐶 和 Emacs 无缝集成📍 支持文学编程 我正在学习 Org-mode How to configure Org-octopress Some tips 让文章支持评论 配置 spacemacs 自动截图，保存图片到博客" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/2015-07-19-add-org-mode-support/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="使用 Org-mode 来写博客" />
+<meta property="og:description" content="Table of Contents Why Org-mode❓ 它比 Markdown 功能更加强大🐶 和 Emacs 无缝集成📍 支持文学编程 我正在学习 Org-mode How to configure Org-octopress Some tips 让文章支持评论 配置 spacemacs 自动截图，保存图片到博客" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/2015-07-19-add-org-mode-support/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2015-07-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-07-19T00:00:00+00:00" />
+
+<meta itemprop="name" content="使用 Org-mode 来写博客">
+<meta itemprop="description" content="Table of Contents Why Org-mode❓ 它比 Markdown 功能更加强大🐶 和 Emacs 无缝集成📍 支持文学编程 我正在学习 Org-mode How to configure Org-octopress Some tips 让文章支持评论 配置 spacemacs 自动截图，保存图片到博客"><meta itemprop="datePublished" content="2015-07-19T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2015-07-19T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1514">
+<meta itemprop="keywords" content="Org-mode,Octopress," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="使用 Org-mode 来写博客"/>
+<meta name="twitter:description" content="Table of Contents Why Org-mode❓ 它比 Markdown 功能更加强大🐶 和 Emacs 无缝集成📍 支持文学编程 我正在学习 Org-mode How to configure Org-octopress Some tips 让文章支持评论 配置 spacemacs 自动截图，保存图片到博客"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">使用 Org-mode 来写博客</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-07-19 </span>
+        <div class="post-category">
+            <a href="/categories/org/"> org </a>
+            </div>
+          <span class="more-meta"> 约 1514 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline5">Why Org-mode❓</a>
+<ul>
+<li><a href="#orgheadline1">它比 Markdown 功能更加强大🐶</a></li>
+<li><a href="#orgheadline2">和 Emacs 无缝集成📍</a></li>
+<li><a href="#orgheadline3">支持文学编程</a></li>
+<li><a href="#orgheadline4">我正在学习 Org-mode</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline6">How to configure Org-octopress</a></li>
+<li><a href="#orgheadline12">Some tips</a>
+<ul>
+<li><a href="#orgheadline7">让文章支持评论</a></li>
+<li><a href="#orgheadline8">配置 spacemacs</a></li>
+<li><a href="#orgheadline9">自动截图，保存图片到博客的相应目录，并且插入一个图片链接</a></li>
+<li><a href="#orgheadline10">自动捕获当前 Chrome 的 Tab 页的 URL 并插入到文章中</a></li>
+<li><a href="#orgheadline11">去除 Org 导出的 HTML 中的多余的空格</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline13">Conclusion</a></li>
+<li><a href="#orgheadline14">Reference</a></li>
+</ul>
+</div>
+</div>
+<p>
+本文将介绍如何使用 Org-mode 在 Emacs 里面写博客。因为我的博客系统采用的是 Octopress，Org-mode 自带的 publish 功能太简单，所以，我决定在已有的博客上面添加 Org-mode 的支持。当然，和我一样有这个需求的人不止一个，我通过 Google 很快就找到了一个现成的方案。 <a href="https://github.com/yoshinari-nomura/org-octopress">yoshinari-nomura/org-octopress</a> 👍 
+</p>
+
+<p>
+本文就是使用 org-octopress 来完成的。这是 org-mode 的示例。
+</p>
+
+<p>
+<!-- more -->
+</p>
+
+<div id="orgheadline5" class="outline-2">
+<h2 id="orgheadline5">Why Org-mode❓</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+</div><div id="orgheadline1" class="outline-3">
+<h3 id="orgheadline1">它比 Markdown 功能更加强大🐶</h3>
+<div class="outline-text-3" id="text-orgheadline1">
+<p>
+作为一门标识语言，Org-mode 的功能要比 Markdown 强大得多，它支持 GTD，项目管理，记笔记，文学编程等，它让你可以用纯文本来管理你的生活（<a href="http://doc.norang.ca/org-mode.html">Org Mode - Organize Your Life In Plain Text!</a>）。
+</p>
+</div>
+</div>
+
+<div id="orgheadline2" class="outline-3">
+<h3 id="orgheadline2">和 Emacs 无缝集成📍</h3>
+<div class="outline-text-3" id="text-orgheadline2">
+<p>
+因为我现在的主要编程环境都在 Emacs 里面，而论到对 Org-mode 的支持力度，Emacs 无出其右。虽然现在 Vim 党和 Sublime 党都有相应的 Org-mode 移植插件，但是体验都太差。
+</p>
+
+<p>
+另外，我可以自己定义一些快捷操作，比如抓取 Chrome 浏览器里的链接直接插入到 Blog 里面，比如调用截图程序，自动保存图片到博客的相应目录同时上传到七牛云存储。当然，我还可以做的更多。
+</p>
+
+<p>
+这种自由的写博客的感觉，只有 Emacs 可以让你拥有。
+</p>
+</div>
+</div>
+<div id="orgheadline3" class="outline-3">
+<h3 id="orgheadline3">支持文学编程</h3>
+<div class="outline-text-3" id="text-orgheadline3">
+<p>
+因为我经常需要在博客里面贴代码，使用 Org-mode，代码片断可以有代码高亮。另外，我可以直接在 Org-mode 里面执行这些代码片断，这个功能太爽了。
+</p>
+</div>
+</div>
+<div id="orgheadline4" class="outline-3">
+<h3 id="orgheadline4">我正在学习 Org-mode</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+<p>
+我目前还在学习 Org-mode，学习一样东西最好的办法就是一直用它。一方面有利于学以致用，另一方面也减少学习痛苦，是保持学习激情的好方法。Org-mode 和 Emacs 一样，都是属于刚开始没啥卵用，后面越用越爽的类型。
+</p>
+</div>
+</div>
+</div>
+
+<div id="orgheadline6" class="outline-2">
+<h2 id="orgheadline6">How to configure Org-octopress</h2>
+<div class="outline-text-2" id="text-orgheadline6">
+<p>
+配置 Org-octopress 的方法很简单，我们只需要从 Melpa 上面安装最新版本的 Org-octopress 即可。
+</p>
+
+<p>
+然后在你的.emacs 配置里面添加下面的代码：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-top       <span style="color: #2aa198;">"~/4gamers.cn/source"</span>)
+(<span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-posts     <span style="color: #2aa198;">"~/4gamers.cn/source/_posts"</span>)
+(<span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-org-top   <span style="color: #2aa198;">"~/4gamers.cn/source"</span>)
+(<span style="color: #859900; font-weight: bold;">setq</span> org-octopress-directory-org-posts <span style="color: #2aa198;">"~/4gamers.cn/source/blog"</span>)
+(<span style="color: #859900; font-weight: bold;">setq</span> org-octopress-setup-file          <span style="color: #2aa198;">"~/4gamers.cn/setupfile.org"</span>)
+</pre>
+</div>
+
+<p>
+这里我的 Octopress 博客的根目录是 <code>4gamers.cn</code> ，你需要根据自己的情况来修改这个地址。
+</p>
+
+<p>
+接下来，你需要修改你的博客里面的 <code>_config.yml</code> ，它里面的 <code>permalink</code> 修改成下面的样子：
+</p>
+
+<pre class="example">
+permalink: /blog/:year-:month-:day-:title.html
+</pre>
+
+<p>
+接下来，你就可以调用 <code>org-octopress</code> 了。此时会打开一个 org-octopress-summary-mode 的 buffer，你可以根据提示很容易地创建一篇文章的模板。
+</p>
+
+<p>
+最后，当你写完博客以后，可以用 <code>C-c C-e P x</code> 来选择导出 octopress 工程，然后就可以输入 <code>rake preview</code> 来本地预览你的文章了。
+</p>
+</div>
+</div>
+
+<div id="orgheadline12" class="outline-2">
+<h2 id="orgheadline12">Some tips</h2>
+<div class="outline-text-2" id="text-orgheadline12">
+</div><div id="orgheadline7" class="outline-3">
+<h3 id="orgheadline7">让文章支持评论</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<p>
+在文章的最开头，添加下列开关：
+</p>
+
+<pre class="example">
+#+JEKYLL_COMMENTS: true
+</pre>
+</div>
+</div>
+
+<div id="orgheadline8" class="outline-3">
+<h3 id="orgheadline8">配置 spacemacs</h3>
+<div class="outline-text-3" id="text-orgheadline8">
+<p>
+通过配置下面的设置，可以让 <code>org-octopress</code> 的操作更爽。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(evilify org-octopress-summary-mode org-octopress-summary-mode-map)
+(add-hook 'org-octopress-summary-mode-hook
+          #'(lambda () (local-set-key (kbd <span style="color: #2aa198;">"q"</span>) 'bury-buffer)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="orgheadline9" class="outline-3">
+<h3 id="orgheadline9">自动截图，保存图片到博客的相应目录，并且插入一个图片链接</h3>
+<div class="outline-text-3" id="text-orgheadline9">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">zilongshanren//insert-org-or-md-img-link</span> (prefix imagename)
+  (<span style="color: #859900; font-weight: bold;">if</span> (equal (file-name-extension (buffer-file-name)) <span style="color: #2aa198;">"org"</span>)
+      (insert (format <span style="color: #2aa198;">"[[%s][%s%s]]"</span> imagename prefix imagename))
+    (insert (format <span style="color: #2aa198;">"![%s](%s%s)"</span> imagename prefix imagename))))
+
+(<span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">zilongshanren/capture-screenshot</span> (basename)
+  <span style="color: #2aa198;">"Take a screenshot into a time stamped unique-named file in the</span>
+<span style="color: #2aa198;">  same directory as the org-buffer/markdown-buffer and insert a link to this file."</span>
+  (<span style="color: #859900; font-weight: bold;">interactive</span> <span style="color: #2aa198;">"sScreenshot name: "</span>)
+  (<span style="color: #859900; font-weight: bold;">if</span> (equal basename <span style="color: #2aa198;">""</span>)
+      (<span style="color: #859900; font-weight: bold;">setq</span> basename (format-time-string <span style="color: #2aa198;">"%Y%m%d_%H%M%S"</span>)))
+  (<span style="color: #859900; font-weight: bold;">setq</span> fullpath
+        (concat (file-name-directory (buffer-file-name))
+                <span style="color: #2aa198;">"../images/posts/"</span>
+                (file-name-base (buffer-file-name))
+                <span style="color: #2aa198;">"_"</span>
+                basename))
+  (<span style="color: #859900; font-weight: bold;">setq</span> relativepath
+        (concat (file-name-base (buffer-file-name))
+                <span style="color: #2aa198;">"_"</span>
+                basename
+                <span style="color: #2aa198;">".png"</span>))
+  (<span style="color: #859900; font-weight: bold;">if</span> (file-exists-p (file-name-directory fullpath))
+      (<span style="color: #859900; font-weight: bold;">progn</span>
+        (call-process <span style="color: #2aa198;">"screencapture"</span> nil nil nil <span style="color: #2aa198;">"-s"</span> (concat fullpath <span style="color: #2aa198;">".png"</span>))
+        (zilongshanren//insert-org-or-md-img-link <span style="color: #2aa198;">"https://zilongshanren.com/img/"</span> relativepath))
+    (<span style="color: #859900; font-weight: bold;">progn</span>
+      (call-process <span style="color: #2aa198;">"screencapture"</span> nil nil nil <span style="color: #2aa198;">"-s"</span> (concat basename <span style="color: #2aa198;">".png"</span>))
+      (zilongshanren//insert-org-or-md-img-link <span style="color: #2aa198;">"./"</span> (concat basename <span style="color: #2aa198;">".png"</span>))))
+  (insert <span style="color: #2aa198;">"\n"</span>))
+</pre>
+</div>
+
+<p>
+这个截图程序只有在写博客的时候才会把图片保存到对应的博客存放图片的目录，其它时候都是在当前目录保存图片。
+</p>
+
+<p>
+下面这个截图就是使用上面的函数生成的，不过我还把它上传到了自己的七牛云存储上面。（如果你需要使用七牛，请把 guanghui.qiniudn.com 改成你的七牛数据空间地址。）
+</p>
+
+
+<div class="figure">
+<p><img src="https://zilongshanren.com/img/2015-07-19-add-org-mode-support_test-img.png" alt="2015-07-19-add-org-mode-support_test-img.png" />
+</p>
+</div>
+
+<p>
+另外，如果使用的是 org 或者 markdown，最终插入 buffer 里面的链接格式也有做相应的调整。
+</p>
+</div>
+</div>
+
+<div id="orgheadline10" class="outline-3">
+<h3 id="orgheadline10">自动捕获当前 Chrome 的 Tab 页的 URL 并插入到文章中</h3>
+<div class="outline-text-3" id="text-orgheadline10">
+<p>
+如果是 Mac 用户，只需要安装 Org-mac-link 这个插件即可，使用方法也非常简单，只需要调用以下命令：
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">org-mac-grab-link
+</pre>
+</div>
+</div>
+</div>
+<div id="orgheadline11" class="outline-3">
+<h3 id="orgheadline11">去除 Org 导出的 HTML 中的多余的空格</h3>
+<div class="outline-text-3" id="text-orgheadline11">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">defadvice</span> <span style="color: #268bd2;">org-html-paragraph</span> (before org-html-paragraph-advice
+                                      (paragraph contents info) activate)
+  <span style="color: #2aa198;">"Join consecutive Chinese lines into a single long line without</span>
+<span style="color: #2aa198;">unwanted space when exporting org-mode to html."</span>
+  (<span style="color: #859900; font-weight: bold;">let*</span> ((origin-contents (ad-get-arg <span style="color: #6c71c4;">1</span>))
+         (fix-regexp <span style="color: #2aa198;">"[[:multibyte:]]"</span>)
+         (fixed-contents
+          (replace-regexp-in-string
+           (concat
+            <span style="color: #2aa198;">"</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">(</span><span style="color: #2aa198;">"</span> fix-regexp <span style="color: #2aa198;">"</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">)</span><span style="color: #2aa198;"> *\n *</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">(</span><span style="color: #2aa198;">"</span> fix-regexp <span style="color: #2aa198;">"</span><span style="color: #859900; font-weight: bold;">\\</span><span style="color: #b58900; font-weight: bold;">)</span><span style="color: #2aa198;">"</span>) <span style="color: #2aa198;">"\\1\\2"</span> origin-contents)))
+
+    (ad-set-arg <span style="color: #6c71c4;">1</span> fixed-contents)))
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="orgheadline13" class="outline-2">
+<h2 id="orgheadline13">Conclusion</h2>
+<div class="outline-text-2" id="text-orgheadline13">
+<p>
+通过给 Octopress 添加 Org-mode 的支持，我感觉写博客的欲望又增加了。哈哈，不过坚持写博客还是很难的说。。。😥 
+</p>
+
+<p>
+Happy hacking!😄 
+</p>
+</div>
+</div>
+
+<div id="orgheadline14" class="outline-2">
+<h2 id="orgheadline14">Reference</h2>
+<div class="outline-text-2" id="text-orgheadline14">
+<ol class="org-ol">
+<li><a href="http://elvestar.com/notes/org-mode/#sec-7">Emacs Org Mode</a></li>
+
+<li><a href="http://segmentfault.com/a/1190000000444374">使用七牛储存 Octopress 图片 - SegmentFault</a></li>
+</ol>
+</div>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2015-07-19
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/org-mode/">Org-mode</a>
+          <a href="/tags/octopress/">Octopress</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2015-07-26-postmotem-of-two-years-programming-career/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">工作两年总结（上）</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/add-emoji-to-my-blog/">
+            <span class="next-text nav-default">给Octopress添加Emoji支持</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/2015-07-19-add-org-mode-support/" class="leancloud_visitors" data-flag-title="使用 Org-mode 来写博客">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

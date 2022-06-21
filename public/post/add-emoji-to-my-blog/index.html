@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>给Octopress添加Emoji支持 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="我非常喜欢emoji，所以，我决定给自己的博客也添加emoji支持。
+Update: Saturday, October 15, 2016
+目前 emoji 的功能已被我折腾 hexo 给废了，这篇博客仅供参考。
+" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/add-emoji-to-my-blog/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="给Octopress添加Emoji支持" />
+<meta property="og:description" content="我非常喜欢emoji，所以，我决定给自己的博客也添加emoji支持。
+Update: Saturday, October 15, 2016
+目前 emoji 的功能已被我折腾 hexo 给废了，这篇博客仅供参考。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/add-emoji-to-my-blog/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2015-07-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-07-03T00:00:00+00:00" />
+
+<meta itemprop="name" content="给Octopress添加Emoji支持">
+<meta itemprop="description" content="我非常喜欢emoji，所以，我决定给自己的博客也添加emoji支持。
+Update: Saturday, October 15, 2016
+目前 emoji 的功能已被我折腾 hexo 给废了，这篇博客仅供参考。"><meta itemprop="datePublished" content="2015-07-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2015-07-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="448">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="给Octopress添加Emoji支持"/>
+<meta name="twitter:description" content="我非常喜欢emoji，所以，我决定给自己的博客也添加emoji支持。
+Update: Saturday, October 15, 2016
+目前 emoji 的功能已被我折腾 hexo 给废了，这篇博客仅供参考。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">给Octopress添加Emoji支持</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-07-03 </span>
+        <div class="post-category">
+            <a href="/categories/blog/"> Blog </a>
+            </div>
+          <span class="more-meta"> 约 448 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#添加emoji支持">添加Emoji支持❓</a></li>
+    <li><a href="#配置spacemacs-">配置Spacemacs 😈</a></li>
+    <li><a href="#小结">小结🐶</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>我非常喜欢emoji，所以，我决定给自己的博客也添加emoji支持。</p>
+<p>Update: Saturday, October 15, 2016</p>
+<p>目前 emoji 的功能已被我折腾 hexo 给废了，这篇博客仅供参考。</p>
+<h2 id="添加emoji支持">添加Emoji支持❓</h2>
+<p>添加Emoji支持主要参考<a href="http://nguyenhoan1988.github.io/blog/2014/09/30/adding-emoji-to-octopress/">这篇文章</a></p>
+<ol>
+<li>
+<p>给Gemfile添加gemoji,然后运行<code>bundle install</code>来安装gemoji。（注意修改成淘宝的gem镜像。）</p>
+</li>
+<li>
+<p>Copy <code>emoji.rb</code>到你的博客的plugin目录。emoji.rb文件可以从<a href="https://github.com/chriskempson/jekyll-emoji">这里下载</a>.</p>
+</li>
+<li>
+<p>修改_config.yml, 在文件最后添加 <code>emoji_dir: /images/emoji</code></p>
+</li>
+<li>
+<p>从<a href="https://github.com/github/gemoji">gemoji</a>仓库下载所有的emoji，并把 <code>images/emoji</code> 中的文件移动到<code>source/images/emoji</code>中</p>
+</li>
+<li>
+<p>修改<code>sources/_includes/article.html</code>中的{content}为{content | emojify}:</p>
+</li>
+<li>
+<p>往_styles.scss 文件中添加以下css:</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">emoji</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">box-shadow</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">border</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">height</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>现在就配置完了. 👍 😆</p>
+<h2 id="配置spacemacs-">配置Spacemacs 😈</h2>
+<p>Spacemacs中集成了一个<code>emoji</code> layer, 开启之后可以用 <code>SPC i e</code>和<code>SPC a E</code>来往buffer里面插入emoji.🆒</p>
+<p><img src="https://zilongshanren.com/img/emoji-screenshot.png" alt="screenshot"></p>
+<h2 id="小结">小结🐶</h2>
+<p>大家快来试试吧！😜</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2015-07-03
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/2015-07-19-add-org-mode-support/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">使用 Org-mode 来写博客</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/review-of-mastering-emacs/">
+            <span class="next-text nav-default">《Mastering Emacs》读后感</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/add-emoji-to-my-blog/" class="leancloud_visitors" data-flag-title="给Octopress添加Emoji支持">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

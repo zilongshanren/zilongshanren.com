@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>三个 Git 问题(下) - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="Table of Contents Merge 的测试代码 Rebase 的测试代码 小结 在上篇文章中，我们介绍了 Git 内部存储对象的方式，以及为什么不要用 Git 去管理大的二进制文件。 本文将继续探讨上篇文" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/2015-09-21-three-git-question-2/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="三个 Git 问题(下)" />
+<meta property="og:description" content="Table of Contents Merge 的测试代码 Rebase 的测试代码 小结 在上篇文章中，我们介绍了 Git 内部存储对象的方式，以及为什么不要用 Git 去管理大的二进制文件。 本文将继续探讨上篇文" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/2015-09-21-three-git-question-2/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2015-09-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-09-21T00:00:00+00:00" />
+
+<meta itemprop="name" content="三个 Git 问题(下)">
+<meta itemprop="description" content="Table of Contents Merge 的测试代码 Rebase 的测试代码 小结 在上篇文章中，我们介绍了 Git 内部存储对象的方式，以及为什么不要用 Git 去管理大的二进制文件。 本文将继续探讨上篇文"><meta itemprop="datePublished" content="2015-09-21T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2015-09-21T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1216">
+<meta itemprop="keywords" content="Git," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="三个 Git 问题(下)"/>
+<meta name="twitter:description" content="Table of Contents Merge 的测试代码 Rebase 的测试代码 小结 在上篇文章中，我们介绍了 Git 内部存储对象的方式，以及为什么不要用 Git 去管理大的二进制文件。 本文将继续探讨上篇文"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">三个 Git 问题(下)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-09-21 </span>
+        <div class="post-category">
+            <a href="/categories/git/"> Git </a>
+            </div>
+          <span class="more-meta"> 约 1216 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">Merge 的测试代码</a></li>
+<li><a href="#orgheadline2">Rebase 的测试代码</a></li>
+<li><a href="#orgheadline3">小结</a></li>
+</ul>
+</div>
+</div>
+<p>
+在上篇文章中，我们介绍了 Git 内部存储对象的方式，以及为什么不要用 Git 去管理大的二进制文件。
+</p>
+
+<p>
+本文将继续探讨上篇文章中遗留的两个问题。
+</p>
+
+<ol class="org-ol">
+<li>如果两个 Branch 修改同一个文件的同一行代码，各自 Commit 一次，在 Merge 的时候为什么不会有冲突？</li>
+
+<li>同样是两个 Branch 修改同一个文件的同一行代码，各自 Commit 一次，在 Rebase 的时候为何有一个 Commit 会被优化掉？</li>
+</ol>
+
+<p>
+<!-- more -->
+</p>
+
+<div id="orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Merge 的测试代码</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+首先，我们新建一个分支，修改 a.txt，添加一行内容“Learn Git”：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">git checkout -b testBranch
+<span style="color: #657b83; font-weight: bold;">echo</span> <span style="color: #2aa198;">"Learn Git"</span> &gt;&gt; a.txt
+git commit -a -m <span style="color: #2aa198;">'commit'</span>
+</pre>
+</div>
+
+<p>
+此时，我们用 find 命令查看一下新增的 object 对象：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">find .git/objects -type f
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="https://zilongshanren.com/img/2015-09-21-three-git-question-2_git-cat-file-1.png" alt="2015-09-21-three-git-question-2_git-cat-file-1.png" />
+</p>
+</div>
+
+<p>
+这里我们可以看到多了 3 个对象：407b6e (commit),  49bf80 (modified a.txt) 和 81f485(tree object)。我们可以用 git cat-file -p hash-code 来查看这 3 个对象的值。（注意这里我们使用的是 6 位数字的简码）
+</p>
+
+<p>
+现在，让我们切回主分支，并且对主分支的 a.txt 做同样的修改：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git checkout master
+<span style="color: #657b83; font-weight: bold;">echo</span> <span style="color: #2aa198;">"Learn Git"</span> &gt;&gt; a.txt
+git commit -a -m <span style="color: #2aa198;">'commit'</span>
+</pre>
+</div>
+
+<p>
+此时我们再查看一样新增的 object 对象：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">find .git/objects -type f
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="https://zilongshanren.com/img/2015-09-21-three-git-question-2_git-cat-file-2.png" alt="2015-09-21-three-git-question-2_git-cat-file-2.png" />
+</p>
+</div>
+
+<p>
+此时我们只新增了一个新的对象 9e2107(commit)，我们用 git cat-file 查看其值为：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git cat-file -p <span style="color: #6c71c4;">9e2107</span>&#65288;&#22914;&#26524;&#36825;&#37324;&#25442;&#25104; <span style="color: #6c71c4;">407b6e&#65292;&#32467;&#26524;&#26159;&#19968;&#26679;&#30340;</span>&#65289;
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="https://zilongshanren.com/img/2015-09-21-three-git-question-2_tree-object.png" alt="2015-09-21-three-git-question-2_tree-object.png" />
+</p>
+</div>
+
+<p>
+此时，如果我们 merge testBranch 分支是不会有冲突的。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git merge testBranch
+find .git/objects -type f
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="https://zilongshanren.com/img/2015-09-21-three-git-question-2_cat-file-3.png" alt="2015-09-21-three-git-question-2_cat-file-3.png" />
+</p>
+</div>
+
+<p>
+此时，我们发现多了一个 1bff79 对象，它的值如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git cat-file -p <span style="color: #6c71c4;">1bff79</span>
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="https://zilongshanren.com/img/2015-09-21-three-git-question-2_tree-object-2.png" alt="2015-09-21-three-git-question-2_tree-object-2.png" />
+</p>
+</div>
+
+<p>
+我们知道，整个过程中，我们在两个分支上分别对 a.txt 的同一行代码做了同样的修改，但是最终 git 只会保存一份 a.txt 的内容。另外，整个目录树在不同的分支上面是一样的，所以 tree 对象也只有一份。
+</p>
+
+<p>
+虽然我们在不同的分支上面做了两次 commit，但是这两次 commit 只是记录了各自的 tree，parent 以及作者等信息。
+</p>
+
+<p>
+而在 merge 的时候，由于我们是 two-way merge，所以最终生成的 merge commit 是有两个 parent 的。
+</p>
+
+<p>
+由上面的测试代码我们可以清楚地知道 merge 到底干了些什么事。
+</p>
+</div>
+</div>
+
+<div id="orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Rebase 的测试代码</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+我们先 reset 掉刚刚 merge 的代码，并且切换到 testBranch 分支：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git reset --hard HEAD~1
+git checkout testBranch
+</pre>
+</div>
+
+<p>
+此时我们运行 find 命令来查找 objects 目录：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">find .git/objects -type f
+</pre>
+</div>
+
+<p>
+虽然我们的 1bff79 commit 已经被我们用 reset &#x2013;hard 命令撤销了，但是我们发现它还是在版本里面，我们可以用 git reflog 来找回这个 commit。 （这里扯远了，不过这也说明了，在 Git 里面只要 commit，你做的修改就不会丢。所以，程序猿们，commit early, commit often 吧。不过记得 publish 之前记得整理 commmits，哈哈，这又是另一个话题了。。。）
+</p>
+
+<p>
+现在，让我们 rebase 吧！
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">git rebase master
+</pre>
+</div>
+
+<p>
+接下来，让我们看看 objects 的情况：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">find .git/objects -type f
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="https://zilongshanren.com/img/2015-09-21-three-git-question-2_cat-file-4.png" alt="2015-09-21-three-git-question-2_cat-file-4.png" />
+</p>
+</div>
+
+<p>
+What???
+</p>
+
+<p>
+这次操作一个新的 objects 都没有生成。
+</p>
+
+<p>
+要理解这个，我们需要清楚地知道什么是 rebase。
+</p>
+
+<blockquote>
+<p>
+当你 rebase 的时候，你会把当前分支上的所有的 commit 全部丢弃，然后把这些 commit 的修改依次应用到目标分支上，并且此时会生成新的 tree 对象和 commit 对象。但是，如果进行 rebase 分支的 commit 和目标分支的 commit 是一样的时候（指的是 tree 和 parent 一样），会用当前 commit 替换掉目标 commit。
+</p>
+</blockquote>
+
+<p>
+这段话听起来有点拗口，但是其实很容易理解。
+</p>
+
+<p>
+我们拿上面的示例代码来看。当我们 rebase 的时候，9e2107 commit 和 407b6e commit 是一样的内容，此时会用 9e2107 commit 来替换掉 407b6e commit，即我们前面所指的 commit 优化。
+</p>
+</div>
+</div>
+
+<div id="orgheadline3" class="outline-2">
+<h2 id="orgheadline3">小结</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<p>
+当我们对于 Git 的基本原理有了一定的认识之后，像 rebase 和 squash 这样的高级工具就容易掌握了。而且 rebase 和 squash 是打造整洁的 commit 历史必不可少的工具。
+</p>
+</div>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2015-09-21
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/git/">Git</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2015-10-14-pesudo-perfect-workflow/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">我的工作流</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2015-09-12-three-git-question/">
+            <span class="next-text nav-default">三个 Git 问题（上）</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/2015-09-21-three-git-question-2/" class="leancloud_visitors" data-flag-title="三个 Git 问题(下)">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

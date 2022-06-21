@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>OpenGL ES2.0教程:使用VBO索引(4) - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="在上一篇文章中，我们介绍了uniform和模型-视图-投影变换，相信大家对于OpenGL ES 2.0应该有一点感觉了。在这篇文章中，我们不再画三" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/opengl-es2-0-use-vbo/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="OpenGL ES2.0教程:使用VBO索引(4)" />
+<meta property="og:description" content="在上一篇文章中，我们介绍了uniform和模型-视图-投影变换，相信大家对于OpenGL ES 2.0应该有一点感觉了。在这篇文章中，我们不再画三" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/opengl-es2-0-use-vbo/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-22T00:00:00+00:00" />
+
+<meta itemprop="name" content="OpenGL ES2.0教程:使用VBO索引(4)">
+<meta itemprop="description" content="在上一篇文章中，我们介绍了uniform和模型-视图-投影变换，相信大家对于OpenGL ES 2.0应该有一点感觉了。在这篇文章中，我们不再画三"><meta itemprop="datePublished" content="2014-06-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2142">
+<meta itemprop="keywords" content="Cocos2d-x,opengl," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenGL ES2.0教程:使用VBO索引(4)"/>
+<meta name="twitter:description" content="在上一篇文章中，我们介绍了uniform和模型-视图-投影变换，相信大家对于OpenGL ES 2.0应该有一点感觉了。在这篇文章中，我们不再画三"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">OpenGL ES2.0教程:使用VBO索引(4)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-22 </span>
+        <div class="post-category">
+            <a href="/categories/cocos2d-x/"> Cocos2d-x </a>
+            <a href="/categories/opengl-es/"> OpenGL ES </a>
+            </div>
+          <span class="more-meta"> 约 2142 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#你的第一个四边形">你的第一个四边形</a></li>
+    <li><a href="#使用vbo索引">使用VBO索引</a></li>
+    <li><a href="#改进顶点数据结构">改进顶点数据结构</a></li>
+    <li><a href="#结语">结语</a></li>
+    <li><a href="#推荐阅读">推荐阅读</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>在<a href="http://zilongshanren.com/blog/2014-06-15-opengl-es2-meet-mvp.html">上一篇文章</a>中，我们介绍了uniform和模型-视图-投影变换，相信大家对于OpenGL ES 2.0应该有一点感觉了。在这篇文章中，我们不再画三角形了，改为画四边形。下篇教程，我们就可以画立方体了，到时候就是真3D了，哈哈。</p>
+<p>为什么三角形在OpenGL教程里面这么受欢迎呢？因为在OpenGL的世界里面，所有的几何体都可以用三角形组合出来。我们的四边形也一样，它可以用两个三角形组合出来。</p>
+<!-- raw HTML omitted -->
+<h2 id="你的第一个四边形">你的第一个四边形</h2>
+<p>首先，因为OpenGL里面没有直接绘制四边形的命令的，所以我们需要画两个三角形来拼成一个四边形。这样的话，这样的话我们一共需要6个顶点。这6个顶点的坐标如下所示:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">vertercies</span><span class="p">[]</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时，我们还需要修改glDrawArray和CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES宏，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="c1">//注意3个顶点，变成了6个顶点，这里一定要改成6，否则OpenGL只会画3个顶点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">glDrawArrays</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">glBindVertexArray</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//这里的6是可选的，改成6可以更好地与cocos2d-x引擎融合
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>  
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时，运行程序，你会发现只有一个三角形。那是因为我们的顶点属性color只有3份，现在6个顶点了，所以也需要6份颜色数据。另外，为了显示好看，这里把6个颜色统一修改成绿色：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">color</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>同时，记得把上一篇教程中设置的uniform u_color也重置一下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">uColor</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">glUniform4fv</span><span class="p">(</span><span class="n">uColorLocation</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">uColor</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时，编译并运行，你会得到一个纯绿色的四边形：
+<img src="https://zilongshanren.com/img/greenrectangle.png" alt="greenrectangle"></p>
+<p>怎么样，画4边形不过如此吧，只需要多准备点数据就行啦。另外，注意一下三角形的顶点顺序。不过，细心的读者立马就会发现，我们的顶点数据里面有两个顶点是重复的。这其实是一种内存浪费。假设我们现在渲染一个复杂的模型，它可能包含几千个三角形，如果采用这种方式，那不知道要浪费多少内存。接下来，我们要介绍一种方法，使用索引数组来重用顶点数据。</p>
+<h2 id="使用vbo索引">使用VBO索引</h2>
+<p>推荐大家先看看<a href="http://opengl.zilongshanren.com/opengl-tutorial/tut09/zh.html">VBO索引原理</a>，相信大家看完之后应该知道怎么实现了。</p>
+<ol>
+<li>修改原始顶点数据
+把vertercies修改为下面的样子:</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="kt">float</span> <span class="n">vertercies</span><span class="p">[]</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从上面的顶点数据可以看出，这4个点刚好就是normalized device space的四个边界的顶点。</p>
+<ol>
+<li>指定2个三角形的索引
+我们需要为两个三角形指定索引数据，如下所示：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">GLubyte</span> <span class="n">indices</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span>  <span class="c1">//第一个三角形索引
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">};</span> <span class="c1">//第二个三角形索引
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>创建索引缓冲区并绑定索引数据到缓冲区</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">GLuint</span> <span class="n">indexVBO</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">glGenBuffers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">indexVBO</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">glBindBuffer</span><span class="p">(</span><span class="n">GL_ELEMENT_ARRAY_BUFFER</span><span class="p">,</span> <span class="n">indexVBO</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">glBufferData</span><span class="p">(</span><span class="n">GL_ELEMENT_ARRAY_BUFFER</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">GL_STATIC_DRAW</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里索引缓冲区与之前的GL_ARRAY_BUFFER的创建与使用方式是一样的。</p>
+<ol start="3">
+<li>最后，我们把glDrawArray替换成<a href="https://www.khronos.org/opengles/sdk/docs/man/xhtml/glDrawElements.xml">glDrawElements</a></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">glDrawElements</span><span class="p">(</span><span class="n">GL_TRIANGLES</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">GL_UNSIGNED_BYTE</span><span class="p">,(</span><span class="n">GLvoid</span><span class="o">*</span><span class="p">)</span><span class="mi">0</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>第一个参数：指定绘制基本图元的类型，这里我们指定的是三角形</p>
+</li>
+<li>
+<p>第二个参数：需要绘制的元素个数，即索引的数量，我们一共是6个索引</p>
+</li>
+<li>
+<p>第三个参数：指定索引数据的类型，注意必须是 GL_UNSIGNED_BYTE和GL_UNSIGNED_SHORT中的一个。推荐用GL_UNSIGNED_BYTE。</p>
+</li>
+<li>
+<p>第四4个参数：指定开始绘制的第一个索引数据在缓冲区的偏移。</p>
+</li>
+</ul>
+<p>此时，编译并运行，我们还是得到了和之前一样的四边形。</p>
+<h2 id="改进顶点数据结构">改进顶点数据结构</h2>
+<p>现在顶点属性包含位置(position)和颜色(color)，将来还会有法线（normal），纹理坐标（texture coordinate）等数据。如果每一种类型的顶点数据都分开来存放，一来不利于管理，二来也会产生内存碎片。</p>
+<p>在本小节中，我将向大家介绍如何使用一个结构体来封装这些数据。这也是cocos2d-x里面所用的方法，比如一个Quard的定义如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">struct</span> <span class="nc">V3F_C4B_T2F</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//! vertices (3F)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Vec3</span>     <span class="n">vertices</span><span class="p">;</span>            <span class="c1">// 12 bytes
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//! colors (4B)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Color4B</span>      <span class="n">colors</span><span class="p">;</span>              <span class="c1">// 4 bytes
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// tex coords (2F)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Tex2F</span>        <span class="n">texCoords</span><span class="p">;</span>           <span class="c1">// 8 bytes
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>仿照上面的结构体，我们也定义一个结构体Vertex，用来表示顶点的数据，目前它里面包含位置和颜色:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">float</span> <span class="n">Position</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">float</span> <span class="n">Color</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="n">Vertex</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面是我们的顶点数据定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="n">Vertex</span> <span class="n">data</span><span class="p">[]</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">},{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">},{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">},{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">},{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意，我们画四边形需要4个顶点，所以，需要四份Vertex数据。接下来，我们指定Vertex Shader如何读取这些属性:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">positionLocation</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="mi">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">GL_FLOAT</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">GL_FALSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="k">sizeof</span><span class="p">(</span><span class="n">Vertex</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                          <span class="p">(</span><span class="n">GLvoid</span><span class="o">*</span> <span class="p">)</span><span class="n">offsetof</span><span class="p">(</span><span class="n">Vertex</span><span class="p">,</span><span class="n">Position</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//set for color
+</span></span></span><span class="line"><span class="cl"><span class="c1">//    glGenBuffers(1, &amp;colorVBO);
+</span></span></span><span class="line"><span class="cl"><span class="c1">//    glBindBuffer(GL_ARRAY_BUFFER, colorVBO);
+</span></span></span><span class="line"><span class="cl"><span class="c1">//    glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">GLuint</span> <span class="n">colorLocation</span> <span class="o">=</span> <span class="n">glGetAttribLocation</span><span class="p">(</span><span class="n">program</span><span class="o">-&gt;</span><span class="n">getProgram</span><span class="p">(),</span> <span class="s">&#34;a_color&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">glEnableVertexAttribArray</span><span class="p">(</span><span class="n">colorLocation</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">glVertexAttribPointer</span><span class="p">(</span><span class="n">colorLocation</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="mi">4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">GL_FLOAT</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="n">GL_FALSE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                          <span class="k">sizeof</span><span class="p">(</span><span class="n">Vertex</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                          <span class="p">(</span><span class="n">GLvoid</span><span class="o">*</span> <span class="p">)</span><span class="n">offsetof</span><span class="p">(</span><span class="n">Vertex</span><span class="p">,</span><span class="n">Color</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里，我们需要指定<a href="https://www.khronos.org/opengles/sdk/docs/man/xhtml/glVertexAttribPointer.xml">glVertexAttribPointer</a>的第5个参数和第6个参数。</p>
+<p>下图告诉我们Vertex Shader是如何读取属性的：
+<img src="https://zilongshanren.com/img/multiplevertexattribute.png" alt="multiplevertexattri"></p>
+<p>注意，我们这里把colorVBO的生成和绑定代码注释掉了，因为已经不需要了。
+编译并运行，这时候你还是会看到一个绿色的四边形。</p>
+<h2 id="结语">结语</h2>
+<p>从本例中可以看到，VBO可以一次性传递所有的顶点数据给vertex shader（目前是position和color，以后还有法线和纹理坐标），然后使用glVertexAttribPointer按一定的规则去取数据就行了。至于几何图元如何组装，可以交给索引VBO去解决，最后调用glDrawElements来完成实际的绘制。</p>
+<p>另外如果我们只想画纯色的四边形，那么建议不要使用attribute，直接使用uniform并把该uniform的值传给gl_FragColor就行了。这个就留给读者自行去实验啦。</p>
+<p>本教程源码<a href="http://git.oschina.net/zilongshanren/Cocos2D-X-OpenGL-ES-2.0/tree/lesson4">下载地址</a></p>
+<h2 id="推荐阅读">推荐阅读</h2>
+<ul>
+<li>
+<p><a href="http://www.arcsynthesis.org/gltut/Basics/Tut02%20Vertex%20Attributes.html">顶点属性</a></p>
+</li>
+<li>
+<p><a href="http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-9-vbo-indexing/">使用VBO索引</a></p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-22
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cocos2d-x/">Cocos2d-x</a>
+          <a href="/tags/opengl/">opengl</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/my-git-workflow-part-one/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">我的Git工作流(上)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/cocos2d-x-design-patterns-observer/">
+            <span class="next-text nav-default">Cocos2D-X设计模式：观察者模式</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/opengl-es2-0-use-vbo/" class="leancloud_visitors" data-flag-title="OpenGL ES2.0教程:使用VBO索引(4)">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

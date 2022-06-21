@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Things I Wish I Know When I Am Learning Emacs - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="Table of Contents 一定要使用 Starter Kit Package 管理和依赖 按键绑定 按键绑定的覆盖问题 快捷键太多，记不住怎么办？ 有问题问 Emacs Happy Hacking 当我在学习 Emacs 的时候，有一些事情，我希望有人" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Things I Wish I Know When I Am Learning Emacs" />
+<meta property="og:description" content="Table of Contents 一定要使用 Starter Kit Package 管理和依赖 按键绑定 按键绑定的覆盖问题 快捷键太多，记不住怎么办？ 有问题问 Emacs Happy Hacking 当我在学习 Emacs 的时候，有一些事情，我希望有人" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2015-10-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-10-31T00:00:00+00:00" />
+
+<meta itemprop="name" content="Things I Wish I Know When I Am Learning Emacs">
+<meta itemprop="description" content="Table of Contents 一定要使用 Starter Kit Package 管理和依赖 按键绑定 按键绑定的覆盖问题 快捷键太多，记不住怎么办？ 有问题问 Emacs Happy Hacking 当我在学习 Emacs 的时候，有一些事情，我希望有人"><meta itemprop="datePublished" content="2015-10-31T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2015-10-31T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1899">
+<meta itemprop="keywords" content="Emacs," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Things I Wish I Know When I Am Learning Emacs"/>
+<meta name="twitter:description" content="Table of Contents 一定要使用 Starter Kit Package 管理和依赖 按键绑定 按键绑定的覆盖问题 快捷键太多，记不住怎么办？ 有问题问 Emacs Happy Hacking 当我在学习 Emacs 的时候，有一些事情，我希望有人"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Things I Wish I Know When I Am Learning Emacs</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-10-31 </span>
+        <div class="post-category">
+            <a href="/categories/emacs/"> Emacs </a>
+            </div>
+          <span class="more-meta"> 约 1899 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">一定要使用 Starter Kit</a></li>
+<li><a href="#orgheadline2">Package 管理和依赖</a></li>
+<li><a href="#orgheadline3">按键绑定</a>
+<ul>
+<li><a href="#orgheadline4">按键绑定的覆盖问题</a></li>
+<li><a href="#orgheadline5">快捷键太多，记不住怎么办？</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline6">有问题问 Emacs</a></li>
+<li><a href="#orgheadline7">Happy Hacking</a></li>
+</ul>
+</div>
+</div>
+<p>
+当我在学习 Emacs 的时候，有一些事情，我希望有人能够提前告诉我。
+</p>
+
+<p>
+这样的话，我便可以少走一些弯路。
+</p>
+
+<p>
+<!-- more -->
+</p>
+
+<div id="orgheadline1" class="outline-2">
+<h2 id="orgheadline1">一定要使用 Starter Kit</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<p>
+对于 Emacs 新手而言，一定要使用 Starter Kit！
+</p>
+
+<p>
+虽然有很多人喜欢从零开始捣腾，但是，真的不要这样。一来浪费大量的时间不说，而且通常只有学习能力非常强而且毅力也非常好的人才能从零开始配置并坚持下来。
+</p>
+
+<p>
+当然，如果你觉得 Starter Kit 满足不了你的需求，你是可以很轻松地进行扩展的。
+</p>
+
+<p>
+好的 Starter Kit 通常都是 Emacs 社区里面的高手开发的，它们的模块化，加载时间，按键绑定都是经过精心优化的。向高手学习，在初学阶段是非常重要的。这一点，陈斌在他的《一年成为 Emacs 高手》中也提到了。
+</p>
+
+<p>
+如果以前是 IDE 重度用户，推荐从<a href="https://github.com/bbatsov/prelude">bbatsov/prelude</a> 开始入手。
+</p>
+
+<p>
+如果你是 Vim 用户，推荐从 <a href="https://github.com/syl20bnr/spacemacs">syl20bnr/spacemacs</a> 入手。
+</p>
+
+<p>
+这两个 starter kit 都有非常详细的文档，入手之前一定要认真阅读文档。在上手以后，还需要不断地反复阅读文档并动手实践。遇到问题可以去 Github 上面提 issue。
+</p>
+</div>
+</div>
+
+<div id="orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Package 管理和依赖</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+刚开始学习 Emacs 的时候一定要学会使用包管理器，能够从 melpa 下载包。
+</p>
+
+<p>
+每一个 Package 要么定义了一堆功能函数，要么定义了一个 major mode 或者 minor mode。
+</p>
+
+<p>
+不要一味地使用 require，这样的话会导致你的 Emacs 加载时间变长。 最好使用  <a href="https://github.com/jwiegley/use-package">jwiegley/use-package</a>， 它不仅可以智能地引入 package。比如当你的 elpa 目录的一个 package 不存在的时候，直接使用 require 是会报错的。但是使用 use-package 的话就不会。
+</p>
+
+<p>
+另外，use-package 还可以优雅地管理你的配置。比如有一些 mode 相关的变量，在 mode 还没有激活的时候，去设置它们没有用的。
+</p>
+
+<p>
+这时你需要使用 eval-after-load，然后把相关的设置放进去。 而使用 use-package 的话，就可以非常方便地使用 :defer t 和 :config 了。
+</p>
+
+<p>
+最后，有一些 Package 之间是存在依赖的，如果加载顺序不对也不行。这里推荐大家试试<a href="https://github.com/edvorg/req-package"> edvorg/req-package</a>
+</p>
+</div>
+</div>
+
+<div id="orgheadline3" class="outline-2">
+<h2 id="orgheadline3">按键绑定</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<p>
+按键绑定，也叫"快捷键绑定"，它本质上只是用一个 Hotkey 去调用一个交互式命令。
+</p>
+
+<p>
+如下所示，我定义了 C-c C-1 快捷键，它可以在当前的 buffer 位置插入一个“Hello World”的字符串。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">print-hello-world</span> ()
+  (<span style="color: #859900; font-weight: bold;">interactive</span>)
+  (insert <span style="color: #2aa198;">"Hello World"</span>))
+
+(global-set-key (kbd <span style="color: #2aa198;">"C-c C-1"</span>) 'print-hello-world)
+</pre>
+</div>
+
+<p>
+这里需要注意的是，print-hello-world 函数必须是 interactive 的，否则是不可以绑定一个快捷键的。
+</p>
+
+<p>
+一个函数被定义成 interactive 以后，我们就可以通过 M-x 来调用它，如果你发现此函数经常被调用，此时就可以通过定义一个快捷键来解决效率问题了。
+</p>
+
+<p>
+上面所提到的快捷键绑定是 99%的 Emacs 党都知道的。
+</p>
+
+<p>
+但是，有一些事情可能并不是所有人都清楚。
+</p>
+</div>
+
+<div id="orgheadline4" class="outline-3">
+<h3 id="orgheadline4">按键绑定的覆盖问题</h3>
+<div class="outline-text-3" id="text-orgheadline4">
+<p>
+有时候，我们定义了一堆快捷键，但是某一天安装完一个 Package 后，突然发现以前的快捷键失效了。通常这是由于某些 minor mode 的快捷键的优先级比你的高，所以被它覆盖了。这里强烈推荐大家看看 <a href="https://www.masteringemacs.org/article/mastering-key-bindings-emacs">Mastering Key Bindings in Emacs - Mastering Emacs</a> ，看完之后相信会对 Emacs 的按键绑定有更多的认识。
+</p>
+
+<p>
+这里面有一些小技巧，可以保证你自己定义的快捷键不容易被覆盖。
+</p>
+
+<p>
+对于正统 Emacs 用户，定义的快捷键默认最好以 C-c 开头，因为 C-c 是 Emacs 预留给用户使用的，当然某些 minor mode 也会使用 C-c 开头。此时，你可以通过定义一个
+minor mode 并且让这个 minor mode 最后加载，然后把你所有的自定义快捷键都放在新定义的 minor mode 里面，这样你的快捷键就不会被覆盖了。
+</p>
+
+<p>
+著名的 Emacs Starter Kit Prelude 就是使用的这个方式。
+</p>
+
+<p>
+对于 Evil 用户，建议使用 evil/leader 来定义快捷键。更合理的方式是像 Spacemacs 一样，分组来定义。
+</p>
+
+<p>
+最后，对于 Spacemacs 用户，建议使用 SPC o 来定义自己的快捷键。
+</p>
+</div>
+</div>
+
+<div id="orgheadline5" class="outline-3">
+<h3 id="orgheadline5">快捷键太多，记不住怎么办？</h3>
+<div class="outline-text-3" id="text-orgheadline5">
+<p>
+很多初学者抱怨 Emacs 的按键太复杂，伤小拇指。或者抱怨 Emacs 的按键太多，记不住。
+</p>
+
+<p>
+其实，你根本就不需要快捷键。
+</p>
+
+<p>
+通过 smex + ido，你可以用交互式的方式来执行 Emacs 的命令。当然，你也可以使用 Helm 来搜索并执行命令。因为你日常经常用的命令不会太多，所以，其实是不推荐定义太多快捷键的。直接使用命令有时候会更快，因为你大脑的负担更轻。
+</p>
+
+<p>
+其实你根本就不需要记忆。
+</p>
+
+<p>
+你可以通过 <a href="https://github.com/abo-abo/hydra">abo-abo/hydra</a> 和 <a href="https://github.com/justbur/emacs-which-key">justbur/emacs-which-key</a> 来交互式地显示所有的按键绑定。
+</p>
+
+<p>
+最后，Evil 也是一个极佳的方案。Vim 和 Emacs 专注在两个不同的领域，Vim 把编辑器操作发挥到了极致，而 Emacs 在与系统集成方面也做到了极致。
+</p>
+
+<p>
+而 Spacemacs 让这一切更和谐。
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="orgheadline6" class="outline-2">
+<h2 id="orgheadline6">有问题问 Emacs</h2>
+<div class="outline-text-2" id="text-orgheadline6">
+<p>
+在学习 Emacs 的过程中，一定要经常问 Emacs 一些问题。
+</p>
+
+<p>
+比如这个函数是干什么用的？（C-h f） 这个按键对应的函数是什么？（C-h k）这个变量是干什么用的？（C-h v）
+</p>
+
+<p>
+一定要学一点 elisp，Emacs 自带的《Introduction to Elisp》就很不错。
+</p>
+
+<p>
+在使用 Starter Kit 的过程中，有事没事，读一读它们的源码。这样也有利于你在扩展自己的配置的时候，遵循的是此 Starter Kit 的最佳实践。
+</p>
+
+<p>
+实在是搞不定了再问 Google，最后才去社区里面提问：
+</p>
+
+<p>
+社区提问的优先级是：StackOverflow  -&gt; Reddit -&gt;  Google+ -&gt; Github issue -&gt; 最后才是 Q 群和微信群
+</p>
+</div>
+</div>
+
+<div id="orgheadline7" class="outline-2">
+<h2 id="orgheadline7">Happy Hacking</h2>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2015-10-31
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/emacs/">Emacs</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2015-11-07-the-best-way-to-teach-others-emacs/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">The best way to teach others Emacs</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2015-10-25-a-few-spacemacs-tips/">
+            <span class="next-text nav-default">关于 Spacemacs 的 Tips</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/" class="leancloud_visitors" data-flag-title="Things I Wish I Know When I Am Learning Emacs">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

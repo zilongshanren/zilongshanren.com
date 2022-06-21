@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CMake on 子龙山人</title>
+    <link>https://zilongshanren.com/tags/cmake/</link>
+    <description>Recent content in CMake on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 31 Aug 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/tags/cmake/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用CMake编译跨平台静态库</title>
+      <link>https://zilongshanren.com/post/how-to-use-cmake-to-compile-static-library/</link>
+      <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/how-to-use-cmake-to-compile-static-library/</guid>
+      <description>在开始介绍如何使用CMake编译跨平台的静态库之前，先讲讲我在没有使用CMake之前所趟过的坑。因为很多开源的程序，比如png，都是自带编译</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>WebGL教程：你的第一个三角形(1) - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="本人最近正在学习WebGL，所以想借着自己写《Cocos2D-X OpenGLES 2.0教程系列》的同时再应用到WebGL上面来。一来可以加深自己的理解，二" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/webgl-your-first-triangles/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="WebGL教程：你的第一个三角形(1)" />
+<meta property="og:description" content="本人最近正在学习WebGL，所以想借着自己写《Cocos2D-X OpenGLES 2.0教程系列》的同时再应用到WebGL上面来。一来可以加深自己的理解，二" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/webgl-your-first-triangles/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-07T00:00:00+00:00" />
+
+<meta itemprop="name" content="WebGL教程：你的第一个三角形(1)">
+<meta itemprop="description" content="本人最近正在学习WebGL，所以想借着自己写《Cocos2D-X OpenGLES 2.0教程系列》的同时再应用到WebGL上面来。一来可以加深自己的理解，二"><meta itemprop="datePublished" content="2014-06-07T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-07T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1249">
+<meta itemprop="keywords" content="welgl," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="WebGL教程：你的第一个三角形(1)"/>
+<meta name="twitter:description" content="本人最近正在学习WebGL，所以想借着自己写《Cocos2D-X OpenGLES 2.0教程系列》的同时再应用到WebGL上面来。一来可以加深自己的理解，二"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">WebGL教程：你的第一个三角形(1)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-07 </span>
+        <div class="post-category">
+            <a href="/categories/webgl/"> WebGL </a>
+            </div>
+          <span class="more-meta"> 约 1249 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#创建opengl画布">创建OpenGL画布</a></li>
+    <li><a href="#创建vbo并且准备顶点数据">创建VBO并且准备顶点数据</a></li>
+    <li><a href="#编写vertex-shader和fragment-shader">编写Vertex Shader和Fragment Shader</a></li>
+    <li><a href="#编写shader-program">编写Shader Program</a></li>
+    <li><a href="#发送顶点数据给vertex-shader">发送顶点数据给Vertex Shader</a></li>
+    <li><a href="#绘制三角形">绘制三角形</a></li>
+    <li><a href="#最终运行结果">最终运行结果：</a></li>
+    <li><a href="#结语">结语</a></li>
+    <li><a href="#推荐阅读">推荐阅读</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>本人最近正在学习WebGL，所以想借着自己写《Cocos2D-X OpenGLES 2.0教程系列》的同时再应用到WebGL上面来。一来可以加深自己的理解，二来也可以对比两者的差别，提高学习效率。WebGL目前各大厂商都在推，就连微软也开始重视这项技术了，不得不说这是一项不小的进步。而最近我看到一篇文章，讲到<a href="http://www.realtimerendering.com/blog/why-use-webgl-for-graphics-research/">《为什么要使用WebGL来做图形学的研究》</a>，深受启发。而且javascript编写OpenGL代码也非常地方便和简洁。另外，js在编写3D程序方面，它的性能是可以和C媲美的。</p>
+<p>话不多说，让我们开始吧。</p>
+<p>Note: 建议使用Chrome和最新版本的Firefox, Safari来实践此教程。具体有哪些现代浏览器支持WebGL，请查看<a href="http://www.khronos.org/webgl/wiki/Getting_a_WebGL_Implementation#Safari">此网页</a></p>
+<p><strong>声明：由于我是边学边写教程，如果读者有发现错误或者不正确的地方，欢迎批评指正。</strong></p>
+<!-- raw HTML omitted -->
+<h2 id="创建opengl画布">创建OpenGL画布</h2>
+<p>首先，新建一个html文件并加入以下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">canvas</span> <span class="n">id</span> <span class="o">=</span><span class="sc">&#39;c&#39;</span> <span class="n">width</span><span class="o">=</span><span class="err">&#39;</span><span class="mi">480</span><span class="err">&#39;</span> <span class="n">height</span><span class="o">=</span><span class="err">&#39;</span><span class="mi">320</span><span class="err">&#39;</span><span class="o">&lt;/</span><span class="n">canvas</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">var</span> <span class="n">canvas</span> <span class="o">=</span> <span class="n">document</span><span class="p">.</span><span class="n">getElementById</span><span class="p">(</span><span class="sc">&#39;c&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">var</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#34;webgl&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                  <span class="s">&#34;experimental-webgl&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                  <span class="s">&#34;webkit-3d&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                  <span class="s">&#34;moz-webgl&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">names</span><span class="p">.</span><span class="n">length</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="n">gl</span> <span class="o">=</span> <span class="n">canvas</span><span class="p">.</span><span class="n">getContext</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">          <span class="k">catch</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="p">(</span><span class="n">gl</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="n">gl</span> <span class="o">==</span> <span class="n">null</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">         <span class="n">alert</span><span class="p">(</span><span class="s">&#34;WebGL is not available&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">gl</span><span class="p">.</span><span class="n">clearColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">gl</span><span class="p">.</span><span class="n">clear</span><span class="p">(</span><span class="n">gl</span><span class="p">.</span><span class="n">COLOR_BUFFER_BIT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用浏览器运行，你将得到下列结果：（注意下图是WebGL绘制出来的哦，因为你右键是看不到“保存图片”的选项的，以后再也不用费事去截图了！）</p>
+<!-- raw HTML omitted -->
+<h2 id="创建vbo并且准备顶点数据">创建VBO并且准备顶点数据</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">vertexBuffer</span> <span class="o">=</span> <span class="nx">gl</span><span class="p">.</span><span class="nx">createBuffer</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="nx">gl</span><span class="p">.</span><span class="nx">bindBuffer</span><span class="p">(</span><span class="nx">gl</span><span class="p">.</span><span class="nx">ARRAY_BUFFER</span><span class="p">,</span> <span class="nx">vertexBuffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">vertices</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="nx">gl</span><span class="p">.</span><span class="nx">bufferData</span><span class="p">(</span><span class="nx">gl</span><span class="p">.</span><span class="nx">ARRAY_BUFFER</span><span class="p">,</span> <span class="k">new</span> <span class="nx">Float32Array</span><span class="p">(</span><span class="nx">vertices</span><span class="p">),</span><span class="nx">gl</span><span class="p">.</span><span class="nx">STATIC_DRAW</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看出，这些函数跟OpenGLES很类似。只是glGenBuffer被重合名为createBuffer了。然后所有OpenGL的函数都位于webgl context对象之中了。</p>
+<h2 id="编写vertex-shader和fragment-shader">编写Vertex Shader和Fragment Shader</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="c1">//setup for the vertex shader and fragment shader
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">vs</span> <span class="o">=</span> <span class="s1">&#39;attribute vec2 pos;&#39;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;void main(){ gl_Position = vec4(pos,0,1);}&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="s1">&#39;precision mediump float;&#39;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;void main(){ gl_FragColor = vec4(0,0.8,0,1);}&#39;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里我们把vertex shader和fragment shader写到两个字符串vs和fs中。因为比较简单，所以才这样做。如果shader很复杂，建议把shader文件单独放置在对应的文件中。</p>
+<h2 id="编写shader-program">编写Shader Program</h2>
+<p>接下来，我们需要编译，链接并最终生成我们的shader program，具体代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">createShader</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="nx">type</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">shader</span> <span class="o">=</span> <span class="nx">gl</span><span class="p">.</span><span class="nx">createShader</span><span class="p">(</span><span class="nx">type</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">gl</span><span class="p">.</span><span class="nx">shaderSource</span><span class="p">(</span><span class="nx">shader</span><span class="p">,</span><span class="nx">str</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">gl</span><span class="p">.</span><span class="nx">compileShader</span><span class="p">(</span><span class="nx">shader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">gl</span><span class="p">.</span><span class="nx">getShaderParameter</span><span class="p">(</span><span class="nx">shader</span><span class="p">,</span> <span class="nx">gl</span><span class="p">.</span><span class="nx">COMPILE_STATUS</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="nx">gl</span><span class="p">.</span><span class="nx">getShaderInfoLog</span><span class="p">(</span><span class="nx">shader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">shader</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">createProgram</span><span class="p">(</span><span class="nx">vstr</span><span class="p">,</span><span class="nx">fstr</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">program</span> <span class="o">=</span> <span class="nx">gl</span><span class="p">.</span><span class="nx">createProgram</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">vshader</span> <span class="o">=</span> <span class="nx">createShader</span><span class="p">(</span><span class="nx">vstr</span><span class="p">,</span><span class="nx">gl</span><span class="p">.</span><span class="nx">VERTEX_SHADER</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">fshader</span> <span class="o">=</span> <span class="nx">createShader</span><span class="p">(</span><span class="nx">fstr</span><span class="p">,</span> <span class="nx">gl</span><span class="p">.</span><span class="nx">FRAGMENT_SHADER</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">gl</span><span class="p">.</span><span class="nx">attachShader</span><span class="p">(</span><span class="nx">program</span><span class="p">,</span><span class="nx">vshader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">gl</span><span class="p">.</span><span class="nx">attachShader</span><span class="p">(</span><span class="nx">program</span><span class="p">,</span><span class="nx">fshader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">gl</span><span class="p">.</span><span class="nx">linkProgram</span><span class="p">(</span><span class="nx">program</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">gl</span><span class="p">.</span><span class="nx">getProgramParameter</span><span class="p">(</span><span class="nx">program</span><span class="p">,</span> <span class="nx">gl</span><span class="p">.</span><span class="nx">LINK_STATUS</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="nx">gl</span><span class="p">.</span><span class="nx">getProgramInfoLog</span><span class="p">(</span><span class="nx">program</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">program</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//创建shader program
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">var</span> <span class="nx">program</span> <span class="o">=</span> <span class="nx">createProgram</span><span class="p">(</span><span class="nx">vs</span><span class="p">,</span><span class="nx">fs</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">gl</span><span class="p">.</span><span class="nx">useProgram</span><span class="p">(</span><span class="nx">program</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="发送顶点数据给vertex-shader">发送顶点数据给Vertex Shader</h2>
+<p>首先，我们要获取Vertex attribute的location。接着，激活该attribute，最后调用vertexAttribPointer来传递顶点数据。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">program</span><span class="p">.</span><span class="nx">vertexPosAttrib</span> <span class="o">=</span> <span class="nx">gl</span><span class="p">.</span><span class="nx">getAttribLocation</span><span class="p">(</span><span class="nx">program</span><span class="p">,</span><span class="s1">&#39;pos&#39;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">gl</span><span class="p">.</span><span class="nx">enableVertexAttribArray</span><span class="p">(</span><span class="nx">program</span><span class="p">.</span><span class="nx">vertexPosAttrib</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nx">gl</span><span class="p">.</span><span class="nx">vertexAttribPointer</span><span class="p">(</span><span class="nx">program</span><span class="p">.</span><span class="nx">vertexPosAttrib</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">gl</span><span class="p">.</span><span class="nx">FLOAT</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="绘制三角形">绘制三角形</h2>
+<p>最后，我们调用drawArrays来绘制三角形。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">gl</span><span class="p">.</span><span class="nx">drawArrays</span><span class="p">(</span><span class="nx">gl</span><span class="p">.</span><span class="nx">TRIANGLES</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="最终运行结果">最终运行结果：</h2>
+<!-- raw HTML omitted -->
+<h2 id="结语">结语</h2>
+<p>可以看到，一个完整的WebGL绘制三角形的代码与一个OpenGLES 2.0的代码非常类似，但是写起来却非常爽。更重要的是，我们可以用浏览器来实时调试看效果。省去了c++等静态语言的编译链接时间。</p>
+<p>本文源码仓库地址：<a href="https://git.oschina.net/zilongshanren/Learning-WebGL">https://git.oschina.net/zilongshanren/Learning-WebGL</a></p>
+<h2 id="推荐阅读">推荐阅读</h2>
+<ul>
+<li>
+<p><a href="http://learningwebgl.com/blog/?p=28">http://learningwebgl.com/blog/?p=28</a></p>
+</li>
+<li>
+<p><a href="http://games.greggman.com/game/webgl-fundamentals/">http://games.greggman.com/game/webgl-fundamentals/</a></p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-07
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/welgl/">welgl</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/opengl-es20-write-your-own-shader/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">OpenGL ES2.0教程：编写自己的shader(2)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/make-your-own-vim-super-weapon/">
+            <span class="next-text nav-default">打造属于自己的Vim神器:后记</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/webgl-your-first-triangles/" class="leancloud_visitors" data-flag-title="WebGL教程：你的第一个三角形(1)">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

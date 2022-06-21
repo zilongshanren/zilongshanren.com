@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>21 天学会 Emacs - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="21 天学会 Emacs 电子书在线阅读： http://book.emacs-china.org/ 21 天学会 Emacs 所有视频 Youtube：https://www.youtube.com/watch?v=0hpVuoy" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/learnemacs/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="21 天学会 Emacs" />
+<meta property="og:description" content="21 天学会 Emacs 电子书在线阅读： http://book.emacs-china.org/ 21 天学会 Emacs 所有视频 Youtube：https://www.youtube.com/watch?v=0hpVuoy" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/learnemacs/" /><meta property="article:section" content="" />
+<meta property="article:published_time" content="2015-12-13T22:45:28+00:00" />
+<meta property="article:modified_time" content="2015-12-13T22:45:28+00:00" />
+
+<meta itemprop="name" content="21 天学会 Emacs">
+<meta itemprop="description" content="21 天学会 Emacs 电子书在线阅读： http://book.emacs-china.org/ 21 天学会 Emacs 所有视频 Youtube：https://www.youtube.com/watch?v=0hpVuoy"><meta itemprop="datePublished" content="2015-12-13T22:45:28+00:00" />
+<meta itemprop="dateModified" content="2015-12-13T22:45:28+00:00" />
+<meta itemprop="wordCount" content="1504">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="21 天学会 Emacs"/>
+<meta name="twitter:description" content="21 天学会 Emacs 电子书在线阅读： http://book.emacs-china.org/ 21 天学会 Emacs 所有视频 Youtube：https://www.youtube.com/watch?v=0hpVuoy"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+  <div class="post-content">
+    <h2 id="21-天学会-emacs-电子书在线阅读">21 天学会 Emacs 电子书在线阅读：</h2>
+<p><a href="http://book.emacs-china.org/">http://book.emacs-china.org/</a></p>
+<h2 id="21-天学会-emacs-所有视频">21 天学会 Emacs 所有视频</h2>
+<ul>
+<li>Youtube：https://www.youtube.com/watch?v=0hpVuoyO8_o&amp;list=PLZx9tb9Niew8qMjpCjeYnsezCE-s5mKw_</li>
+</ul>
+<h2 id="每一集的大纲和摘要">每一集的大纲和摘要</h2>
+<h3 id="第一天">第一天</h3>
+<ol>
+<li>如何安装 Emacs</li>
+<li>Emacs 基础概念：光标移动，按键说明</li>
+<li>Org-mode 的基本使用</li>
+<li>激活 Emacs 的一些内置功能</li>
+<li>使用 Emacs 内置的帮助文档</li>
+<li>学习一些简单的 elisp</li>
+<li>学习 Emacs 的 package 系统并且安装 company mode 来完成自动补全</li>
+<li>简单介绍 major mode 和 minor mode 的概念</li>
+<li>Org-mode 的一些基本用法</li>
+</ol>
+<h3 id="第二天">第二天</h3>
+<ol>
+<li>修改 Emacs 的光标样式</li>
+<li>禁止 Emacs 创建备份文件</li>
+<li>使用 recentf mode 来管理最近经常访问的文件</li>
+<li>激活 delete-selection-mode，让 Emacs 与其它编辑器的行为一致</li>
+<li>让 Org-mode 中的代码具有语法高亮</li>
+<li>让 Emacs 启动就最大化</li>
+<li>让 Emacs 高亮当前行</li>
+<li>让 Elisp 显示匹配的括号</li>
+<li>扩展 Emacs 的包管理器，让安装Emacs插件自动化</li>
+<li>安装 js2-mode 和 nodejs-repl 来打造 Javascript 编程环境</li>
+<li>Org mode tips： org-agenda 来管理你的日程</li>
+</ol>
+<h3 id="第三天">第三天</h3>
+<ol>
+<li>划分 Emacs 配置成多个文件</li>
+<li>安装 popwin 插件来增强 Emacs 的弹窗功能</li>
+<li>介绍 load-path，require, provide,  autoload 等功能</li>
+<li>激活 abbrev-mode，让你可以写很短的字符扩展出一长串的内容</li>
+<li>更进一步地介绍 major mode 和 minor mode</li>
+<li>开启 auto-revert mode，这样当文件在 emacs 外部被修改的时候，emacs 会自动加载磁盘上的文件</li>
+</ol>
+<h3 id="第四天">第四天</h3>
+<ol>
+<li>添加一个 indent-buffer 的函数</li>
+<li>介绍 Emacs 另一种补全功能：hippie-expand</li>
+<li>Dired 模式介绍和基本使用技巧</li>
+<li>介绍一个 Mac 相关的插件，可以在把 Emacs 打开的文件用 Finder 来打开</li>
+<li>介绍 Org-mode 进行文学编程</li>
+</ol>
+<h3 id="第五天">第五天</h3>
+<ol>
+<li>修复 smartparen 插件在 emacs-lisp-mode 下面的一个小问题</li>
+<li>介绍如何去除 DOS 换行符</li>
+<li>安装 web-mode 来进行 web 开发</li>
+<li>介绍 js2-refactor 来进行 javascript 的重构</li>
+<li>介绍 occur-mode 和 imenu mode 来快速浏览代码</li>
+<li>介绍 expand-region 来 mark 文本</li>
+<li>介绍 iedit 来进行文本批量修改</li>
+<li>介绍 Org-mode 的导出功能</li>
+</ol>
+<h3 id="第六天">第六天</h3>
+<ol>
+<li>使用 org-capture 来记笔记和 todo 事项</li>
+<li>使用 org-pomodoro 来管理时间</li>
+<li>使用 c-n/c-p 来选择 company 的候选补全项</li>
+<li>使用 expand-region 和 iedit 来批量重命名文件</li>
+<li>安装 helm-ag 来辅助项目内文本搜索</li>
+<li>安装 flycheck 来实时检查你的代码是否有语法错误</li>
+<li>介绍 snippet 和 auto-snippet 插件</li>
+<li>练习：安装 helm-swoop 和 org-mac-link 插件，并学习这两个插件的用法</li>
+</ol>
+<h3 id="第七天">第七天</h3>
+<ol>
+<li>Hack 按键 C-W 来向后删除一个单词</li>
+<li>安装Evil 插件和 Evil 的基本配置</li>
+<li>简单介绍 Evil 插件和 Vim 的区别与联系</li>
+<li>安装 which-key 插件来显示按键信息</li>
+<li>Org Tips： 在你的 org 文件里面进行搜索</li>
+<li>给出了大量关于 Evil 插件的课外阅读材料</li>
+</ol>
+<h3 id="第八天">第八天</h3>
+<ol>
+<li>介绍 Emacs-China 的 elpa 镜像及其使用方法</li>
+<li>介绍 Cast 和 pallet-mode 的使用
+注： 这一集视频新手可以选择跳过，因为 Cask 对于插件的开发者可能会更有用。</li>
+</ol>
+<h3 id="第九天">第九天</h3>
+<ol>
+<li>介绍 macro 的基本用法</li>
+<li>介绍 use-package 插件及其用法</li>
+</ol>
+<h3 id="第十天">第十天：</h3>
+<ol>
+<li>介绍 company 的使用和具体的工作原理</li>
+<li>介绍 Cask 的使用场景</li>
+<li>介绍 company backend 的知识</li>
+<li>给出了一个链接教大家如何编写 company 的 backend</li>
+</ol>
+<h3 id="第十一天">第十一天：</h3>
+<ol>
+<li>Spacemacs 的安装和配置</li>
+<li>添加一些 Spacemacs 的内置 layer</li>
+<li>配置 Spacemacs 全屏启动</li>
+<li>如何排除 Spacemacs 中你不需要的 package</li>
+<li>如何让安装的 package 不被 Spacemacs 下次启动的时候删除</li>
+<li>防止 Emacs 启动时间过长</li>
+<li>让 custom.el 文件的内容放到一个文件中</li>
+</ol>
+<h3 id="第十二天">第十二天：</h3>
+<ol>
+<li>创建你的第一个 Spacemacs layer</li>
+<li>Hack Spacemacs 自带的 layer</li>
+<li>把我们之前的配置迁移到 Spacemacs</li>
+</ol>
+<h3 id="第十三天">第十三天：</h3>
+<ol>
+<li>修复 ivy 0.8 引入的一个问题</li>
+<li>介绍 layer 里面 post-init 和 pre-init 的区别</li>
+<li>介绍 Spacemacs package 的安装源：elpa/builtin/github</li>
+<li>介绍 layers.el 文件在layer 里面的作用</li>
+</ol>
+<h3 id="第十四天">第十四天：</h3>
+<ol>
+<li>Spacemacs 里面关于文件和 buffer 相关的操作</li>
+<li>介绍我自己对于 Spacemacs 的文件和 buffer 操作的改进</li>
+<li>介绍我是怎么使用的 Dired</li>
+</ol>
+<h3 id="第十五天">第十五天：</h3>
+<ol>
+<li>介绍 Spacemacs Window 相关的操作</li>
+<li>介绍 Spacemacs Layout 相关的操作</li>
+<li>介绍 Spacemacs Project 相关的操作</li>
+</ol>
+<h3 id="第十六天">第十六天：</h3>
+<ol>
+<li>介绍 ctags 使用以及为什么使用 ctags</li>
+<li>介绍如何配置 company-mode 使用 ctags 进行代码补全</li>
+<li>如何更高效地使用 ctags</li>
+</ol>
+<h3 id="第十七天">第十七天：</h3>
+<ol>
+<li>介绍 Lispy 插件的使用</li>
+</ol>
+<h3 id="第十八天">第十八天：</h3>
+<ol>
+<li>介绍新手如何在 Spacemacs 里面存活下来</li>
+</ol>
+<h3 id="第十九天">第十九天：</h3>
+<ol>
+<li>介绍一些 Hack Emacs 的小技巧</li>
+<li>介绍 elisp 的 advice功能</li>
+<li>教你如何调试 elisp</li>
+<li>编写自己的 minor mode</li>
+</ol>
+<h3 id="第二十天">第二十天：</h3>
+<ol>
+<li>带你一起阅读我的 Spacemacs 配置</li>
+<li>介绍我的配置的设计思想</li>
+<li>简单地阅读了其中一个 layer 的部分代码
+注：强烈推荐新手从头到尾阅读我的配置</li>
+</ol>
+<h3 id="第二十一天">第二十一天：</h3>
+<ol>
+<li>如何成为 Emacs 高手，后续如何学习</li>
+</ol>
+<h2 id="如果你认为我的视频对你帮助很大可以考虑支持一把">如果你认为我的视频对你帮助很大，可以考虑支持一把</h2>
+<p><img src="/img/weixin-donate.jpeg" alt="fund"></p>
+
+  </div>
+</article>
+        </div>
+        
+
+  <span id="/learnemacs/" class="leancloud_visitors" data-flag-title="21 天学会 Emacs">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

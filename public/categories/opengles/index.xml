@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenGLES on 子龙山人</title>
+    <link>https://zilongshanren.com/categories/opengles/</link>
+    <description>Recent content in OpenGLES on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 07 Jun 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/opengles/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenGL ES2.0教程：编写自己的shader(2)</title>
+      <link>https://zilongshanren.com/post/opengl-es20-write-your-own-shader/</link>
+      <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es20-write-your-own-shader/</guid>
+      <description>在上篇文章中，我给大家介绍了如何在cocos2d-x里面绘制一个三角形，当时我们使用的是cocos2d-x引擎自带的shader和一些辅助函</description>
+    </item>
+    
+  </channel>
+</rss>

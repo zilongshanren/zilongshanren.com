@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cocos2D-X设计模式:中介者模式 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="上周写了关于cocos2d-x里面的观察者模式，文章最后提到一个应用场景：“你的GameScene里面有两个layer，一个gameLaye" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/cocos2d-x-design-pattern-mediator/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Cocos2D-X设计模式:中介者模式" />
+<meta property="og:description" content="上周写了关于cocos2d-x里面的观察者模式，文章最后提到一个应用场景：“你的GameScene里面有两个layer，一个gameLaye" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/cocos2d-x-design-pattern-mediator/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-20T00:00:00+00:00" />
+
+<meta itemprop="name" content="Cocos2D-X设计模式:中介者模式">
+<meta itemprop="description" content="上周写了关于cocos2d-x里面的观察者模式，文章最后提到一个应用场景：“你的GameScene里面有两个layer，一个gameLaye"><meta itemprop="datePublished" content="2014-06-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1618">
+<meta itemprop="keywords" content="Cocos2d-x,design pattern," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cocos2D-X设计模式:中介者模式"/>
+<meta name="twitter:description" content="上周写了关于cocos2d-x里面的观察者模式，文章最后提到一个应用场景：“你的GameScene里面有两个layer，一个gameLaye"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Cocos2D-X设计模式:中介者模式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-20 </span>
+        <div class="post-category">
+            <a href="/categories/cocos2d-x/"> Cocos2d-x </a>
+            <a href="/categories/design-pattern/"> design pattern </a>
+            </div>
+          <span class="more-meta"> 约 1618 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1应用场景">1、应用场景</a></li>
+    <li><a href="#2使用该模式的优缺点">2、使用该模式的优缺点</a></li>
+    <li><a href="#3模式定义及一般实现">3、模式定义及一般实现</a></li>
+    <li><a href="#4游戏开发中如何运用此模式">4、游戏开发中如何运用此模式</a></li>
+    <li><a href="#5与其它模式的关系">5、与其它模式的关系</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>上周写了关于<a href="http://zilongshanren.com/blog/2014-06-20-cocos2d-x-design-pattern-observer.html">cocos2d-x里面的观察者模式</a>，文章最后提到一个应用场景：“你的GameScene里面有两个layer，一个gameLayer，它包含了游戏中的对象，比如玩家、敌人等。另一个层是HudLayer，它包含了游戏中显示分数、生命值等信息。如何让这两个层相互通信。”</p>
+<p>关于这两个层之间如何通信的问题，读者Llllong和我畅快淋漓地讨论了一番，详细的内容可以参考那篇文章的留言部分。最后，我们总结出三种通信方式：委托、观察者模式、中介者模式。（PS：剧透一下，下周跟大家一起来探讨一下cocos2d-x里面的委托设计模式。我12年翻译了<a href="http://www.cnblogs.com/andyque/archive/2012/03/11/2390814.html">cocos2d如何实现mvc系列文章</a>，里面涉及到委托的使用，可是代码是objc写的，有一些童鞋不知道c++如何实现委托，导致port代码有困难。别急，下周我们见分晓。）</p>
+<p>本文将延续前面几篇文章的风格，跟大家一起来探讨cocos2d-x里面的中介者模式。也非常欢迎读者对此文进行拍砖，很多思绪的火光，“拍着拍着”就冒出来了。</p>
+<!-- raw HTML omitted -->
+<h2 id="1应用场景">1、应用场景</h2>
+<p>谈到中介者模式这个词，我马上就想到了cocos2d-x里面的CCDirector类。这个类除了应用了单例模式，还应用了中介者模式。Why？因为它封装了Scheduler、ActionManager、TouchDispatcher、KeypadDispatcher和Accelerometer这五个对象的交互。它使得这几个对象之间的交互不需要显式地相互引用，使其耦合度变低。当然更多的是使得我们游戏中的对象可以方便地与这些类进行交互，而不需要显式地引用这些类。同时，由于Director类被设计成单例类，这样更加方便了客户程序调用。</p>
+<p>由于之前Scheduler、ActionManager、TouchDispatcher这些类都被设计成了单例类，现在通过Director这个中介类，减少了系统中单例的数目，同时也使得这些类获得了单例的属性。（唯一实例和全局访问点都靠Director类来保障，这也是我为什么在介绍单例模式的时候讲过一句话“至少需要一个单例模式”的原因，因为其它“单例”可以通过此单例也获得“单例的属性”）</p>
+<p>补充：我这里介绍的Director的应用场景，跟GoF标准中介者设计模式存在一定出入，但是，我觉得某些思想是相通的。GoF中提到的中介者模式的本质是“封装交互”，这一点在Director类中并没有体现出来。我这里冒然将二者联系在一起，实属认识上的不足，可能得了所谓的“模式病”吧。大家注意区分一下就行啦。所以，我感觉有时候设计思想比模式本身更重要，希望我尽快修成正果。</p>
+<h2 id="2使用该模式的优缺点">2、使用该模式的优缺点</h2>
+<p>优点：</p>
+<p>1）、把多个同事对象的交互封装到一个中介者对象中，使得同事对象之间松散耦合，互不依赖</p>
+<p>2）、集中控制交互</p>
+<p>3）、多对多变成了一对多</p>
+<p>缺点：</p>
+<p>1）、容易造成中介者对象变成巨无霸类，维护和修改变得更加困难</p>
+<h2 id="3模式定义及一般实现">3、模式定义及一般实现</h2>
+<p>定义：</p>
+<p>用一个中介对象来封装一系列的对象交互。中介者使得各对象不需要显式地相互引用，从而使其松散耦合，而且可以独立地改变它们之间的交互。</p>
+<p>UML图：</p>
+<p><img src="https://zilongshanren.com/img/mediator.jpg" alt="mediator.jpg"></p>
+<p>一般实现：参考<a href="http://en.wikipedia.org/wiki/Mediator_pattern">wikipedia</a></p>
+<h2 id="4游戏开发中如何运用此模式">4、游戏开发中如何运用此模式</h2>
+<p>游戏世界里的对象关系非常复杂，如果设计得不好，极容易形成强耦合。而游戏天生又是需要经常更新、修改bug和升级的，这就导致了游戏程序的维护和扩展非常地难。使用中介者模式可以减少游戏世界里面对象之间的多对多关系，使之转变成多对一的关系。</p>
+<p>关于中介者的实现，可以把AppDelegate类设计成中介者对象，也可以自定义中介者对象，比如GameManager类。把此类设计成单例类，可以方便访问，同时，此类可以拥有像gameScene，levelSaver等类的引用，方便其它对象与这些对象进行交互。</p>
+<h2 id="5与其它模式的关系">5、与其它模式的关系</h2>
+<p>中介者模式的实现可以采用单例模式，参考Director的实现。同时，在处理同事对象之间的交互的时候，可以采用观察者模式。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-20
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cocos2d-x/">Cocos2d-x</a>
+          <a href="/tags/design-pattern/">design pattern</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/cocos2d-x-design-patterns-delegation/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Cocos2D-X设计模式:委托模式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/setup-wordpress-blog/">
+            <span class="next-text nav-default">搭建wordpress博客</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/cocos2d-x-design-pattern-mediator/" class="leancloud_visitors" data-flag-title="Cocos2D-X设计模式:中介者模式">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

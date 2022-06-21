@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>A bite of Python - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="周五的时候，我的一个朋友让我帮忙写一个小工具。这个小工具要完成的功能如下： 指定方差与均值，生成相应的随机数，默认生成一组随机数(默认为10个" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/a-bite-of-python/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="A bite of Python" />
+<meta property="og:description" content="周五的时候，我的一个朋友让我帮忙写一个小工具。这个小工具要完成的功能如下： 指定方差与均值，生成相应的随机数，默认生成一组随机数(默认为10个" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/a-bite-of-python/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-09-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-09-21T00:00:00+00:00" />
+
+<meta itemprop="name" content="A bite of Python">
+<meta itemprop="description" content="周五的时候，我的一个朋友让我帮忙写一个小工具。这个小工具要完成的功能如下： 指定方差与均值，生成相应的随机数，默认生成一组随机数(默认为10个"><meta itemprop="datePublished" content="2014-09-21T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-09-21T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2144">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A bite of Python"/>
+<meta name="twitter:description" content="周五的时候，我的一个朋友让我帮忙写一个小工具。这个小工具要完成的功能如下： 指定方差与均值，生成相应的随机数，默认生成一组随机数(默认为10个"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">A bite of Python</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-09-21 </span>
+        <div class="post-category">
+            <a href="/categories/python/"> python </a>
+            </div>
+          <span class="more-meta"> 约 2144 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#research-stage">Research Stage</a></li>
+    <li><a href="#implementation-stage">Implementation Stage</a></li>
+    <li><a href="#tweak-stage">Tweak Stage</a></li>
+    <li><a href="#delivery-stage">Delivery Stage</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>周五的时候，我的一个朋友让我帮忙写一个小工具。这个小工具要完成的功能如下：</p>
+<ol>
+<li>指定方差与均值，生成相应的随机数，默认生成一组随机数(默认为10个)</li>
+<li>使用生成出来的随机数，重新计算方差和均值，如果方差和均值在指定的误差范围内则接受</li>
+<li>生成带有固定格式的Excel表格</li>
+<li>均值、方差、误差等可以配置，且可以同时提供多组数据输入</li>
+</ol>
+<p>我当时想到的第一个是C++，因为C++11支持<a href="http://en.cppreference.com/w/cpp/numeric/random/normal_distribution">根据均值和方差生成随机数</a>,
+另外C++是我最熟悉的语言。</p>
+<p>但是后来想到要生成excel，我就放弃了。不是因为C++做不了，而是太麻烦。最后，我考虑选择用Python.（虽然我Python不是很熟。）</p>
+<p>但是问题来了，我从来没有使用Python生成过Excel，也不知道Python里面怎么根据方差和均值生成随机数分布。</p>
+<p>本文主要是记录一下，自己在面对不熟悉的领域的时候，自己思考问题和解决问题的过程,希望对读者能有启发。</p>
+<!-- raw HTML omitted -->
+<h2 id="research-stage">Research Stage</h2>
+<p>首先是调研阶段。我认为调研阶段，最重要的是寻找解决问题的关键点，很显然，本任务的关键点有两点:</p>
+<ul>
+<li>
+<p>Python怎么根据输入的均值与方差生成一组符合要求的随机数</p>
+</li>
+<li>
+<p>Python怎么操纵Excel</p>
+</li>
+<li>
+<p>Python怎么解析Json(数据配置我准备用Json)</p>
+</li>
+</ul>
+<p>另外，由于我的Python语法记得不是很清楚了，所以我要快速地温习一下。幸好，我们有<a href="http://learnxinyminutes.com/docs/python/">Learn X in Y minutes</a>.
+如果你对一门语言已经比较了解了，想使用其它语言来快速上手开发一些小程序，使用Learn X in Y minutes是非常不错的选择。</p>
+<p>通过Google搜索之后，我发现可以使用下列函数生成一个随机数:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">random_number</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">stddev</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>另外，使用下面两个函数，可以计算list的均值和方差:(random_list里面装了一些服从高斯分布的随机数:)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">generated_mean</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">random_list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">generated_stddev</span> <span class="o">=</span> <span class="n">statistics</span><span class="o">.</span><span class="n">stdev</span><span class="p">(</span><span class="n">random_list</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后，生成Excel，我发现可以使用xlwt。但是经过试用以后，发现python2.x不支持Unicode，于是我果断选择了python3.4.
+但是，我还是要回过头去确认在python2.x里面能用的一些模块是否已经移植3.x了。最后，我发现xlwt这个库改名字了，叫做<a href="https://github.com/goinnn/xlwt-future">future-xlwt</a>. 调研阶段会进行一些小的程序测试，比如生成一些demo excel，主要是解决“合并单元格”，“编辑公式”和“背景上色”的一些操作。这个过程也是耗时比较久的，后面的实现过程就比较直白了.</p>
+<h2 id="implementation-stage">Implementation Stage</h2>
+<p>因为这个小工具的是没有什么算法的，主要的数学上的计算都可以借助Python的numpy和statistics模块来完成。</p>
+<p>我在实现阶段可能经常要做的就是查询一些API和一些操作的实现方法。这里StackOverflow + Google绝对是神器，几乎99%的问题，我都在上面找到了答案。我很难想象，如果断网，我根本无法完成这个任务。</p>
+<p>不过这里有一个小技巧，搜索问题的时候尽量使用英文，且搜索关键字要能切合主题。</p>
+<p>另外，编写Python的过程中，使用一个好工具也是非常重要的。像Emacs的实时语法检查和代码提示功能，对我写Python有很大的帮助.</p>
+<p>这个阶段我主要完成的是核心算法，即程序的主体。（此时Excel表格是生成好的）</p>
+<h2 id="tweak-stage">Tweak Stage</h2>
+<p>这个阶段做的事情，主要是封装一些函数, 完成此小工具要求的其它功能。 第一点是Excel表格的样式，这个还是费了我不少时间的。因为指定颜色的时候，Excel使用的ColorIndex，但是我根本不知道哪个ColorIndex对应哪个颜色值。我希望能够用RGB来指定Excel单元格的背景色。</p>
+<p>我搜索时使用的关键词为:</p>
+<blockquote>
+<p>xlwt excel cell background color rgb</p>
+</blockquote>
+<p>然后，我搜索到了<a href="http://stackoverflow.com/questions/7746837/python-xlwt-set-custom-background-colour-of-a-cell">python-xlwt-set-custom-background-colour-of-a-cell</a></p>
+<p>另外一个就是读取Json，于是我又搜索之:</p>
+<blockquote>
+<p>python3 json from file</p>
+</blockquote>
+<p>我得到<a href="http://stackoverflow.com/questions/2835559/parsing-values-from-a-json-file-in-python">parsing-values-from-a-json-file-in-python</a>，测试之后，发现Python解析Json真是太TM简单了。</p>
+<p>最后，把一些细节完善一下就ok了。整个过程大概花了我周六一下午加一晚上的时间。</p>
+<h2 id="delivery-stage">Delivery Stage</h2>
+<p>在真正交付这个工具给我的朋友之前，我肯定还需要下一点功夫。因为他是一个Windows用户，所以，我肯定要把Python脚本打包成Exe吧。这样他只需要提供一个Json文件作为数据输入，然后双击exe就可以生成excel了。
+幸好Python3也提供了打包的工具，<a href="http://cx-freeze.readthedocs.org/en/latest/distutils.html">cxfreez</a></p>
+<p>最后，我发现在打包完成之后，双击运行说找不到xlwt这个module。解决办法是下载github上面的<a href="https://github.com/goinnn/xlwt-future">xlwt-future</a>，然后手动用<code>python setup.py install</code>安装好。</p>
+<p>再配合一个打包脚本，install.py:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">cx_Freeze</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">Executable</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">build_exe_options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;packages&#34;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&#34;xlwt&#34;</span><span class="p">]}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">setup</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">name</span> <span class="o">=</span> <span class="s2">&#34;On Dijkstra&#39;s Algorithm&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">version</span> <span class="o">=</span> <span class="s2">&#34;3.1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">description</span> <span class="o">=</span> <span class="s2">&#34;A Dijkstra&#39;s Algorithm help tool.&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&#34;buil_exe&#34;</span> <span class="p">:</span> <span class="n">build_exe_options</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="n">executables</span> <span class="o">=</span> <span class="p">[</span><span class="n">Executable</span><span class="p">(</span><span class="s2">&#34;main.py&#34;</span><span class="p">,</span> <span class="n">base</span> <span class="o">=</span> <span class="s2">&#34;Win32GUI&#34;</span><span class="p">)])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>至此，这个小工具的制作就算全部完成了。一共耗时大概在12个小时，也算是有蛮长时间啦。</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>从一知半解的Python理解到最后12小时的努力，最终还是完成了这个任务。感觉Python写代码确实太爽了，难怪很多Python党会说&quot;人生苦短，我用Python&quot;.</p>
+<p>如果使用传统的C++，然后调用Window的API去生成Excel，那估计没个1-2天时间是搞不定了。</p>
+<p>本工具最后的<a href="https://gist.github.com/andyque/1e31c404ff8440f49713">源代码</a></p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>
+<p><a href="http://effbot.org/pyfaq/how-do-i-generate-random-numbers-in-python.htm">How to generate random numbers in Python</a></p>
+</li>
+<li>
+<p><a href="http://learnxinyminutes.com/docs/python/">Learn X in Y minutes</a></p>
+</li>
+<li>
+<p><a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#cx_freeze">Unofficial windows Python installer</a></p>
+</li>
+<li>
+<p><a href="http://cx-freeze.readthedocs.org/en/latest/distutils.html">Pack python to exe:  cxfreez</a></p>
+</li>
+<li>
+<p><a href="https://pypi.python.org/pypi/xlwt-future">xlwt-future for python 3.x</a></p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-09-21
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/high-standard-and-imperfect/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">高标准与不完美</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/what-i-learn-at-cocos2d-x/">
+            <span class="next-text nav-default">Things I Have Learned at Cocos2D-X Team</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/a-bite-of-python/" class="leancloud_visitors" data-flag-title="A bite of Python">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

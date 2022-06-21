@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>bash on 子龙山人</title>
+    <link>https://zilongshanren.com/categories/bash/</link>
+    <description>Recent content in bash on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 14 Dec 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/bash/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bash使用心得</title>
+      <link>https://zilongshanren.com/post/bash-quick-reference/</link>
+      <pubDate>Sun, 14 Dec 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/bash-quick-reference/</guid>
+      <description>由于前段时间一直在做Bash和Makefile脚本的编写，所以，本文主要是记录一些Bash使用心得. 有人可能会问了，现在Python这么流行</description>
+    </item>
+    
+  </channel>
+</rss>

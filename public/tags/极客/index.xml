@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>极客 on 子龙山人</title>
+    <link>https://zilongshanren.com/tags/%E6%9E%81%E5%AE%A2/</link>
+    <description>Recent content in 极客 on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 30 Aug 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/tags/%E6%9E%81%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>像极客一样使用 Mac</title>
+      <link>https://zilongshanren.com/post/2015-08-30-use-mac-like-a-geek/</link>
+      <pubDate>Sun, 30 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-08-30-use-mac-like-a-geek/</guid>
+      <description>Table of Contents 命令行工具 iTerm2 Tmux Percol Zsh 编辑器之神 Vim 编辑器 － Emacs 改键工具 Mac 本身 Karabiner - Software for OS X Keyboard Maestro 7.0.1: Work Faster with Macros for Mac OS X 统计工具 GUI 工具 Beyond Compare Source Tree Sublime Text Mou 总结 Mac 是属于程序员</description>
+    </item>
+    
+  </channel>
+</rss>

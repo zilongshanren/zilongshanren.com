@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lua on 子龙山人</title>
+    <link>https://zilongshanren.com/tags/lua/</link>
+    <description>Recent content in Lua on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 11 Aug 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/tags/lua/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lua教程:绑定一个简单的C&#43;&#43;类(6)</title>
+      <link>https://zilongshanren.com/post/bind-a-simple-cpp-class-in-lua/</link>
+      <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/bind-a-simple-cpp-class-in-lua/</guid>
+      <description>本文是最后一篇C/C++与Lua交互的教程，在此之后，我们会结合Cocos2D-X来介绍Lua绑定。本文主要介绍如何绑定一个简单的C++类到</description>
+    </item>
+    
+    <item>
+      <title>Lua教程:C/C&#43;&#43;操作Lua数组和字符串(5)</title>
+      <link>https://zilongshanren.com/post/cpp-operate-lua-string/</link>
+      <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cpp-operate-lua-string/</guid>
+      <description>本文将介绍如何在C/C++里面操作Lua的数组和字符串类型，同时还会介绍如何在C/C++函数里面存储Lua状态（registry和upval</description>
+    </item>
+    
+    <item>
+      <title>Lua教程：Lua调用C/C&#43;&#43;函数(4)</title>
+      <link>https://zilongshanren.com/post/lua-call-cpp-functions/</link>
+      <pubDate>Wed, 30 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/lua-call-cpp-functions/</guid>
+      <description>本教程将介绍如何在Lua里面调用c/c++函数。 在Lua里面调用c/c++函数其实是比较简单，本文将通过两个示例演示具体的做法：一个是求平均</description>
+    </item>
+    
+    <item>
+      <title>Lua教程：C/C&#43;&#43;调用Lua的Table(3)</title>
+      <link>https://zilongshanren.com/post/call-lua-table-from-cpp/</link>
+      <pubDate>Mon, 28 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/call-lua-table-from-cpp/</guid>
+      <description>从写上一篇Lua的文章到现在，已经过去半月有余了，是时候让自己的Lua状态refresh一下了。本教程将介绍Lua的栈及基本栈操作，同时还有</description>
+    </item>
+    
+    <item>
+      <title>Lua教程:C&#43;&#43;和Lua相互传递数据(2)</title>
+      <link>https://zilongshanren.com/post/pass-lua-to-cpp-and-vise-verse/</link>
+      <pubDate>Sun, 06 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/pass-lua-to-cpp-and-vise-verse/</guid>
+      <description>这是我的Lua系列教程的第二篇，本篇文章主要介绍C++和Lua相互传递数据。如果你还不知道怎么在c/c++里面调用Lua脚本的话，请参考这篇</description>
+    </item>
+    
+    <item>
+      <title>Lua教程: C&#43;&#43;嵌入Lua脚本(1)</title>
+      <link>https://zilongshanren.com/post/embed-lua-tutorials-one/</link>
+      <pubDate>Sat, 28 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/embed-lua-tutorials-one/</guid>
+      <description>本系列教程主要介绍如何在C/C++程序里面嵌入Lua脚本，我打算从以下几个方面来介绍： 如何在C/C++里面嵌入Lua脚本 Lua访问C/C++</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>JSAPI用户手册翻译 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="本文档主要涵盖如何嵌入SpiderMonkey javascript引擎到你自己的c&#43;&#43;程序中。 JavaScript在浏览器端已经被广泛使用了" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/jsapi-reference/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="JSAPI用户手册翻译" />
+<meta property="og:description" content="本文档主要涵盖如何嵌入SpiderMonkey javascript引擎到你自己的c&#43;&#43;程序中。 JavaScript在浏览器端已经被广泛使用了" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/jsapi-reference/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-07T00:00:00+00:00" />
+
+<meta itemprop="name" content="JSAPI用户手册翻译">
+<meta itemprop="description" content="本文档主要涵盖如何嵌入SpiderMonkey javascript引擎到你自己的c&#43;&#43;程序中。 JavaScript在浏览器端已经被广泛使用了"><meta itemprop="datePublished" content="2014-06-07T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-07T00:00:00+00:00" />
+<meta itemprop="wordCount" content="10948">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JSAPI用户手册翻译"/>
+<meta name="twitter:description" content="本文档主要涵盖如何嵌入SpiderMonkey javascript引擎到你自己的c&#43;&#43;程序中。 JavaScript在浏览器端已经被广泛使用了"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">JSAPI用户手册翻译</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-07 </span>
+        <div class="post-category">
+            <a href="/categories/javascript/"> Javascript </a>
+            </div>
+          <span class="more-meta"> 约 10948 字 </span>
+          <span class="more-meta"> 预计阅读 22 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-spidermonkey-does">What SpiderMonkey does?</a></li>
+    <li><a href="#hello-world">Hello World</a>
+      <ul>
+        <li><a href="#using-the-spidermonkey-library">Using the SpiderMonkey library</a></li>
+        <li><a href="#the-spidermonkey-universe">The SpiderMonkey universe</a></li>
+        <li><a href="#a-minimal-example">A minimal example</a></li>
+      </ul>
+    </li>
+    <li><a href="#jsapi-concepts">JSAPI Concepts</a>
+      <ul>
+        <li><a href="#javascript-values">Javascript values</a></li>
+        <li><a href="#gabage-collection">Gabage collection</a></li>
+        <li><a href="#errors-and-exceptions">Errors and exceptions</a></li>
+      </ul>
+    </li>
+    <li><a href="#more-sample-code">More sample code</a>
+      <ul>
+        <li><a href="#defining-objects-and-properties">Defining objects and properties</a></li>
+        <li><a href="#definning-classes">Definning classes</a></li>
+        <li><a href="#running-scripts">Running scripts</a></li>
+        <li><a href="#calling-functions">Calling functions</a></li>
+        <li><a href="#jscontext">JSContext</a></li>
+        <li><a href="#initializing-built-in-and-global-js-objects">Initializing built-in and global JS objects</a></li>
+        <li><a href="#creating-and-initializing-custom-objects">Creating and initializing custom objects</a></li>
+        <li><a href="#creating-an-object-from-a-script">Creating an object from a script</a></li>
+        <li><a href="#custom-objects">Custom objects</a></li>
+        <li><a href="#providing-private-data-for-objects">Providing private data for objects</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>本文档主要涵盖如何嵌入SpiderMonkey javascript引擎到你自己的c++程序中。</p>
+<p>JavaScript在浏览器端已经被广泛使用了。现在，Mozilla的javascript引擎可以被嵌入到任何c++程序中，而不仅仅是应用于浏览器。许多应用程序开发可以通过脚本化的方式获益,这些程序可以使用SpiderMonkey API让c++代码里面跑js代码。</p>
+<!-- raw HTML omitted -->
+<h2 id="what-spidermonkey-does">What SpiderMonkey does?</h2>
+<p>Javascript引擎编译并执行js脚本。引擎本身负责脚本执行时的对象内存分配，垃圾收集等工作。</p>
+<p>SpiderMonkey支持Javascript 1.0-1.8版本。Js 1.3以及后来的版本都符合ECMAScript 262-3规范。后面的版本也包含Mozilla扩展，比如数组压缩（array comprehensions）和生成器(generators).SpiderMonkey也支持E4X，但是这个是可选的。</p>
+<p>在Javascript的世界里面，我们马上就可以想到许多特性，比如事件处理(onclick),DOM对象，window.open以及XMLHTTPRequest.但是，在Mozilla里面所有的特性都是由另外的组件提供，而不是SpiderMonkey引擎本身。SpiderMonkey引擎本身只提供javascript核心数据类型，比如number,string,array,object等。还有一些常用的方法，比如Array.push。SpiderMonkey还可以让其它程序非常方便地暴露自己程序中的对象和接口给js代码。比如，浏览器暴露的就是DOM接口。（cocos2d-x暴露的是cocos2d-x的接口）。你自己的程序也可以根据脚本的需求来设计待暴露接口。具体由程序开发者自己来决定哪些对象和方法要暴露给脚本。</p>
+<h2 id="hello-world">Hello World</h2>
+<h3 id="using-the-spidermonkey-library">Using the SpiderMonkey library</h3>
+<p>你的程序可以像使用任何其它c++程序库一样来使用SpiderMonkey。如果想从源码构建SpiderMonkey，可以参考<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/Build_Documentation">SpiderMonkey构建文档</a>.你也可以把SpiderMonkey当作一个静态库或者动态库集成进来。</p>
+<p>有一些平台上面（比如Debian linux）内置了SpiderMonkey包。这样子安装会变得非常容易，但是调试可能会比较复杂。<a href="https://developer.mozilla.org/en-US/docs/Gecko_SDK"> XULRunner SDK</a>里面也包含一个SpiderMonkey引擎，同时还有头文件和库文件。</p>
+<p>c++代码通过JSAPI来访问SpiderMonkey，通过导入头文件&quot;jsapi.h&quot;。JSAPI提供了相应的函数来建立javascript运行时环境，编译，执行脚本，创建和访问javascript数据结构，处理错误，允许安全性检查以及调试脚本。</p>
+<p>如果想了解JSAPI的全部能力，你可以查看<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference">JSAPI Reference</a>;</p>
+<h3 id="the-spidermonkey-universe">The SpiderMonkey universe</h3>
+<p>如果想在SpiderMonkey里面跑javascript，一个程序必须包含三个关键元素:一个JSRutime,一个JSContext和一个全局对象。这一小节专门来阐述这三个关键元素。下一节主要是介绍怎么使用JSAPI来配置这三个关键元素。</p>
+<p><em>Runtimes:</em> 一个JSRutime，或者说运行时。你的程序里所有的js变量，对象，脚本和上下文都由它来分配内存。每一个JSContex和每一个js对象都依托于JSRuntime。它们不能越界访问，也不能共享资源。大部分应用程序只需要一个runtime就可以了。</p>
+<p>_Contexts:_一个JSContext，或者说上下文。它像一部小型机器，可以完成许多javascript对象相关的任务。它负责编译和执行脚本，设置和访问js对象的属性，调用js函数，把js数据类型转换成其它数据类型，创建对象等等。几乎所有的JSAPI都需要一个JSContext 对象作为第一个参数。就像&lt;stdio.h&gt;里面的文件操作一样，都需要一个FILE*指针。</p>
+<p>在context和线程之间还有一层亲密关系。简单来说，单线程的程序只要使用一个context就够了。但是，一个context一次只能做一件事情。因此，在一个多线程程序中，一个线程在任何时刻应该可以使用任意给定的context。那样的程序，一般来说会设计成每一个线程拥有自己的context。而js对象，从另一个角度来说，它并不是一直与script、thread和创建它的context同生共死的。它们可以被许多脚本或者许多线程所共用。如图1。1所示：</p>
+<p>Figure 1.1 js脚本、上下文和对象的关系</p>
+<p><img src="https://zilongshanren.com/img/Over3.gif" alt="figure1"></p>
+<p><em>Global objects:</em> 最后，全局对象包含js脚本中所有的类、函数和变量。脚本里所做的任何操作，比如window.open(&ldquo;<a href="http://www.mozilla.org/%22)">http://www.mozilla.org/&quot;)</a>,
+它都需要访问全局属性，在此例中就是window。JSAPI应用程序对于全局对象里面应该暴露哪些属性给js脚本拥有绝对的控制权。程序刚开始时会创建一个对象，然后使用js的标准类来操作它，比如Array和Object。然后，它会提供一些应用程序所需要的类,对象和函数，比如：window。每一次应用程序跑js脚本时（通过调用JS_EvaluateScript）,它就会提供全局的对象给脚本访问。当脚本在运行的时候，它也可以创建自己的全局函数和全局变量。所以这些函数，类，变量都被当作全局对象的属性。</p>
+<h3 id="a-minimal-example">A minimal example</h3>
+<p>在上一节中描述的三种关键元素需要相应的JSAPI调用：</p>
+<p><em>The runtime:</em> 使用JS_NewRuntime可以创建一个js runtime，对应的可以使用
+JS_DestroyRuntime来销毁这个runtime。当你的程序里面集成SpiderMonnkey以后，你可以使用JS_ShutDown来释放掉缓存里面的资源。（虽然说，你的程序退出的时候这些缓存的资源都会被释放，手动调用JS_ShutDown显得有点多此一举。但是，调用它是一个好习惯。）</p>
+<p><em>The context:</em> 使用JS_NewContext和JS_DestroyContext。为了最大化兼容ECMAScript标准，应用程序需要调用JS_SetOptions来激活JSOPTION_VAROBJFIX.为了支持最新的js语言特性，应用程序需要调用JS_SetVersion。错误处理也需要一个context，我们可以用JS_SetErrorReporter来支持它。</p>
+<p><em>The global object:</em> 为了创建这个对象，你首先需要采用JSCLASS_GLOBAL_FLAGS来创建一个JSClass。下面的例子中，我们举了一个非常简单的JSClass（叫做global_class）。它本身没有任何属性和方法。使用JS_NewGlobalObject来创建一个全局对象。使用JS_InitStandardClasses方法来操作它。</p>
+<p>下面的代码向我们展示了一个最简化版的JSAPI应用程序。它包含了我们之前介绍的所有知识点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;jsapi.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1">// The class of the global object.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">static</span> <span class="n">JSClass</span> <span class="n">global_class</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&#34;global&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">JSCLASS_NEW_RESOLVE</span> <span class="o">|</span> <span class="n">JSCLASS_GLOBAL_FLAGS</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">JS_PropertyStub</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">JS_DeletePropertyStub</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">JS_PropertyStub</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">JS_StrictPropertyStub</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">JS_EnumerateStub</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">JS_ResolveStub</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">JS_ConvertStub</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="nb">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                <span class="n">JSCLASS_NO_OPTIONAL_MEMBERS</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// The error reporter callback.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">reportError</span><span class="p">(</span><span class="n">JSContext</span> <span class="o">*</span><span class="n">cx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">message</span><span class="p">,</span> <span class="n">JSErrorReport</span> <span class="o">*</span><span class="n">report</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;%s:%u:%s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">report</span><span class="o">-&gt;</span><span class="n">filename</span> <span class="o">?</span> <span class="n">report</span><span class="o">-&gt;</span><span class="nl">filename</span> <span class="p">:</span> <span class="s">&#34;no filename&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span> <span class="n">report</span><span class="o">-&gt;</span><span class="n">lineno</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">             <span class="n">message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">run</span><span class="p">(</span><span class="n">JSContext</span> <span class="o">*</span><span class="n">cx</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Enter a request before running anything in the context 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">JSAutoRequest</span> <span class="n">ar</span><span class="p">(</span><span class="n">cx</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Create the global object in a new compartment. 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">JSObject</span> <span class="o">*</span><span class="n">global</span> <span class="o">=</span> <span class="n">JS_NewGlobalObject</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">global_class</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">global</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Set the context&#39;s global 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">JSAutoCompartment</span> <span class="n">ac</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">global</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JS_SetGlobalObject</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">global</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Populate the global object with the standard globals, like Object and Array. 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">JS_InitStandardClasses</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">global</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Your application code here. This may include JSAPI calls to create your own custom JS objects and run scripts. 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Create a JS runtime. 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">JSRuntime</span> <span class="o">*</span><span class="n">rt</span> <span class="o">=</span> <span class="n">JS_NewRuntime</span><span class="p">(</span><span class="mi">8L</span> <span class="o">*</span> <span class="mi">1024L</span> <span class="o">*</span> <span class="mi">1024L</span><span class="p">,</span> <span class="n">JS_NO_HELPER_THREADS</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">rt</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Create a context. 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">JSContext</span> <span class="o">*</span><span class="n">cx</span> <span class="o">=</span> <span class="n">JS_NewContext</span><span class="p">(</span><span class="n">rt</span><span class="p">,</span> <span class="mi">8192</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">cx</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JS_SetOptions</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">JSOPTION_VAROBJFIX</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JS_SetErrorReporter</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">reportError</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">status</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">cx</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JS_DestroyContext</span><span class="p">(</span><span class="n">cx</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JS_DestroyRuntime</span><span class="p">(</span><span class="n">rt</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JS_ShutDown</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">status</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>每一个JSNative有一样的签名，完全可以忽视Javascript那边所传递的函数参数。</p>
+<p>传递给javascript函数的参数由argc和vp.argc来计算，一共传递了多少个参数。然后使用JS_ARGV(cx,cp)来返回这些参数的一个数组。这些参数没有基础c++类型，比如init、float之类的。它们都是一些jsval，即javascript值。这些native的函数使用JS_ConvertArgument来把这些jsval转换成相应的c++类型，然后再把它们存储在本地局部变量中。native函数还使用JS_SET_RVAL(cx,vp,val)来把c++的值返回给js端。</p>
+<p>当函数调用成功的时候，一个JSNative对象必须调用JS_SET_RVAL，并且返回一个JS_TRUE。传递给JS_SET_RVAL的值最终被返回给js端。</p>
+<p>当函数调用失败的时候，一个JSNative对象会调用一个错误处理函数，在本例中就是JS_ReportError,并且返回JS_FALSE。这个代码调用会导致javascript异常被触发。调用者可以在javascript代码里面使用try/catch来捕获这些异常。</p>
+<p>要让一个native的函数可以被js端调用，我们需要声明一个JSFunctionSpec表来描述这些函数信息。然后调用JS_DefineFunction。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="n">JSFunctionSpec</span> <span class="n">myjs_global_functions</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JS_FS</span><span class="p">(</span><span class="s">&#34;rand&#34;</span><span class="p">,</span>   <span class="n">myjs_rand</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JS_FS</span><span class="p">(</span><span class="s">&#34;srand&#34;</span><span class="p">,</span>  <span class="n">myjs_srand</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JS_FS</span><span class="p">(</span><span class="s">&#34;system&#34;</span><span class="p">,</span> <span class="n">myjs_system</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JS_FS_END</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">JS_DefineFunctions</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">global</span><span class="p">,</span> <span class="n">myjs_global_functions</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">JS_FALSE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>一旦函数被定义在global中，任何脚本使用global作为全局对象都可以调用它，就像每一个web页面可以调用alert函数一样。在上面的配置中，我们可以使用下面的脚本来跑&quot;Hello World&rdquo;：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">system</span><span class="p">(</span><span class="s">&#34;echo hello world&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="jsapi-concepts">JSAPI Concepts</h2>
+<p>该部分主要任务是填JSAPI的坑。如果你想使用SpiderMonkey来开发什么程序的话，这必须仔细认真细致完整反复地阅读本节的3个部分内容。</p>
+<h3 id="javascript-values">Javascript values</h3>
+<p>主要的文章:<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/Jsval">jsval</a></p>
+<p>Javascript是一种动态类型的语言：所有的变量和属性在编译间都是没有类型的。那么，像c、c++这种静态类型语言怎么同js交互呢？JSAPI提供了一种数据类型叫做jsval，它可以代表js里面的任何数据类型。一个jsval可以是一个数字，一个字符串，一个bool值，一个对象的引用（比如Object，Array，Data或者Function），甚至可以是null或者undefined。</p>
+<p>对于整形和bool值，jsval自身是包含其值的。在其它情况下，jsval只是一个指针 ，要么指向一个对象或者一个数组 。</p>
+<p>温馨提示：就像c++的指针一样，一个jsval它不会自动初始化为一个安全的值，也可能会成为一个野指针 。这一点和js中的var是有区别的。
+一个悬挂的指针过去可能指向的是一个有效的地址，但是也有可能不会。使用悬挂指针会导致c++程序崩溃。
+就jsval而言，javascript里面的垃圾收集器会自动收集程序里面可回收的对象，字符串数字等对象。
+但是jsval对象本身，它并不保证其自身一定不被垃圾收集器所回收。你可以看Garbage
+collection那一节来了解更多有关jsval安全性的细节问题。</p>
+<p>JSAPI里面包含了一些宏，可以用来测试jsval的javascriopt数据类型。它们是：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">JSVAL_IS_OBJECT</span>
+</span></span><span class="line"><span class="cl"><span class="n">JSVAL_IS_NUMBER</span>
+</span></span><span class="line"><span class="cl"><span class="n">JSVAL_IS_INT</span>
+</span></span><span class="line"><span class="cl"><span class="n">JSVAL_IS_DOUBLE</span>
+</span></span><span class="line"><span class="cl"><span class="n">JSVAL_IS_STRING</span>
+</span></span><span class="line"><span class="cl"><span class="n">JSVAL_IS_BOOLEAN</span>
+</span></span><span class="line"><span class="cl"><span class="n">JSVAL_IS_NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">JSVAL_IS_VOID</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>一个jsval指向一个JSObject，JSDouble或者JSString对象。你可以把jsval向下转型成你需要的类型。转换的api接口是JSVAL_TO_OBJECT,JSVAL_TO_DOUBLE和JSVAL_TO_STRING。这些api可以帮助我们在需要特性类型的时候去做相应的数据类型转换。类似的，你也可以把一个JSObjectt,JSDouble或者JSString对象指针转换成一个jsval。通过使用OBJECT_TO_JSVAL,DOUBLE_TO_JSVAL和STRING_TO_JSVAL.</p>
+<h3 id="gabage-collection">Gabage collection</h3>
+<p>一旦js脚本跑起来以后，所有的js对象，字符串和变量等数据结构都会分配内存。垃圾收集指的是js引擎会自动检测哪些内存没有被引用，而且也不再可能被再次使用，最终js引擎会自动回收这部分内存。</p>
+<p>垃圾收集对于一个JSAPI的程序来讲有两个非常重大的影响。首先，应用程序需要保证js里面的任何值都是可以被GC的。垃圾收集器是会很积极地去搜寻没有被引用的内存的，一旦发现有这样的内存块，它就会释放之。其次，应用程序需要考虑垃圾收集器对程序性能的影响。</p>
+<h4 id="keeping-objects-live">Keeping objects live</h4>
+<p>如果你的JSAPI程序crash了，很可能是由于垃圾收集器发生错误了。你的程序必须确保垃圾收集器可以访问到所有正常使用的js变量。否则，没有被gc引用的内存就会被gc释放掉。因为你的程序下次可能会使用到这些被释放的内存，此时，crash发生了。</p>
+<p>我们有许多方法可以保证一个值是可以被gc管理到的：</p>
+<ul>
+<li>
+<p>如果你想一个js value在JSNative调用期间都可以被访问，你可以把它存储到rval或者一个argv数组中。任何值存储在这两个地方都可以被访问到。如果还想使用更多的argv槽，可以使用JSFunctionSpec.extra.</p>
+</li>
+<li>
+<p>如果一个定制的对象需要把某些值存储在内存中，只需要把这些值当作此对象的属性存储起来即可。只要这个对象是可以被引用的，那么它的属性就是可以被访问到的。如果这些值不一定要让js代码访问，可以使用保留槽<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_GetReservedSlot">reserved slots
+</a>。 也可以使用一个JSClass.mark，然后把值存储到<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_SetPrivate">private data</a>中。</p>
+</li>
+<li>
+<p>如果一个函数创建新的对象、字符串和数字，它可以使用JS_EnterLocalRootScope和JS_LeaveLocalRootScope来保证这些值在函数调用期间不被释放。</p>
+</li>
+<li>
+<p>如果想让一个值永久存在，那么可以它把存储到<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_AddRoot">GC root</a>中。</p>
+</li>
+</ul>
+<p>但是，GC bug还是有可能会发生的。这两个函数，都只有在debug模式下面才能使用，它们对于debug和gc相关的crash非常有帮助。</p>
+<ul>
+<li>
+<p>使用<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_SetGCZeal"> JS_SetGCZeal </a>来激活另外一个垃圾收集器。GC zeal会让GC相关的crash暴露地更多，而且富含更多信息。这个只能用于程序开发和debug阶段，因为这个额外的gc会让js跑得非常慢。</p>
+</li>
+<li>
+<p>使用<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_DumpHeap"> JS_DumpHeap </a>来把SpiderMonkey的堆和其它有用的信息dump出来。</p>
+</li>
+</ul>
+<p>你可以参考<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey_Garbage_Collection_Tips">SpiderMonkey Garbage Collection Tip</a>来了解更多信息。</p>
+<h4 id="gc-performance">GC performance</h4>
+<p>如果经常去做自动垃圾收集，会对你的程序性能造成比较大的影响。有一些程序可以通过增加JSRuntime的初始值大小来减少GC的频率。</p>
+<p>不过，最好的技术应该是让程序在空闲的时候去做GC，这种情况下面，它对终端用户的影响最小。默认情况下，js引擎的垃圾收集时机是，它除了自动增长进程空间而别无他法时。这句话的意思是，垃圾收集发生在内存很吃紧的时候，但是，这时候做垃圾收集其实也是最坏的时机。一个应用程序可以通过调用JS_GC和JS_MaybeGC两个函数来触发垃圾收集。JS_GC会强制执行垃圾收集。而JS_MaybeGC会提醒垃圾收集器，您老是不是该收集无用的内存资源啦？</p>
+<h3 id="errors-and-exceptions">Errors and exceptions</h3>
+<p>检查一个JSAPI函数的返回值的重要性是无需多言的。因为每一个JSAPI函数都会使用一个JSContext指针作为参数，这有可能会导致函数调用失败。因为系统可能会出现内存耗尽的问题。也有可能js脚本中存在语法错误。还有，脚本中有可能显示throw一个异常。</p>
+<p>因为Javascript语言本身支持异常，而c++也支持异常,它两肯定不是一码事。SpiderMonkey本身并没有使用任何c++异常。JSAPI也不会抛出c++异常，当SpiderMonkey去调用一个应用程序回调时，这个回调也绝不会抛出一个c++异常。</p>
+<h4 id="throwing-and-catching-exceptions">Throwing and catching exceptions</h4>
+<p>我们已经看到一个JSNative函数中如何抛出异常的例子了。只需要简单地调用JS_ReportError，然后使用一个和printf风格的参数列表并且返回JS_FALSE。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">rc</span> <span class="o">=</span> <span class="n">system</span><span class="p">(</span><span class="n">cmd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">rc</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* Throw a JavaScript exception. */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">JS_ReportError</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="s">&#34;Command failed with exit code %d&#34;</span><span class="p">,</span> <span class="n">rc</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">JS_FALSE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个和js语句throw new Error(&ldquo;Command failed with exit code&rdquo; + rc)非常相似。另外，需要注意的是，调用JS_ReportError并不会产生一个c++异常。但是SpiderMonkey的栈在展开时不会把c++函数从栈中移除。SpiderMonkey的做法是，返回一个JS_FALSE或者NULL给应用程序。</p>
+<p>如果想了解更多有关异常抛出和异常处理的例子，可以参考<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Cookbook">JSAPI Phrasebook</a>.</p>
+<h4 id="error-reports">Error reports</h4>
+<p>（译注： 这些家伙很懒，这部分文档没有。）</p>
+<h4 id="automatic-handling-of-uncaught-exceptions">Automatic handling of uncaught exceptions</h4>
+<p>在某些特定情况下面，JS_Compile,JS_Call,JS_Execute和JS_Evaluate函数会自动把异常信息传递给error
+reporter程序。这些函数在执行的时候，都会事先检查JSContext，看其中是否有异常。如果有，那么它们会继续检查是否还有其它js代码或者js函数在此JSContext中。如果有，那么这些异常可能会被捕捉，这时SpiderMonkey什么也没做只返回JS_FALSE，并且让异常可以被传播。但是，如果js栈上什么都没有的话，那么没有被捕获的异常就会被直接传给error reporter。</p>
+<p>最后的结果就是，顶层的应用程序设置一个error reporter，然后再开始调用JSAPI函数。应用程序永远都不需要显式去处理未捕获的异常消息。因为error reporter会自动被调用。应用程序也可以禁用这项功能，通过使用(JSOPTION_DONT_REPORT_UNCAUGHT),但是，如果这样做，你还需要显式地调用JS_IsExceptioinPending, JS_GetPendingException, JS_ReportPendingException和JS_ClearPendingException，调用时机就是在JSAPI函数返回JS_FALSE或者NULL之前。</p>
+<h4 id="uncatchable-errors">Uncatchable errors</h4>
+<p>还有一种方式来让JSNative回调来报出一个错误：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">JS_ReportOutOfMemory</span><span class="p">(</span><span class="n">cx</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">JS_FALSE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里的代码和JS_ReportError所做的略微有些不同。</p>
+<p>大部分的错误，包括由JS_ReportError所抛出的错误，都可以用javascript语言异常来表示。使用js的一些内置api
+try/catch/finally。但是，有时候，我们并不想让js端去catch某一个错误，而是想让脚本直接就终止运行。如果在脚本执行期间，我们的系统内存耗尽了，我们就不想让finally那部分代码执行了。因为，脚本总需要一点点内存来执行，而此时我们已经没有内存了。如果一个脚本已经运行很长时间了，我们想杀死它，这时候就不能产生异常，因为那样的话js端的catch会捕捉到这个异常并继续执行下去。</p>
+<p>因此，JS_ReportOutOfMemory(cx)函数被不会抛出一个异常，它会产生一个不可被捕捉的错误。</p>
+<p>如果SpiderMonkey把内存耗尽了，或者是一个JSAPI回调返回JS_FALSE但是没有附带一个异常，那么我们就把它当作一个不可被捕捉的错误。此时，js代码的栈会展开，同时js代码中的catch和finally也不会被执行。</p>
+<p>一个不可被捕捉的错误可以让JSContext状态良好。这样JSContext可以被重用。应用程序也不需要额外的操作来从这些错误中恢复。</p>
+<p>下面一段代码向我们演示了如何产生一个不可被捕捉的错误:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Call the error reporter, if any. This part is optional.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">JS_ReportError</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="s">&#34;The server room is on fire!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">JS_ReportPendingException</span><span class="p">(</span><span class="n">cx</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Make sure the error is uncatchable.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">JS_ClearPendingException</span><span class="p">(</span><span class="n">cx</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="n">JS_FALSE</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="more-sample-code">More sample code</h2>
+<p>下面的例子使用JSAPI来实现了一些功能。</p>
+<p>注意，最重要的例子还是“A minimal example”一节中的例子。大部分的JSAPI代码样例可以在<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Cookbook">JSAPI Phrasebook</a>找到。</p>
+<h3 id="defining-objects-and-properties">Defining objects and properties</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Statically initialize a class to make &#34;one-off&#34; objects. 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">JSClass</span> <span class="n">my_class</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;MyClass&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// All of these can be replaced with the corresponding JS_Stub function pointers. 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">my_addProperty</span><span class="p">,</span> <span class="n">my_delProperty</span><span class="p">,</span> <span class="n">my_getProperty</span><span class="p">,</span> <span class="n">my_setProperty</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">my_enumerate</span><span class="p">,</span>   <span class="n">my_resolve</span><span class="p">,</span>     <span class="n">my_convert</span><span class="p">,</span>     <span class="n">my_finalize</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">JSObject</span> <span class="o">*</span><span class="n">obj</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Define an object named in the global scope that can be enumerated by
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * for/in loops.  The parent object is passed as the second argument, as
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * with all other API calls that take an object/name pair.  The prototype
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * passed in is null, so the default object prototype will be used.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="n">obj</span> <span class="o">=</span> <span class="n">JS_DefineObject</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">globalObj</span><span class="p">,</span> <span class="s">&#34;myObject&#34;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">my_class</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                      <span class="n">JSPROP_ENUMERATE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Define a bunch of properties with a JSPropertySpec array statically
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * initialized and terminated with a null-name entry.  Besides its name,
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * each property has a &#34;tiny&#34; identifier (MY_COLOR, e.g.) that can be used
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * in switch statements (in a common my_getProperty function, for example).
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="nc">my_tinyid</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MY_COLOR</span><span class="p">,</span> <span class="n">MY_HEIGHT</span><span class="p">,</span> <span class="n">MY_WIDTH</span><span class="p">,</span> <span class="n">MY_FUNNY</span><span class="p">,</span> <span class="n">MY_ARRAY</span><span class="p">,</span> <span class="n">MY_RDONLY</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="n">JSPropertySpec</span> <span class="n">my_props</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;color&#34;</span><span class="p">,</span>       <span class="n">MY_COLOR</span><span class="p">,</span>       <span class="n">JSPROP_ENUMERATE</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;height&#34;</span><span class="p">,</span>      <span class="n">MY_HEIGHT</span><span class="p">,</span>      <span class="n">JSPROP_ENUMERATE</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;width&#34;</span><span class="p">,</span>       <span class="n">MY_WIDTH</span><span class="p">,</span>       <span class="n">JSPROP_ENUMERATE</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;funny&#34;</span><span class="p">,</span>       <span class="n">MY_FUNNY</span><span class="p">,</span>       <span class="n">JSPROP_ENUMERATE</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;array&#34;</span><span class="p">,</span>       <span class="n">MY_ARRAY</span><span class="p">,</span>       <span class="n">JSPROP_ENUMERATE</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;rdonly&#34;</span><span class="p">,</span>      <span class="n">MY_RDONLY</span><span class="p">,</span>      <span class="n">JSPROP_READONLY</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="mi">0</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="n">JS_DefineProperties</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">my_props</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Given the above definitions and call to JS_DefineProperties, obj will
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * need this sort of &#34;getter&#34; method in its class (my_class, above).  See
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * the example for the &#34;It&#34; class in js.c.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="n">JSBool</span> <span class="nf">my_getProperty</span><span class="p">(</span><span class="n">JSContext</span> <span class="o">*</span><span class="n">cx</span><span class="p">,</span> <span class="n">JSObject</span> <span class="o">*</span><span class="n">obj</span><span class="p">,</span> <span class="n">jsval</span> <span class="n">id</span><span class="p">,</span> <span class="n">jsval</span> <span class="o">*</span><span class="n">vp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">JSVAL_IS_INT</span><span class="p">(</span><span class="n">id</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">switch</span> <span class="p">(</span><span class="n">JSVAL_TO_INT</span><span class="p">(</span><span class="n">id</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">case</span> <span class="nl">MY_COLOR</span><span class="p">:</span>  <span class="o">*</span><span class="n">vp</span> <span class="o">=</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="k">case</span> <span class="nl">MY_HEIGHT</span><span class="p">:</span> <span class="o">*</span><span class="n">vp</span> <span class="o">=</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="k">case</span> <span class="nl">MY_WIDTH</span><span class="p">:</span>  <span class="o">*</span><span class="n">vp</span> <span class="o">=</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="k">case</span> <span class="nl">MY_FUNNY</span><span class="p">:</span>  <span class="o">*</span><span class="n">vp</span> <span class="o">=</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="k">case</span> <span class="nl">MY_ARRAY</span><span class="p">:</span>  <span class="o">*</span><span class="n">vp</span> <span class="o">=</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">          <span class="k">case</span> <span class="nl">MY_RDONLY</span><span class="p">:</span> <span class="o">*</span><span class="n">vp</span> <span class="o">=</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">JS_TRUE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="definning-classes">Definning classes</h3>
+<p>这一部分内容通过使用JSAPI来定义构造函数，原型对象，原型对象的属性，以及构造函数的属性。</p>
+<p>初始化一个类，可以通过定义构造函数，原型和一些预定义的实例属性和类属性。类属性和java中的静态属性有点相似。它们都被定义在对象的构造函数作用域内，这样MyClass.myStaticProp就可以和new MyClass()一起被js端所使用了。</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_InitClass">JS_InitClass</a>接收很多参数，但是，最后4个参数是可以传递空的。如果你不想让定义的类有相应的属性的话。</p>
+<p>注意，你不需要去调用JS_InitClass来创建一个类的实例，这是一个先有鸡还是先有蛋的问题。你只需要调用JS_InitClass，这样脚本在执行new操作的时候就可以找到相应的构造函数了。这样js端就可以通过运行时从对象的prototype对象（MYClass.prototypea）或者继承的对象中访问相应的属性。一般来讲，如果你想让多个实例共享同样的行为，可以使用JS_InitClass.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">protoObj</span> <span class="o">=</span> <span class="n">JS_InitClass</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">globalObj</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">my_class</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">MyClass</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">my_props</span><span class="p">,</span> <span class="n">my_methods</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                        <span class="c1">// class constructor properties and methods /
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                        <span class="n">my_static_props</span><span class="p">,</span> <span class="n">my_static_methods</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="running-scripts">Running scripts</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cm">/* These should indicate source location for diagnostics. */</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">filename</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">uintN</span> <span class="n">lineno</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * The return value comes back here -- if it could be a GC thing, you must
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * add it to the GC&#39;s &#34;root set&#34; with JS_AddRoot(cx, &amp;thing) where thing
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * is a JSString *, JSObject *, or jsdouble *, and remove the root before
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * rval goes out of scope, or when rval is no longer needed.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="n">jsval</span> <span class="n">rval</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">JSBool</span> <span class="n">ok</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Some example source in a C string.  Larger, non-null-terminated buffers
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * can be used, if you pass the buffer length to JS_EvaluateScript.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kt">char</span> <span class="o">*</span><span class="n">source</span> <span class="o">=</span> <span class="s">&#34;x * f(y)&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ok</span> <span class="o">=</span> <span class="n">JS_EvaluateScript</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">globalObj</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="n">source</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                       <span class="n">filename</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rval</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">ok</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//Should get a number back from the example source. 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">jsdouble</span> <span class="n">d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ok</span> <span class="o">=</span> <span class="n">JS_ValueToNumber</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">rval</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">d</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span> <span class="p">.</span> <span class="p">.</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="calling-functions">Calling functions</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Call a global function named &#34;foo&#34; that takes no arguments.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">ok</span> <span class="o">=</span> <span class="n">JS_CallFunctionName</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">globalObj</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rval</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">jsval</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Call a function in obj&#39;s scope named &#34;method&#34;, passing two arguments. 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.;</span>
+</span></span><span class="line"><span class="cl"><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">.</span> <span class="p">.</span> <span class="p">.;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ok</span> <span class="o">=</span> <span class="n">JS_CallFunctionName</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="s">&#34;method&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rval</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="jscontext">JSContext</h3>
+<p>因为在分配和维护context时存在一定的开销，一个JSAPI程序应该：</p>
+<ol>
+<li>
+<p>一次只创建需要个数的context。（简言之，就是按需创建）</p>
+</li>
+<li>
+<p>尽可能保持context存活时间更长，而不是反复地释放并重建。（简言之，就是cache）</p>
+</li>
+</ol>
+<p>如果程序创建多个runtime，你需要清楚哪一个runtime和哪一个context相关联。想了解更多，请参考<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_GetRuntime">JS_GetRuntime</a></p>
+<p>使用<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_GetContextPrivate">JS_SetContextPrivate</a>和<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_GetContextPrivate">JS_GetContextPrivate</a>来把应用程序相关的数据与context关联起来。</p>
+<h3 id="initializing-built-in-and-global-js-objects">Initializing built-in and global JS objects</h3>
+<p>如果想了解SpiderMonkey所有内置的对象，可以参考<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_InitStandardClasses">JS_InitStandardClasses</a>.</p>
+<p>应用程序提供的全局对象在很大程度上决定了脚本可以做哪些事情。比如，FireFox浏览器使用它自己的全局对象windows。你可以更改自已应用的全局对象，使用<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_SetGlobalObject">JS_SetGlobalObject</a></p>
+<h3 id="creating-and-initializing-custom-objects">Creating and initializing custom objects</h3>
+<p>除了引擎内置的对象，你还可以创建、初始化和使用你自己的js对象。特别是在你想使用js引擎来自动化你的程序。定制的js对象可以提供了一些直接的服务，或者说它们充当了你的脚本和程序的接口。比如，一个定制的对象可以提供你程序中所有的网络访问功能，也可以充当你的程序与数据库交互的一个中介者。或者可以把你的程序里面原来采用c或者c++编写的功能代码映射成一种js的面向对象形式。这种内置的对象其实就是你的脚本与程序核心交流的桥梁。你可以从脚本里面传值给程序，也可以从程序里面返回值给脚本。</p>
+<p>目前有两种方法让js引擎创建定制的对象：</p>
+<ul>
+<li>
+<p>编写一个js脚本来创建对象，它的属性、构造器、函数，然后在运行时把这个对象传给js引擎。</p>
+</li>
+<li>
+<p>在你的程序中嵌入一些代码，这些代码定义了js对象的属性和方法，然后调引擎基于这些代码去创建相应的js对象。这种方法的好处是，你的程序包含了本地方法可以直接操作本地对象。</p>
+</li>
+</ul>
+<h3 id="creating-an-object-from-a-script">Creating an object from a script</h3>
+<p>从脚本中创建对象，原因之一就是你只想让这个定制对象和脚本的生命周期一致。如果你想创建一些对象可以在多个脚本中使用，就应该把这个对象嵌入到应用程序中，而不是写在脚本里面。</p>
+<p>注意：你也可以使用脚本来创建持久的对象。</p>
+<p>使用脚本来创建定制对象：</p>
+<ol>
+<li>
+<p>定义和设计该对象。它的用途是什么？它有哪些数据成员？它有哪些方法？它需要一个构造函数吗？</p>
+</li>
+<li>
+<p>编写js代码来定义并创建对象。比如，function myfunc(){var x = newObject()}}。注意，使用js脚本编写的js对象是在js引擎context之外的。如果想了解更多有关对象脚本化的内容，可以参考Client-Side JavaScript Guide 和 Server-side JavaScript
+Guide.嵌入一个合适的js引擎到你的应用程序中，然后编译并执行这些脚本。你有两个选择：1）每次调用一个函数都使用JS_EvaluateScript和JS_EvaluateUCScript来编译来执行js脚本。2）使用JS_CompileScript或者JS_CompileUCScript来编译脚本，然后可以使用JS_ExecuteScript来重复使用之。这个&quot;UC&quot;版本可以支持unicode脚本。</p>
+</li>
+</ol>
+<p>你使用脚本创建的对象，它的生命周期与脚本本身是一致的。你也可以创建一些对象，它们在脚本执行完成之后，还可以存在。一般情况是，当脚本运行完，这些被脚本创建的对象就被销毁了。在许多情况下面，这正是你的应用程序所期待的行为。但是，也有一些特殊的情况，你可能需要让某些对象可以大多个脚本之间共享。</p>
+<h3 id="custom-objects">Custom objects</h3>
+<p>一个应用程序可以不用JSClass来创建定制对象：</p>
+<ol>
+<li>
+<p>在c/c++端使用你的对象的setter/getter和方法。然后为每一个setter or getter编写一个<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JSPropertyOp">JSPropertyOp</a>。为每一个方法编写JSNative或者JSFastNative方法。</p>
+</li>
+<li>
+<p>为你的对象的所有的属性，包括gettter and settter声明<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JSPropertySpec">JSPropertySpec</a>数组。</p>
+</li>
+<li>
+<p>为你的定制对象的所有的方法声明<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JSFunctionSpec">JSFunctionSpec</a>数组。</p>
+</li>
+<li>
+<p>调用<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_NewObject">JS_NewObject</a>,<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_ConstructObject">JS_ContructObject</a> or
+<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_DefineObject">JS_DefineObject</a>来创建对象。</p>
+</li>
+<li>
+<p>调用<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_DefineProperties">JS_DefineProperties</a>来定义对象属性</p>
+</li>
+<li>
+<p>调用<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_DefineFunctions">JS_DefineFunctions</a>来定义对象的方法.</p>
+</li>
+</ol>
+<p><a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_SetProperty">JS_SetProperty</a>也可以用来创建对象的属性。但是它创建的属性没有getter和setter。这些属性只是普通的Javascript属性。</p>
+<h3 id="providing-private-data-for-objects">Providing private data for objects</h3>
+<p>就像context一样，你可以把很多数据与对象进行关联，而不需要显式把这些数据当作对象本身的属性。调用<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_SetPrivate">JS_SetPrivate</a>可以为对象建立一个指向私有数据的指针。然后再调用<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_GetPrivate">JS_GetPrivate</a>来访问这些私有数据。你的应用程序本身负责创建和管理这些可选的私有数据。</p>
+<p>想要为你的私有对象创建私有数据，可以按如下方法进行：</p>
+<ol>
+<li>
+<p>把私有数据和一个普通的c指针关联起来。</p>
+</li>
+<li>
+<p>调用<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_SetPrivate">JS_SetPrivate</a>，指定对象要与哪个私有数据建立联接。</p>
+</li>
+</ol>
+<p>比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="n">JS_SetPrivate</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">pdata</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>为了在后续可以访问这些数据，调用<a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_Reference/JS_GetPrivate">JS_GetPrivate</a>，然后把对象作为参数传进来。这个函数会返回此对象的私有数据指针。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">pdata</span> <span class="o">=</span> <span class="n">JS_GetPrivate</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">obj</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>后记：后面的部分比较高级，讲的是unicode，安全性，引擎debug和引擎性能调试的内容，如果想继续了解的读者可以参考下面的链接。</p>
+<p>Reference:  <a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey/JSAPI_User_Guide#Error_reports">jsapi_user-guid</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-07
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/cocos2d-x-design-pattern-two-stage-creation/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Cocos2D-X 设计模式：二段构建模式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/opengl-es20-write-your-own-shader/">
+            <span class="next-text nav-default">OpenGL ES2.0教程：编写自己的shader(2)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/jsapi-reference/" class="leancloud_visitors" data-flag-title="JSAPI用户手册翻译">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

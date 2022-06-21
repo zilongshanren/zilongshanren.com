@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>编程之道：自动洗碗机 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="在上一篇文章 中，我提到了一些开发过程中非常容易被忽略和轻视的工作，比如代码整理， commit 整理，添加测试等。做好这些工作不仅仅需要专业的知识，还需要" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/auto-wash-your-bowls/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="编程之道：自动洗碗机" />
+<meta property="og:description" content="在上一篇文章 中，我提到了一些开发过程中非常容易被忽略和轻视的工作，比如代码整理， commit 整理，添加测试等。做好这些工作不仅仅需要专业的知识，还需要" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/auto-wash-your-bowls/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-08-10T22:54:00+08:00" />
+<meta property="article:modified_time" content="2019-08-11T12:09:45+08:00" />
+
+<meta itemprop="name" content="编程之道：自动洗碗机">
+<meta itemprop="description" content="在上一篇文章 中，我提到了一些开发过程中非常容易被忽略和轻视的工作，比如代码整理， commit 整理，添加测试等。做好这些工作不仅仅需要专业的知识，还需要"><meta itemprop="datePublished" content="2019-08-10T22:54:00+08:00" />
+<meta itemprop="dateModified" content="2019-08-11T12:09:45+08:00" />
+<meta itemprop="wordCount" content="1739">
+<meta itemprop="keywords" content="thoughts,programming," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="编程之道：自动洗碗机"/>
+<meta name="twitter:description" content="在上一篇文章 中，我提到了一些开发过程中非常容易被忽略和轻视的工作，比如代码整理， commit 整理，添加测试等。做好这些工作不仅仅需要专业的知识，还需要"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">编程之道：自动洗碗机</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-08-10 </span>
+        
+          <span class="more-meta"> 约 1739 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#linter-工具和代码格式化工具">Linter 工具和代码格式化工具</a></li>
+    <li><a href="#持续集成和持续部署">持续集成和持续部署</a></li>
+    <li><a href="#git-commit">Git Commit</a></li>
+    <li><a href="#自动化测试">自动化测试</a></li>
+    <li><a href="#无处不在的工具化">无处不在的工具化</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>在<a href="https://zilongshanren.com/post/wash-bowls-after-launch/">上一篇文章</a> 中，我提到了一些开发过程中非常容易被忽略和轻视的工作，比如代码整理，
+commit 整理，添加测试等。做好这些工作不仅仅需要专业的知识，还需要非常强的自律才可以很好的完成。相比于精妙的算法和高大上的模式，做这些事情的优先级在很多开发团队里面比较低，通常可能是没人做。因为做好了这些事情，可能你也很难升职加薪，并且软件质量的提升也不是那么的明显（相比于改掉一些严重的 bug 而言）。</p>
+<p>但是我相信很多开发者其实都是认可做好这些事情的价值的，而且国外的开源项目也是非常重视这些工作的。为什么没有做，或者又为什么这些事情没做好，我觉得可能跟人的惰性有关，自律这个东西太难。或许你会不同意我的观点，觉得可能是 PM 不给你专门的时间去做这些事情，所以才导致“碗都没人洗”。其实这个观点是有失偏颇的，更深层次的原因我感觉是开发流程上的随意、不规范，开发人员意识上的淡薄、不关心，还有产品导向、市场导向和结果导向的大环境。</p>
+<p>洗碗本身是个体力活，也是个精细活，如果常年累月重复这些事情，难免也会厌倦并且于自身成长不利。但是，这些又是必须要做的事情，如果我们能把些事情自动化，或者有一些工具可以辅助我们更方便地做这些事，那么这些事情就会变成每天的刷牙洗脸一样。</p>
+<p><strong>声明：虽然电动牙刷非常好用，但是不代表每个买了电动牙刷的人都会坚持早晚刷牙的习惯。</strong></p>
+<h2 id="linter-工具和代码格式化工具">Linter 工具和代码格式化工具</h2>
+<p>这里我主要讲一下 Js 语言的开发过程中的代码整理工作的自动化。首先，因为 Js 是动态类型语言，有很多写法错误没法像编译型语言一样在运行之前被编译器检查出来。</p>
+<p>这个时候，我们就需要 ESLint 这样的 linter 工具了。这个工具除了可以帮你检查出潜在的语法问题，还可以配置检查代码的圈复杂度等信息。</p>
+<p>另外，像很多语言有自己的代码编写规范，里面会定义很多排版规则。其实我本人是更喜欢自动化的代码格式化工具来做这些事情。这样的话团队里面所有的人写出来的代码风格都是一致的，而且可以很方便地保持一致。</p>
+<h2 id="持续集成和持续部署">持续集成和持续部署</h2>
+<p>持续集成（CI）和持续部署（CD）是现代软件开发过程中非常重要的两个环节，持续集成可以在代码提交到版本库之前，做很多自动化的“洗碗操作”。比如自动跑测试，自动跑
+ESLint 工具。也可以代码合并之后，自动跑代码格式化工具。而持续部署可以让测试和产品人员更快地体验到迭代后的产品，然后随时跟开发同学反馈，形成一个快速反馈的闭环，有点类似于很多编程语言里面的 REPL。</p>
+<h2 id="git-commit">Git Commit</h2>
+<p>关于 Git Commit 的编写规范，ruanyifeng 老师有<a href="http://www.ruanyifeng.com/blog/2016/01/commit%5Fmessage%5Fchange%5Flog.html">一篇文章</a>非常不错，里面的很多规范都是非常有说头的，重点不在于这些规范到底有多好，而在于文章里面提及了很多工具，可以辅助程序员编写合格的 Commit 日志。</p>
+<p>另外，像 Emacs 的 magit ，也是非常好用的 git 工具，在做 interactive rebase 的时候非常好用，感兴趣的同学可以参考<a href="https://www.youtube.com/watch?v=mtliRYQd0j4">这个视频（请自行准备梯子）</a>。</p>
+<h2 id="自动化测试">自动化测试</h2>
+<p>测试一定要自动化，并且要能够非常快速地运行并给出结果反馈。成熟的开发者社区都有自己的自动化测试框架，当你把测试用例都准备好以后，可以在每日构建之后自动跑这些测试用例，然后生成测试报告抄送给团队相关人员。</p>
+<p>这里面有一点必须提一下：测试用例的编写必须非常简单，最好是有工具可以辅助生成。像 OO 代码大多臃肿，非常不利于测试，而函数式风格的代码就很好编写测试。</p>
+<p>测试代码也需要 easy to write, easy to read and easy to change.</p>
+<h2 id="无处不在的工具化">无处不在的工具化</h2>
+<p>以前 web 开发的时候，修改完代码需要手动刷新浏览器，现在 hot reload 都成为了主流。</p>
+<p>js 的语法糖里面有 destructuring<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> 特性，而这个特性可以帮助我们优雅地实现模式 RORO<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>Rust 的编译器保证对象所有权的语义模型，保证了内存的安全。</p>
+<p>React 和 nodejs 的各种脚手架项目，方便初学者入门，减少了大量重复性工作。</p>
+<p>Java 的代码生成工具、重构工具，都可以极大地解放生产力，让 OO 代码的结构调整变得更加容易，同时程序员在利用这些工具去完成工作的时候幸福感也会更高。</p>
+<h2 id="总结">总结</h2>
+<p>最后，关于代码重复的问题，相信今后随着机器学习的发展，对于简单的重复函数和重复结构应该是可以检查出来的，直接在 Pull Request 阶段就可以检查并标记出来。对于业务代码里面的知识重复，目前我还想不到什么自动化的方法，不过可以通过方案 Review 和代码评审解决掉一些。</p>
+<p>熟悉我的人都知道我是一个工具控，我喜欢折腾各种实用好玩的工具，我本人也是一名非常重度的 Emacs 用户，喜欢在 Emacs 里面做任何事情，然后把这些事情集成到我的工作流之中，帮助我更好地解决问题。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring%5Fassignment">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring%5Fassignment</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://zhuanlan.zhihu.com/p/34025104">https://zhuanlan.zhihu.com/p/34025104</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-08-11
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/thoughts/">thoughts</a>
+          <a href="/tags/programming/">programming</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/three-years-in-tencent/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">在腾讯工作三年总结</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/wash-bowls-after-launch/">
+            <span class="next-text nav-default">编程之道：饭后洗碗</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/auto-wash-your-bowls/" class="leancloud_visitors" data-flag-title="编程之道：自动洗碗机">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

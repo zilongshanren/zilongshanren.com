@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Lua教程:C&#43;&#43;和Lua相互传递数据(2) - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="这是我的Lua系列教程的第二篇，本篇文章主要介绍C&#43;&#43;和Lua相互传递数据。如果你还不知道怎么在c/c&#43;&#43;里面调用Lua脚本的话，请参考这篇" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/pass-lua-to-cpp-and-vise-verse/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Lua教程:C&#43;&#43;和Lua相互传递数据(2)" />
+<meta property="og:description" content="这是我的Lua系列教程的第二篇，本篇文章主要介绍C&#43;&#43;和Lua相互传递数据。如果你还不知道怎么在c/c&#43;&#43;里面调用Lua脚本的话，请参考这篇" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/pass-lua-to-cpp-and-vise-verse/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-07-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-07-06T00:00:00+00:00" />
+
+<meta itemprop="name" content="Lua教程:C&#43;&#43;和Lua相互传递数据(2)">
+<meta itemprop="description" content="这是我的Lua系列教程的第二篇，本篇文章主要介绍C&#43;&#43;和Lua相互传递数据。如果你还不知道怎么在c/c&#43;&#43;里面调用Lua脚本的话，请参考这篇"><meta itemprop="datePublished" content="2014-07-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-07-06T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1643">
+<meta itemprop="keywords" content="Lua," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Lua教程:C&#43;&#43;和Lua相互传递数据(2)"/>
+<meta name="twitter:description" content="这是我的Lua系列教程的第二篇，本篇文章主要介绍C&#43;&#43;和Lua相互传递数据。如果你还不知道怎么在c/c&#43;&#43;里面调用Lua脚本的话，请参考这篇"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Lua教程:C&#43;&#43;和Lua相互传递数据(2)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-07-06 </span>
+        <div class="post-category">
+            <a href="/categories/lua/"> Lua </a>
+            </div>
+          <span class="more-meta"> 约 1643 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#加载并运行lua脚本">加载并运行Lua脚本</a>
+      <ul>
+        <li><a href="#创建lua虚拟机">创建Lua虚拟机</a></li>
+        <li><a href="#加载lua库">加载Lua库</a></li>
+        <li><a href="#运行lua脚本">运行Lua脚本</a></li>
+      </ul>
+    </li>
+    <li><a href="#cc调用lua函数">C/C++调用Lua函数</a></li>
+    <li><a href="#操作lua全局变量">操作Lua全局变量</a>
+      <ul>
+        <li><a href="#c里面获取lua全局变量的值">C++里面获取Lua全局变量的值</a></li>
+        <li><a href="#c里面修改lua全局变量的值">C++里面修改Lua全局变量的值</a></li>
+      </ul>
+    </li>
+    <li><a href="#c传递table给lua">C++传递Table给Lua</a></li>
+    <li><a href="#lua返回多个值给c">Lua返回多个值给C++</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>这是我的Lua系列教程的第二篇，本篇文章主要介绍C++和Lua相互传递数据。如果你还不知道怎么在c/c++里面调用Lua脚本的话，请参考<a href="https://zilongshanren.com/blog/2014-06-28-embeded-lua-tutorial-one.html">这篇文章</a>.
+本文主要介绍基本数据类型的传递，比如整形(int)，字符串(string)、数字(number)及bool值。</p>
+<p>本系列教程源码地址：https://github.com/zilongshanren/LuaCppBindingDemo</p>
+<!-- raw HTML omitted -->
+<h2 id="加载并运行lua脚本">加载并运行Lua脚本</h2>
+<p>由于在上一个教程里面已经介绍过如何在C/C++里面嵌入Lua，所以这一节就简单的介绍一下程序怎么用，配置就略过啦。</p>
+<h3 id="创建lua虚拟机">创建Lua虚拟机</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="n">lua_State</span> <span class="o">*</span><span class="n">lua_state</span> <span class="o">=</span> <span class="n">luaL_newstate</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="加载lua库">加载Lua库</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="k">const</span> <span class="n">luaL_Reg</span> <span class="n">lualibs</span><span class="p">[]</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="s">&#34;base&#34;</span><span class="p">,</span> <span class="n">luaopen_base</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="s">&#34;io&#34;</span><span class="p">,</span> <span class="n">luaopen_io</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">luaL_Reg</span> <span class="o">*</span><span class="n">lib</span> <span class="o">=</span> <span class="n">lualibs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(;</span> <span class="n">lib</span><span class="o">-&gt;</span><span class="n">func</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="n">lib</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">luaL_requiref</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="n">lib</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span> <span class="n">lib</span><span class="o">-&gt;</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">lua_pop</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="运行lua脚本">运行Lua脚本</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">scriptPath</span> <span class="o">=</span> <span class="s">&#34;lesson2.lua&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">status</span> <span class="o">=</span> <span class="n">luaL_loadfile</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="n">scriptPath</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; return: &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">status</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="n">LUA_OK</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">result</span> <span class="o">=</span> <span class="n">lua_pcall</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">LUA_MULTRET</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; Could not load the script.&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里我们使用的是luaL_loadfile而不是之前的luaL_dofile，其实luaL_dofile只是一个宏定义：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#define luaL_dofile(L, fn) \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    (luaL_loadfile(L, fn) || lua_pcall(L, 0, LUA_MULTRET, 0))
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们先调用luaL_loadfile可以判断Lua脚本是否加载成功，然后再调用lua_pcall来执行Lua脚本。</p>
+<h2 id="cc调用lua函数">C/C++调用Lua函数</h2>
+<p>首先，我们在hello.lua里面定义一个lua函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="o">--</span> <span class="n">add</span> <span class="n">two</span> <span class="n">numbers</span>
+</span></span><span class="line"><span class="cl"><span class="n">function</span> <span class="n">add</span> <span class="p">(</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</span></span><span class="line"><span class="cl"><span class="n">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Lua的函数定义是以function为keyword，然后以end结尾，同时它的参数是没有形参类型的，另外，Lua的函数可以返回多个值。不过我们这里只返回了一个值。</p>
+<p>接下来，让我们看看如果在C++程序里面调用这个函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">luaAdd</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">lua_state</span> <span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">sum</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//获取lua里面的add函数并把它放到lua的栈顶
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">lua_getglobal</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="s">&#34;add&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//往lua栈里面压入两个参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">lua_pushnumber</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_pushnumber</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//调用lua函数,这里的2是参数的个数，1是返回值的个数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">lua_call</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//从栈顶读取返回值,注意这里的参数是-1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">sum</span> <span class="o">=</span> <span class="n">lua_tonumber</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//最后我们把返回值从栈顶拿掉
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">lua_pop</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，我们就可以在程序里面调用它了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="s">&#34;2 + 1= &#34;</span> <span class="o">&lt;&lt;</span> <span class="n">luaAdd</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意这个方法调用要在lua_pcall调用之后。</p>
+<h2 id="操作lua全局变量">操作Lua全局变量</h2>
+<h3 id="c里面获取lua全局变量的值">C++里面获取Lua全局变量的值</h3>
+<p>首先，我们在hello.lua里面定义一个全局变量</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">myname</span> <span class="o">=</span> <span class="s">&#34;子龙山人&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后我们在C++里面访问它：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="n">lua_getglobal</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="s">&#34;myname&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">myname</span> <span class="o">=</span> <span class="n">lua_tostring</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_pop</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;Hello: &#34;</span><span class="o">&lt;&lt;</span><span class="n">myname</span><span class="o">&lt;&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这一次我们又是通过lua_getglobal来把myname这个全局变量压到lua栈，然后用lua_tostring来取这个值。</p>
+<h3 id="c里面修改lua全局变量的值">C++里面修改Lua全局变量的值</h3>
+<p>这次我们使用的是lua_setglobal来传递数据给Lua：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="n">lua_pushstring</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="s">&#34;World&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_setglobal</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="s">&#34;myname&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这时，我们只要在hello.lua的最开始部分，调用print(myname)就可以打印传递进来的值了。</p>
+<h2 id="c传递table给lua">C++传递Table给Lua</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">   <span class="n">lua_createtable</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_pushnumber</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_pushnumber</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="mi">49</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_rawset</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_pushnumber</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_pushstring</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="s">&#34;Life is a beach&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_rawset</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_setglobal</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="s">&#34;arg&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里我们传递了一个table给lua，这个table为{49,&ldquo;Life is a beach&rdquo;}。Lua table的索引是从1开始的，然后我们在lua脚本里面可以这样子来访问这个table:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="err">#</span><span class="n">arg</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="n">print</span><span class="p">(</span><span class="s">&#34;      &#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">arg</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="n">end</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里的#arg是获得table的长度，然后使用arg[i]来获取table的索引i处的value。</p>
+<h2 id="lua返回多个值给c">Lua返回多个值给C++</h2>
+<p>首先是Lua代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">local</span> <span class="n">temp</span> <span class="o">=</span> <span class="p">{</span><span class="mi">9</span><span class="p">,</span> <span class="s">&#34;hehehej&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">--</span> <span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">9</span>
+</span></span><span class="line"><span class="cl"><span class="o">--</span> <span class="n">temp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="s">&#34;See you space cowboy!&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="n">temp</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后是C++代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="n">std</span><span class="o">::</span><span class="n">stringstream</span> <span class="n">str_buf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="n">lua_gettop</span><span class="p">(</span><span class="n">lua_state</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">str_buf</span><span class="p">.</span><span class="n">str</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">str_buf</span> <span class="o">&lt;&lt;</span> <span class="s">&#34; &#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">switch</span><span class="p">(</span><span class="n">lua_type</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="n">lua_gettop</span><span class="p">(</span><span class="n">lua_state</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="nl">LUA_TNUMBER</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">str_buf</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;script returned the number: &#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">&lt;&lt;</span> <span class="n">lua_tonumber</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="n">lua_gettop</span><span class="p">(</span><span class="n">lua_state</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="nl">LUA_TTABLE</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">str_buf</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;script returned a table&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="nl">LUA_TSTRING</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">str_buf</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;script returned the string: &#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">&lt;&lt;</span> <span class="n">lua_tostring</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="n">lua_gettop</span><span class="p">(</span><span class="n">lua_state</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">case</span> <span class="nl">LUA_TBOOLEAN</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">str_buf</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;script returned the boolean: &#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">&lt;&lt;</span> <span class="n">lua_toboolean</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="n">lua_gettop</span><span class="p">(</span><span class="n">lua_state</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">str_buf</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;script returned an unknown-type value&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">lua_pop</span><span class="p">(</span><span class="n">lua_state</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">str_buf</span><span class="p">.</span><span class="n">str</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后输出结果为:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="p">[</span><span class="n">C</span><span class="o">++</span><span class="p">]</span> <span class="n">Values</span> <span class="n">returned</span> <span class="n">from</span> <span class="n">the</span> <span class="nl">script</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl"> <span class="n">script</span> <span class="n">returned</span> <span class="n">the</span> <span class="nl">number</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"> <span class="n">script</span> <span class="n">returned</span> <span class="n">the</span> <span class="nl">number</span><span class="p">:</span> <span class="mi">9</span>
+</span></span><span class="line"><span class="cl"> <span class="n">script</span> <span class="n">returned</span> <span class="n">a</span> <span class="n">table</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="n">C</span><span class="o">++</span><span class="p">]</span> <span class="n">Closing</span> <span class="n">the</span> <span class="n">Lua</span> <span class="n">state</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在lua里面return值的顺序是table,9,1，而在C++里面是倒过来的。因为我们是使用栈作为数据结构来传递数据，而栈是先进后出的。</p>
+<p>下一篇文章，我们将介绍一下C++调用Lua的Table。</p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>
+<p><a href="http://www.acamara.es/blog/2012/08/passing-variables-from-lua-5-2-to-c-and-vice-versa/">http://www.acamara.es/blog/2012/08/passing-variables-from-lua-5-2-to-c-and-vice-versa/</a></p>
+</li>
+<li>
+<p><a href="http://lua-users.org/wiki/CppLuaDataPassing">http://lua-users.org/wiki/CppLuaDataPassing</a></p>
+</li>
+<li>
+<p><a href="http://gamedevgeek.com/tutorials/calling-lua-functions/">http://gamedevgeek.com/tutorials/calling-lua-functions/</a></p>
+</li>
+<li>
+<p><a href="http://stackoverflow.com/questions/1438842/iterating-through-a-lua-table-from-c">http://stackoverflow.com/questions/1438842/iterating-through-a-lua-table-from-c</a></p>
+</li>
+<li>
+<p><a href="http://xxnull.blog.163.com/blog/static/176398157201181991147848/">http://xxnull.blog.163.com/blog/static/176398157201181991147848/</a></p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-07-06
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/lua/">Lua</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/does-you-stuff-all-on-cloud/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">程序猿：你的&#34;家当&#34;都在云上吗？</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/how-to-write-one-blog-post-each-week/">
+            <span class="next-text nav-default">如何坚持每周写一篇博客</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/pass-lua-to-cpp-and-vise-verse/" class="leancloud_visitors" data-flag-title="Lua教程:C&#43;&#43;和Lua相互传递数据(2)">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

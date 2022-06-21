@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>work on 子龙山人</title>
+    <link>https://zilongshanren.com/categories/work/</link>
+    <description>Recent content in work on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 21 Feb 2021 17:59:00 +0800</lastBuildDate><atom:link href="https://zilongshanren.com/categories/work/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在腾讯工作三年总结</title>
+      <link>https://zilongshanren.com/post/three-years-in-tencent/</link>
+      <pubDate>Sun, 21 Feb 2021 17:59:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/three-years-in-tencent/</guid>
+      <description>不知不觉，来腾讯工作已经超过 3 年了，由于工作比较忙，在深圳的生活节奏很快，一直没有时间来写博客。今天，趁着周末有空，也来总结一下我在腾讯这 3</description>
+    </item>
+    
+    <item>
+      <title>工作两年总结(下)</title>
+      <link>https://zilongshanren.com/post/2015-08-09-postmotem-of-two-years-work-part2/</link>
+      <pubDate>Sun, 09 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-08-09-postmotem-of-two-years-work-part2/</guid>
+      <description>Table of Contents 不够专注 不够关心细节 不够主动争取 没有按需学习 做正确的事,不要做容易的事 小结 本文是工作两年总结（上） | 子龙山人 的续，主要介绍我这两年经历</description>
+    </item>
+    
+    <item>
+      <title>工作两年总结（上）</title>
+      <link>https://zilongshanren.com/post/2015-07-26-postmotem-of-two-years-programming-career/</link>
+      <pubDate>Sun, 26 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-07-26-postmotem-of-two-years-programming-career/</guid>
+      <description>Table of Contents 收获 掌握 Emacs 掌握 Git 和 Github 掌握 Jenkins 持续集成 对编程语言和程序设计有了更深的理解 编程语言 程序设计 Do more, promise less 小结 本文主要是对我两年程序员生涯的一些心得</description>
+    </item>
+    
+  </channel>
+</rss>

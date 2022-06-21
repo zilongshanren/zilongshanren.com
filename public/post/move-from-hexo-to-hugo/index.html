@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>博客从 hexo 迁移到 hugo - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="为什么又迁移博客 熟悉我的朋友可能会发现，我几乎每隔一段时间都会换一个博客平台 😂
+从最早的Wordpress到Octopress，再到Hexo，最后到如今的Hugo，博客没写多少，博客平台却折腾不少。
+每一次折腾完后，我都会写下一篇类似的文章，讲我的迁移过程，而且似乎每次都声称这是最后一次折腾Blog了 😂
+因为我自己是个不折不扣的工具控，可能天生就爱折腾。
+" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/move-from-hexo-to-hugo/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="博客从 hexo 迁移到 hugo" />
+<meta property="og:description" content="为什么又迁移博客
+熟悉我的朋友可能会发现，我几乎每隔一段时间都会换一个博客平台 😂
+从最早的Wordpress到Octopress，再到Hexo，最后到如今的Hugo，博客没写多少，博客平台却折腾不少。
+每一次折腾完后，我都会写下一篇类似的文章，讲我的迁移过程，而且似乎每次都声称这是最后一次折腾Blog了 😂
+因为我自己是个不折不扣的工具控，可能天生就爱折腾。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/move-from-hexo-to-hugo/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-06-11T09:07:00+08:00" />
+<meta property="article:modified_time" content="2019-06-14T09:07:14+08:00" />
+
+<meta itemprop="name" content="博客从 hexo 迁移到 hugo">
+<meta itemprop="description" content="为什么又迁移博客
+熟悉我的朋友可能会发现，我几乎每隔一段时间都会换一个博客平台 😂
+从最早的Wordpress到Octopress，再到Hexo，最后到如今的Hugo，博客没写多少，博客平台却折腾不少。
+每一次折腾完后，我都会写下一篇类似的文章，讲我的迁移过程，而且似乎每次都声称这是最后一次折腾Blog了 😂
+因为我自己是个不折不扣的工具控，可能天生就爱折腾。"><meta itemprop="datePublished" content="2019-06-11T09:07:00+08:00" />
+<meta itemprop="dateModified" content="2019-06-14T09:07:14+08:00" />
+<meta itemprop="wordCount" content="2356">
+<meta itemprop="keywords" content="blog,hugo," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="博客从 hexo 迁移到 hugo"/>
+<meta name="twitter:description" content="为什么又迁移博客
+熟悉我的朋友可能会发现，我几乎每隔一段时间都会换一个博客平台 😂
+从最早的Wordpress到Octopress，再到Hexo，最后到如今的Hugo，博客没写多少，博客平台却折腾不少。
+每一次折腾完后，我都会写下一篇类似的文章，讲我的迁移过程，而且似乎每次都声称这是最后一次折腾Blog了 😂
+因为我自己是个不折不扣的工具控，可能天生就爱折腾。"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">博客从 hexo 迁移到 hugo</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-06-11 </span>
+        <div class="post-category">
+            <a href="/categories/blog/"> blog </a>
+            </div>
+          <span class="more-meta"> 约 2356 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#为什么又迁移博客">为什么又迁移博客</a></li>
+    <li><a href="#如何迁移">如何迁移</a></li>
+    <li><a href="#迁移后写博客工作流">迁移后写博客工作流</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="为什么又迁移博客">为什么又迁移博客</h2>
+<p>熟悉我的朋友可能会发现，我几乎每隔一段时间都会换一个博客平台 😂</p>
+<p>从最早的Wordpress到Octopress，再到Hexo，最后到如今的Hugo，博客没写多少，博客平台却折腾不少。</p>
+<p>每一次折腾完后，我都会写下一篇类似的文章，讲我的迁移过程，而且似乎每次都声称这是最后一次折腾Blog了 😂</p>
+<p>因为我自己是个不折不扣的工具控，可能天生就爱折腾。</p>
+<p>而这一次折腾Blog的主要原因有几点：</p>
+<ol>
+<li>Hexo生成文章的速度不如Hugo，可能要慢好几倍。虽然我的博文数量不多，但是已经明显感觉到差异了。</li>
+<li>hexo里面使用Org-mode写博客的流程没有ox-hugo这么爽，hugo天生对org文件支持，之前hexo写博客需要把org导出成HTML。</li>
+<li>我希望给我的静态博客添加评论功能。之前使用过『有言』，『多说』，『disqus』等第三方评论平台，但是出于各种原因都用不了了。 这次我把目光转向了基于Github的评论插件，而Hugo配置这些插件真的非常简单。</li>
+</ol>
+<p>迁移完后，我表示非常满意。因为我发现插入并显示emoji和图片都非常得舒服。作为一名
+Emacs党，什么都想在Emacs里面完成。</p>
+<p>配合ox-hugo插件，写博客简直不要太爽。它可以自动把org文件里面的每一个subtree转换成一个md文件（即一篇文章），在保存org文件的时候会把修改自动同步到md文件。</p>
+<p>打开 hugo 的 watch 功能，可以实时更新博客在浏览器里的预览效果。</p>
+<h2 id="如何迁移">如何迁移</h2>
+<p>关于如何迁移，网上随便一搜都有好多文章，我这里就不详细讨论了。</p>
+<p>具体如何迁移可以参考以下文章：</p>
+<ul>
+<li>
+<p>《从 Hexo 迁移到 Hugo》<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+</li>
+<li>
+<p>《把博客生成工具从 Hexo 迁移到 Hugo &mdash; 配置与设置》<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+</li>
+</ul>
+<p>我主要把我是怎么迁移的大致步骤记录一下：</p>
+<ol>
+<li>
+<p>安装 Hugo 并配置 Even 主题，同时新建一篇博文测试一下显示效果。</p>
+</li>
+<li>
+<p>迁移博文。因为我自己之前的博文结构比较复杂，有从wordpress迁移过来的markdown文件，有手写的markdown文件，有org-mode文件，还有HTML（主要是由org文件导出的）。对于HTML文件，直接copy过来就可以使用了，这个问题不大。如果是手写的markdown文件，copy到hugo的时候，会发现有些设置hugo不支持，可能会导致预览出错。我们需要做的就是删除这些无效的tag，比如我的header里面使用了 &ndash; series，这些是不支持的。网站包含的静态资源(比如图片等)只要从hexo同步到hugo的static目录即可。</p>
+</li>
+<li>
+<p>另外，hugo的日期格式跟hexo也不太一样，多个tag和category的语法也不一样，如果你发现博文显示的日期，tag和category不正常，就需要关注这个了。</p>
+</li>
+<li>
+<p>配置站点的基本信息：站点名称，你的个人信息（Github，博客，邮箱等），这些都是在config.toml里面设置的。你还可以像我一样配置两个赞赏的二维码。(大家可以参考一下我的config.toml
+配置)</p>
+</li>
+<li>
+<p>配置About页面和LearnEmacs页面，这个只需要在Content目录新建两个文件夹，然后在文件夹里面分别放置两个index.md文件。最后在config.toml里面设置这两个页面就可以了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">[[</span>menu.main<span class="o">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">name</span> <span class="o">=</span> <span class="s2">&#34;LearnEmacs&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">weight</span> <span class="o">=</span> <span class="m">15</span>
+</span></span><span class="line"><span class="cl"><span class="nv">identifier</span> <span class="o">=</span> <span class="s2">&#34;emacs&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">url</span> <span class="o">=</span> <span class="s2">&#34;/LearnEmacs/&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[[</span>menu.main<span class="o">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">name</span> <span class="o">=</span> <span class="s2">&#34;About&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">weight</span> <span class="o">=</span> <span class="m">50</span>
+</span></span><span class="line"><span class="cl"><span class="nv">identifier</span> <span class="o">=</span> <span class="s2">&#34;about&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">url</span> <span class="o">=</span> <span class="s2">&#34;/about/&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</li>
+<li>
+<p>关于评论系统，even主题默认支持3种评论系统，我这里选择的是 utterances，因为这个评论系统对你的Github仓库要求的权限最少，同时配置也非常简单。首先参考
+<a href="https://utterances.es/">https://utterances.es/</a> 安装app到你的github帐户。然后新建一个public仓库，把这个仓库的信息配置到config.toml里面即可。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">[</span>params.utterances<span class="o">]</span>       <span class="c1"># https://utteranc.es/</span>
+</span></span><span class="line"><span class="cl"><span class="nv">owner</span> <span class="o">=</span> <span class="s2">&#34;zilongshanren&#34;</span>              <span class="c1"># Your GitHub ID</span>
+</span></span><span class="line"><span class="cl"><span class="nv">repo</span> <span class="o">=</span> <span class="s2">&#34;zilongshanren.com&#34;</span>               <span class="c1"># The repo to store comments</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</li>
+<li>
+<p>一键部署到我的VPS，我使用的是Rsync.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">hugo --theme<span class="o">=</span>even --baseUrl<span class="o">=</span><span class="s2">&#34;https://zilongshanren.com&#34;</span>
+</span></span><span class="line"><span class="cl">hugo <span class="o">&amp;&amp;</span> rsync -avz --delete public/ root@112.124.58.18:/var/www/octopress-cn</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</li>
+</ol>
+<h2 id="迁移后写博客工作流">迁移后写博客工作流</h2>
+<ol>
+<li>
+<p>使用Emacs打开Org文件，然后把希望写的Blog建一个subtree，并把这个文件设置成TODO。设置成TODO的item默认是不导出的，而是作为草稿存在，但是我们可以在本地预览草稿的效果。可以设置文章的tag和category。tag直接使用org的tag就行，而category则是前面加@符号的tag，如下图所示:
+<img src="/ox-hugo/category.png" alt=""></p>
+</li>
+<li>
+<p>当你完成博客以后，可以把TODO状态改成DONE状态，这个时候ox-hugo会为这篇文章新建一个发表日期，也就是你完成这篇文章的日期。</p>
+</li>
+<li>
+<p>上面的截图功能也非常方便，使用我自己写的一个elisp函数，使用M-x调用就可以在
+Emacs里面截图了。mac上面使用很爽，截图完以后会用imagemagick进行resize，所以需要安装一下
+imagemagick。下面是我的Elisp代码，默认截图是放在当前目录的，当你save org文件的时候，ox-hugo会帮你copy到你的博客路径下面去。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zilongshanren//insert-org-or-md-img-link</span> <span class="p">(</span><span class="nv">prefix</span> <span class="nv">imagename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">equal</span> <span class="p">(</span><span class="nv">file-name-extension</span> <span class="p">(</span><span class="nf">buffer-file-name</span><span class="p">))</span> <span class="s">&#34;org&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nf">insert</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;[[%s%s]]&#34;</span> <span class="nv">prefix</span> <span class="nv">imagename</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nf">insert</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;![%s](%s%s)&#34;</span> <span class="nv">imagename</span> <span class="nv">prefix</span> <span class="nv">imagename</span><span class="p">))))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nb">defun</span> <span class="nv">zilongshanren/capture-screenshot</span> <span class="p">(</span><span class="nv">basename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="s">&#34;Take a screenshot into a time stamped unique-named file in the
+</span></span></span><span class="line"><span class="cl"><span class="s">  same directory as the org-buffer/markdown-buffer and insert a link to this file.&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">interactive</span> <span class="s">&#34;sScreenshot name: &#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nf">equal</span> <span class="nv">basename</span> <span class="s">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="p">(</span><span class="nb">setq</span> <span class="nv">basename</span> <span class="p">(</span><span class="nf">format-time-string</span> <span class="s">&#34;%Y%m%d_%H%M%S&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nb">progn</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">setq</span> <span class="nv">final-image-full-path</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">basename</span> <span class="s">&#34;.png&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nf">call-process</span> <span class="s">&#34;screencapture&#34;</span> <span class="no">nil</span> <span class="no">nil</span> <span class="no">nil</span> <span class="s">&#34;-s&#34;</span> <span class="nv">final-image-full-path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nb">if</span> <span class="p">(</span><span class="nv">executable-find</span> <span class="s">&#34;convert&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="nb">progn</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nb">setq</span> <span class="nv">resize-command-str</span> <span class="p">(</span><span class="nf">format</span> <span class="s">&#34;convert %s -resize 800x600 %s&#34;</span> <span class="nv">final-image-full-path</span> <span class="nv">final-image-full-path</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">          <span class="p">(</span><span class="nv">shell-command-to-string</span> <span class="nv">resize-command-str</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="nv">zilongshanren//insert-org-or-md-img-link</span> <span class="s">&#34;./&#34;</span> <span class="p">(</span><span class="nf">concat</span> <span class="nv">basename</span> <span class="s">&#34;.png&#34;</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="nf">insert</span> <span class="s">&#34;\n&#34;</span><span class="p">))</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+</li>
+<li>
+<p>那ox-hugo怎么知道你的博客位置呢？答案就在org文件的头部信息中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1">#+hugo_base_dir: ~/zilongshanren</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#+hugo_section: post</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#+hugo_auto_set_lastmod: t</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#+author:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#+hugo_custom_front_matter: :author &#34;zilongshanren&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#+hugo_code_fence: nil</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>这里面要注意，我的博客路径是 ~/zilongshanren， even主题在设置author的时候，需要使用上面的组合，否则会出现hugo渲染不出博文报错。</p>
+</li>
+<li>
+<p>最后，我还编写了 prodigy service， 可以非常方便地在Emacs里面启动 hugo 的
+watch server。同时，我还编写了org capture template，可以非常方便地记录一些
+Blog的想法。</p>
+</li>
+</ol>
+<h2 id="总结">总结</h2>
+<p>Emacs是我的主力开发工具，Org mode又是一个几乎找不到替代品的Killer app，Hugo生成静态博客非常快速，我感觉再也找不到比这个更舒服的写作平台了。</p>
+<p>Emacs Rocks~</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://scarletsky.github.io/2019/05/02/migrate-hexo-to-hugo/">https://scarletsky.github.io/2019/05/02/migrate-hexo-to-hugo/</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://jdhao.github.io/2018/10/10/hexo%5Fto%5Fhugo/">https://jdhao.github.io/2018/10/10/hexo%5Fto%5Fhugo/</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-06-14
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/blog/">blog</a>
+          <a href="/tags/hugo/">hugo</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/why-my-game-drain-my-device-s-battery-life/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">为什么我的游戏发热量很高</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/summary-of-clean-architecture/">
+            <span class="next-text nav-default">《Clean Architecture》读书笔记</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/move-from-hexo-to-hugo/" class="leancloud_visitors" data-flag-title="博客从 hexo 迁移到 hugo">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

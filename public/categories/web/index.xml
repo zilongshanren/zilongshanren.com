@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web on 子龙山人</title>
+    <link>https://zilongshanren.com/categories/web/</link>
+    <description>Recent content in web on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 08 Jun 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>拥抱 HTTPS 和 HTTP/2</title>
+      <link>https://zilongshanren.com/post/2016-06-08-embrace-https-and-http2/</link>
+      <pubDate>Wed, 08 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2016-06-08-embrace-https-and-http2/</guid>
+      <description>Table of Contents 我为什么要使用 HTTPS 你为什么不用 HTTPS 如何为自己的网站添加 HTTPS 遇到的一些问题和解决方案 结语 Reference 为了方便国内的 Emacs 党交流，前段时间跟社区里面几个小伙伴</description>
+    </item>
+    
+  </channel>
+</rss>

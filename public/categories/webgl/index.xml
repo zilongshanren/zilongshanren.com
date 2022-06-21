@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WebGL on 子龙山人</title>
+    <link>https://zilongshanren.com/categories/webgl/</link>
+    <description>Recent content in WebGL on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 20 Jul 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/webgl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WebGL教程:你的第一个立方体(3)</title>
+      <link>https://zilongshanren.com/post/webgl-your-first-cube/</link>
+      <pubDate>Sun, 20 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/webgl-your-first-cube/</guid>
+      <description>在上一篇文章中，我们介绍了如何使用glMatrix.js来处理3D图形里面的数学运算，主要谈到了MVP的应用。同时，我们还简单地提到了如何使</description>
+    </item>
+    
+    <item>
+      <title>WebGL教程:使用glMatrix和JQuery(2)</title>
+      <link>https://zilongshanren.com/post/webgl-use-glmatrix-and-jquery/</link>
+      <pubDate>Sat, 28 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/webgl-use-glmatrix-and-jquery/</guid>
+      <description>上篇文章介绍了如何使用WebGL来绘制一个三角形。从那个教程中，我们可以看出，其实WebGL只是一个2D API,我们只需要在Vertex Sh</description>
+    </item>
+    
+    <item>
+      <title>WebGL教程：你的第一个三角形(1)</title>
+      <link>https://zilongshanren.com/post/webgl-your-first-triangles/</link>
+      <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/webgl-your-first-triangles/</guid>
+      <description>本人最近正在学习WebGL，所以想借着自己写《Cocos2D-X OpenGLES 2.0教程系列》的同时再应用到WebGL上面来。一来可以加深自己的理解，二</description>
+    </item>
+    
+  </channel>
+</rss>

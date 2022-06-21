@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hugo on 子龙山人</title>
+    <link>https://zilongshanren.com/tags/hugo/</link>
+    <description>Recent content in hugo on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 11 Jun 2019 09:07:00 +0800</lastBuildDate><atom:link href="https://zilongshanren.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>博客从 hexo 迁移到 hugo</title>
+      <link>https://zilongshanren.com/post/move-from-hexo-to-hugo/</link>
+      <pubDate>Tue, 11 Jun 2019 09:07:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/move-from-hexo-to-hugo/</guid>
+      <description>&lt;h2 id=&#34;为什么又迁移博客&#34;&gt;为什么又迁移博客&lt;/h2&gt;
+&lt;p&gt;熟悉我的朋友可能会发现，我几乎每隔一段时间都会换一个博客平台 😂&lt;/p&gt;
+&lt;p&gt;从最早的Wordpress到Octopress，再到Hexo，最后到如今的Hugo，博客没写多少，博客平台却折腾不少。&lt;/p&gt;
+&lt;p&gt;每一次折腾完后，我都会写下一篇类似的文章，讲我的迁移过程，而且似乎每次都声称这是最后一次折腾Blog了 😂&lt;/p&gt;
+&lt;p&gt;因为我自己是个不折不扣的工具控，可能天生就爱折腾。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

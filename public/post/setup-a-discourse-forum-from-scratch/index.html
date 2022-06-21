@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>从头开始搭建 Discourse 论坛 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="前言 在国内安装 Discourse 论坛其实是一件挺困难的事情,因为网络不太好，而且 Github 访问经常会抽风，导致安装非常容易失败。所以，想要尝试在国内 VPS 安装 Discourse 的同学，" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/setup-a-discourse-forum-from-scratch/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="从头开始搭建 Discourse 论坛" />
+<meta property="og:description" content="前言 在国内安装 Discourse 论坛其实是一件挺困难的事情,因为网络不太好，而且 Github 访问经常会抽风，导致安装非常容易失败。所以，想要尝试在国内 VPS 安装 Discourse 的同学，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/setup-a-discourse-forum-from-scratch/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-03-07T20:29:00+08:00" />
+<meta property="article:modified_time" content="2021-12-25T21:55:19+08:00" />
+
+<meta itemprop="name" content="从头开始搭建 Discourse 论坛">
+<meta itemprop="description" content="前言 在国内安装 Discourse 论坛其实是一件挺困难的事情,因为网络不太好，而且 Github 访问经常会抽风，导致安装非常容易失败。所以，想要尝试在国内 VPS 安装 Discourse 的同学，"><meta itemprop="datePublished" content="2021-03-07T20:29:00+08:00" />
+<meta itemprop="dateModified" content="2021-12-25T21:55:19+08:00" />
+<meta itemprop="wordCount" content="1228">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="从头开始搭建 Discourse 论坛"/>
+<meta name="twitter:description" content="前言 在国内安装 Discourse 论坛其实是一件挺困难的事情,因为网络不太好，而且 Github 访问经常会抽风，导致安装非常容易失败。所以，想要尝试在国内 VPS 安装 Discourse 的同学，"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">从头开始搭建 Discourse 论坛</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-03-07 </span>
+        
+          <span class="more-meta"> 约 1228 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#搭建步骤">搭建步骤</a>
+      <ul>
+        <li><a href="#申请-vps">申请 VPS</a></li>
+        <li><a href="#申请域名">申请域名</a></li>
+        <li><a href="#备案">备案</a></li>
+        <li><a href="#配置国内源">配置国内源</a></li>
+        <li><a href="#安装-docker">安装 Docker</a></li>
+        <li><a href="#安装-discourse">安装 Discourse</a></li>
+        <li><a href="#配置邮件系统">配置邮件系统</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="前言">前言</h2>
+<p>在国内安装 Discourse 论坛其实是一件挺困难的事情,因为网络不太好，而且 Github 访问经常会抽风，导致安装非常容易失败。所以，想要尝试在国内 VPS 安装 Discourse 的同学，一定要准备好梯子，并且掌握 Linux 命令行代理配置技巧，否则不建议你尝试，基本是浪费时间。</p>
+<h2 id="搭建步骤">搭建步骤</h2>
+<h3 id="申请-vps">申请 VPS</h3>
+<p>如果你是新用户，那么申请腾讯云的活动机器是非常划算的，一年只需要 90 元，非常适合用来搭建论坛和个人博客。</p>
+<h3 id="申请域名">申请域名</h3>
+<p>申请域名各个托管平台都可以，一般哪家便宜就用哪家呗。我看腾讯的域名首年只要 1
+块钱，真是白菜价啊。</p>
+<h3 id="备案">备案</h3>
+<p>有了 VPS 如果要使用国内的云服务器，你需要备好案，这样域名才可以绑定云主机并开始你的业务。备案过程比较复杂，这里就不细说了，一般按照云服务商的指引去弄即可。按照我以前的经验，备案需要准备很多资料，而且通常要 1-2 个月，还是非常折磨人的，好歹这个过程一般只需要做一次。</p>
+<h3 id="配置国内源">配置国内源</h3>
+<p>有了 vps 之后，第一步就是设置国内源，使用 vim 打开 /etc/apt/sources.list，然后粘贴以下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">    deb http://mirrors.tencentyun.com/ubuntu/ bionic main restricted universe multiverse
+</span></span><span class="line"><span class="cl">    deb http://mirrors.tencentyun.com/ubuntu/ bionic-security main restricted universe multiverse
+</span></span><span class="line"><span class="cl">    deb http://mirrors.tencentyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+</span></span><span class="line"><span class="cl">    deb-src http://mirrors.tencentyun.com/ubuntu/ bionic main restricted universe multiverse
+</span></span><span class="line"><span class="cl">    deb-src http://mirrors.tencentyun.com/ubuntu/ bionic-security main restricted universe multiverse
+</span></span><span class="line"><span class="cl">    deb-src http://mirrors.tencentyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+</span></span><span class="line"><span class="cl">    deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>如果购买的是腾讯云，这些设置是自动 ok 的，也可以忽略不管，只不过你需要验证下。备案好源以后，执行一下 <code>apt-get update</code> 更新一下。</p>
+<h3 id="安装-docker">安装 Docker</h3>
+<p>安装 docker 的过程也还算比较简单，可以参考知乎<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>这个文章。注意安装完以后，需要设置一下，主要是代理和 MTU.
+代理主要是修改 <code>/etc/default/docker/</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">   DOCKER_OPTS=&#34;--dns 8.8.8.8 --dns 8.8.4.4&#34;
+</span></span><span class="line"><span class="cl">  # If you need Docker to use an HTTP proxy, it can also be specified here.
+</span></span><span class="line"><span class="cl">  export http_proxy=&#34;http://127.0.0.1:7890/&#34;</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>接下来是修改 MTU 设备：打开文件 <code>/lib/systemd/system/docker.service</code>:
+找到这个文件里面的 <code>ExecStart=/usr/bin/dockerd -H fd://</code>
+把它修改为： <code>ExecStart=/usr/bin/dockerd --mtu=1400 -H fd://</code></p>
+<p>当然，还需要配置下 Docker 的国内源<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>。</p>
+<p>修改完成以后，运行一下 <code>service docker restart</code> 重启一下就生效了。</p>
+<h3 id="安装-discourse">安装 Discourse</h3>
+<p>具体的安装步骤网上一搜一大把，大家可以优先选择更新日期比较近的文章来参考。我一般喜欢参考 DigitalOcean 网站的指引，非常的详细，这里有一份翻译版本<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>。安装 Discourse 的过程比较简单，网络好，梯子给力的话，基本一次就能成功。如果失败，看看失败原因，去 Google 一下基本也都能找到解决方案。按照本文介绍的踩坑指南来弄，基本是不会失败。</p>
+<p>注意在 contaienrs/app.yml 中添加 <code>templates/web.china.template.yml</code> 来添加 ruby
+国内镜像，否则在后面的 <code>./launcher rebuild app</code> 的时候容易失败或者速度极慢。</p>
+<p>最关键的步骤：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">./launcher rebuild app --docker-args &#34;--net=host --env https_proxy=http://127.0.0.1:7890&#34;</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">templates:
+</span></span><span class="line"><span class="cl">  - &#34;templates/postgres.template.yml&#34;
+</span></span><span class="line"><span class="cl">  - &#34;templates/redis.template.yml&#34;
+</span></span><span class="line"><span class="cl">  - &#34;templates/web.template.yml&#34;
+</span></span><span class="line"><span class="cl">  - &#34;templates/web.china.template.yml&#34;
+</span></span><span class="line"><span class="cl">#- &#34;templates/web.ratelimited.template.yml&#34;
+</span></span><span class="line"><span class="cl">## Uncomment these two lines if you wish to add Lets Encrypt (https)
+</span></span><span class="line"><span class="cl">#  - &#34;templates/web.ssl.template.yml&#34;
+</span></span><span class="line"><span class="cl">#  - &#34;templates/web.letsencrypt.ssl.template.yml&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">## which TCP/IP ports should this container expose?
+</span></span><span class="line"><span class="cl">## If you want Discourse to share a port with another webserver like Apache or nginx,
+</span></span><span class="line"><span class="cl">## see https://meta.discourse.org/t/17247 for details
+</span></span><span class="line"><span class="cl">expose:
+</span></span><span class="line"><span class="cl">  - &#34;25653:80&#34;
+</span></span><span class="line"><span class="cl">#- &#34;80:80&#34;   # http
+</span></span><span class="line"><span class="cl">#- &#34;443:443&#34; # https</span></span></code></pre></td></tr></table>
+</div>
+</div>
+<p>如果要在 vps 上同时安装 Disourse 和个人博客等多个论坛，需要安装 nginx ，同时配置一下网站转发规则，具体参考这两篇文章<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup><!-- raw HTML omitted -->, <!-- raw HTML omitted --><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>。</p>
+<h3 id="配置邮件系统">配置邮件系统</h3>
+<p>邮件系统我选择的是 MailGun ，这个邮件提供商配置简单，并且收费比较便宜，对于用户量不大的论坛足够用了，可以限制一个用户每天接收的邮件数量，一般我是设置为 2 封。像之前 emacs-china 有 4k 的用户，一个月不到 2 美元，还算是比较实惠的。</p>
+<h2 id="总结">总结</h2>
+<p>本人最近在搭建一个游戏开发者学习论坛，虽然之前已经有 Emacs-China<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> 的安装经验了，但是还是折腾了特别久。主要就是 Git 不是 openssl 导致的问题，一直拉取 github 仓库失败，希望本文能够帮到有需要的人。</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p><a href="https://zhuanlan.zhihu.com/p/106186391">https://zhuanlan.zhihu.com/p/106186391</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p><a href="https://juejin.cn/post/6844904111582740493">https://juejin.cn/post/6844904111582740493</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p><a href="https://blog.csdn.net/cukw6666/article/details/108080756">https://blog.csdn.net/cukw6666/article/details/108080756</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://meta.discourse.org/t/running-other-websites-on-the-same-machine-as-discourse/17247">https://meta.discourse.org/t/running-other-websites-on-the-same-machine-as-discourse/17247</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://blog.khophi.co/install-run-discourse-behind-nginx-right-way-first-time/">https://blog.khophi.co/install-run-discourse-behind-nginx-right-way-first-time/</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p><a href="https://www.emacs-china.org">www.emacs-china.org</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2021-12-25
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/how-to-self-learning-cs/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">如何自学计算机编程</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/three-years-in-tencent/">
+            <span class="next-text nav-default">在腾讯工作三年总结</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/setup-a-discourse-forum-from-scratch/" class="leancloud_visitors" data-flag-title="从头开始搭建 Discourse 论坛">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

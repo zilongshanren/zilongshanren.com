@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>我的Git工作流(下) - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="在上篇文章中,我谈到了我日常使用Git作为个人项目管理工具的一些基本用法。同时，我还简单地谈了一下使用Git作为个人项目管理工具的好处。但是" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/my-git-workflow-part-two/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="我的Git工作流(下)" />
+<meta property="og:description" content="在上篇文章中,我谈到了我日常使用Git作为个人项目管理工具的一些基本用法。同时，我还简单地谈了一下使用Git作为个人项目管理工具的好处。但是" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/my-git-workflow-part-two/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-26T00:00:00+00:00" />
+
+<meta itemprop="name" content="我的Git工作流(下)">
+<meta itemprop="description" content="在上篇文章中,我谈到了我日常使用Git作为个人项目管理工具的一些基本用法。同时，我还简单地谈了一下使用Git作为个人项目管理工具的好处。但是"><meta itemprop="datePublished" content="2014-06-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1871">
+<meta itemprop="keywords" content="Git," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="我的Git工作流(下)"/>
+<meta name="twitter:description" content="在上篇文章中,我谈到了我日常使用Git作为个人项目管理工具的一些基本用法。同时，我还简单地谈了一下使用Git作为个人项目管理工具的好处。但是"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">我的Git工作流(下)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-26 </span>
+        <div class="post-category">
+            <a href="/categories/git/"> Git </a>
+            </div>
+          <span class="more-meta"> 约 1871 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#多人协作">多人协作</a></li>
+    <li><a href="#git的分布式">Git的分布式</a></li>
+    <li><a href="#git让我变成一个更好的程序员">Git让我变成一个更好的程序员</a></li>
+    <li><a href="#关于git命令行与图形化工具">关于Git命令行与图形化工具</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>在<a href="http://zilongshanren.com/blog/2014-06-25-my-git-workflow-part-one.html">上篇文章中</a>,我谈到了我日常使用Git作为个人项目管理工具的一些基本用法。同时，我还简单地谈了一下使用Git作为个人项目管理工具的好处。但是，Git的强大威力只有在多人协作与大项目开发中才能真正体会到。它的分布式理念，灵活的分支机制，再加上多种错误应急措施，让我对它赞不绝口。</p>
+<p>本文主要谈一下我在参与开源项目Cocos2D-X中学到的一些东西。</p>
+<!-- raw HTML omitted -->
+<h2 id="多人协作">多人协作</h2>
+<p>首先，Cocos2D-X现在主要分为3个分支（v1,v2和v3），分别对应OpenGL ES1.0，OpenGL ES 2.0 OC style和OpenGL ES 2.0 C++11 style。目前，整个团队的重心放在v3分支上面。新功能的开发，bug的修复以及代码的持续改进基本上都基于v3分支在做。而v2分支主要是用来修复一些重大的bug。</p>
+<p>谈到多人协作，肯定免不了要提到Github，这家伙现在可是程序猿们津津乐道的话题。不过国内访问Github的速度有点慢，有时候还访问不了，比较郁闷。国内的代码托管平台也比较多，推荐<a href="http://git.oschina.net/">码云</a>和<a href="https://coding.net/">Coding</a>。</p>
+<p>一个项目一般由一个组织或都者一个牛人发起，然后其他人可以通过fork+pull request的方式来给此项目贡献代码。参与者不仅仅局限于代码提交，还可以修复文档和注释，另外还可以提建议和反馈bug。另外这些代码托管平台一般还提供项目wiki的功能，这样代码和文档就更好地放在一起了。</p>
+<p>采用这种方式进行软件开发，我认为有以下几点好处：
+一、可以集众人之智慧，不断地改进软件代码，提高软件质量
+二、每一份代码在合并进主仓库时，都会有人进行Code Review。这是一种非常好的软件工程实践
+三、可以与jekins或者travis等持续集成工具结合，一旦有pr产生，CI服务器便会对代码进行构建并在构建结束时返回此次构建的状态。确保每一份代码在check in的时候至少编译正确。
+四、可以与redmine等issue系统关联起来，让roadmap的制订，issue的管理，bug的反馈融合成一个有机整体，有效地帮助PM对项目进行把控。
+五、能让程序员更加关心自己的代码。每一份代码在发PR之前，至少在本地由自己Review一遍，如果产生了bug，能及时有效地发现并解决之。
+六、有完整的版本历史，可以方便地追踪错误代码的责任人，另外，使用git bisect也可以非常方便地定位一些非常隐秘的bug。</p>
+<p>我很难想象，现在一个大型项目如果没有使用版本控制,持续集成工具和issue系统，它将如何能够良性发展，可能等待程序员的只有没日没夜地加班了。</p>
+<h2 id="git的分布式">Git的分布式</h2>
+<p>当我在没有网络的情况下面我也可以在本地提交代码，这是svn无法做到的。另外，任何一个人的代码，可以作为主仓库代码，可以被别人fork，也可以合并到其它人的代码里面去。Git的这种灵泛的特性允许我们把一个大型项目拆分成若干个项目组，每一个组fork一份代码，然后每个组的成员从组长那里再fork代码。组员的代码要提交到组长那里去审核，最后，当一个功能特性做完以后，再由组长提交pr到主仓库上去。此时，代码还可以被更高级别的人Review。</p>
+<p>它同时也允许多人并行进行项目开发，并且各自独立提交修改。当要发PR的时候，可以先用git rebase -i来整理好log历史记录。一旦历史记录ok，就可以给主仓库发pr了。</p>
+<h2 id="git让我变成一个更好的程序员">Git让我变成一个更好的程序员</h2>
+<p>现在，任何一个non-trival的项目，我都会使用Git来管理并且同步到Github（或者Gitcaf、开源中国上）。我曾经做过一个外包小游戏，用了不到2周完成了。如果不是使用了Git，我想我肯定无法在这么短的时间内完成项目。因为，我的每一步正确的代码都会及时提交进版本库，而我的每一个想法都可以尽情地被testing而不用担心破坏已有的代码。</p>
+<p>其次，我在学习一门新技术，比如OpenGL ES2.0和WebGL时，我会把我学习过程中的一些Demo都用Git管理起来，同时上传到相应的代码托管平台上面。这样做的好处是，下次我可以非常方便地找到我以前写的代码，及时温故和复查。</p>
+<p>最后，Git提供了一种思维模式，即“小步快跑，大胆试错”的理念。通过不停地切分支，合并分支，最后项目在不断地往前推进，这种感觉真好！</p>
+<h2 id="关于git命令行与图形化工具">关于Git命令行与图形化工具</h2>
+<p>我目前主要用Git命令行工具，我喜欢这种Geek-style。同时，我觉得使用比GUI方便。但是我也用SourceTree（windows下用tortoisegit）来做Code Review和冲突解决。命令行与GUI应该是统一的，没有必要排拆任何一方，能让自己的工作最高效的做事方法就是最好的。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-26
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/git/">Git</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/webgl-use-glmatrix-and-jquery/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">WebGL教程:使用glMatrix和JQuery(2)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/my-git-workflow-part-one/">
+            <span class="next-text nav-default">我的Git工作流(上)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/my-git-workflow-part-two/" class="leancloud_visitors" data-flag-title="我的Git工作流(下)">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

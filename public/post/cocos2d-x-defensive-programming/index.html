@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Cocos2D-X设计模式：防御式编程模式 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="声明：防御式编程是提高程序代码质量的一种手段，它不能算是真正意义上的模式。但是，这里，我还是要给它冠之以“模式”二字。 原因有三： cocos2" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/cocos2d-x-defensive-programming/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Cocos2D-X设计模式：防御式编程模式" />
+<meta property="og:description" content="声明：防御式编程是提高程序代码质量的一种手段，它不能算是真正意义上的模式。但是，这里，我还是要给它冠之以“模式”二字。 原因有三： cocos2" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/cocos2d-x-defensive-programming/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-15T00:00:00+00:00" />
+
+<meta itemprop="name" content="Cocos2D-X设计模式：防御式编程模式">
+<meta itemprop="description" content="声明：防御式编程是提高程序代码质量的一种手段，它不能算是真正意义上的模式。但是，这里，我还是要给它冠之以“模式”二字。 原因有三： cocos2"><meta itemprop="datePublished" content="2014-06-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-15T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1721">
+<meta itemprop="keywords" content="Cocos2d-x,design pattern," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cocos2D-X设计模式：防御式编程模式"/>
+<meta name="twitter:description" content="声明：防御式编程是提高程序代码质量的一种手段，它不能算是真正意义上的模式。但是，这里，我还是要给它冠之以“模式”二字。 原因有三： cocos2"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Cocos2D-X设计模式：防御式编程模式</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-15 </span>
+        <div class="post-category">
+            <a href="/categories/cocos2d-x/"> Cocos2d-x </a>
+            <a href="/categories/design-pattern/"> design pattern </a>
+            </div>
+          <span class="more-meta"> 约 1721 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1应用场景">1.应用场景</a></li>
+    <li><a href="#2使用此模式的优缺点">2.使用此模式的优缺点</a></li>
+    <li><a href="#3此模式的定义及一般实现">3.此模式的定义及一般实现</a></li>
+    <li><a href="#4实际开发中如何采用此模式">4.实际开发中如何采用此模式</a></li>
+    <li><a href="#5此模式与其它模式的关系">5.此模式与其它模式的关系</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>声明：防御式编程是提高程序代码质量的一种手段，它不能算是真正意义上的模式。但是，这里，我还是要给它冠之以“模式”二字。</p>
+<p>原因有三：</p>
+<ol>
+<li>
+<p>cocos2d-x的框架源代码大量采用了防御式编程技术，用来确保框架的代码质量和稳定性。</p>
+</li>
+<li>
+<p>标题党，引起大家对于防御式编程的重视。特别是当大家给cocos2d-x贡献源代码的时候，更应该要注意保证代码质量。</p>
+</li>
+<li>
+<p>防御式编程非常重要，运用得当可以减少被bug折腾的时间。</p>
+</li>
+</ol>
+<!-- raw HTML omitted -->
+<h2 id="1应用场景">1.应用场景</h2>
+<ul>
+<li>检查指针的参数值</li>
+</ul>
+<p>首先，第一个大量使用的是CCLayer的init函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">CCLayer</span><span class="o">::</span><span class="n">init</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="n">bRet</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">CCDirector</span> <span class="o">*</span> <span class="n">pDirector</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">CC_BREAK_IF</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">pDirector</span> <span class="o">=</span> <span class="n">CCDirector</span><span class="o">::</span><span class="n">sharedDirector</span><span class="p">()));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="o">-&gt;</span><span class="n">setContentSize</span><span class="p">(</span><span class="n">pDirector</span><span class="o">-&gt;</span><span class="n">getWinSize</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">m_bIsTouchEnabled</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">m_bIsAccelerometerEnabled</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// success
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">bRet</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">while</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">bRet</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里使用了do…while(0);惯用法，同时配合CC_BREAK_IF宏来做错误处理。关于为什么要使用do…while(0)惯用法，可以参考<a href="http://www.cnblogs.com/baiyanhuang/archive/2009/09/16/1730736.html">这篇文章</a>：</p>
+<p>另一个地方就是一些内存管理的宏，这些宏可以帮助我们编写更健壮的内存管理代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="cp">#define CC_SAFE_DELETE(p)            do { if(p) { delete (p); (p) = 0; } } while(0)
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define CC_SAFE_DELETE_ARRAY(p)     do { if(p) { delete[] (p); (p) = 0; } } while(0)
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define CC_SAFE_FREE(p)                do { if(p) { free(p); (p) = 0; } } while(0)
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define CC_SAFE_RELEASE(p)            do { if(p) { (p)-&gt;release(); } } while(0)
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define CC_SAFE_RELEASE_NULL(p)        do { if(p) { (p)-&gt;release(); (p) = 0; } } while(0)
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define CC_SAFE_RETAIN(p)            do { if(p) { (p)-&gt;retain(); } } while(0)
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>在变量使用的地方定义变量，在变量定义之后一定要保证其初始化</li>
+</ul>
+<p>一切诡异的程序问题都源自变量定义未初始化，使用的时候是一些垃圾值，恰巧有些垃圾值可以用，所以程序偶尔工作，但是换个编译环境，代码就又出错了。当遇到这样的问题时，多半是由于变量定义未初始的原因。</p>
+<ul>
+<li>使用const和assert宏来验证编程时的假设</li>
+</ul>
+<p>具体指的是在函数的入口处，或者需要保证某些“不变量”的时候，使用assert断言来确保参数和返回结果的有效性。这个在cocos2d-x的源代码中也到处是可以看到的。</p>
+<p>如果某些值是不被改变的就声明为const常量，某些函数保证不会修改对象内部状态也要声明为const。</p>
+<h2 id="2使用此模式的优缺点">2.使用此模式的优缺点</h2>
+<p>优点：</p>
+<p>提高代码质量，使得代码的健壮性和稳定性都有保障。可以防止子程序由于接收到了非法数据而遭受破坏。</p>
+<p>缺点：</p>
+<p>过度的防御式编程也会引来问题，如果你在每一个能想到的地方用每一种能想到的方法检查从参数传入的数据，那么你的程序将会变得臃肿而缓慢。更糟糕的是，防御式编程引入的额外代码增加了软件的复杂度。所以运用是需谨慎。</p>
+<h2 id="3此模式的定义及一般实现">3.此模式的定义及一般实现</h2>
+<p>子程序应该不因传入错误数据而被破坏，哪怕是由其他子程序产生的错误数据。</p>
+<p>我们一般可以采用以下手段来进行防御式编程：</p>
+<p>1）检查每个子程序的入口参数，记住“垃圾进、垃圾出”这个隐喻。必要的时候可以使用断言来确保函数的先验条件是符合假定的。因为很多时候，我们编写代码都是隐藏了一系列的假定的，只是你自己没有感觉到，有时候，这些假定没有关系，出了bug也容易找出来。但是，有时候，就不是那么幸运了。</p>
+<p>2）不要直接使用文字常量，比如3、“Hero.png”这种常量。尽可能地定义const定义常量或者使用宏定义。</p>
+<p>3）尽可能让函数返回一些东西，这样如果当函数运行出现问题时，可以根据返回值做一些处理。如果全部设计成void类型的函数，那么出现异常要么就是try—catch，要么就是直接让程序崩溃了。由于c++的异常机制并不是那么完善，所以，也一直为人们所诟病，cocos2d-x里面几乎没有使用c++的异常处理机制。最后，必要的时候要检查函数里面调用其它子程序时的返回值。</p>
+<h2 id="4实际开发中如何采用此模式">4.实际开发中如何采用此模式</h2>
+<p>在实际开发中，我个人觉得必要的防御式编程的态度和做法还是要有的。特别是函数的输入输出，因为函数的逻辑部分是我们关注地最多的，虽然它是最复杂的，但是，往往这部分出错的概率不高。</p>
+<p>相反，是函数的一些边界条件和异常情况导致程序bug的滋生。有些时候除了验证函数参数的数据值范围有效性以外，更加要注意的是验证数据的业务条件是否满足。这一点恰恰最容易被忽视。</p>
+<p>在做内存管理的时候，尽可能地使用cocos2d-x里面定义的一些宏来清理资源，比如CC_SAFE_DELETE等。当实现自定义的CCLayer对象的时候，也尽可能地采用do…while(0)的写法，如果里面出现问题，可以用CC_BREAK_IF来判断并退出。</p>
+<h2 id="5此模式与其它模式的关系">5.此模式与其它模式的关系</h2>
+<p>此模式是万人迷，任何模式在实现的时候都可以考虑把它加进去。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-15
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cocos2d-x/">Cocos2d-x</a>
+          <a href="/tags/design-pattern/">design pattern</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/cocos2d-x-composite-patterns/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Cocos2D-X设计模式: 组合模式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/opengl-es2-meet-mvp/">
+            <span class="next-text nav-default">OpenGL ES2.0教程:初识MVP(3)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/cocos2d-x-defensive-programming/" class="leancloud_visitors" data-flag-title="Cocos2D-X设计模式：防御式编程模式">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

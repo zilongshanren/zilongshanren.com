@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>OpenGL ES2.0教程:初识MVP(3) - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="在上一篇文章中，我在介绍vertex shader的时候挖了一个坑：CC_MVPMatrix。它其实是一个uniform，每一个cocos2d" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/opengl-es2-meet-mvp/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="OpenGL ES2.0教程:初识MVP(3)" />
+<meta property="og:description" content="在上一篇文章中，我在介绍vertex shader的时候挖了一个坑：CC_MVPMatrix。它其实是一个uniform，每一个cocos2d" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/opengl-es2-meet-mvp/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-06-15T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-06-15T00:00:00+00:00" />
+
+<meta itemprop="name" content="OpenGL ES2.0教程:初识MVP(3)">
+<meta itemprop="description" content="在上一篇文章中，我在介绍vertex shader的时候挖了一个坑：CC_MVPMatrix。它其实是一个uniform，每一个cocos2d"><meta itemprop="datePublished" content="2014-06-15T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-06-15T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2285">
+<meta itemprop="keywords" content="Cocos2d-x,opengl," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OpenGL ES2.0教程:初识MVP(3)"/>
+<meta name="twitter:description" content="在上一篇文章中，我在介绍vertex shader的时候挖了一个坑：CC_MVPMatrix。它其实是一个uniform，每一个cocos2d"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">OpenGL ES2.0教程:初识MVP(3)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-06-15 </span>
+        <div class="post-category">
+            <a href="/categories/cocos2d-x/"> Cocos2d-x </a>
+            <a href="/categories/opengl-es/"> OpenGL ES </a>
+            </div>
+          <span class="more-meta"> 约 2285 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#初识uniform">初识Uniform</a></li>
+    <li><a href="#初识cc_mvpmatrix">初识CC_MVPMatrix</a>
+      <ul>
+        <li><a href="#cc_mvpmatrix的作用">CC_MVPMatrix的作用</a></li>
+        <li><a href="#修改cc_mvpmatrix">修改CC_MVPMatrix</a></li>
+      </ul>
+    </li>
+    <li><a href="#设备空间normalized-device-space">设备空间(normalized device space)</a></li>
+    <li><a href="#结语">结语</a></li>
+    <li><a href="#推荐阅读">推荐阅读</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>在<a href="http://zilongshanren.com/blog/2014-06-07-write-your-own-shader.html">上一篇文章</a>中，我在介绍vertex shader的时候挖了一个坑：CC_MVPMatrix。它其实是一个uniform，每一个cocos2d-x预定义的shader都包含有这个uniform，
+但是如果你在shader里面不使用这个变量的话，OpenGL底层会把它优化掉。</p>
+<p>但是，CC_MVPMatrix是在什么时候设置进来的呢？我在shader里面明明没有看到它，它从哪儿来的？别急，请继续往下读。</p>
+<!-- raw HTML omitted -->
+<h2 id="初识uniform">初识Uniform</h2>
+<p>在回答上面几个问题之前，让我们先来介绍一下什么是uniform。简单来说，uniform是shader里面的一种变量，它是由外部程序设置进来的，它不像vertex的attribute，每个顶点都有一份数据。除非你显式地调用glUniformXXX函数来修改这个uniform的值，否则它的值恒定不变。接下来，让我们修改myFragmentShader.frag,给它添加一个新的uniform数据：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">varying</span> <span class="n">vec4</span> <span class="n">v_fragmentColor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">uniform</span> <span class="n">vec4</span> <span class="n">u_color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gl_FragColor</span> <span class="o">=</span> <span class="n">v_fragmentColor</span> <span class="o">*</span> <span class="n">u_color</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时，我们需要在程序里面给这个u_color传值。它的基本做法与attribute的传值是一样的。</p>
+<p>首先，我们需要获得这个uniform在shader里面的位置。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="n">GLuint</span> <span class="n">uColorLocation</span> <span class="o">=</span> <span class="n">glGetUniformLocation</span><span class="p">(</span><span class="n">glProgram</span><span class="o">-&gt;</span><span class="n">getProgram</span><span class="p">(),</span> <span class="s">&#34;u_color&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，我们可以通过glUniformXXX函数给这个uniform赋值：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">uColor</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">glUniform4fv</span><span class="p">(</span><span class="n">uColorLocation</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">uColor</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时，我们就在c++代码和shader程序之间传递数据啦。编译并运行，我们会得到一个半红不红的三角形：</p>
+<p><img src="https://zilongshanren.com/img/triangle.jpg" alt="triangle"></p>
+<h2 id="初识cc_mvpmatrix">初识CC_MVPMatrix</h2>
+<p>CC_MVPMatrix是一个mat4类型的uniform,在shader代码被编译之前，它由cocos2d-x框架插入进来的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">GLProgram</span><span class="o">::</span><span class="n">compileShader</span><span class="p">(</span><span class="n">GLuint</span> <span class="o">*</span> <span class="n">shader</span><span class="p">,</span> <span class="n">GLenum</span> <span class="n">type</span><span class="p">,</span> <span class="k">const</span> <span class="n">GLchar</span><span class="o">*</span> <span class="n">source</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//部分代码省略
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">const</span> <span class="n">GLchar</span> <span class="o">*</span><span class="n">sources</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;uniform mat4 CC_PMatrix;</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;uniform mat4 CC_MVMatrix;</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;uniform mat4 CC_MVPMatrix;</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;uniform vec4 CC_Time;</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;uniform vec4 CC_SinTime;</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;uniform vec4 CC_CosTime;</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;uniform vec4 CC_Random01;</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;uniform sampler2D CC_Texture0;</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;uniform sampler2D CC_Texture1;</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;uniform sampler2D CC_Texture2;</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;uniform sampler2D CC_Texture3;</span><span class="se">\n</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;//CC INCLUDES END</span><span class="se">\n\n</span><span class="s">&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">source</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="o">*</span><span class="n">shader</span> <span class="o">=</span> <span class="n">glCreateShader</span><span class="p">(</span><span class="n">type</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">glShaderSource</span><span class="p">(</span> <span class="o">*</span><span class="n">shader</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span> <span class="o">*</span><span class="n">sources</span><span class="p">),</span> <span class="n">sources</span><span class="p">,</span> <span class="k">nullptr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">glCompileShader</span><span class="p">(</span> <span class="o">*</span><span class="n">shader</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//下面的代码省略了...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从上面的代码，我们可以看到， 这里除了插入CC_MVPMatrix以外，还插入了其它一些uniform。只要你在后面的main函数里面不使用这些变量，最终shader program里面是看不到它们的。（被优化掉了）</p>
+<h3 id="cc_mvpmatrix的作用">CC_MVPMatrix的作用</h3>
+<p>CC_MVPMatrix本质上是一个变换矩阵，用来把一个世界坐标系中的点转换到Clipping space。当然，如果学过OpenGL的人都知道，3D物体从建模到最终显示到屏幕上面要经历以下几个阶段：</p>
+<ul>
+<li>
+<p>对象空间(Object Space)</p>
+</li>
+<li>
+<p>世界空间(World Space)</p>
+</li>
+<li>
+<p>照相机空间(Camera Space/Eye Space)</p>
+</li>
+<li>
+<p>裁剪空间(Clipping Space)</p>
+</li>
+<li>
+<p>设备空间（normalized device space）</p>
+</li>
+<li>
+<p>视口空间(Viewport)</p>
+</li>
+</ul>
+<p>从对象空间到世界空间的变换通常叫做Model-To-World变换，从世界空间到照相机空间的变换叫做World-To-View变换，而从照相机空间到裁剪空间的变换叫做View-To-Projection。合起来，就是我们常常提到的MVP变换。这里面每一个变换都是乘以一个矩阵，3个矩阵相乘最后还是一个矩阵，也就是cocos2d-x里面的CC_MVPMatrix啦。当然，实际开发过程中，我们往往会把MV变换放到一起，一般做法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">gl_Position</span> <span class="o">=</span> <span class="n">P</span> <span class="o">*</span> <span class="n">MV</span> <span class="o">*</span> <span class="n">ObjectPosition</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>具体这些变换是怎么计算的，另外每一个计算的几何意义是什么。本系列教程暂不讨论，感兴趣的读者可以去看看我在本系列教程第一篇的最后推荐的一些资源。</p>
+<h3 id="修改cc_mvpmatrix">修改CC_MVPMatrix</h3>
+<p>我们怎么样修改CC_MVPMatrix呢？前面介绍过uniform变量的修改方法在这里是适用的，我们可以先通过glGetUniformLocation来获取这个uniform的入口，然后调用glUniformMatrix4fv来给它传值就行了。</p>
+<p>但是，等等。我该怎么计算这个矩阵的值呢？有两个函数glLookAt和glPerspective可以做这些事，具体的用法 ，大家可以参考CCDirector.cpp里面的代码。我就不在此处展开讨论了，另外强烈推荐大家运行<a href="http://user.xmission.com/~nate/tutors.html">此网页中的一个演示程序</a>，用来加深于这两个函数的理解。</p>
+<p>在cocos2d-x里面，我们可以通过修改矩阵栈里面的ModelView和Projection栈顶元素，从而修改ModelView和Projection矩阵，最终达到修改CC_MVPMatrix的目的。</p>
+<p>首先，让我们在onDraw函数的最开头加入下列代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="n">Director</span><span class="o">::</span><span class="n">getInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">pushMatrix</span><span class="p">(</span><span class="n">MATRIX_STACK_TYPE</span><span class="o">::</span><span class="n">MATRIX_STACK_MODELVIEW</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Director</span><span class="o">::</span><span class="n">getInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">loadIdentityMatrix</span><span class="p">(</span><span class="n">MATRIX_STACK_TYPE</span><span class="o">::</span><span class="n">MATRIX_STACK_MODELVIEW</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Director</span><span class="o">::</span><span class="n">getInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">pushMatrix</span><span class="p">(</span><span class="n">MATRIX_STACK_TYPE</span><span class="o">::</span><span class="n">MATRIX_STACK_PROJECTION</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Director</span><span class="o">::</span><span class="n">getInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">loadIdentityMatrix</span><span class="p">(</span><span class="n">MATRIX_STACK_TYPE</span><span class="o">::</span><span class="n">MATRIX_STACK_PROJECTION</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后在onDraw函数返回前加入下列代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">  <span class="n">Director</span><span class="o">::</span><span class="n">getInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">popMatrix</span><span class="p">(</span><span class="n">MATRIX_STACK_TYPE</span><span class="o">::</span><span class="n">MATRIX_STACK_PROJECTION</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Director</span><span class="o">::</span><span class="n">getInstance</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">popMatrix</span><span class="p">(</span><span class="n">MATRIX_STACK_TYPE</span><span class="o">::</span><span class="n">MATRIX_STACK_MODELVIEW</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里，我们通过调用pushMatrix把当前矩阵压栈，这个操作会把原来栈顶上的元素拷贝一份并压入栈，这样我们后续对于此矩阵的操作可以通过调用popMatrix来撤销影响。此处，我们把ModelView和Projection矩阵都重置成了单位矩阵。而我们通过调用下列代码可以更新CC_MVPMatrix:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="n">glProgram</span><span class="o">-&gt;</span><span class="n">setUniformsForBuiltins</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>此时，如果我们运行程序，会得到一个黑屏（什么也显示不了）。</p>
+<h2 id="设备空间normalized-device-space">设备空间(normalized device space)</h2>
+<p>为了解决上述问题，我们只需要把对象的顶点数据修改为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">vertercies</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="c1">//第一个点的坐标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>   <span class="c1">//第二个点的坐标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">};</span>  <span class="c1">//第三个点的坐标
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>为什么要这样呢？因为任何一个顶点乘以一个单位矩阵，它的值是不变的。而normalized device space空间的取值范围是-1~+1，如下图所示：</p>
+<p><img src="https://zilongshanren.com/img/screenCoordinates-300x165.png" alt="clippingspace"></p>
+<p>所以，如果我们要想显示同之前一模一样的三角形，就必须修改这个顶点数据，让它的取值范围落在Clipping Space以内。这也是我们在其它许多书本上面看到的规范的三角形的范例。</p>
+<h2 id="结语">结语</h2>
+<p>最后，按照惯例，附上本教程的源码<a href="https://git.oschina.net/zilongshanren/Cocos2D-X-OpenGL-ES-2.0/commit/858446408bbaad5b1c15012c756f2c2809c7cd6e">下载地址</a></p>
+<h2 id="推荐阅读">推荐阅读</h2>
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=-tonZsbHty8&amp;index=26&amp;list=PLRwVmtr-pp06qT6ckboaOhnm9FxmzHpbY">https://www.youtube.com/watch?v=-tonZsbHty8&amp;index=26&amp;list=PLRwVmtr-pp06qT6ckboaOhnm9FxmzHpbY</a></p>
+</li>
+<li>
+<p><a href="http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/">http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/</a></p>
+</li>
+<li>
+<p><a href="http://blog.db-in.com/cameras-on-opengl-es-2-x/">http://blog.db-in.com/cameras-on-opengl-es-2-x/</a> (强烈推荐）</p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-06-15
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cocos2d-x/">Cocos2d-x</a>
+          <a href="/tags/opengl/">opengl</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/cocos2d-x-defensive-programming/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Cocos2D-X设计模式：防御式编程模式</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/cocos2d-x-design-patterns-facade/">
+            <span class="next-text nav-default">Cocos2D-X设计模式:外观模式</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/opengl-es2-meet-mvp/" class="leancloud_visitors" data-flag-title="OpenGL ES2.0教程:初识MVP(3)">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>我的工作流 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="本文要介绍的工作流是我最近才想出来的， 当然也借鉴了不少其他人的经验，但是，这不是重点，重点是此工作流要解决我目前遇到的问题。 我的问题主要有：" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/2015-10-14-pesudo-perfect-workflow/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="我的工作流" />
+<meta property="og:description" content="本文要介绍的工作流是我最近才想出来的， 当然也借鉴了不少其他人的经验，但是，这不是重点，重点是此工作流要解决我目前遇到的问题。 我的问题主要有：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/2015-10-14-pesudo-perfect-workflow/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2015-10-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2015-10-14T00:00:00+00:00" />
+
+<meta itemprop="name" content="我的工作流">
+<meta itemprop="description" content="本文要介绍的工作流是我最近才想出来的， 当然也借鉴了不少其他人的经验，但是，这不是重点，重点是此工作流要解决我目前遇到的问题。 我的问题主要有："><meta itemprop="datePublished" content="2015-10-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2015-10-14T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1913">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="我的工作流"/>
+<meta name="twitter:description" content="本文要介绍的工作流是我最近才想出来的， 当然也借鉴了不少其他人的经验，但是，这不是重点，重点是此工作流要解决我目前遇到的问题。 我的问题主要有："/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">我的工作流</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-10-14 </span>
+        
+          <span class="more-meta"> 约 1913 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#headline-1">它是什么?</a>
+<ul>
+<li><a href="#headline-2">GTD  －－ Getting Things Done</a>
+</li>
+<li><a href="#headline-3">DDD －－ Document Driven Development</a>
+</li>
+<li><a href="#headline-4">RDD －－  REPL Driven Development</a>
+</li>
+<li><a href="#headline-5">TDD/BDD －－ Test Driven Development or Behavior Driven Development</a>
+</li>
+<li><a href="#headline-6">Coding －－ 开始编码</a>
+</li>
+</ul>
+</li>
+<li><a href="#headline-7">总结</a>
+</li>
+<li><a href="#headline-8">Reference</a>
+</li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+<p>
+本文要介绍的工作流是我最近才想出来的， 当然也借鉴了不少其他人的经验，但是，这不是重点，重点是此工作流要解决我目前遇到的问题。</p>
+<p>
+我的问题主要有：</p>
+<ol>
+<li>当我要完成一个代码 feature 或者要修复一个严重的 Bug 的时候，我无法准确预估我需要的时间。</li>
+<li>当我重构一些代码时候，很容易犯一些低级的错误，这让我显得很不专业。</li>
+<li>在解决复杂的问题的时候，我经常要试错然后不断地改进，中间会有推倒重来的可能。</li>
+<li>对于我以前写的有一些代码，要理解它们有一定的难度。</li>
+</ol>
+<p>
+{{{more}}}</p>
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+它是什么?
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>一句话就是: GTD -&gt; DDD -&gt; RDD  -&gt; TDD/BDD -&gt; Coding</p>
+<div id="outline-container-headline-2" class="outline-3">
+<h3 id="headline-2">
+GTD  －－ Getting Things Done
+</h3>
+<div id="outline-text-headline-2" class="outline-text-3">
+<p>GTD 是一个时间管理方法，还有一本书专门介绍它，叫做《Getting Things Done 无压力工作的艺术》。</p>
+<p>
+采用 GTD 来管理个人的时间，可以让自己的时间利用率最大化，把有限的时候花在最有价值的事情上面。</p>
+<p>
+因为我们现在有电脑和各种智能设备，它们很容易吸引我们的注意力，这无形中会消耗我们大量的时间。</p>
+<p>
+这里我就不介绍如何实践 GTD 了，对于我而言，最好的 GTD 工具自然是 Emacs 的 Org-mode，当然也有其它工具可供选择。</p>
+<p>
+当我每天打开电脑，第一件事情就是检查我的 org-agenda 上面的 todo 事项，一般我会列一些 habit 在上面。比如锻炼身体，逛 reddit，阅读 rss 等。</p>
+<p>
+此时，agenda view 上面可能还有一些 project todo 事项，一般而言，这些事项不可能在短时间内完成，我会安排一天中的时间来优先处理它们(比如 schedule)。</p>
+<p>
+当 agenda view 上面没有 todo 事项的时候，我会从我的历史 todo 中找到“重要且紧急”的 todo 列表，然后根据实际情况 schedule 一些到 agenda 中去。</p>
+<p>
+只要 agenda 中没有安排的事情，我都不去做！这一点非常关键。 如果你打开一个网站，看到一篇不错的文章就开始阅读，发现一个不错的 Github 仓库就立马 clone 下来把玩。
+这样是非常浪费时间的，而且效率也不高。</p>
+<p>
+另外，对于 project，我会把它分解成一系列小的 todo item，然后在实际做这些 item 的时候，我会用 org-pomodoro 来 track 我花掉的时间。这样，等项目做完，
+我就可以知道我一共在这个项目上面花了多少时间。这也有利于以后做新任务的时候做时间预估。（这里的项目定义参考《无压力工作的艺术》一书）</p>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-3">
+<h3 id="headline-3">
+DDD －－ Document Driven Development
+</h3>
+<div id="outline-text-headline-3" class="outline-text-3">
+<p>我这里使用的是 Org-mode 的文学编程，除了可以写文档，还可以非常方便地在文档里面插入代码和图表，最后可以导出 HTML 和 PDF 供自己和他人阅读。</p>
+<p>
+文档驱动开发主要是针对一些复杂的技术问题和一些重要的技术决策来的。很多时候我们对于一个问题束手无策，可能是我们还没能理解清楚这个问题。换句话说，
+就是我们连问题本身是什么可能都还没搞清楚，何谈解决它。</p>
+<p>
+要理解一个问题，不仅仅是识别它本身，还包括它的约束和上下文。</p>
+<p>
+所谓的“分析和设计”不止是画 UML 图和写各种设计文档，这些活动本质上是为了让我们更好地理解我们面临的问题。只有当我们完全理解了问题之后，我们才有可能找到一个简单清晰的解决方案。</p>
+<p>
+如果你把思考过程写下来，把讨论过程记录下来，那么你就有机会针对此问题的理解进行深层次的迭代。另外，对于日后维护代码的人来说，这些文档也是宝贵的参考资料。</p>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-3">
+<h3 id="headline-4">
+RDD －－  REPL Driven Development
+</h3>
+<div id="outline-text-headline-4" class="outline-text-3">
+<p>这个听起来挺新鲜的，我也是最近才听说的，不过这个真的非常管用。</p>
+<p>
+我现在写程序如果没有 REPL 感觉很不爽，比如写 C＋＋，编译等半天，非常低效，而且一点也不 Fun。我还是喜欢 Lisp 和 Javascript。</p>
+<p>
+如果在做分析和设计的时候可以写一些代码，它会帮助你更好地理解你的问题和解决方案。它相比于制作原型开销要小得多，而且这个过程非常有趣。</p>
+<p>
+另外，当你要修改一段代码的时候，如果有 REPL，你就可以在程序运行起来后，动态地 hack，进而更好地理解此程序的逻辑，做 web 开发的同学肯定深有体会。</p>
+<p>
+REPL 在验证 API 和 Idea 方面会比 Org-mode 的 babel 更方便。</p>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-3">
+<h3 id="headline-5">
+TDD/BDD －－ Test Driven Development or Behavior Driven Development
+</h3>
+<div id="outline-text-headline-5" class="outline-text-3">
+<p>这两个术语已经被炒得很热了，我这里就不多说了。</p>
+<p>
+在具体实践的时候，注意一定要先写测试，然后让测试失败，再写代码，让测试通过，然后重构，得到简单和优雅的代码。</p>
+<p>
+简言之，即 Failed -&gt; Passed -&gt; Refactor。</p>
+<p>
+因为在实践 TDD 的时候，你可能会运行测试例上百次，所以方便的工具可以让这个过程变得不那么枯燥。</p>
+<p>
+Emacs 当仁不让。我这里拿 node.js 来说，我现在用的测试框架是 mocha，通过分屏在 Emacs 里面开一个 terminal，可以非常方便地运行测试例。
+我甚至可以写一段 lisp 代码，让我在保存测试代码的时候，自动运行测试。</p>
+<p>
+好的工具可以让我很容易进入一种“流”的状态，然后效率自然大大地提升了。</p>
+</div>
+</div>
+<div id="outline-container-headline-6" class="outline-3">
+<h3 id="headline-6">
+Coding －－ 开始编码
+</h3>
+<div id="outline-text-headline-6" class="outline-text-3">
+<p>关于编码的问题不是本文的重点，惟一需要强调的是，我们的目标是编写：</p>
+<pre class="example">
+简单，优雅和可维护的代码。
+</pre>
+<p>
+另外，不要一味地往代码里面加入过多的 feature，因为简单的 feature 堆砌并不能解决任何人的问题。</p>
+<p>
+我们关心的是解决具体的问题，而不是添加更多的功能。而且你能保证新加的功能本身不会制造更多的问题吗？</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-2">
+<h2 id="headline-7">
+总结
+</h2>
+<div id="outline-text-headline-7" class="outline-text-2">
+<p>工作流千万种，找到最适合自己的才是最重要的。</p>
+<p>
+也欢迎大家和我交流自己的工作流。</p>
+</div>
+</div>
+<div id="outline-container-headline-8" class="outline-2">
+<h2 id="headline-8">
+Reference
+</h2>
+<div id="outline-text-headline-8" class="outline-text-2">
+<ul>
+<li><a href="http://eigenhombre.com/clojure/2014/07/20/a-worfklow-tdd-rdd-and-ddd/">http://eigenhombre.com/clojure/2014/07/20/a-worfklow-tdd-rdd-and-ddd/</a></li>
+<li><a href="https://www.youtube.com/watch?v=f84n5oFoZBc">https://www.youtube.com/watch?v=f84n5oFoZBc</a></li>
+</ul>
+</div>
+</div>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2015-10-14
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/2015-10-15-nagivate-quickly-in-the-current-buffer/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Emacs 当前文件快速查找内容</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2015-09-21-three-git-question-2/">
+            <span class="next-text nav-default">三个 Git 问题(下)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/2015-10-14-pesudo-perfect-workflow/" class="leancloud_visitors" data-flag-title="我的工作流">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

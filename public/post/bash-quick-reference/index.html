@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Bash使用心得 - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="由于前段时间一直在做Bash和Makefile脚本的编写，所以，本文主要是记录一些Bash使用心得. 有人可能会问了，现在Python这么流行" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/bash-quick-reference/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Bash使用心得" />
+<meta property="og:description" content="由于前段时间一直在做Bash和Makefile脚本的编写，所以，本文主要是记录一些Bash使用心得. 有人可能会问了，现在Python这么流行" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/bash-quick-reference/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-12-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-12-14T00:00:00+00:00" />
+
+<meta itemprop="name" content="Bash使用心得">
+<meta itemprop="description" content="由于前段时间一直在做Bash和Makefile脚本的编写，所以，本文主要是记录一些Bash使用心得. 有人可能会问了，现在Python这么流行"><meta itemprop="datePublished" content="2014-12-14T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-12-14T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2463">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bash使用心得"/>
+<meta name="twitter:description" content="由于前段时间一直在做Bash和Makefile脚本的编写，所以，本文主要是记录一些Bash使用心得. 有人可能会问了，现在Python这么流行"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Bash使用心得</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-12-14 </span>
+        <div class="post-category">
+            <a href="/categories/bash/"> bash </a>
+            </div>
+          <span class="more-meta"> 约 2463 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-big-picture">The Big Picture</a></li>
+    <li><a href="#basic-syntax">Basic syntax</a></li>
+    <li><a href="#tips-and-tricks">Tips and tricks</a>
+      <ul>
+        <li><a href="#parse-command-options">Parse Command Options</a></li>
+        <li><a href="#use-sed-awk-and-grep">Use Sed, Awk and Grep</a></li>
+        <li><a href="#use-various-command-line-tools">Use Various command line tools</a></li>
+        <li><a href="#use-man-page-google-and-so">Use Man page, Google and SO</a></li>
+        <li><a href="#debugging">Debugging</a></li>
+      </ul>
+    </li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>由于前段时间一直在做Bash和Makefile脚本的编写，所以，本文主要是记录一些Bash使用心得.
+有人可能会问了，现在Python这么流行，完全可以用来取代Bash呀。理论上是没错，但是Bash脚本有它自己独特的优点，
+比如编写简单，功能强大（主要指的是与管道命令和其它命令行程序结合起来使用）,特别适合用来制作一些&quot;简单&quot;的自动化处理任务脚本。
+很多时候，我宁愿用shell而不想编写python，因为shell实在是太方便啦。</p>
+<!-- raw HTML omitted -->
+<h2 id="the-big-picture">The Big Picture</h2>
+<p>编写bash脚本，简单来说就是编写一个批处理程序，这个程序里面的语句都可以在终端里面直接运行。比如我们熟知的“新建文件”(touch filename)，
+“删除文件”(rm filename)，“增删改文件夹”(mkdir/rm -rf/mv  folername)等命令都可以直接写到bash脚本中。</p>
+<p>一个简单的bash脚本一般是以.sh为后缀，但这个不是必须的。我们只需要在我们的脚本文件的最顶端写上下面的语句即可：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="cp">#!/bin/sh
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来所有的语句都会按照shell的语法来解释执行。</p>
+<p>一个简单的Hello World示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"> <span class="cp">#!/bin/sh
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="n">echo</span> <span class="s">&#34;Hello World&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果我们把此段脚本保存为ex01.sh，那么我们可以直接通过在终端运行以下命令来执行它:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">./ex01.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>不过在运行此脚本之前，我们还需要赋予它可执行权限.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">ex01</span><span class="p">.</span><span class="n">sh</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果你是一个命令行重度用户，你会发现编写shell脚本相当得心应手。它可以辅助我们完成一些重复性的任务，而我自己经常也用它们来制作一些命令行小工具。</p>
+<p>shell脚本本身的语法还是一点怪异的，不过只需要注意几点，多写几段程序就可以适应了。</p>
+<p>shell脚本最强大的还是与管道与现有命令行工具整合起来一起使用，威力相当大。理论上你掌握的命令行工具越多，你编写shell脚本能够完成的工作也就越多.</p>
+<h2 id="basic-syntax">Basic syntax</h2>
+<p>关于shell的基本语法，我就不在这里赘述了。大家可以参考<a href="http://learnxinyminutes.com/docs/bash/">Learn X in Y minutes</a>，也可以读一读<a href="http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html#toc1">Bash Programming Intro</a>
+中文入门可以读<a href="https://laoyur.com/?p=638">shell 快速入门</a>.</p>
+<p>需要注意的一点就是，“空格”在bash里面非常重要。如果使用不当，就会报错.</p>
+<p>比如下面两行代码:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">foo</span><span class="o">=</span><span class="s">&#34;bar&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">foo</span> <span class="o">=</span><span class="s">&#34;bar&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第一条语句是把&quot;bar&quot;这个变量字符串赋值给foo，而第二条语句是会直接执行foo这个命令。一般来讲，就会直接报错，说foo不是一个有效的外部命令。</p>
+<p>另外还有在if语句和while等语句里面，如果在[]的两侧忘记添加空格，也是会报语法错误的。</p>
+<p>总的来说，shell的语法是很简单的，我们只需要掌握一些基本的顺序选择循环语句怎么编写就差不多了，大部分时候我们会编写一些函数来做模块化分割，主要是为了方便编写更复杂的shell程序。</p>
+<p>有时候，为了完成一个特定的功能，我们可能需要编写好几个shell程序，然后让它们相互调用来完成功能。此时就涉及到不同shell脚本之间如果传递数据的问题了。</p>
+<p>一般可以通过命令行参数和export变量来传递。而命令行参数则于$1-$n来表示，export导出变量只能向下传递，不能向上传递.</p>
+<p>一般建议少用export导出变量来传递数据，因为这样会污染bash的环境变量.</p>
+<p>另外，我们在~/.bash_profile里面定义的export变量，默认在shell初始化的时候会全部导出，任何在此shell环境中执行的shell脚本都可以访问和操作这些变量.</p>
+<p>接下来，主要是记录一些常用的tips.</p>
+<h2 id="tips-and-tricks">Tips and tricks</h2>
+<p>本小节主要记录一些小的Tips.</p>
+<h3 id="parse-command-options">Parse Command Options</h3>
+<p>Method1:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">while</span> <span class="p">[</span> <span class="s">&#34;$1&#34;</span> <span class="o">!=</span> <span class="s">&#34;&#34;</span> <span class="p">];</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="n">PARAM</span><span class="o">=</span><span class="err">`</span><span class="n">echo</span> <span class="err">$</span><span class="mi">1</span> <span class="o">|</span> <span class="n">awk</span> <span class="o">-</span><span class="n">F</span><span class="o">=</span> <span class="err">&#39;</span><span class="p">{</span><span class="n">print</span> <span class="err">$</span><span class="mi">1</span><span class="p">}</span><span class="err">&#39;`</span>
+</span></span><span class="line"><span class="cl">    <span class="n">VALUE</span><span class="o">=</span><span class="err">`</span><span class="n">echo</span> <span class="err">$</span><span class="mi">1</span> <span class="o">|</span> <span class="n">awk</span> <span class="o">-</span><span class="n">F</span><span class="o">=</span> <span class="err">&#39;</span><span class="p">{</span><span class="n">print</span> <span class="err">$</span><span class="mi">2</span><span class="p">}</span><span class="err">&#39;`</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="err">$</span><span class="n">PARAM</span> <span class="n">in</span>
+</span></span><span class="line"><span class="cl">        <span class="o">--</span><span class="n">help</span> <span class="o">|</span> <span class="o">-</span><span class="n">h</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">build_show_help_message</span><span class="o">=</span><span class="n">yes</span>
+</span></span><span class="line"><span class="cl">            <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">--</span><span class="n">platform</span> <span class="o">|</span> <span class="o">-</span><span class="n">p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">build_platform</span><span class="o">=</span><span class="err">$</span><span class="n">VALUE</span>
+</span></span><span class="line"><span class="cl">            <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">--</span><span class="n">libs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">build_library</span><span class="o">=</span><span class="err">$</span><span class="n">VALUE</span>
+</span></span><span class="line"><span class="cl">            <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">--</span><span class="n">arch</span> <span class="o">|</span> <span class="o">-</span><span class="n">a</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">build_arches</span><span class="o">=</span><span class="err">$</span><span class="n">VALUE</span>
+</span></span><span class="line"><span class="cl">            <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">--</span><span class="n">mode</span> <span class="o">|</span> <span class="o">-</span><span class="n">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">build_mode</span><span class="o">=</span><span class="err">$</span><span class="n">VALUE</span>
+</span></span><span class="line"><span class="cl">            <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">--</span><span class="n">list</span> <span class="o">|</span> <span class="o">-</span><span class="n">l</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">build_list_all_libraries</span><span class="o">=</span><span class="n">yes</span>
+</span></span><span class="line"><span class="cl">            <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">*</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">echo</span> <span class="s">&#34;ERROR: unknown parameter </span><span class="se">\&#34;</span><span class="s">$PARAM</span><span class="se">\&#34;</span><span class="s">&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">usage</span>
+</span></span><span class="line"><span class="cl">            <span class="n">exit</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">esac</span>
+</span></span><span class="line"><span class="cl">    <span class="n">shift</span>
+</span></span><span class="line"><span class="cl"><span class="n">done</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Method2:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">while</span> <span class="n">getopts</span> <span class="s">&#34;hvsk🅰️l:&#34;</span> <span class="n">OPTION</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl">     <span class="k">case</span> <span class="err">$</span><span class="n">OPTION</span> <span class="n">in</span>
+</span></span><span class="line"><span class="cl">         <span class="n">h</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">             <span class="n">usage</span>
+</span></span><span class="line"><span class="cl">             <span class="n">exit</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">             <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">         <span class="n">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">             <span class="n">VERBOSE</span><span class="o">=</span><span class="n">yes</span>
+</span></span><span class="line"><span class="cl">             <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">         <span class="n">s</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">             <span class="n">PLATFORM</span><span class="o">=</span><span class="n">Simulator</span>
+</span></span><span class="line"><span class="cl">             <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">         <span class="n">k</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">             <span class="n">SDK_VERSION</span><span class="o">=</span><span class="err">$</span><span class="n">OPTARG</span>
+</span></span><span class="line"><span class="cl">             <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">         <span class="n">a</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">             <span class="n">ARCH</span><span class="o">=</span><span class="err">$</span><span class="n">OPTARG</span>
+</span></span><span class="line"><span class="cl">             <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">         <span class="n">l</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">             <span class="n">OPTIONS</span><span class="o">=--</span><span class="n">enable</span><span class="o">-</span><span class="err">$</span><span class="n">OPTARG</span>
+</span></span><span class="line"><span class="cl">             <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">         <span class="o">?</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">             <span class="n">usage</span>
+</span></span><span class="line"><span class="cl">             <span class="n">exit</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">             <span class="p">;;</span>
+</span></span><span class="line"><span class="cl">     <span class="n">esac</span>
+</span></span><span class="line"><span class="cl"><span class="n">done</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="use-sed-awk-and-grep">Use Sed, Awk and Grep</h3>
+<ul>
+<li>使用sed可以完成文件文本的查找与替换：</li>
+</ul>
+<p>下面是把xxx.txt里面的xx替换成yy，同时生成一个xxx.txt.bak文件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sed -i .bak &#39;s/xx/yy/g&#39;  xxx.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们可以看到，这里的&rsquo;s/xx/yy/g&rsquo;和vim里面的替换命令是一模一样的。</p>
+<p>关于sed的入门，推荐大家看<a href="http://robots.thoughtbot.com/sed-102-replace-in-place">这篇文章</a></p>
+<ul>
+<li>使用awk方便操作具有column结构的数据和文本</li>
+</ul>
+<p>这里，我也推荐<a href="http://www.hcs.harvard.edu/~dholland/computers/awk.html">一篇文章</a></p>
+<ul>
+<li>使用grep查找特定目录里面包含自定义正则表达式的文件</li>
+</ul>
+<p>关于grep的使用，也推荐<a href="http://www.uccs.edu/~ahitchco/grep/">一篇文章吧</a></p>
+<p>这三个命令使用的频率特别高，特别是在做文本查找和文本字符串处理的时候。当然，还有perl使用的机会也比较多，以后有时间也要好好学习一下。</p>
+<h3 id="use-various-command-line-tools">Use Various command line tools</h3>
+<p>常用的shell命令有以下几种:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">sort</span>
+</span></span><span class="line"><span class="cl"><span class="n">find</span>
+</span></span><span class="line"><span class="cl"><span class="n">tail</span>
+</span></span><span class="line"><span class="cl"><span class="n">head</span>
+</span></span><span class="line"><span class="cl"><span class="n">xargs</span>
+</span></span><span class="line"><span class="cl"><span class="n">cat</span>
+</span></span><span class="line"><span class="cl"><span class="n">touch</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过组合这些命令与前面提到的awk, grep等命令，我们可以在命令行里面完成非常复杂的操作。</p>
+<p>比如:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">find</span>  <span class="p">..</span><span class="o">/</span><span class="n">contrib</span><span class="o">/</span><span class="n">src</span> <span class="o">-</span><span class="n">type</span> <span class="n">f</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">SHA512SUMS</span> <span class="o">|</span> <span class="n">xargs</span> <span class="n">cat</span> <span class="o">|</span>
+</span></span><span class="line"><span class="cl"><span class="n">awk</span> <span class="err">&#39;</span><span class="n">match</span> <span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">,</span> <span class="o">/</span><span class="p">.</span><span class="n">tgz</span><span class="o">|</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span><span class="o">|</span><span class="p">.</span><span class="n">zip</span><span class="o">|</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">xz</span><span class="o">/</span><span class="p">)</span> <span class="p">{</span> <span class="n">print</span> <span class="nf">substr</span><span class="p">(</span><span class="err">$</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">length</span><span class="p">(</span><span class="err">$</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="n">RLENGTH</span><span class="p">)}</span><span class="err">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="n">xxx</span> <span class="o">|</span> <span class="n">awk</span> <span class="err">&#39;</span><span class="p">{</span><span class="n">print</span> <span class="err">$</span><span class="mi">1</span><span class="p">}</span><span class="err">&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述这段脚本是查找当前目录的上一级contrib目录下面的src文件夹下面包含字符串&quot;SHA512SUMS&quot;的文件，然后查找这些文件里面包含(.tgz, .tar.gz, .zip 和.tar.xz)的字符串，并把这些字符串中名字包含xxx的打印出来.</p>
+<h3 id="use-man-page-google-and-so">Use Man page, Google and SO</h3>
+<p>因为Linux系统下面的命令行工具实在是太多了，如果我们要精通每一个命令行工具的所有用法和参数，这几乎是不可能完成的任务。
+所以，善于利用man命令来实时查找特定命令行工具的用法，这一点太重要了。</p>
+<p>当然，有时候面对密密麻麻的man page，我也经常找不到解决方案。这个时候，google和stackoverflow就能大显神威了。特别是stackoverflow，在编写shell脚本的过程中，我遇到的90%的问题都是通过它来解决的。</p>
+<h3 id="debugging">Debugging</h3>
+<p>调试可以通过设置以下语句：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">set -x
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>也可以用最简单的打印+exit来调试,业内有一种说法叫“二分调试法”，指的是在出问题的程序段里面，采用类似二分查找的方法来打印一些关键变量的值，用以判断程序执行程序及逻辑是否正确。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">echo &#39;xxx&#39; &amp;&amp; exit
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="reference">Reference</h2>
+<ul>
+<li>
+<p><a href="http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html#toc1">Bash programming Introduction</a></p>
+</li>
+<li>
+<p><a href="http://www.tldp.org/LDP/abs/html/index.html">Advanced shell programming</a></p>
+</li>
+<li>
+<p><a href="https://laoyur.com/?p=638">Bash快速入门</a></p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-12-14
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/review-of-mastering-emacs/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">《Mastering Emacs》读后感</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/great-or-nothing/">
+            <span class="next-text nav-default">Be Great or Nothing</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/bash-quick-reference/" class="leancloud_visitors" data-flag-title="Bash使用心得">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

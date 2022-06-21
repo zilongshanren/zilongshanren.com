@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>reading on 子龙山人</title>
+    <link>https://zilongshanren.com/tags/reading/</link>
+    <description>Recent content in reading on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 06 Jul 2019 14:29:00 +0800</lastBuildDate><atom:link href="https://zilongshanren.com/tags/reading/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>《a little java a few patterns》读书笔记</title>
+      <link>https://zilongshanren.com/post/a-little-java-a-few-patterns-book-review/</link>
+      <pubDate>Sat, 06 Jul 2019 14:29:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/a-little-java-a-few-patterns-book-review/</guid>
+      <description>&lt;p&gt;这本书其实看完有一段时间了，今天来做个总结。在此之前，想为该作者 Friedman 的其他书籍打个广告，我目前看过《The Little Schemer》&amp;mdash;-神书，看完（并实践完）能让你对递归有更深的理解，同时还能学习一门 Lisp 方言。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

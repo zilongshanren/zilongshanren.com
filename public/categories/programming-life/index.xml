@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>programming life on 子龙山人</title>
+    <link>https://zilongshanren.com/categories/programming-life/</link>
+    <description>Recent content in programming life on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 01 Sep 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/programming-life/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>《Clean Architecture》读书笔记</title>
+      <link>https://zilongshanren.com/post/summary-of-clean-architecture/</link>
+      <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/summary-of-clean-architecture/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;一前言&#34;&gt;一、前言&lt;/h2&gt;
+&lt;p&gt;软件架构非常重要，架构的主要目的是最小化系统开发和维护的人力成本，提高开发人员的开发效率。&lt;/p&gt;
+&lt;p&gt;软件设计和软件构架有本质区别，架构更关心软件的高层设计，怎么定义系统和模块的边界，而设计更关心底层的实现细节。&lt;/p&gt;
+&lt;p&gt;优雅的架构通常不是那么容易就获得的，他需要开发人员去争取、去斗争、去追求。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>这些年伴随我的一些好习惯</title>
+      <link>https://zilongshanren.com/post/2015-11-23-a-few-good-habit-i-keep-for-years/</link>
+      <pubDate>Mon, 23 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2015-11-23-a-few-good-habit-i-keep-for-years/</guid>
+      <description>Table of Contents 每天坚持学习 1-2 小时 坚持阅读英文资料 不断改进自己的工具箱 积极融入社区 小结 本文我试图回顾一下这些年伴随我的一些好习惯，我会按照我认为的重要</description>
+    </item>
+    
+    <item>
+      <title>Be Great or Nothing</title>
+      <link>https://zilongshanren.com/post/great-or-nothing/</link>
+      <pubDate>Sun, 16 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/great-or-nothing/</guid>
+      <description>最近工作上比较忙，博客更新的也没以前那么频繁了。本来计划每周一篇的博客写作，最终还是没有完成。(还是自己比较懒，偶尔会有一些拖延症。) 近来一</description>
+    </item>
+    
+    <item>
+      <title>Bad Smell</title>
+      <link>https://zilongshanren.com/post/bad-smell/</link>
+      <pubDate>Sun, 12 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/bad-smell/</guid>
+      <description>国庆七天假，为了回家，我于万军丛中抢到了回家的高铁票，终于踏上了回乡之路。在家里没网上，除了带小孩以外，我还阅读完了一本关于Emacs Lis</description>
+    </item>
+    
+    <item>
+      <title>高标准与不完美</title>
+      <link>https://zilongshanren.com/post/high-standard-and-imperfect/</link>
+      <pubDate>Mon, 29 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/high-standard-and-imperfect/</guid>
+      <description>这段时间一直在折腾Cocos2D-X第三方库的自动编译脚本，目前引擎差不多集成了20个左右的第三方库，80%都是使用的预编译库，也有一直直接</description>
+    </item>
+    
+    <item>
+      <title>Things I Have Learned at Cocos2D-X Team</title>
+      <link>https://zilongshanren.com/post/what-i-learn-at-cocos2d-x/</link>
+      <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/what-i-learn-at-cocos2d-x/</guid>
+      <description>我是去年7月加入的Cocos2D-X团队，从今年2月份正式进入Cocos2D-x引擎团队，负责维护GUI框架。之前我一直在做技术推广，写英文</description>
+    </item>
+    
+    <item>
+      <title>学习新东西</title>
+      <link>https://zilongshanren.com/post/talking-about-learning-new-thing/</link>
+      <pubDate>Tue, 05 Aug 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/talking-about-learning-new-thing/</guid>
+      <description>对于程序员而言，最大的痛苦莫过于对着层出不穷的新语言、新技术和新框架疲于奔命了。 就拿cocos2d-x来说，有些人可能2.x都才刚刚上手，3</description>
+    </item>
+    
+    <item>
+      <title>程序猿：你的&#34;家当&#34;都在云上吗？</title>
+      <link>https://zilongshanren.com/post/does-you-stuff-all-on-cloud/</link>
+      <pubDate>Mon, 07 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/does-you-stuff-all-on-cloud/</guid>
+      <description>最近我一直在想一个问题，作为一个程序猿，我的“家当”都在云上面吗？ 在扯这个话题之前，先来陈列一下我目前有哪些家当。 首当其冲的应该是我的代码，</description>
+    </item>
+    
+    <item>
+      <title>如何坚持每周写一篇博客</title>
+      <link>https://zilongshanren.com/post/how-to-write-one-blog-post-each-week/</link>
+      <pubDate>Thu, 03 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/how-to-write-one-blog-post-each-week/</guid>
+      <description>如何坚持每周写一篇博客呢？ 在回答这个问题之前,让我们先来看看这个问题是怎么由来的？ 我在我的微博好友justbilt首页中无意中看到下面这段话</description>
+    </item>
+    
+  </channel>
+</rss>

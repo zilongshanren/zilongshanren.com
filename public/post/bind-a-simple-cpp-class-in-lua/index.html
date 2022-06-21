@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Lua教程:绑定一个简单的C&#43;&#43;类(6) - 子龙山人</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="zilongshanren" /><meta name="description" content="本文是最后一篇C/C&#43;&#43;与Lua交互的教程，在此之后，我们会结合Cocos2D-X来介绍Lua绑定。本文主要介绍如何绑定一个简单的C&#43;&#43;类到" /><meta name="keywords" content="Emacs, Cocos2d, Graphics, Unity, GameDev, Game Development" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.100.1 with theme even" />
+
+
+<link rel="canonical" href="https://zilongshanren.com/post/bind-a-simple-cpp-class-in-lua/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Lua教程:绑定一个简单的C&#43;&#43;类(6)" />
+<meta property="og:description" content="本文是最后一篇C/C&#43;&#43;与Lua交互的教程，在此之后，我们会结合Cocos2D-X来介绍Lua绑定。本文主要介绍如何绑定一个简单的C&#43;&#43;类到" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zilongshanren.com/post/bind-a-simple-cpp-class-in-lua/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2014-08-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2014-08-11T00:00:00+00:00" />
+
+<meta itemprop="name" content="Lua教程:绑定一个简单的C&#43;&#43;类(6)">
+<meta itemprop="description" content="本文是最后一篇C/C&#43;&#43;与Lua交互的教程，在此之后，我们会结合Cocos2D-X来介绍Lua绑定。本文主要介绍如何绑定一个简单的C&#43;&#43;类到"><meta itemprop="datePublished" content="2014-08-11T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2014-08-11T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2626">
+<meta itemprop="keywords" content="c&#43;&#43;,Lua," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Lua教程:绑定一个简单的C&#43;&#43;类(6)"/>
+<meta name="twitter:description" content="本文是最后一篇C/C&#43;&#43;与Lua交互的教程，在此之后，我们会结合Cocos2D-X来介绍Lua绑定。本文主要介绍如何绑定一个简单的C&#43;&#43;类到"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">子龙山人</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/learnemacs/">
+        <li class="mobile-menu-item">LearnEmacs</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">子龙山人</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/learnemacs/">LearnEmacs</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Lua教程:绑定一个简单的C&#43;&#43;类(6)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2014-08-11 </span>
+        <div class="post-category">
+            <a href="/categories/lua/"> Lua </a>
+            </div>
+          <span class="more-meta"> 约 2626 字 </span>
+          <span class="more-meta"> 预计阅读 6 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#绑定c类">绑定C++类</a>
+      <ul>
+        <li><a href="#定义c类">定义C++类</a></li>
+        <li><a href="#编写绑定代码">编写绑定代码</a></li>
+        <li><a href="#注册c-api到lua里面">注册C API到Lua里面</a></li>
+        <li><a href="#lua访问c类">Lua访问C++类</a></li>
+      </ul>
+    </li>
+    <li><a href="#提供lua面向对象操作api">提供Lua面向对象操作API</a>
+      <ul>
+        <li><a href="#metatable">MetaTable</a></li>
+        <li><a href="#修改绑定代码">修改绑定代码</a></li>
+        <li><a href="#lua访问c类-1">Lua访问C++类</a></li>
+      </ul>
+    </li>
+    <li><a href="#管理c内存">管理C++内存</a></li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <!-- raw HTML omitted -->
+<p>本文是最后一篇C/C++与Lua交互的教程，在此之后，我们会结合Cocos2D-X来介绍Lua绑定。本文主要介绍如何绑定一个简单的C++类到Lua里面，并且提供Lua的面向对象访问方式。</p>
+<!-- raw HTML omitted -->
+<h2 id="绑定c类">绑定C++类</h2>
+<h3 id="定义c类">定义C++类</h3>
+<p>首先，我们定义一个Student类，它拥有名字（字符串类型）和年龄（整型），并且提供一些getter和setter，最后还提供了一个print方法.这里有Student类的定义和实现：<a href="http://git.oschina.net/zilongshanren/Lua-Tutorials/blob/master/LuaCocos2D-X/Classes/Student.h">Student.h</a>和<a href="http://git.oschina.net/zilongshanren/Lua-Tutorials/blob/master/LuaCocos2D-X/Classes/Student.cpp">Student.cpp</a></p>
+<h3 id="编写绑定代码">编写绑定代码</h3>
+<p>首先，让我们编写在Lua里面创建Student对象的方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="n">Student</span> <span class="o">**</span><span class="n">s</span> <span class="o">=</span>  <span class="p">(</span><span class="n">Student</span><span class="o">**</span><span class="p">)</span><span class="n">lua_newuserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Student</span><span class="o">*</span><span class="p">));</span>  <span class="c1">// lua will manage Student** pointer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">;</span>  <span class="c1">//这里我们分配了内存，后面我们会介绍怎么让Lua在gc的时候释放这块内存
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来是getName,setName，setAge，getAge和print方法的定义:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">l_setName</span><span class="p">(</span><span class="n">lua_State</span><span class="o">*</span> <span class="n">L</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Student</span> <span class="o">**</span><span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">Student</span><span class="o">**</span><span class="p">)</span><span class="n">lua_touserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">luaL_argcheck</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">s</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#34;invalid user data&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">luaL_checktype</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">LUA_TSTRING</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="n">lua_tostring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setName</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">l_setAge</span><span class="p">(</span><span class="n">lua_State</span><span class="o">*</span> <span class="n">L</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Student</span> <span class="o">**</span><span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">Student</span><span class="o">**</span><span class="p">)</span><span class="n">lua_touserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">luaL_argcheck</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">s</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#34;invalid user data&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">luaL_checktype</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">LUA_TNUMBER</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">lua_tonumber</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setAge</span><span class="p">(</span><span class="n">age</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">l_getName</span><span class="p">(</span><span class="n">lua_State</span><span class="o">*</span> <span class="n">L</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Student</span> <span class="o">**</span><span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">Student</span><span class="o">**</span><span class="p">)</span><span class="n">lua_touserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">luaL_argcheck</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">s</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#34;invalid user data&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_settop</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_pushstring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">getName</span><span class="p">().</span><span class="n">c_str</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">l_getAge</span><span class="p">(</span><span class="n">lua_State</span><span class="o">*</span> <span class="n">L</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Student</span> <span class="o">**</span><span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">Student</span><span class="o">**</span><span class="p">)</span><span class="n">lua_touserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">luaL_argcheck</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">s</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#34;invalid user data&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_settop</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_pushnumber</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">getAge</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">l_print</span><span class="p">(</span><span class="n">lua_State</span><span class="o">*</span> <span class="n">L</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Student</span> <span class="o">**</span><span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">Student</span><span class="o">**</span><span class="p">)</span><span class="n">lua_touserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">luaL_argcheck</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">s</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#34;invalid user data&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">print</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从这里我们可以看到，userdata充当了C++类和Lua的一个桥梁，另外，我们在从Lua栈里面取出数据的时候，一定要记得检查数据类型是否合法。</p>
+<h3 id="注册c-api到lua里面">注册C API到Lua里面</h3>
+<p>最后，我们需要把刚刚编写的这些函数注册到Lua虚拟机里面去。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="k">const</span> <span class="k">struct</span> <span class="nc">luaL_Reg</span> <span class="n">stuentlib_f</span> <span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;create&#34;</span><span class="p">,</span> <span class="n">newStudent</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;setName&#34;</span><span class="p">,</span><span class="n">l_setName</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;setAge&#34;</span><span class="p">,</span> <span class="n">l_setAge</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;print&#34;</span><span class="p">,</span> <span class="n">l_print</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;getName&#34;</span><span class="p">,</span><span class="n">l_getName</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;getAge&#34;</span><span class="p">,</span> <span class="n">l_getAge</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">luaopen_student</span> <span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">luaL_newlib</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">stuentlib_f</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>现在，我们把luaopen_student函数添加到之前的注册函数里面去:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="k">static</span> <span class="k">const</span> <span class="n">luaL_Reg</span> <span class="n">lualibs</span><span class="p">[]</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="s">&#34;base&#34;</span><span class="p">,</span> <span class="n">luaopen_base</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="s">&#34;io&#34;</span><span class="p">,</span> <span class="n">luaopen_io</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="s">&#34;cc&#34;</span><span class="p">,</span><span class="n">luaopen_student</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="n">luaL_Reg</span> <span class="o">*</span><span class="n">lib</span> <span class="o">=</span> <span class="n">lualibs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(;</span> <span class="n">lib</span><span class="o">-&gt;</span><span class="n">func</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="n">lib</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//注意这里如果使用的不是requiref，则需要手动在Lua里面调用require &#34;模块名&#34;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">luaL_requiref</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">lib</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">,</span> <span class="n">lib</span><span class="o">-&gt;</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">lua_settop</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="lua访问c类">Lua访问C++类</h3>
+<p>现在，我们在Lua里面操作这个Student类。注意，我们绑定的每一个函数都需要一个student对象作为参数，这样使用有一点不太方便。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">local</span> <span class="n">s</span> <span class="o">=</span> <span class="n">cc</span><span class="p">.</span><span class="n">create</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">cc</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s">&#34;zilongshanren&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">print</span><span class="p">(</span><span class="n">cc</span><span class="p">.</span><span class="n">getName</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">cc</span><span class="p">.</span><span class="n">setAge</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">print</span><span class="p">(</span><span class="n">cc</span><span class="p">.</span><span class="n">getAge</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">cc</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后，输出的结果为:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">zilongshanren</span>
+</span></span><span class="line"><span class="cl"><span class="mi">20</span>
+</span></span><span class="line"><span class="cl"><span class="n">My</span> <span class="n">name</span> <span class="nl">is</span><span class="p">:</span> <span class="n">zilongshanren</span><span class="p">,</span> <span class="n">and</span> <span class="n">my</span> <span class="n">age</span> <span class="n">is</span> <span class="mi">20</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="提供lua面向对象操作api">提供Lua面向对象操作API</h2>
+<p>现在我们已经可以在Lua里面创建C++类的对象了，但是，我们最好是希望可以用Lua里面的面向对象的方式来访问。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">local</span> <span class="n">s</span> <span class="o">=</span> <span class="n">cc</span><span class="p">.</span><span class="n">create</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nl">s</span><span class="p">:</span><span class="n">setName</span><span class="p">(</span><span class="s">&#34;zilongshanren&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nl">s</span><span class="p">:</span><span class="n">setAge</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nl">s</span><span class="p">:</span><span class="n">print</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>而我们知道s:setName(xx)就等价于s.setName(s,xx)，此时我们只需要给s提供一个metatable,并且给这个metatable设置一个key为&quot;__index&quot;，value等于它本身的metatable。最后，只需要把之前Student类的一些方法添加到这个metatable里面就可以了。</p>
+<h3 id="metatable">MetaTable</h3>
+<p>我们可以在Registry里面创建这个metatable,然后给它取个名字做为索引，注意，为了避免名字冲突，所以这个名字一定要是独一无二的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">   <span class="c1">//创建名字为tname的metatable并放在当前栈顶，同时把它与Registry的一个key为tname的项关联到一起
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="kt">int</span>   <span class="nf">luaL_newmetatable</span> <span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">tname</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">//从当前栈顶获取名字为tname的metatable
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="kt">void</span>  <span class="nf">luaL_getmetatable</span> <span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">tname</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="c1">//把当前栈index处的userdata取出来，同时检查此userdata是否包含名字为tname的metatable
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="kt">void</span> <span class="o">*</span><span class="nf">luaL_checkudata</span>   <span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">index</span><span class="p">,</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">tname</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来，我们要利用这3个C API来为我们的student userdata关联一个metatable.</p>
+<h3 id="修改绑定代码">修改绑定代码</h3>
+<p>首先，我们需要创建一个新的metatable，并把setName/getName/getAge/setAge/print函数设置进去。
+下面是一个新的函数列表，一会儿我们要把这些函数全部设置到metatable里面去。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="k">const</span> <span class="k">struct</span> <span class="nc">luaL_Reg</span> <span class="n">studentlib_m</span> <span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;setName&#34;</span><span class="p">,</span><span class="n">l_setName</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;setAge&#34;</span><span class="p">,</span> <span class="n">l_setAge</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;print&#34;</span><span class="p">,</span> <span class="n">l_print</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;getName&#34;</span><span class="p">,</span><span class="n">l_getName</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;getAge&#34;</span><span class="p">,</span> <span class="n">l_getAge</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来，我们创建一个metatable，并且设置metatable.__index = matatable.注意这个cc.Student的元表会被存放到Registry里面。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">luaopen_student</span> <span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">luaL_newmetatable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="s">&#34;cc.Student&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_pushvalue</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_setfield</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s">&#34;__index&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">luaL_setfuncs</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">studentlib_m</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">luaL_newlib</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">stuentlib_f</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后，我们记得在创建Student的时候把此元表与该userdata关联起来，代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">newStudent</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span> <span class="n">L</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Student</span> <span class="o">**</span><span class="n">s</span> <span class="o">=</span>  <span class="p">(</span><span class="n">Student</span><span class="o">**</span><span class="p">)</span><span class="n">lua_newuserdata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Student</span><span class="o">*</span><span class="p">));</span>  <span class="c1">// lua will manage Student** pointer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Student</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">luaL_getmetatable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="s">&#34;cc.Student&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">lua_setmetatable</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>另外，我们在从Lua栈里面取出Student对象的时候，使用的是下面的函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">    <span class="n">Student</span> <span class="o">**</span><span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">Student</span><span class="o">**</span><span class="p">)</span><span class="n">luaL_checkudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">&#34;cc.Student&#34;</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个luaL_checkudata除了可以把index为1的栈上的元素转换为userdata外，还可以检测它是否包含“cc.Student”元表，这样代码更加健壮。
+例如，我们之前的setName函数可以实现为:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">l_setName</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span> <span class="n">L</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="n">Student</span> <span class="o">**</span><span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">Student</span><span class="o">**</span><span class="p">)</span><span class="n">luaL_checkudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">&#34;cc.Student&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">luaL_argcheck</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">s</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#34;invalid user data&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">luaL_checktype</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">LUA_TSTRING</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">name</span> <span class="o">=</span> <span class="n">lua_tostring</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setName</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里有Student类的完整的新的<a href="http://git.oschina.net/zilongshanren/Lua-Tutorials/blob/master/LuaCocos2D-X/Classes/CppClass.h">绑定代码</a>.</p>
+<h3 id="lua访问c类-1">Lua访问C++类</h3>
+<p>现在，我们可以用Lua里面的面向对象方法来访问C++对象啦。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">local</span> <span class="n">s</span> <span class="o">=</span> <span class="n">cc</span><span class="p">.</span><span class="n">create</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nl">s</span><span class="p">:</span><span class="n">setName</span><span class="p">(</span><span class="s">&#34;zilongshanren&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">print</span><span class="p">(</span><span class="nl">s</span><span class="p">:</span><span class="n">getName</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="nl">s</span><span class="p">:</span><span class="n">setAge</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">print</span><span class="p">(</span><span class="nl">s</span><span class="p">:</span><span class="n">getAge</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="nl">s</span><span class="p">:</span><span class="n">print</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里输出的结果为:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">zilongshanren</span>
+</span></span><span class="line"><span class="cl"><span class="mi">20</span>
+</span></span><span class="line"><span class="cl"><span class="n">My</span> <span class="n">name</span> <span class="nl">is</span><span class="p">:</span> <span class="n">zilongshanren</span><span class="p">,</span> <span class="n">and</span> <span class="n">my</span> <span class="n">age</span> <span class="n">is</span> <span class="mi">20</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="管理c内存">管理C++内存</h2>
+<p>当Lua对象被gc的时候，会调用一个__gc方法。因此，我们需要给绑定的C++类再添加一个__gc方法。</p>
+<p>首先是C++端的实现:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">int</span> <span class="nf">auto_gc</span><span class="p">(</span><span class="n">lua_State</span> <span class="o">*</span><span class="n">L</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Student</span> <span class="o">**</span><span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">Student</span><span class="o">**</span><span class="p">)</span><span class="n">luaL_checkudata</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s">&#34;cc.Student&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span> <span class="n">s</span> <span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">delete</span> <span class="o">*</span><span class="n">s</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后，添加注册函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">static</span> <span class="k">const</span> <span class="k">struct</span> <span class="nc">luaL_Reg</span> <span class="n">studentlib_m</span> <span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;__tostring&#34;</span><span class="p">,</span><span class="n">student2string</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;setName&#34;</span><span class="p">,</span><span class="n">l_setName</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;setAge&#34;</span><span class="p">,</span> <span class="n">l_setAge</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;print&#34;</span><span class="p">,</span> <span class="n">l_print</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;getName&#34;</span><span class="p">,</span><span class="n">l_getName</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;getAge&#34;</span><span class="p">,</span> <span class="n">l_getAge</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="s">&#34;__gc&#34;</span><span class="p">,</span> <span class="n">auto_gc</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后，我们在Stendent的构造函数和析构函数里面添加输出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Student</span><span class="o">::</span><span class="n">Student</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="o">:</span><span class="n">name</span><span class="p">(</span><span class="s">&#34;default&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;Student Contructor called&#34;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Student</span><span class="o">::~</span><span class="n">Student</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">&#34;Student Destructor called&#34;</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来是Lua代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">local</span> <span class="n">s</span> <span class="o">=</span> <span class="n">cc</span><span class="p">.</span><span class="n">create</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nl">s</span><span class="p">:</span><span class="n">setName</span><span class="p">(</span><span class="s">&#34;zilongshanren&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nl">s</span><span class="p">:</span><span class="n">setAge</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nl">s</span><span class="p">:</span><span class="n">print</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">--</span><span class="err">当一个对象设置为</span><span class="n">nil</span><span class="err">，说明没有其它对应引擎之前</span><span class="n">cc</span><span class="p">.</span><span class="n">create创建出来的对象了</span><span class="err">，此时</span><span class="n">lua返回到c程序的时候会调用gc</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="n">nil</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">--</span><span class="err">如果想在</span><span class="n">Lua里面直接手动gc</span><span class="err">，可以调用下列函数</span>
+</span></span><span class="line"><span class="cl"><span class="o">--</span><span class="n">collectgarbage</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后，程序输出结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="n">Student</span> <span class="n">Contructor</span> <span class="n">called</span>
+</span></span><span class="line"><span class="cl"><span class="n">My</span> <span class="n">name</span> <span class="nl">is</span><span class="p">:</span> <span class="n">zilongshanren</span><span class="p">,</span> <span class="n">and</span> <span class="n">my</span> <span class="n">age</span> <span class="n">is</span> <span class="mi">20</span>
+</span></span><span class="line"><span class="cl"><span class="n">Student</span> <span class="n">Destructor</span> <span class="n">called</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="总结">总结</h2>
+<p>本文主要介绍如何使用UserData来绑定C/C++自定义类型到Lua，同时通过引入MetaTable，让我们可以在Lua里面采用更加简洁的面向对象写法来访问导出来的类。下一篇文章，我们将介绍Cococs2D-X里面的tolua++及其基本使用方法。
+PS：附上<a href="http://git.oschina.net/zilongshanren/Lua-Tutorials">本文源代码</a>，注意在LuaCocos2D-X工程里面。</p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li>
+<p><a href="http://lua-users.org/wiki/SimplerCppBinding">使用cpp模板来绑定到Lua</a></p>
+</li>
+<li>
+<p><a href="http://lua-users.org/wiki/SimpleCppBinding">SimpleCppBinding</a></p>
+</li>
+<li>
+<p><a href="http://stackoverflow.com/questions/14618002/how-to-return-c-object-to-lua-5-2">How to return c object to lua 5.2</a></p>
+</li>
+<li>
+<p><a href="http://stackoverflow.com/questions/14096204/does-lua-gc-metamethod-now-work-for-table-lua-5-2-1">Lua gc</a></p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">zilongshanren</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2014-08-11
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/weixin-donate.jpeg">
+        <span>微信打赏</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/zhifubao-donate.jpeg">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/c&#43;&#43;/">c&#43;&#43;</a>
+          <a href="/tags/lua/">Lua</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/emacs-the-editor-of-a-life-time/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Emacs, The Editor of a Life Time</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/cpp-operate-lua-string/">
+            <span class="next-text nav-default">Lua教程:C/C&#43;&#43;操作Lua数组和字符串(5)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <span id="/post/bind-a-simple-cpp-class-in-lua/" class="leancloud_visitors" data-flag-title="Lua教程:绑定一个简单的C&#43;&#43;类(6)">
+		<span class="post-meta-item-text">文章阅读量 </span>
+		<span class="leancloud-visitors-count">0</span>
+		<p></p>
+	  </span>
+  <div id="vcomments"></div>
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script type="text/javascript">
+    new Valine({
+        el: '#vcomments' ,
+        appId: '1y2RI6iDeYb4WnMd9lQjneND-gzGzoHsz',
+        appKey: 'qVkxNVrkxjNujG8KmGlbmbWN',
+        notify:  false ,
+        verify:  false ,
+        avatar:'mm',
+        placeholder: '说点什么吧...',
+        visitor:  true 
+    });
+  </script>
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:guanghui8827@126.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/3790559/zilongshanren" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://twitter.com/zilongshanren" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="https://www.facebook.com/zilongshanren" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/zilongshanren" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://www.douban.com/people/quguanghui/" class="iconfont icon-douban" title="douban"></a>
+      <a href="https://github.com/zilongshanren" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.weibo.com/zilongshanren" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="https://www.zhihu.com/people/zilongshanren/" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="https://space.bilibili.com/292659700" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://zilongshanren.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2022<span class="heart"><i class="iconfont icon-heart"></i></span><span>zilongshanren</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.191509a5c8442abdb6eb5020a332fd59bdd83a7e78a2d2241108df9113504292.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

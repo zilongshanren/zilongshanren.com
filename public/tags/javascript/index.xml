@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on 子龙山人</title>
+    <link>https://zilongshanren.com/tags/javascript/</link>
+    <description>Recent content in Javascript on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 14 Mar 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>理解 Javascript This 关键字</title>
+      <link>https://zilongshanren.com/post/2016-03-13-undertand-javascript-this-keyword/</link>
+      <pubDate>Mon, 14 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2016-03-13-undertand-javascript-this-keyword/</guid>
+      <description>Table of Contents This 绑定内容与函数无关，而与执行环境有关 This 绑定的内容可以被动态修改 巧用闭包消除 This 动态绑定，提高代码可读性 小结 Reference 在我最早接触 Javascript 的时候，Th</description>
+    </item>
+    
+    <item>
+      <title>理解 Javascript 作用域和作用域链</title>
+      <link>https://zilongshanren.com/post/2016-03-13-understand-javascript-scope-and-scope-chain/</link>
+      <pubDate>Sun, 13 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2016-03-13-understand-javascript-scope-and-scope-chain/</guid>
+      <description>Table of Contents Javascript 作用域 Javascript 作用域链 变量提升 小结 Reference 上篇文章 在介绍 Javascript 闭包的时候提到了“闭包创建时所处的环境信息”，但是并没有说明这些信息到底是什么。 也多亏</description>
+    </item>
+    
+    <item>
+      <title>理解 Javascript 的闭包</title>
+      <link>https://zilongshanren.com/post/2016-02-28-understand-javascript-closure/</link>
+      <pubDate>Sun, 28 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2016-02-28-understand-javascript-closure/</guid>
+      <description>Table of Contents 什么是闭包？ 闭包有什么作用？ 如何正确地使用闭包？ 闭包的性能如何？ 小结 Reference 因为最近几个月一直在做 Cocos Creator 这个项目，大部分时间都在与 Javascript 打交道，所</description>
+    </item>
+    
+  </channel>
+</rss>

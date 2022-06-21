@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cocos2d-x on 子龙山人</title>
+    <link>https://zilongshanren.com/categories/cocos2d-x/</link>
+    <description>Recent content in Cocos2d-x on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 24 Jul 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/cocos2d-x/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>优化 Cocos2d-x 游戏性能</title>
+      <link>https://zilongshanren.com/post/2016-07-24-optimize-graphics-performance-of-cocos2d-x-games/</link>
+      <pubDate>Sun, 24 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/2016-07-24-optimize-graphics-performance-of-cocos2d-x-games/</guid>
+      <description>Table of Contents Golden rules 查找游戏性能瓶颈，然后优化瓶颈 总是使用工具来查找性能瓶颈，而不是靠猜 查找 GPU 性能瓶颈的工具 查找 CPU 性能瓶颈的工具 熟悉你的移动设备和你使</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES2.0教程:纹理贴图(6)</title>
+      <link>https://zilongshanren.com/post/opengl-es2-0-texturing-mapping/</link>
+      <pubDate>Sat, 12 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es2-0-texturing-mapping/</guid>
+      <description>在上一篇文章中，我们介绍了如何绘制一个立方体，里面涉及的知识点有VBO(Vertex Buffer Object)、IBO(Index Buffer Object)和M</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES2.0教程：你的第一个立方体(5)</title>
+      <link>https://zilongshanren.com/post/opengl-es2.0-tutorials-your-first-cube/</link>
+      <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es2.0-tutorials-your-first-cube/</guid>
+      <description>在上篇文章中，我们介绍了VBO索引的使用，使用VBO索引可以有效地减少顶点个数,优化内存，提高程序效率。 本教程将带领大家一起走进3D&amp;nda</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES2.0教程:使用VBO索引(4)</title>
+      <link>https://zilongshanren.com/post/opengl-es2-0-use-vbo/</link>
+      <pubDate>Sun, 22 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es2-0-use-vbo/</guid>
+      <description>在上一篇文章中，我们介绍了uniform和模型-视图-投影变换，相信大家对于OpenGL ES 2.0应该有一点感觉了。在这篇文章中，我们不再画三</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式：观察者模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-observer/</link>
+      <pubDate>Fri, 20 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-observer/</guid>
+      <description>1、应用场景 前面在介绍单例模式的时候，提到了一个类NotificationCenter，它除了应用单例模式以外，还应用了观察者模式。Noti</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式:委托模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-delegation/</link>
+      <pubDate>Fri, 20 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-delegation/</guid>
+      <description>前言： 前一篇文章讨论了cocos2d-x里面的中介者模式，但是，由于概念把握上面的偏差，我把GoF的中介者模式搞混淆了。幸好有读者给我提出了</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式:中介者模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-design-pattern-mediator/</link>
+      <pubDate>Fri, 20 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-design-pattern-mediator/</guid>
+      <description>上周写了关于cocos2d-x里面的观察者模式，文章最后提到一个应用场景：“你的GameScene里面有两个layer，一个gameLaye</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式: 组合模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-composite-patterns/</link>
+      <pubDate>Wed, 18 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-composite-patterns/</guid>
+      <description>在开始挖掘cocos2d-x里面的组合模式之前，我先武断地下个结论： “几乎所有与GUI相关的框架设计都应用了组合设计模式”。（PS：大家注意</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式：防御式编程模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-defensive-programming/</link>
+      <pubDate>Sun, 15 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-defensive-programming/</guid>
+      <description>声明：防御式编程是提高程序代码质量的一种手段，它不能算是真正意义上的模式。但是，这里，我还是要给它冠之以“模式”二字。 原因有三： cocos2</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES2.0教程:初识MVP(3)</title>
+      <link>https://zilongshanren.com/post/opengl-es2-meet-mvp/</link>
+      <pubDate>Sun, 15 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es2-meet-mvp/</guid>
+      <description>在上一篇文章中，我在介绍vertex shader的时候挖了一个坑：CC_MVPMatrix。它其实是一个uniform，每一个cocos2d</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式:外观模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-facade/</link>
+      <pubDate>Tue, 10 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-facade/</guid>
+      <description>1.应用场景 Cocos2d-x里面有一个非常明显的地方使用了外观模式，它就是SimpleAudioEngine。因为它为CocosDensh</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式：管理者模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-manager/</link>
+      <pubDate>Mon, 09 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-manager/</guid>
+      <description>管理者（Manager）就是专门负责管理其它类的实例的类，比如Cocoa里面的NSFontManager、NSInputManager、NS</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X 设计模式：二段构建模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-design-pattern-two-stage-creation/</link>
+      <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-design-pattern-two-stage-creation/</guid>
+      <description>乍一看标题，大家可能会觉得很奇怪，神马是“二段构建模式”呢？ 所谓二段构建，就是指创建对象时不是直接通过构建函数来分配内存并完成初始化操作。取</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES2.0教程：编写自己的shader(2)</title>
+      <link>https://zilongshanren.com/post/opengl-es20-write-your-own-shader/</link>
+      <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es20-write-your-own-shader/</guid>
+      <description>在上篇文章中，我给大家介绍了如何在cocos2d-x里面绘制一个三角形，当时我们使用的是cocos2d-x引擎自带的shader和一些辅助函</description>
+    </item>
+    
+    <item>
+      <title>Cocos2D-X设计模式:单例模式</title>
+      <link>https://zilongshanren.com/post/cocos2d-x-singleton/</link>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/cocos2d-x-singleton/</guid>
+      <description>本系列文章我将和大家一起来发掘cocos2d-x中所使用到的设计模式。 (老实说，这些文章都是老文章了，但是旧瓶装新酒，不管是对自己还是对他人</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES 2.0教程：你的第一个三角形(1)</title>
+      <link>https://zilongshanren.com/post/opengl-es-2-0-your-first-triangles/</link>
+      <pubDate>Sat, 31 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es-2-0-your-first-triangles/</guid>
+      <description>前言 学习程序世界里面的任何一项技能都有一个HelloWorld，而OpenGL的HelloWorld就是自己画一个三角形。当然，在 cocos</description>
+    </item>
+    
+  </channel>
+</rss>

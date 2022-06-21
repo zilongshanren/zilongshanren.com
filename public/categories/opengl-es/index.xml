@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenGL ES on 子龙山人</title>
+    <link>https://zilongshanren.com/categories/opengl-es/</link>
+    <description>Recent content in OpenGL ES on 子龙山人</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 12 Jul 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/opengl-es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenGL ES2.0教程:纹理贴图(6)</title>
+      <link>https://zilongshanren.com/post/opengl-es2-0-texturing-mapping/</link>
+      <pubDate>Sat, 12 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es2-0-texturing-mapping/</guid>
+      <description>在上一篇文章中，我们介绍了如何绘制一个立方体，里面涉及的知识点有VBO(Vertex Buffer Object)、IBO(Index Buffer Object)和M</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES2.0教程：你的第一个立方体(5)</title>
+      <link>https://zilongshanren.com/post/opengl-es2.0-tutorials-your-first-cube/</link>
+      <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es2.0-tutorials-your-first-cube/</guid>
+      <description>在上篇文章中，我们介绍了VBO索引的使用，使用VBO索引可以有效地减少顶点个数,优化内存，提高程序效率。 本教程将带领大家一起走进3D&amp;nda</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES2.0教程:使用VBO索引(4)</title>
+      <link>https://zilongshanren.com/post/opengl-es2-0-use-vbo/</link>
+      <pubDate>Sun, 22 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es2-0-use-vbo/</guid>
+      <description>在上一篇文章中，我们介绍了uniform和模型-视图-投影变换，相信大家对于OpenGL ES 2.0应该有一点感觉了。在这篇文章中，我们不再画三</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES2.0教程:初识MVP(3)</title>
+      <link>https://zilongshanren.com/post/opengl-es2-meet-mvp/</link>
+      <pubDate>Sun, 15 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es2-meet-mvp/</guid>
+      <description>在上一篇文章中，我在介绍vertex shader的时候挖了一个坑：CC_MVPMatrix。它其实是一个uniform，每一个cocos2d</description>
+    </item>
+    
+    <item>
+      <title>OpenGL ES 2.0教程：你的第一个三角形(1)</title>
+      <link>https://zilongshanren.com/post/opengl-es-2-0-your-first-triangles/</link>
+      <pubDate>Sat, 31 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://zilongshanren.com/post/opengl-es-2-0-your-first-triangles/</guid>
+      <description>前言 学习程序世界里面的任何一项技能都有一个HelloWorld，而OpenGL的HelloWorld就是自己画一个三角形。当然，在 cocos</description>
+    </item>
+    
+  </channel>
+</rss>
