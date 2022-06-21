@@ -1,7 +1,7 @@
 +++
 title = "在腾讯工作三年总结"
 date = 2021-02-21T17:59:00+08:00
-lastmod = 2021-02-21T18:25:11+08:00
+lastmod = 2022-06-19T11:30:26+08:00
 tags = ["WORK", "LIFE"]
 categories = ["work", "life"]
 draft = false
