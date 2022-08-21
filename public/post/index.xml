@@ -6,7 +6,16 @@
     <description>Recent content in Posts on 子龙山人</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 19 Jun 2022 15:58:00 +0800</lastBuildDate><atom:link href="https://zilongshanren.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Aug 2022 21:42:00 +0800</lastBuildDate><atom:link href="https://zilongshanren.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>《A.Philosophy.of.Software.Design》读书笔记</title>
+      <link>https://zilongshanren.com/post/my-thoughts-after-reading-software-design-principle/</link>
+      <pubDate>Sun, 21 Aug 2022 21:42:00 +0800</pubDate>
+      
+      <guid>https://zilongshanren.com/post/my-thoughts-after-reading-software-design-principle/</guid>
+      <description>前言 最近阅读了一本比较短小精悍的软件设计方面的书《A.Philosophy.of.Software.Design》，这里把书中的主要内容总结</description>
+    </item>
+    
     <item>
       <title>3D 手游性能优化技巧</title>
       <link>https://zilongshanren.com/post/3d-mobile-game-optimization-tips/</link>

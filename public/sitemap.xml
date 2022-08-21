@@ -2,21 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://zilongshanren.com/post/3d-mobile-game-optimization-tips/</loc>
-    <lastmod>2022-06-19T15:58:57+08:00</lastmod>
+    <loc>https://zilongshanren.com/post/my-thoughts-after-reading-software-design-principle/</loc>
+    <lastmod>2022-08-21T21:42:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zilongshanren.com/post/</loc>
-    <lastmod>2022-06-19T15:58:57+08:00</lastmod>
+    <lastmod>2022-08-21T21:42:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://zilongshanren.com/</loc>
+    <lastmod>2022-08-21T21:42:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://zilongshanren.com/post/3d-mobile-game-optimization-tips/</loc>
     <lastmod>2022-06-19T15:58:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
