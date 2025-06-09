@@ -2,19 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>命令行 on 子龙山人</title>
-    <link>https://zilongshanren.com/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
+    <link>http://localhost:1313/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
     <description>Recent content in 命令行 on 子龙山人</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 30 Aug 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 30 Aug 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>像极客一样使用 Mac</title>
-      <link>https://zilongshanren.com/post/2015-08-30-use-mac-like-a-geek/</link>
+      <link>http://localhost:1313/post/2015-08-30-use-mac-like-a-geek/</link>
       <pubDate>Sun, 30 Aug 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-08-30-use-mac-like-a-geek/</guid>
-      <description>Table of Contents 命令行工具 iTerm2 Tmux Percol Zsh 编辑器之神 Vim 编辑器 － Emacs 改键工具 Mac 本身 Karabiner - Software for OS X Keyboard Maestro 7.0.1: Work Faster with Macros for Mac OS X 统计工具 GUI 工具 Beyond Compare Source Tree Sublime Text Mou 总结 Mac 是属于程序员</description>
+      <guid>http://localhost:1313/post/2015-08-30-use-mac-like-a-geek/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;命令行工具&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;iTerm2&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;Tmux&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;Percol&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;Zsh&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;编辑器之神 Vim&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;编辑器 － Emacs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline11&#34;&gt;改键工具&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline8&#34;&gt;Mac 本身&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline9&#34;&gt;Karabiner - Software for OS X&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline10&#34;&gt;Keyboard Maestro 7.0.1: Work Faster with Macros for Mac OS X&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline12&#34;&gt;统计工具&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline17&#34;&gt;GUI 工具&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline13&#34;&gt;Beyond Compare&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline14&#34;&gt;Source Tree&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline15&#34;&gt;Sublime Text&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline16&#34;&gt;Mou&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline18&#34;&gt;总结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA; Mac 是属于程序员的电脑，因为它不仅有好看的图形用户界面，还有非常好用的 Unix 命令行接口。我们编程中有很多任务都需要借助命令行来完成，比如 Git，文件操作，Shell 脚本等。&#xA;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -15,7 +15,10 @@ pygmentsUseClasses = true
 pygmentsCodefencesGuessSyntax = true
 
 hasCJKLanguage = true     # has chinese/japanese/korean ? # 自动检测是否包含 中文\日文\韩文
-paginate = 10                                              # 首页每页显示的文章数
+# New format
+[pagination]
+pagerSize = 10
+
 disqusShortname = ""      # disqus_shortname
 googleAnalytics = ""      # UA-XXXXXXXX-X
 copyright = ""            # default: author.name ↓        # 默认为下面配置的author.name ↓
@@ -165,7 +168,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
     appKey = 'qVkxNVrkxjNujG8KmGlbmbWN'
     notify = false  # mail notifier , https://github.com/xCss/Valine/wiki
     verify = false # Verification code
-    avatar = 'mm' 
+    avatar = 'mm'
     placeholder = '说点什么吧...'
     visitor = true
 

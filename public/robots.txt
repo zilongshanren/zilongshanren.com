@@ -1,2 +1,1 @@
 User-agent: *
-Sitemap: https://zilongshanren.com/sitemap.xml

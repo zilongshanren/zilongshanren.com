@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>web on 子龙山人</title>
-    <link>https://zilongshanren.com/tags/web/</link>
-    <description>Recent content in web on 子龙山人</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Web on 子龙山人</title>
+    <link>http://localhost:1313/tags/web/</link>
+    <description>Recent content in Web on 子龙山人</description>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 08 Jun 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Jun 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>拥抱 HTTPS 和 HTTP/2</title>
-      <link>https://zilongshanren.com/post/2016-06-08-embrace-https-and-http2/</link>
+      <link>http://localhost:1313/post/2016-06-08-embrace-https-and-http2/</link>
       <pubDate>Wed, 08 Jun 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2016-06-08-embrace-https-and-http2/</guid>
-      <description>Table of Contents 我为什么要使用 HTTPS 你为什么不用 HTTPS 如何为自己的网站添加 HTTPS 遇到的一些问题和解决方案 结语 Reference 为了方便国内的 Emacs 党交流，前段时间跟社区里面几个小伙伴</description>
+      <guid>http://localhost:1313/post/2016-06-08-embrace-https-and-http2/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;我为什么要使用 HTTPS&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;你为什么不用 HTTPS&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;如何为自己的网站添加 HTTPS&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;遇到的一些问题和解决方案&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;结语&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;Reference&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;为了方便国内的 Emacs 党交流，前段时间跟社区里面几个小伙伴一起弄了一个discourse论坛，也就是现在的&lt;a href=&#34;https://emacs-china.org&#34;&gt;emacs-china.org&lt;/a&gt; 。当时有位 &lt;a href=&#34;http://weibo.com/xuchunyang56&#34;&gt;xuchunyang&lt;/a&gt; 同学建议论坛应该要支持 HTTPS，其实之前我使用 Spacemacs 的时候，就有人在 Reddit 里面建议从 Melpa&#xA;安装 Package 的时候应该要用 HTTPS，否则你的 Emacs 可能被人“下毒”。但是由于国内墙的原因，我当时把 HTTPS 禁用了。&#xA;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

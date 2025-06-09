@@ -2,804 +2,655 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>子龙山人</title>
-    <link>https://zilongshanren.com/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on 子龙山人</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 21 Aug 2022 21:42:00 +0800</lastBuildDate><atom:link href="https://zilongshanren.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Oct 2022 19:22:59 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>《A.Philosophy.of.Software.Design》读书笔记</title>
-      <link>https://zilongshanren.com/post/my-thoughts-after-reading-software-design-principle/</link>
+      <link>http://localhost:1313/post/my-thoughts-after-reading-software-design-principle/</link>
       <pubDate>Sun, 21 Aug 2022 21:42:00 +0800</pubDate>
-      
-      <guid>https://zilongshanren.com/post/my-thoughts-after-reading-software-design-principle/</guid>
-      <description>前言 最近阅读了一本比较短小精悍的软件设计方面的书《A.Philosophy.of.Software.Design》，这里把书中的主要内容总结</description>
+      <guid>http://localhost:1313/post/my-thoughts-after-reading-software-design-principle/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;p&gt;最近阅读了一本比较短小精悍的软件设计方面的书《A.Philosophy.of.Software.Design》，这里把书中的主要内容总结了一下，主要是结合我多年来对软件设计的一些理解，我挑了其中觉得非常重要的一部分内容成文。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>3D 手游性能优化技巧</title>
-      <link>https://zilongshanren.com/post/3d-mobile-game-optimization-tips/</link>
+      <link>http://localhost:1313/post/3d-mobile-game-optimization-tips/</link>
       <pubDate>Sun, 19 Jun 2022 15:58:00 +0800</pubDate>
-      
-      <guid>https://zilongshanren.com/post/3d-mobile-game-optimization-tips/</guid>
-      <description>前言 随着 3D 手游的品质要求越来越高，游戏画面表现越来越好，对于性能优化的需求也越来越迫切。但是手机硬件平台有其自身独特的特性&amp;ndash;资源</description>
+      <guid>http://localhost:1313/post/3d-mobile-game-optimization-tips/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;p&gt;随着 3D 手游的品质要求越来越高，游戏画面表现越来越好，对于性能优化的需求也越来越迫切。但是手机硬件平台有其自身独特的特性&amp;ndash;资源有限（CPU、GPU 和内存有限）和低功耗，这些都约束了硬件图形管线和引擎渲染管线的设计与实现。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>配置全新的 Macbook Pro M1 下 Emacs 开发环境</title>
-      <link>https://zilongshanren.com/post/setup-macbook-pro-m1/</link>
+      <link>http://localhost:1313/post/setup-macbook-pro-m1/</link>
       <pubDate>Wed, 08 Jun 2022 22:29:00 +0800</pubDate>
-      
-      <guid>https://zilongshanren.com/post/setup-macbook-pro-m1/</guid>
-      <description>准备工作 拿到一台全新的 Macbook Pro M1, 第一件事情就是先更新一下系统，保证一些常用的软件环境是最新的。 比如苹果在最新的系统版本 12.3 的时候移除了对 python2.7 的支持，</description>
+      <guid>http://localhost:1313/post/setup-macbook-pro-m1/</guid>
+      <description>&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;&#xA;&lt;p&gt;拿到一台全新的 Macbook Pro M1, 第一件事情就是先更新一下系统，保证一些常用的软件环境是最新的。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;比如苹果在最新的系统版本 12.3 的时候移除了对 python2.7 的支持，但是我的电脑在没有更新的时候还是有 python2.7 环境的，更新系统之后 python2.7 被移除了。&lt;/strong&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>如何自学计算机编程</title>
-      <link>https://zilongshanren.com/post/how-to-self-learning-cs/</link>
+      <link>http://localhost:1313/post/how-to-self-learning-cs/</link>
       <pubDate>Thu, 30 Dec 2021 22:54:00 +0800</pubDate>
-      
-      <guid>https://zilongshanren.com/post/how-to-self-learning-cs/</guid>
-      <description>众所周知，现在计算机是“宇宙机”，很多人想转计算机，但是真正能够学好计算机编程的人非常少。不少的人选择了去培训机构突击几个月，然后找一份搬砖</description>
+      <guid>http://localhost:1313/post/how-to-self-learning-cs/</guid>
+      <description>&lt;p&gt;众所周知，现在计算机是“宇宙机”，很多人想转计算机，但是真正能够学好计算机编程的人非常少。不少的人选择了去培训机构突击几个月，然后找一份搬砖的工作作为跳板，希望积累经验过一两年后可以跳槽，实现人生的飞跃。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>从头开始搭建 Discourse 论坛</title>
-      <link>https://zilongshanren.com/post/setup-a-discourse-forum-from-scratch/</link>
+      <link>http://localhost:1313/post/setup-a-discourse-forum-from-scratch/</link>
       <pubDate>Sun, 07 Mar 2021 20:29:00 +0800</pubDate>
-      
-      <guid>https://zilongshanren.com/post/setup-a-discourse-forum-from-scratch/</guid>
-      <description>前言 在国内安装 Discourse 论坛其实是一件挺困难的事情,因为网络不太好，而且 Github 访问经常会抽风，导致安装非常容易失败。所以，想要尝试在国内 VPS 安装 Discourse 的同学，</description>
+      <guid>http://localhost:1313/post/setup-a-discourse-forum-from-scratch/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;p&gt;在国内安装 Discourse 论坛其实是一件挺困难的事情,因为网络不太好，而且 Github 访问经常会抽风，导致安装非常容易失败。所以，想要尝试在国内 VPS 安装 Discourse 的同学，一定要准备好梯子，并且掌握 Linux 命令行代理配置技巧，否则不建议你尝试，基本是浪费时间。&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title>使用手机的最佳姿势</title>
+      <link>http://localhost:1313/post/best-way-to-use-your-moblie-phone/</link>
+      <pubDate>Thu, 25 Feb 2021 23:49:04 +0800</pubDate>
+      <guid>http://localhost:1313/post/best-way-to-use-your-moblie-phone/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>be careful about adding things to the existings system</title>
+      <link>http://localhost:1313/post/becareful-about-adding-things-to-the-existings-system/</link>
+      <pubDate>Thu, 25 Feb 2021 23:48:29 +0800</pubDate>
+      <guid>http://localhost:1313/post/becareful-about-adding-things-to-the-existings-system/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>book review of make it stick</title>
+      <link>http://localhost:1313/post/book-review-of-make-it-stick/</link>
+      <pubDate>Thu, 25 Feb 2021 23:47:57 +0800</pubDate>
+      <guid>http://localhost:1313/post/book-review-of-make-it-stick/</guid>
+      <description>&lt;ol&gt;&#xA;&lt;li&gt;the main content of this book.&lt;/li&gt;&#xA;&lt;li&gt;the difference between the learning how to learn book&lt;/li&gt;&#xA;&lt;li&gt;the core idea we could learn from this book.&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+    </item>
     <item>
       <title>在腾讯工作三年总结</title>
-      <link>https://zilongshanren.com/post/three-years-in-tencent/</link>
+      <link>http://localhost:1313/post/three-years-in-tencent/</link>
       <pubDate>Sun, 21 Feb 2021 17:59:00 +0800</pubDate>
-      
-      <guid>https://zilongshanren.com/post/three-years-in-tencent/</guid>
-      <description>不知不觉，来腾讯工作已经超过 3 年了，由于工作比较忙，在深圳的生活节奏很快，一直没有时间来写博客。今天，趁着周末有空，也来总结一下我在腾讯这 3</description>
+      <guid>http://localhost:1313/post/three-years-in-tencent/</guid>
+      <description>&lt;p&gt;不知不觉，来腾讯工作已经超过 3 年了，由于工作比较忙，在深圳的生活节奏很快，一直没有时间来写博客。今天，趁着周末有空，也来总结一下我在腾讯这 3 年的情况。&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title>为什么纯文本很强大？</title>
+      <link>http://localhost:1313/post/why-markdown-rocks/</link>
+      <pubDate>Wed, 12 Feb 2020 11:35:29 +0800</pubDate>
+      <guid>http://localhost:1313/post/why-markdown-rocks/</guid>
+      <description>&lt;p&gt;from the blog migrate history.&lt;/p&gt;&#xA;&lt;p&gt;wordpress: tools to transfer to markdown&lt;/p&gt;&#xA;&lt;p&gt;octopress: support markdown&lt;/p&gt;&#xA;&lt;p&gt;hexo: support markdown&lt;/p&gt;&#xA;&lt;p&gt;hugo: support markdown and tags&lt;/p&gt;&#xA;&lt;p&gt;because it&amp;rsquo;s plain text and it&amp;rsquo;s easy to support it&lt;/p&gt;</description>
+    </item>
     <item>
       <title>编程之道：自动洗碗机</title>
-      <link>https://zilongshanren.com/post/auto-wash-your-bowls/</link>
+      <link>http://localhost:1313/post/auto-wash-your-bowls/</link>
       <pubDate>Sat, 10 Aug 2019 22:54:00 +0800</pubDate>
-      
-      <guid>https://zilongshanren.com/post/auto-wash-your-bowls/</guid>
-      <description>在上一篇文章 中，我提到了一些开发过程中非常容易被忽略和轻视的工作，比如代码整理， commit 整理，添加测试等。做好这些工作不仅仅需要专业的知识，还需要</description>
+      <guid>http://localhost:1313/post/auto-wash-your-bowls/</guid>
+      <description>&lt;p&gt;在&lt;a href=&#34;https://zilongshanren.com/post/wash-bowls-after-launch/&#34;&gt;上一篇文章&lt;/a&gt; 中，我提到了一些开发过程中非常容易被忽略和轻视的工作，比如代码整理，&#xA;commit 整理，添加测试等。做好这些工作不仅仅需要专业的知识，还需要非常强的自律才可以很好的完成。相比于精妙的算法和高大上的模式，做这些事情的优先级在很多开发团队里面比较低，通常可能是没人做。因为做好了这些事情，可能你也很难升职加薪，并且软件质量的提升也不是那么的明显（相比于改掉一些严重的 bug 而言）。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>编程之道：饭后洗碗</title>
-      <link>https://zilongshanren.com/post/wash-bowls-after-launch/</link>
+      <link>http://localhost:1313/post/wash-bowls-after-launch/</link>
       <pubDate>Sat, 20 Jul 2019 11:13:00 +0800</pubDate>
-      
-      <guid>https://zilongshanren.com/post/wash-bowls-after-launch/</guid>
+      <guid>http://localhost:1313/post/wash-bowls-after-launch/</guid>
       <description>&lt;p&gt;从今天起，我将写一系列《编程之道》的文章，主要用来记录我这些年来写代码的感悟。这些文章主要聚焦在如何写好代码。更多的是『道』&amp;mdash; 最佳实践，而不是『术』。写代码并不是一件非常难的事情，但是写『好代码』却没有那么简单。它需要我们拥有『足够的知识』和『超强的自律』。&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title>programmer tests</title>
+      <link>http://localhost:1313/post/programmer-tests/</link>
+      <pubDate>Sat, 20 Jul 2019 09:17:48 +0800</pubDate>
+      <guid>http://localhost:1313/post/programmer-tests/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://medium.com/@kentbeck%5F7670/programmer-test-principles-d01c064d7934&#34;&gt;https://medium.com/@kentbeck%5F7670/programmer-test-principles-d01c064d7934&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;focus-on-test-principles&#34;&gt;Focus on test principles&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;test should be fast. 一般来说一份钟以内的测试反馈周期就比较好，如果太长了，就会影响程序调试代码&lt;/li&gt;&#xA;&lt;li&gt;test should be deterministic. 测试覆盖要全，不能测试代码考虑不周全，结果测试过了，并不能反应真实的情况。&lt;/li&gt;&#xA;&lt;li&gt;test should be predictive. 测试过了，那么代码跑起来应该没有问题。不能测试过了，软件还是有问题，那么这样的测试就是有问题的&lt;/li&gt;&#xA;&lt;li&gt;test should be sensitive to behavior changes not to structure changes.如果我的程序代码非常依赖代码的执行顺序，那么我设计的代码就非常有问题。&lt;/li&gt;&#xA;&lt;li&gt;test should be cheap to write.  programmer don&amp;rsquo;t be paid by tests. Code&#xA;should be working and can be changed. less effort on test is better.&lt;/li&gt;&#xA;&lt;li&gt;programmer&amp;rsquo;s test should be cheap to read.  test code is also code, it read&#xA;more than write.&lt;/li&gt;&#xA;&lt;li&gt;programmer&amp;rsquo;s test should be cheap to change.&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
+    </item>
     <item>
       <title>《a little java a few patterns》读书笔记</title>
-      <link>https://zilongshanren.com/post/a-little-java-a-few-patterns-book-review/</link>
+      <link>http://localhost:1313/post/a-little-java-a-few-patterns-book-review/</link>
       <pubDate>Sat, 06 Jul 2019 14:29:00 +0800</pubDate>
-      
-      <guid>https://zilongshanren.com/post/a-little-java-a-few-patterns-book-review/</guid>
+      <guid>http://localhost:1313/post/a-little-java-a-few-patterns-book-review/</guid>
       <description>&lt;p&gt;这本书其实看完有一段时间了，今天来做个总结。在此之前，想为该作者 Friedman 的其他书籍打个广告，我目前看过《The Little Schemer》&amp;mdash;-神书，看完（并实践完）能让你对递归有更深的理解，同时还能学习一门 Lisp 方言。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>为什么我的游戏发热量很高</title>
-      <link>https://zilongshanren.com/post/why-my-game-drain-my-device-s-battery-life/</link>
+      <link>http://localhost:1313/post/why-my-game-drain-my-device-s-battery-life/</link>
       <pubDate>Sun, 16 Jun 2019 20:19:00 +0800</pubDate>
-      
-      <guid>https://zilongshanren.com/post/why-my-game-drain-my-device-s-battery-life/</guid>
-      <description>&lt;p&gt;一般谈到游戏为什么会发热，我们首先想到的就是CPU占用过高。因为在我们的常识里面，当自己笔记本电脑的CPU风扇疯狂转动的时候，肯定就是到了可以『煮鸡蛋』的时候了 😂&lt;/p&gt;
-&lt;p&gt;但是移动设备除了CPU以外，还有其他因素可能比CPU更耗电。&lt;/p&gt;</description>
+      <guid>http://localhost:1313/post/why-my-game-drain-my-device-s-battery-life/</guid>
+      <description>&lt;p&gt;一般谈到游戏为什么会发热，我们首先想到的就是CPU占用过高。因为在我们的常识里面，当自己笔记本电脑的CPU风扇疯狂转动的时候，肯定就是到了可以『煮鸡蛋』的时候了 &amp;#x1f602;&lt;/p&gt;&#xA;&lt;p&gt;但是移动设备除了CPU以外，还有其他因素可能比CPU更耗电。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>博客从 hexo 迁移到 hugo</title>
-      <link>https://zilongshanren.com/post/move-from-hexo-to-hugo/</link>
+      <link>http://localhost:1313/post/move-from-hexo-to-hugo/</link>
       <pubDate>Tue, 11 Jun 2019 09:07:00 +0800</pubDate>
-      
-      <guid>https://zilongshanren.com/post/move-from-hexo-to-hugo/</guid>
-      <description>&lt;h2 id=&#34;为什么又迁移博客&#34;&gt;为什么又迁移博客&lt;/h2&gt;
-&lt;p&gt;熟悉我的朋友可能会发现，我几乎每隔一段时间都会换一个博客平台 😂&lt;/p&gt;
-&lt;p&gt;从最早的Wordpress到Octopress，再到Hexo，最后到如今的Hugo，博客没写多少，博客平台却折腾不少。&lt;/p&gt;
-&lt;p&gt;每一次折腾完后，我都会写下一篇类似的文章，讲我的迁移过程，而且似乎每次都声称这是最后一次折腾Blog了 😂&lt;/p&gt;
-&lt;p&gt;因为我自己是个不折不扣的工具控，可能天生就爱折腾。&lt;/p&gt;</description>
+      <guid>http://localhost:1313/post/move-from-hexo-to-hugo/</guid>
+      <description>&lt;h2 id=&#34;为什么又迁移博客&#34;&gt;为什么又迁移博客&lt;/h2&gt;&#xA;&lt;p&gt;熟悉我的朋友可能会发现，我几乎每隔一段时间都会换一个博客平台 &amp;#x1f602;&lt;/p&gt;&#xA;&lt;p&gt;从最早的Wordpress到Octopress，再到Hexo，最后到如今的Hugo，博客没写多少，博客平台却折腾不少。&lt;/p&gt;&#xA;&lt;p&gt;每一次折腾完后，我都会写下一篇类似的文章，讲我的迁移过程，而且似乎每次都声称这是最后一次折腾Blog了 &amp;#x1f602;&lt;/p&gt;&#xA;&lt;p&gt;因为我自己是个不折不扣的工具控，可能天生就爱折腾。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>《Clean Architecture》读书笔记</title>
-      <link>https://zilongshanren.com/post/summary-of-clean-architecture/</link>
+      <link>http://localhost:1313/post/summary-of-clean-architecture/</link>
       <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/summary-of-clean-architecture/</guid>
-      <description>&lt;!-- raw HTML omitted --&gt;
-&lt;h2 id=&#34;一前言&#34;&gt;一、前言&lt;/h2&gt;
-&lt;p&gt;软件架构非常重要，架构的主要目的是最小化系统开发和维护的人力成本，提高开发人员的开发效率。&lt;/p&gt;
-&lt;p&gt;软件设计和软件构架有本质区别，架构更关心软件的高层设计，怎么定义系统和模块的边界，而设计更关心底层的实现细节。&lt;/p&gt;
-&lt;p&gt;优雅的架构通常不是那么容易就获得的，他需要开发人员去争取、去斗争、去追求。&lt;/p&gt;</description>
+      <guid>http://localhost:1313/post/summary-of-clean-architecture/</guid>
+      <description>&lt;h2 id=&#34;一前言&#34;&gt;一、前言&lt;/h2&gt;&#xA;&lt;p&gt;软件架构非常重要，架构的主要目的是最小化系统开发和维护的人力成本，提高开发人员的开发效率。&lt;/p&gt;&#xA;&lt;p&gt;软件设计和软件构架有本质区别，架构更关心软件的高层设计，怎么定义系统和模块的边界，而设计更关心底层的实现细节。&lt;/p&gt;&#xA;&lt;p&gt;优雅的架构通常不是那么容易就获得的，他需要开发人员去争取、去斗争、去追求。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>如何高效学习</title>
-      <link>https://zilongshanren.com/post/learning-how-to-learn/</link>
+      <link>http://localhost:1313/post/learning-how-to-learn/</link>
       <pubDate>Tue, 09 May 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/learning-how-to-learn/</guid>
-      <description>TL;DR IT 行业是一个变化非常快的行业，它需要我们持续去学习新的知识和技能。 但是， 工作以后，我们经常会发现自己学习的东西很少了，倒不是没有时间去学习</description>
+      <guid>http://localhost:1313/post/learning-how-to-learn/</guid>
+      <description>&lt;p&gt;&#xA;TL;DR &lt;/p&gt;&#xA;&lt;p&gt;&#xA;IT 行业是一个变化非常快的行业，它需要我们持续去学习新的知识和技能。 但是，&#xA;工作以后，我们经常会发现自己学习的东西很少了，倒不是没有时间去学习， 而是学习的&#xA;效率太低了。久而久之，就演变成『一年的工作经验，重复用十年』。当然，有些人会说自&#xA;己经常加班，没有时间学习，这只是表象，时间挤挤总是有的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>以前写的诗</title>
-      <link>https://zilongshanren.com/post/my-past-poems/</link>
+      <link>http://localhost:1313/post/my-past-poems/</link>
       <pubDate>Wed, 19 Apr 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/my-past-poems/</guid>
-      <description>恰同学少年，意气风发，偶得诗词几首，今存档于此。 满江红 重九夜半，竟凭栏，触目断愁肠。晓忆婵娟，丝成万缕，欲剪还乱。 二三年情爱与恨，四五万字喜</description>
+      <guid>http://localhost:1313/post/my-past-poems/</guid>
+      <description>&lt;p&gt;恰同学少年，意气风发，偶得诗词几首，今存档于此。&lt;/p&gt;&#xA;&lt;h2 id=&#34;满江红&#34;&gt;满江红&lt;/h2&gt;&#xA;&lt;p&gt;重九夜半，竟凭栏，触目断愁肠。晓忆婵娟，丝成万缕，欲剪还乱。&#xA;二三年情爱与恨，四五万字喜与忧。失此绝惠恩，空遗恨。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>21 天学会 Emacs（下）</title>
-      <link>https://zilongshanren.com/post/2016-08-21-learn-emacs-21-days-part-two/</link>
+      <link>http://localhost:1313/post/2016-08-21-learn-emacs-21-days-part-two/</link>
       <pubDate>Sun, 21 Aug 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2016-08-21-learn-emacs-21-days-part-two/</guid>
-      <description>Table of Contents 引子 非 Vim/Emacs 党学习路径 Vim 党学习路径 Emacs 新手党学习路径 总结 TL;DR 21 天学会 Emacs 系列完美收官，你们再也不用追网剧了，我再也不用被人追着更新啦！ 引子 去年十</description>
+      <guid>http://localhost:1313/post/2016-08-21-learn-emacs-21-days-part-two/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;引子&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;非 Vim/Emacs 党学习路径&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;Vim 党学习路径&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;Emacs 新手党学习路径&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;总结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;TL;DR&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;21 天学会 Emacs 系列完美收官，你们再也不用追网剧了，我再也不用被人追着更新啦！&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;/p&gt;&#xA;&#xA;&lt;div id=&#34;orgheadline1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;orgheadline1&#34;&gt;引子&lt;/h2&gt;&#xA;&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline1&#34;&gt;&#xA;&lt;p&gt;&#xA;去年十月份开始，我断断续续地录制了 10 集 Spacemacs Rocks，很快就收到了很多人的反馈，要求录制一些新手视频。（估计是我的 Emacs 操作闪瞎了很多人的双眼。。。）&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>优化 Cocos2d-x 游戏性能</title>
-      <link>https://zilongshanren.com/post/2016-07-24-optimize-graphics-performance-of-cocos2d-x-games/</link>
+      <link>http://localhost:1313/post/2016-07-24-optimize-graphics-performance-of-cocos2d-x-games/</link>
       <pubDate>Sun, 24 Jul 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2016-07-24-optimize-graphics-performance-of-cocos2d-x-games/</guid>
-      <description>Table of Contents Golden rules 查找游戏性能瓶颈，然后优化瓶颈 总是使用工具来查找性能瓶颈，而不是靠猜 查找 GPU 性能瓶颈的工具 查找 CPU 性能瓶颈的工具 熟悉你的移动设备和你使</description>
+      <guid>http://localhost:1313/post/2016-07-24-optimize-graphics-performance-of-cocos2d-x-games/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;Golden rules&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;查找游戏性能瓶颈，然后优化瓶颈&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;总是使用工具来查找性能瓶颈，而不是靠猜&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;查找 GPU 性能瓶颈的工具&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;查找 CPU 性能瓶颈的工具&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;熟悉你的移动设备和你使用的游戏引擎&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;记住&#34;足够好&#34;原则&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline8&#34;&gt;Common Bottlenecks&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline9&#34;&gt;CPU  瓶颈通常跟 Draw call 数量和你的游戏循环的复杂度相关&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline10&#34;&gt;GPU 瓶颈通常局限于 Fillrate（Overdraw） 和 Bandwidth&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline11&#34;&gt;Simple checklist to make your Cocos2d-x game faster&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;这篇文章从理论的角度和大家一起来探讨一下如何优化 Cocos2d-x 游戏的性能，这里面提供的优化技巧并不局限于使用 Cocos2d-x 引擎制作的游戏，也适用于其它任何引擎制作的游戏。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>21天学会 Emacs（上）</title>
-      <link>https://zilongshanren.com/post/2016-06-12-master-emacs-in-21-days/</link>
+      <link>http://localhost:1313/post/2016-06-12-master-emacs-in-21-days/</link>
       <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2016-06-12-master-emacs-in-21-days/</guid>
-      <description>Table of Contents 为什么我要录制这个系列视频 我真的可以 21 天学会 Emacs 吗？ 给 Emacs 新手的建议 后续学习建议 结语 经过了漫长的 3个月等待，《21 天学会 Emacs 系列》的上半部分</description>
+      <guid>http://localhost:1313/post/2016-06-12-master-emacs-in-21-days/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;为什么我要录制这个系列视频&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;我真的可以 21 天学会 Emacs 吗？&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;给 Emacs 新手的建议&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;后续学习建议&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;结语&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;经过了漫长的 3个月等待，《21 天学会 Emacs 系列》的上半部分总算是完结了。本来打算每周一更的视频，也由于各种原因未能及时更新，不过好在 Emacs 党的热情不减，我终于还是不负众望，坚持下来了。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>拥抱 HTTPS 和 HTTP/2</title>
-      <link>https://zilongshanren.com/post/2016-06-08-embrace-https-and-http2/</link>
+      <link>http://localhost:1313/post/2016-06-08-embrace-https-and-http2/</link>
       <pubDate>Wed, 08 Jun 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2016-06-08-embrace-https-and-http2/</guid>
-      <description>Table of Contents 我为什么要使用 HTTPS 你为什么不用 HTTPS 如何为自己的网站添加 HTTPS 遇到的一些问题和解决方案 结语 Reference 为了方便国内的 Emacs 党交流，前段时间跟社区里面几个小伙伴</description>
+      <guid>http://localhost:1313/post/2016-06-08-embrace-https-and-http2/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;我为什么要使用 HTTPS&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;你为什么不用 HTTPS&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;如何为自己的网站添加 HTTPS&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;遇到的一些问题和解决方案&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;结语&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;Reference&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;为了方便国内的 Emacs 党交流，前段时间跟社区里面几个小伙伴一起弄了一个discourse论坛，也就是现在的&lt;a href=&#34;https://emacs-china.org&#34;&gt;emacs-china.org&lt;/a&gt; 。当时有位 &lt;a href=&#34;http://weibo.com/xuchunyang56&#34;&gt;xuchunyang&lt;/a&gt; 同学建议论坛应该要支持 HTTPS，其实之前我使用 Spacemacs 的时候，就有人在 Reddit 里面建议从 Melpa&#xA;安装 Package 的时候应该要用 HTTPS，否则你的 Emacs 可能被人“下毒”。但是由于国内墙的原因，我当时把 HTTPS 禁用了。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>理解 Javascript This 关键字</title>
-      <link>https://zilongshanren.com/post/2016-03-13-undertand-javascript-this-keyword/</link>
+      <link>http://localhost:1313/post/2016-03-13-undertand-javascript-this-keyword/</link>
       <pubDate>Mon, 14 Mar 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2016-03-13-undertand-javascript-this-keyword/</guid>
-      <description>Table of Contents This 绑定内容与函数无关，而与执行环境有关 This 绑定的内容可以被动态修改 巧用闭包消除 This 动态绑定，提高代码可读性 小结 Reference 在我最早接触 Javascript 的时候，Th</description>
+      <guid>http://localhost:1313/post/2016-03-13-undertand-javascript-this-keyword/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;This 绑定内容与函数无关，而与执行环境有关&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;This 绑定的内容可以被动态修改&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;巧用闭包消除 This 动态绑定，提高代码可读性&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;Reference&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;在我最早接触 Javascript 的时候，This 关键字着实让我摸不着头脑。还有与 This 相关的一些函数，比如 bind，call 和 apply 也是难以掌握。本文试图用几个简单的例子来理解 This 关键字。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>理解 Javascript 作用域和作用域链</title>
-      <link>https://zilongshanren.com/post/2016-03-13-understand-javascript-scope-and-scope-chain/</link>
+      <link>http://localhost:1313/post/2016-03-13-understand-javascript-scope-and-scope-chain/</link>
       <pubDate>Sun, 13 Mar 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2016-03-13-understand-javascript-scope-and-scope-chain/</guid>
-      <description>Table of Contents Javascript 作用域 Javascript 作用域链 变量提升 小结 Reference 上篇文章 在介绍 Javascript 闭包的时候提到了“闭包创建时所处的环境信息”，但是并没有说明这些信息到底是什么。 也多亏</description>
+      <guid>http://localhost:1313/post/2016-03-13-understand-javascript-scope-and-scope-chain/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;Javascript 作用域&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;Javascript 作用域链&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;变量提升&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;Reference&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;&lt;a href=&#34;http://zilongshanren.com/blog/2016-02-28-understand-javascript-closure.html&#34;&gt;上篇文章&lt;/a&gt; 在介绍 Javascript 闭包的时候提到了“闭包创建时所处的环境信息”，但是并没有说明这些信息到底是什么。&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;也多亏了读者的提醒，我对于 Js 闭包的理解还是太肤浅了。这篇文章除了介绍 Js 的作用域和作用域链外，我还会讨论变量提升(var hositing) 这个问题。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>理解 Javascript 的闭包</title>
-      <link>https://zilongshanren.com/post/2016-02-28-understand-javascript-closure/</link>
+      <link>http://localhost:1313/post/2016-02-28-understand-javascript-closure/</link>
       <pubDate>Sun, 28 Feb 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2016-02-28-understand-javascript-closure/</guid>
-      <description>Table of Contents 什么是闭包？ 闭包有什么作用？ 如何正确地使用闭包？ 闭包的性能如何？ 小结 Reference 因为最近几个月一直在做 Cocos Creator 这个项目，大部分时间都在与 Javascript 打交道，所</description>
+      <guid>http://localhost:1313/post/2016-02-28-understand-javascript-closure/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;什么是闭包？&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;闭包有什么作用？&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;如何正确地使用闭包？&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;闭包的性能如何？&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;Reference&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;因为最近几个月一直在做 Cocos Creator 这个项目，大部分时间都在与 Javascript 打交道，所以接下来我有必要写几篇文章介绍一下 JS 里面几个比较让人迷惑的地方：闭包，变量作用域，变量提升和 this 绑定。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>21 天学会 Emacs</title>
-      <link>https://zilongshanren.com/learnemacs/</link>
+      <link>http://localhost:1313/learnemacs/</link>
       <pubDate>Sun, 13 Dec 2015 22:45:28 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/learnemacs/</guid>
-      <description>21 天学会 Emacs 电子书在线阅读： http://book.emacs-china.org/ 21 天学会 Emacs 所有视频 Youtube：https://www.youtube.com/watch?v=0hpVuoy</description>
+      <guid>http://localhost:1313/learnemacs/</guid>
+      <description>&lt;h2 id=&#34;21-天学会-emacs-电子书在线阅读&#34;&gt;21 天学会 Emacs 电子书在线阅读：&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://book.emacs-china.org/&#34;&gt;http://book.emacs-china.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;21-天学会-emacs-所有视频&#34;&gt;21 天学会 Emacs 所有视频&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Youtube：https://www.youtube.com/watch?v=0hpVuoyO8_o&amp;amp;list=PLZx9tb9Niew8qMjpCjeYnsezCE-s5mKw_&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;每一集的大纲和摘要&#34;&gt;每一集的大纲和摘要&lt;/h2&gt;&#xA;&lt;h3 id=&#34;第一天&#34;&gt;第一天&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;如何安装 Emacs&lt;/li&gt;&#xA;&lt;li&gt;Emacs 基础概念：光标移动，按键说明&lt;/li&gt;&#xA;&lt;li&gt;Org-mode 的基本使用&lt;/li&gt;&#xA;&lt;li&gt;激活 Emacs 的一些内置功能&lt;/li&gt;&#xA;&lt;li&gt;使用 Emacs 内置的帮助文档&lt;/li&gt;&#xA;&lt;li&gt;学习一些简单的 elisp&lt;/li&gt;&#xA;&lt;li&gt;学习 Emacs 的 package 系统并且安装 company mode 来完成自动补全&lt;/li&gt;&#xA;&lt;li&gt;简单介绍 major mode 和 minor mode 的概念&lt;/li&gt;&#xA;&lt;li&gt;Org-mode 的一些基本用法&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第二天&#34;&gt;第二天&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;修改 Emacs 的光标样式&lt;/li&gt;&#xA;&lt;li&gt;禁止 Emacs 创建备份文件&lt;/li&gt;&#xA;&lt;li&gt;使用 recentf mode 来管理最近经常访问的文件&lt;/li&gt;&#xA;&lt;li&gt;激活 delete-selection-mode，让 Emacs 与其它编辑器的行为一致&lt;/li&gt;&#xA;&lt;li&gt;让 Org-mode 中的代码具有语法高亮&lt;/li&gt;&#xA;&lt;li&gt;让 Emacs 启动就最大化&lt;/li&gt;&#xA;&lt;li&gt;让 Emacs 高亮当前行&lt;/li&gt;&#xA;&lt;li&gt;让 Elisp 显示匹配的括号&lt;/li&gt;&#xA;&lt;li&gt;扩展 Emacs 的包管理器，让安装Emacs插件自动化&lt;/li&gt;&#xA;&lt;li&gt;安装 js2-mode 和 nodejs-repl 来打造 Javascript 编程环境&lt;/li&gt;&#xA;&lt;li&gt;Org mode tips： org-agenda 来管理你的日程&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第三天&#34;&gt;第三天&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;划分 Emacs 配置成多个文件&lt;/li&gt;&#xA;&lt;li&gt;安装 popwin 插件来增强 Emacs 的弹窗功能&lt;/li&gt;&#xA;&lt;li&gt;介绍 load-path，require, provide,  autoload 等功能&lt;/li&gt;&#xA;&lt;li&gt;激活 abbrev-mode，让你可以写很短的字符扩展出一长串的内容&lt;/li&gt;&#xA;&lt;li&gt;更进一步地介绍 major mode 和 minor mode&lt;/li&gt;&#xA;&lt;li&gt;开启 auto-revert mode，这样当文件在 emacs 外部被修改的时候，emacs 会自动加载磁盘上的文件&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第四天&#34;&gt;第四天&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;添加一个 indent-buffer 的函数&lt;/li&gt;&#xA;&lt;li&gt;介绍 Emacs 另一种补全功能：hippie-expand&lt;/li&gt;&#xA;&lt;li&gt;Dired 模式介绍和基本使用技巧&lt;/li&gt;&#xA;&lt;li&gt;介绍一个 Mac 相关的插件，可以在把 Emacs 打开的文件用 Finder 来打开&lt;/li&gt;&#xA;&lt;li&gt;介绍 Org-mode 进行文学编程&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第五天&#34;&gt;第五天&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;修复 smartparen 插件在 emacs-lisp-mode 下面的一个小问题&lt;/li&gt;&#xA;&lt;li&gt;介绍如何去除 DOS 换行符&lt;/li&gt;&#xA;&lt;li&gt;安装 web-mode 来进行 web 开发&lt;/li&gt;&#xA;&lt;li&gt;介绍 js2-refactor 来进行 javascript 的重构&lt;/li&gt;&#xA;&lt;li&gt;介绍 occur-mode 和 imenu mode 来快速浏览代码&lt;/li&gt;&#xA;&lt;li&gt;介绍 expand-region 来 mark 文本&lt;/li&gt;&#xA;&lt;li&gt;介绍 iedit 来进行文本批量修改&lt;/li&gt;&#xA;&lt;li&gt;介绍 Org-mode 的导出功能&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第六天&#34;&gt;第六天&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;使用 org-capture 来记笔记和 todo 事项&lt;/li&gt;&#xA;&lt;li&gt;使用 org-pomodoro 来管理时间&lt;/li&gt;&#xA;&lt;li&gt;使用 c-n/c-p 来选择 company 的候选补全项&lt;/li&gt;&#xA;&lt;li&gt;使用 expand-region 和 iedit 来批量重命名文件&lt;/li&gt;&#xA;&lt;li&gt;安装 helm-ag 来辅助项目内文本搜索&lt;/li&gt;&#xA;&lt;li&gt;安装 flycheck 来实时检查你的代码是否有语法错误&lt;/li&gt;&#xA;&lt;li&gt;介绍 snippet 和 auto-snippet 插件&lt;/li&gt;&#xA;&lt;li&gt;练习：安装 helm-swoop 和 org-mac-link 插件，并学习这两个插件的用法&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第七天&#34;&gt;第七天&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Hack 按键 C-W 来向后删除一个单词&lt;/li&gt;&#xA;&lt;li&gt;安装Evil 插件和 Evil 的基本配置&lt;/li&gt;&#xA;&lt;li&gt;简单介绍 Evil 插件和 Vim 的区别与联系&lt;/li&gt;&#xA;&lt;li&gt;安装 which-key 插件来显示按键信息&lt;/li&gt;&#xA;&lt;li&gt;Org Tips： 在你的 org 文件里面进行搜索&lt;/li&gt;&#xA;&lt;li&gt;给出了大量关于 Evil 插件的课外阅读材料&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第八天&#34;&gt;第八天&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;介绍 Emacs-China 的 elpa 镜像及其使用方法&lt;/li&gt;&#xA;&lt;li&gt;介绍 Cast 和 pallet-mode 的使用&#xA;注： 这一集视频新手可以选择跳过，因为 Cask 对于插件的开发者可能会更有用。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第九天&#34;&gt;第九天&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;介绍 macro 的基本用法&lt;/li&gt;&#xA;&lt;li&gt;介绍 use-package 插件及其用法&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第十天&#34;&gt;第十天：&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;介绍 company 的使用和具体的工作原理&lt;/li&gt;&#xA;&lt;li&gt;介绍 Cask 的使用场景&lt;/li&gt;&#xA;&lt;li&gt;介绍 company backend 的知识&lt;/li&gt;&#xA;&lt;li&gt;给出了一个链接教大家如何编写 company 的 backend&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第十一天&#34;&gt;第十一天：&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Spacemacs 的安装和配置&lt;/li&gt;&#xA;&lt;li&gt;添加一些 Spacemacs 的内置 layer&lt;/li&gt;&#xA;&lt;li&gt;配置 Spacemacs 全屏启动&lt;/li&gt;&#xA;&lt;li&gt;如何排除 Spacemacs 中你不需要的 package&lt;/li&gt;&#xA;&lt;li&gt;如何让安装的 package 不被 Spacemacs 下次启动的时候删除&lt;/li&gt;&#xA;&lt;li&gt;防止 Emacs 启动时间过长&lt;/li&gt;&#xA;&lt;li&gt;让 custom.el 文件的内容放到一个文件中&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第十二天&#34;&gt;第十二天：&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;创建你的第一个 Spacemacs layer&lt;/li&gt;&#xA;&lt;li&gt;Hack Spacemacs 自带的 layer&lt;/li&gt;&#xA;&lt;li&gt;把我们之前的配置迁移到 Spacemacs&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第十三天&#34;&gt;第十三天：&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;修复 ivy 0.8 引入的一个问题&lt;/li&gt;&#xA;&lt;li&gt;介绍 layer 里面 post-init 和 pre-init 的区别&lt;/li&gt;&#xA;&lt;li&gt;介绍 Spacemacs package 的安装源：elpa/builtin/github&lt;/li&gt;&#xA;&lt;li&gt;介绍 layers.el 文件在layer 里面的作用&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第十四天&#34;&gt;第十四天：&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Spacemacs 里面关于文件和 buffer 相关的操作&lt;/li&gt;&#xA;&lt;li&gt;介绍我自己对于 Spacemacs 的文件和 buffer 操作的改进&lt;/li&gt;&#xA;&lt;li&gt;介绍我是怎么使用的 Dired&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第十五天&#34;&gt;第十五天：&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;介绍 Spacemacs Window 相关的操作&lt;/li&gt;&#xA;&lt;li&gt;介绍 Spacemacs Layout 相关的操作&lt;/li&gt;&#xA;&lt;li&gt;介绍 Spacemacs Project 相关的操作&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第十六天&#34;&gt;第十六天：&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;介绍 ctags 使用以及为什么使用 ctags&lt;/li&gt;&#xA;&lt;li&gt;介绍如何配置 company-mode 使用 ctags 进行代码补全&lt;/li&gt;&#xA;&lt;li&gt;如何更高效地使用 ctags&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第十七天&#34;&gt;第十七天：&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;介绍 Lispy 插件的使用&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第十八天&#34;&gt;第十八天：&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;介绍新手如何在 Spacemacs 里面存活下来&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第十九天&#34;&gt;第十九天：&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;介绍一些 Hack Emacs 的小技巧&lt;/li&gt;&#xA;&lt;li&gt;介绍 elisp 的 advice功能&lt;/li&gt;&#xA;&lt;li&gt;教你如何调试 elisp&lt;/li&gt;&#xA;&lt;li&gt;编写自己的 minor mode&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第二十天&#34;&gt;第二十天：&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;带你一起阅读我的 Spacemacs 配置&lt;/li&gt;&#xA;&lt;li&gt;介绍我的配置的设计思想&lt;/li&gt;&#xA;&lt;li&gt;简单地阅读了其中一个 layer 的部分代码&#xA;注：强烈推荐新手从头到尾阅读我的配置&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;第二十一天&#34;&gt;第二十一天：&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;如何成为 Emacs 高手，后续如何学习&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;如果你认为我的视频对你帮助很大可以考虑支持一把&#34;&gt;如果你认为我的视频对你帮助很大，可以考虑支持一把&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/weixin-donate.jpeg&#34; alt=&#34;fund&#34;&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Spacemacs Rocks</title>
-      <link>https://zilongshanren.com/post/2015-12-06-spacemacs-rocks/</link>
+      <link>http://localhost:1313/post/2015-12-06-spacemacs-rocks/</link>
       <pubDate>Sun, 06 Dec 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-12-06-spacemacs-rocks/</guid>
-      <description>Table of Contents 前言 Spacemacs Happy Hacking Spacemacs Rocks! 本文是对 Spacemacs Rocks 第一季系列视频的一个小节，同时打个广告，欢迎对 Emacs 和 Spacemacs 感兴趣的朋友加入 emacs-cn 的 slack 聊天组 https://slacki</description>
+      <guid>http://localhost:1313/post/2015-12-06-spacemacs-rocks/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;Spacemacs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;Happy Hacking&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;Spacemacs Rocks!&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;本文是对 Spacemacs Rocks 第一季系列视频的一个小节，同时打个广告，欢迎对 Emacs 和 Spacemacs 感兴趣的朋友加入&#xA;emacs-cn 的 slack 聊天组 &lt;a href=&#34;https://slackin-emacs-cn.herokuapp.com/&#34;&gt;https://slackin-emacs-cn.herokuapp.com/&lt;/a&gt;。&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;/p&gt;&#xA;&#xA;&lt;div id=&#34;orgheadline1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;orgheadline1&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline1&#34;&gt;&#xA;&lt;p&gt;&#xA;Spacemacs 这个社区维护的 Emacs 配置，集成了 Vim 和 Emacs 的优点，我已经用了整整一年了，非常好用，我已经迫不及待地想把它推荐给身边每一位朋友。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>这些年伴随我的一些好习惯</title>
-      <link>https://zilongshanren.com/post/2015-11-23-a-few-good-habit-i-keep-for-years/</link>
+      <link>http://localhost:1313/post/2015-11-23-a-few-good-habit-i-keep-for-years/</link>
       <pubDate>Mon, 23 Nov 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-11-23-a-few-good-habit-i-keep-for-years/</guid>
-      <description>Table of Contents 每天坚持学习 1-2 小时 坚持阅读英文资料 不断改进自己的工具箱 积极融入社区 小结 本文我试图回顾一下这些年伴随我的一些好习惯，我会按照我认为的重要</description>
+      <guid>http://localhost:1313/post/2015-11-23-a-few-good-habit-i-keep-for-years/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;每天坚持学习 1-2 小时&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;坚持阅读英文资料&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;不断改进自己的工具箱&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;积极融入社区&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;本文我试图回顾一下这些年伴随我的一些好习惯，我会按照我认为的重要性来排序。坚持这些好习惯，让我在程序员生涯的开端保持不错的势头并且它们还将继续助力我不断进步。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>关于写博客的一些思考</title>
-      <link>https://zilongshanren.com/post/2015-11-15-when-to-blog/</link>
+      <link>http://localhost:1313/post/2015-11-15-when-to-blog/</link>
       <pubDate>Sun, 15 Nov 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-11-15-when-to-blog/</guid>
-      <description>Table of Contents 写博客到底写些什么 可以是翻译看过的好文章 可以是读书笔记和心得体会 可以是攻克难题的步骤和答案 可以是自己已经熟练掌握了的东西 如何坚持写博客</description>
+      <guid>http://localhost:1313/post/2015-11-15-when-to-blog/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;写博客到底写些什么&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;可以是翻译看过的好文章&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;可以是读书笔记和心得体会&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;可以是攻克难题的步骤和答案&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;可以是自己已经熟练掌握了的东西&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;如何坚持写博客&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;写你感兴趣的并且真正热爱的东西。&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline8&#34;&gt;控制好写博客的频率&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline9&#34;&gt;找一个称手的写博客工具或平台&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline10&#34;&gt;总结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;我最早在 Cocos2D 圈子里面被大家认识是通过写博客，而“子龙山人”这个名号也是自那时起百度便可以搜索到了。&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;通过写博客，我还认识了与我合作第一本书的作者王寒，认识了泰然网的教主 Iven，认识了带我入 Emacs 教的“一叶道长”，认识了我的 Boss&amp;#x2013;Cocos2D-X 创始人王哲。而且后来，我也因此进入了现在的 Cocos2D-X 团队做游戏引擎研发。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>The best way to teach others Emacs</title>
-      <link>https://zilongshanren.com/post/2015-11-07-the-best-way-to-teach-others-emacs/</link>
+      <link>http://localhost:1313/post/2015-11-07-the-best-way-to-teach-others-emacs/</link>
       <pubDate>Sat, 07 Nov 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-11-07-the-best-way-to-teach-others-emacs/</guid>
-      <description>Table of Contents 不要在安利的时候说 Emacs 可以做任何事情。 不要安利对方快捷键使用和无鼠标操作方式 要安利 Emacs 是一个编程平台 安利 Emacs 的正确方式： 第一步：找到一个对 Emacs</description>
+      <guid>http://localhost:1313/post/2015-11-07-the-best-way-to-teach-others-emacs/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;不要在安利的时候说 Emacs 可以做任何事情。&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;不要安利对方快捷键使用和无鼠标操作方式&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;要安利 Emacs 是一个编程平台&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;安利 Emacs 的正确方式：&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;第一步：找到一个对 Emacs 真正感兴趣的人。（这是最难的一步）&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;第二步：让他把 Emacs 自带的教程看完（C-h t），并且给他们一些 Youtube 视频教程。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Things I Wish I Know When I Am Learning Emacs</title>
-      <link>https://zilongshanren.com/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/</link>
+      <link>http://localhost:1313/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/</link>
       <pubDate>Sat, 31 Oct 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/</guid>
-      <description>Table of Contents 一定要使用 Starter Kit Package 管理和依赖 按键绑定 按键绑定的覆盖问题 快捷键太多，记不住怎么办？ 有问题问 Emacs Happy Hacking 当我在学习 Emacs 的时候，有一些事情，我希望有人</description>
+      <guid>http://localhost:1313/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;一定要使用 Starter Kit&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;Package 管理和依赖&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;按键绑定&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;按键绑定的覆盖问题&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;快捷键太多，记不住怎么办？&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;有问题问 Emacs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;Happy Hacking&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;当我在学习 Emacs 的时候，有一些事情，我希望有人能够提前告诉我。&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;这样的话，我便可以少走一些弯路。&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;/p&gt;&#xA;&#xA;&lt;div id=&#34;orgheadline1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;orgheadline1&#34;&gt;一定要使用 Starter Kit&lt;/h2&gt;&#xA;&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline1&#34;&gt;&#xA;&lt;p&gt;&#xA;对于 Emacs 新手而言，一定要使用 Starter Kit！&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>关于 Spacemacs 的 Tips</title>
-      <link>https://zilongshanren.com/post/2015-10-25-a-few-spacemacs-tips/</link>
+      <link>http://localhost:1313/post/2015-10-25-a-few-spacemacs-tips/</link>
       <pubDate>Sun, 25 Oct 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-10-25-a-few-spacemacs-tips/</guid>
-      <description>Table of Contents could not load evil-indent-textobject Spacemacs 启动速度特别慢 Happy Hacking 因为 Spacemacs 需要下载大量的 package，而中国大陆的网络环境不是很稳定，容易导致一些 package 在下载的过程中 byte-compile 出错，所</description>
+      <guid>http://localhost:1313/post/2015-10-25-a-few-spacemacs-tips/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;could not load evil-indent-textobject&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;Spacemacs 启动速度特别慢&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;Happy Hacking&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;因为 Spacemacs 需要下载大量的 package，而中国大陆的网络环境不是很稳定，容易导致一些 package 在下载的过程中&#xA;byte-compile 出错，所以很多人会遇到一些特别奇怪的错误。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Emacs 当前文件快速查找内容</title>
-      <link>https://zilongshanren.com/post/2015-10-15-nagivate-quickly-in-the-current-buffer/</link>
+      <link>http://localhost:1313/post/2015-10-15-nagivate-quickly-in-the-current-buffer/</link>
       <pubDate>Thu, 15 Oct 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-10-15-nagivate-quickly-in-the-current-buffer/</guid>
-      <description>Table of Contents Evil search Swiper Helm-swoop Helm-semantic-or-imenu occur 最后 使用 Emacs 也已经两年多了，积累了不少经验，也一直在安利，不过效果不佳。是时候跟大家分享一些我使用 Emacs 的技巧了，不求安利，只求</description>
+      <guid>http://localhost:1313/post/2015-10-15-nagivate-quickly-in-the-current-buffer/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;Evil search&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;Swiper&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;Helm-swoop&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;Helm-semantic-or-imenu&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;occur&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;最后&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;使用 Emacs 也已经两年多了，积累了不少经验，也一直在安利，不过效果不佳。是时候跟大家分享一些我使用 Emacs 的技巧了，不求安利，只求相互交流。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>我的工作流</title>
-      <link>https://zilongshanren.com/post/2015-10-14-pesudo-perfect-workflow/</link>
+      <link>http://localhost:1313/post/2015-10-14-pesudo-perfect-workflow/</link>
       <pubDate>Wed, 14 Oct 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-10-14-pesudo-perfect-workflow/</guid>
-      <description>本文要介绍的工作流是我最近才想出来的， 当然也借鉴了不少其他人的经验，但是，这不是重点，重点是此工作流要解决我目前遇到的问题。 我的问题主要有：</description>
+      <guid>http://localhost:1313/post/2015-10-14-pesudo-perfect-workflow/</guid>
+      <description>&lt;p&gt;&#xA;本文要介绍的工作流是我最近才想出来的， 当然也借鉴了不少其他人的经验，但是，这不是重点，重点是此工作流要解决我目前遇到的问题。&lt;/p&gt;&#xA;&lt;p&gt;&#xA;我的问题主要有：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;当我要完成一个代码 feature 或者要修复一个严重的 Bug 的时候，我无法准确预估我需要的时间。&lt;/li&gt;&#xA;&lt;li&gt;当我重构一些代码时候，很容易犯一些低级的错误，这让我显得很不专业。&lt;/li&gt;&#xA;&lt;li&gt;在解决复杂的问题的时候，我经常要试错然后不断地改进，中间会有推倒重来的可能。&lt;/li&gt;&#xA;&lt;li&gt;对于我以前写的有一些代码，要理解它们有一定的难度。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&#xA;{{{more}}}&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>三个 Git 问题(下)</title>
-      <link>https://zilongshanren.com/post/2015-09-21-three-git-question-2/</link>
+      <link>http://localhost:1313/post/2015-09-21-three-git-question-2/</link>
       <pubDate>Mon, 21 Sep 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-09-21-three-git-question-2/</guid>
-      <description>Table of Contents Merge 的测试代码 Rebase 的测试代码 小结 在上篇文章中，我们介绍了 Git 内部存储对象的方式，以及为什么不要用 Git 去管理大的二进制文件。 本文将继续探讨上篇文</description>
+      <guid>http://localhost:1313/post/2015-09-21-three-git-question-2/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;Merge 的测试代码&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;Rebase 的测试代码&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;在上篇文章中，我们介绍了 Git 内部存储对象的方式，以及为什么不要用 Git 去管理大的二进制文件。&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;本文将继续探讨上篇文章中遗留的两个问题。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>三个 Git 问题（上）</title>
-      <link>https://zilongshanren.com/post/2015-09-12-three-git-question/</link>
+      <link>http://localhost:1313/post/2015-09-12-three-git-question/</link>
       <pubDate>Sat, 12 Sep 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-09-12-three-git-question/</guid>
-      <description>Table of Contents 什么是文件快照 为什么 Git 切换分支特别快？ 为什么不推荐使用 Git 保存二进制大文件 参考文献 本系列文章主要回答三个 Git 问题: 为什么不推荐用 Git 保存二进</description>
+      <guid>http://localhost:1313/post/2015-09-12-three-git-question/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;什么是文件快照&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;为什么 Git 切换分支特别快？&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;为什么不推荐使用 Git 保存二进制大文件&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;参考文献&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;本系列文章主要回答三个 Git 问题:&#xA;&lt;/p&gt;&#xA;&#xA;&lt;ol class=&#34;org-ol&#34;&gt;&#xA;&lt;li&gt;为什么不推荐用 Git 保存二进制大文件?&lt;/li&gt;&#xA;&#xA;&lt;li&gt;如果两个 Branch 修改同一个文件的同一行代码，各自 Commit 一次，在 Merge 的时候为什么不会有冲突？&lt;/li&gt;&#xA;&#xA;&lt;li&gt;同样是两个 Branch 修改同一个文件的同一行代码，各自 Commit 一次，在 Rebase 的时候为何有一个 Commit 会被优化掉？&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&#xA;&lt;p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>最近读过的好书</title>
-      <link>https://zilongshanren.com/post/2015-09-05-rencently-read-books/</link>
+      <link>http://localhost:1313/post/2015-09-05-rencently-read-books/</link>
       <pubDate>Sat, 05 Sep 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-09-05-rencently-read-books/</guid>
-      <description>Table of Contents 周鸿祎自述－－我的互联网方法论 浪潮之巅 科技行业没有百年老店 差异化竞争 一些定律 乔布斯传 程序员的呐喊 异类 从 0 到 1 总结 本文主要记录我近两个月</description>
+      <guid>http://localhost:1313/post/2015-09-05-rencently-read-books/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;周鸿祎自述－－我的互联网方法论&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;浪潮之巅&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;科技行业没有百年老店&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;差异化竞争&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;一些定律&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;乔布斯传&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;程序员的呐喊&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline8&#34;&gt;异类&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline9&#34;&gt;从 0 到 1&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline10&#34;&gt;总结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;本文主要记录我近两个月来阅读非技术书籍的心得。&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;其实我已经有很长一段时间没有阅读非技术书籍了， 一方面可能是自己想在技术方面更精进一些，这两年我专注的点都在具体的技术上。 另一方面，可能也是时间关系。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>像极客一样使用 Mac</title>
-      <link>https://zilongshanren.com/post/2015-08-30-use-mac-like-a-geek/</link>
+      <link>http://localhost:1313/post/2015-08-30-use-mac-like-a-geek/</link>
       <pubDate>Sun, 30 Aug 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-08-30-use-mac-like-a-geek/</guid>
-      <description>Table of Contents 命令行工具 iTerm2 Tmux Percol Zsh 编辑器之神 Vim 编辑器 － Emacs 改键工具 Mac 本身 Karabiner - Software for OS X Keyboard Maestro 7.0.1: Work Faster with Macros for Mac OS X 统计工具 GUI 工具 Beyond Compare Source Tree Sublime Text Mou 总结 Mac 是属于程序员</description>
+      <guid>http://localhost:1313/post/2015-08-30-use-mac-like-a-geek/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;命令行工具&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;iTerm2&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;Tmux&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;Percol&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;Zsh&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;编辑器之神 Vim&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;编辑器 － Emacs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline11&#34;&gt;改键工具&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline8&#34;&gt;Mac 本身&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline9&#34;&gt;Karabiner - Software for OS X&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline10&#34;&gt;Keyboard Maestro 7.0.1: Work Faster with Macros for Mac OS X&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline12&#34;&gt;统计工具&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline17&#34;&gt;GUI 工具&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline13&#34;&gt;Beyond Compare&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline14&#34;&gt;Source Tree&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline15&#34;&gt;Sublime Text&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline16&#34;&gt;Mou&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline18&#34;&gt;总结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA; Mac 是属于程序员的电脑，因为它不仅有好看的图形用户界面，还有非常好用的 Unix 命令行接口。我们编程中有很多任务都需要借助命令行来完成，比如 Git，文件操作，Shell 脚本等。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Mac 无光驱安装 Windows 10</title>
-      <link>https://zilongshanren.com/post/2015-08-23-install-windows-on-mac-without-optical-driver/</link>
+      <link>http://localhost:1313/post/2015-08-23-install-windows-on-mac-without-optical-driver/</link>
       <pubDate>Sun, 23 Aug 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-08-23-install-windows-on-mac-without-optical-driver/</guid>
-      <description>Table of Contents Hack Boot Camp Assistant Burn the ISO to USB Configure the GPT disk and EFI loader 安装失败的可能原因 安装 Ubuntu 总结 Reference 我的旧 Mac 电脑的型号是 13 inch 2011 late，它是有光驱的。后来因为我的硬盘坏了，</description>
+      <guid>http://localhost:1313/post/2015-08-23-install-windows-on-mac-without-optical-driver/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;Hack Boot Camp Assistant&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;Burn the ISO to USB&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;Configure the GPT disk and EFI loader&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;安装失败的可能原因&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;安装 Ubuntu&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;总结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;Reference&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;我的旧 Mac 电脑的型号是 13 inch 2011 late，它是有光驱的。后来因为我的硬盘坏了，我换了一个 1T 的机械硬盘。不过，当时的 SSD 已经比较便宜了，于是我给它加装了一块三星的 120G SSD。因为电脑配置是 i5+8G 内存，瓶颈在硬盘。（更深层次的原因其实是－－穷。。。不然这么折腾干嘛，直接 15 寸顶配 retina 走起。） 不过没了光驱，你会发现安装系统变得很麻烦了，只能通过 U 盘来安装了。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>我是怎么同时掌握 Vim 和 Emacs 的?</title>
-      <link>https://zilongshanren.com/post/2015-08-16-how-could-i-master-vim-and-emacs/</link>
+      <link>http://localhost:1313/post/2015-08-16-how-could-i-master-vim-and-emacs/</link>
       <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-08-16-how-could-i-master-vim-and-emacs/</guid>
-      <description>Table of Contents 我是怎么学会 Vim 的 我与 Mac 结缘 打造 Vim 神器 我是怎么学会 Emacs 的 Evil Prelude Spacemacs 现在我在用 Vim 还是 Emacs 给初学者的建议 总结 看到这个标题，肯定会有人站出来说，“异教</description>
+      <guid>http://localhost:1313/post/2015-08-16-how-could-i-master-vim-and-emacs/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;我是怎么学会 Vim 的&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;我与 Mac 结缘&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;打造 Vim 神器&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;我是怎么学会 Emacs 的&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;Evil&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;Prelude&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;Spacemacs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline8&#34;&gt;现在我在用 Vim 还是 Emacs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline9&#34;&gt;给初学者的建议&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline10&#34;&gt;总结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;看到这个标题，肯定会有人站出来说，“异教徒，烧死！。。。”&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;/p&gt;&#xA;&#xA;&lt;div id=&#34;orgheadline3&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;orgheadline3&#34;&gt;我是怎么学会 Vim 的&lt;/h2&gt;&#xA;&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline3&#34;&gt;&#xA;&lt;/div&gt;&lt;div id=&#34;orgheadline1&#34; class=&#34;outline-3&#34;&gt;&#xA;&lt;h3 id=&#34;orgheadline1&#34;&gt;我与 Mac 结缘&lt;/h3&gt;&#xA;&lt;div class=&#34;outline-text-3&#34; id=&#34;text-orgheadline1&#34;&gt;&#xA;&lt;p&gt;&#xA; 2010 年下半年， 当时我还是研一，不甘寂寞的我找到了一份 iOS 兼职游戏开发的工作，那是我生平第一次接触 Mac。当时我使用的是一台 MacMini。不过老板人比较好，允许我带回宿舍。对于一个被 Windows 毒害了多年的码农，Mac 对于我真是救星。这期间我学会了 Git，并且大量使用命令行来操作 Git。由于 Mac 上面的包管理器 Homebrew 非常好用，我又开始折腾 Shell。这期间我接触了 iTerm2,Oh-My-ZSH，Alfred 和 Tmux。我的命令行使用越来越熟练，我开始尝试全键盘操作，完全脱离鼠标，只依靠键盘和触摸板来工作。因为 Mac 的触摸板非常好用，所以，我又一次成功地超越了自己。后来，我发现 Git 的很多操作需要配置编辑器，而默认的编辑器则是 Vim。因此，我又下决心要学好 Vim。就是这样，我入了 Vim 教。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>工作两年总结(下)</title>
-      <link>https://zilongshanren.com/post/2015-08-09-postmotem-of-two-years-work-part2/</link>
+      <link>http://localhost:1313/post/2015-08-09-postmotem-of-two-years-work-part2/</link>
       <pubDate>Sun, 09 Aug 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-08-09-postmotem-of-two-years-work-part2/</guid>
-      <description>Table of Contents 不够专注 不够关心细节 不够主动争取 没有按需学习 做正确的事,不要做容易的事 小结 本文是工作两年总结（上） | 子龙山人 的续，主要介绍我这两年经历</description>
+      <guid>http://localhost:1313/post/2015-08-09-postmotem-of-two-years-work-part2/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;不够专注&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;不够关心细节&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;不够主动争取&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;没有按需学习&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;做正确的事,不要做容易的事&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;本文是&lt;a href=&#34;http://zilongshanren.com/blog/2015-07-26-postmotem-of-two-years-programming-career.html&#34;&gt;工作两年总结（上） | 子龙山人&lt;/a&gt; 的续，主要介绍我这两年经历的教训。&#xA;&lt;/p&gt;&#xA;&#xA;&#xA;&lt;p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;/p&gt;&#xA;&#xA;&lt;div id=&#34;orgheadline1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;orgheadline1&#34;&gt;不够专注&lt;/h2&gt;&#xA;&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline1&#34;&gt;&#xA;&lt;p&gt;&#xA;实际上，打从我开始学习计算机的时候，我便立志要学习游戏开发。读完研究生以后，我也是立马就投身了游戏行业。虽然，我不是参与实际的游戏开发，但是我做的是游戏引擎开发，也算是与游戏密不可分。不过，有时候，我会偶尔想离开游戏行业。至于原因，知乎大神有回答:&lt;a href=&#34;http://www.zhihu.com/question/29533974&#34;&gt;你为什么会离开游戏行业？ - 知乎&lt;/a&gt;。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>About</title>
-      <link>https://zilongshanren.com/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Sun, 02 Aug 2015 15:27:52 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/about/</guid>
-      <description>Experience Lightspeed &amp;amp; Quantum Studios Group(光子工作室群) Company: Tecent Period: 2017.8 ~ present Role: Developer Cocos Creator Home Page: http://www.cocos.com/download/creator/ Introduction： Cocos Creator is a free cross-platform game development editor supporting Cocos2d-js, which helps developers to build 2D and 3D game scenes, edit game UI and other</description>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;h2 id=&#34;experience&#34;&gt;Experience&lt;/h2&gt;&#xA;&lt;h3 id=&#34;lightspeed--quantum-studios-group光子工作室群&#34;&gt;Lightspeed &amp;amp; Quantum Studios Group(光子工作室群)&lt;/h3&gt;&#xA;&lt;p&gt;Company: Tecent&lt;/p&gt;&#xA;&lt;p&gt;Period: 2017.8 ~ present&lt;/p&gt;&#xA;&lt;p&gt;Role: Developer&lt;/p&gt;&#xA;&lt;h3 id=&#34;cocos-creator&#34;&gt;Cocos Creator&lt;/h3&gt;&#xA;&lt;p&gt;Home Page: &lt;a href=&#34;http://www.cocos.com/download/creator/&#34;&gt;http://www.cocos.com/download/creator/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Introduction：&lt;/p&gt;&#xA;&lt;p&gt;Cocos Creator is a free cross-platform game development editor supporting Cocos2d-js,&#xA;which helps developers to  build 2D and 3D game scenes, edit game UI and other game resources quickly and efficiency.&lt;/p&gt;&#xA;&lt;p&gt;Period: 2015.11 ~ 2017.7&lt;/p&gt;&#xA;&lt;p&gt;Role: The Core Developer&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>迁移博客到 Hexo</title>
-      <link>https://zilongshanren.com/post/2015-08-02-migrate-blog-to-hexo/</link>
+      <link>http://localhost:1313/post/2015-08-02-migrate-blog-to-hexo/</link>
       <pubDate>Sun, 02 Aug 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-08-02-migrate-blog-to-hexo/</guid>
-      <description>Table of Contents 为什么要迁移到 Hexo 迁移过程 迁移 Org-Octopress 修改 permalink。 修改 Org-Octopress 的根路径 需要导出的文件要放到 source 目录，但是需要添加 skip_render 信息。 Emacs 集成 小结 本文主要</description>
+      <guid>http://localhost:1313/post/2015-08-02-migrate-blog-to-hexo/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;为什么要迁移到 Hexo&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;迁移过程&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;迁移 Org-Octopress&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;修改 permalink。&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;修改 Org-Octopress 的根路径&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;需要导出的文件要放到 source 目录，但是需要添加 skip_render 信息。&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;Emacs 集成&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline8&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;本文主要是记录我是如何把博客从 Octopress 迁移到 Hexo 上面去的，同时解释了我为什么要这么做。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>工作两年总结（上）</title>
-      <link>https://zilongshanren.com/post/2015-07-26-postmotem-of-two-years-programming-career/</link>
+      <link>http://localhost:1313/post/2015-07-26-postmotem-of-two-years-programming-career/</link>
       <pubDate>Sun, 26 Jul 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-07-26-postmotem-of-two-years-programming-career/</guid>
-      <description>Table of Contents 收获 掌握 Emacs 掌握 Git 和 Github 掌握 Jenkins 持续集成 对编程语言和程序设计有了更深的理解 编程语言 程序设计 Do more, promise less 小结 本文主要是对我两年程序员生涯的一些心得</description>
+      <guid>http://localhost:1313/post/2015-07-26-postmotem-of-two-years-programming-career/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;收获&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;掌握 Emacs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;掌握 Git 和 Github&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;掌握 Jenkins 持续集成&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;对编程语言和程序设计有了更深的理解&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;编程语言&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;程序设计&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline8&#34;&gt;Do more, promise less&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline9&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;本文主要是对我两年程序员生涯的一些心得体会进行总结，主要是技术相关。Cocos2D-X 最流行的那年，我选择加入了 Cocos2D-X 团队，凭借着自己的一腔热血和对游戏的热爱，我选择了技术推广作为我的第一份职业。然而，好景不长，技术推广需要专业的，有激情的团队，而我们无法组建这样的团队。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>使用 Org-mode 来写博客</title>
-      <link>https://zilongshanren.com/post/2015-07-19-add-org-mode-support/</link>
+      <link>http://localhost:1313/post/2015-07-19-add-org-mode-support/</link>
       <pubDate>Sun, 19 Jul 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-07-19-add-org-mode-support/</guid>
-      <description>Table of Contents Why Org-mode❓ 它比 Markdown 功能更加强大🐶 和 Emacs 无缝集成📍 支持文学编程 我正在学习 Org-mode How to configure Org-octopress Some tips 让文章支持评论 配置 spacemacs 自动截图，保存图片到博客</description>
+      <guid>http://localhost:1313/post/2015-07-19-add-org-mode-support/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;Why Org-mode:question:&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;它比 Markdown 功能更加强大:dog:&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;和 Emacs 无缝集成:round_pushpin:&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;支持文学编程&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;我正在学习 Org-mode&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;How to configure Org-octopress&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline12&#34;&gt;Some tips&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;让文章支持评论&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline8&#34;&gt;配置 spacemacs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline9&#34;&gt;自动截图，保存图片到博客的相应目录，并且插入一个图片链接&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline10&#34;&gt;自动捕获当前 Chrome 的 Tab 页的 URL 并插入到文章中&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline11&#34;&gt;去除 Org 导出的 HTML 中的多余的空格&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline13&#34;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline14&#34;&gt;Reference&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;本文将介绍如何使用 Org-mode 在 Emacs 里面写博客。因为我的博客系统采用的是 Octopress，Org-mode 自带的 publish 功能太简单，所以，我决定在已有的博客上面添加 Org-mode 的支持。当然，和我一样有这个需求的人不止一个，我通过 Google 很快就找到了一个现成的方案。 &lt;a href=&#34;https://github.com/yoshinari-nomura/org-octopress&#34;&gt;yoshinari-nomura/org-octopress&lt;/a&gt; :+1:&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>给Octopress添加Emoji支持</title>
-      <link>https://zilongshanren.com/post/add-emoji-to-my-blog/</link>
+      <link>http://localhost:1313/post/add-emoji-to-my-blog/</link>
       <pubDate>Fri, 03 Jul 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/add-emoji-to-my-blog/</guid>
-      <description>&lt;p&gt;我非常喜欢emoji，所以，我决定给自己的博客也添加emoji支持。&lt;/p&gt;
-&lt;p&gt;Update: Saturday, October 15, 2016&lt;/p&gt;
-&lt;p&gt;目前 emoji 的功能已被我折腾 hexo 给废了，这篇博客仅供参考。&lt;/p&gt;</description>
+      <guid>http://localhost:1313/post/add-emoji-to-my-blog/</guid>
+      <description>&lt;p&gt;我非常喜欢emoji，所以，我决定给自己的博客也添加emoji支持。&lt;/p&gt;&#xA;&lt;p&gt;Update: Saturday, October 15, 2016&lt;/p&gt;&#xA;&lt;p&gt;目前 emoji 的功能已被我折腾 hexo 给废了，这篇博客仅供参考。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>《Mastering Emacs》读后感</title>
-      <link>https://zilongshanren.com/post/review-of-mastering-emacs/</link>
+      <link>http://localhost:1313/post/review-of-mastering-emacs/</link>
       <pubDate>Mon, 25 May 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/review-of-mastering-emacs/</guid>
-      <description>本文主要记录我的《Mastering Emacs》的读书心得，上图取自Google，在《Mastering Emacs》一书第五章篇头有引用。 P</description>
+      <guid>http://localhost:1313/post/review-of-mastering-emacs/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://zilongshanren.com/img/linus-talk-emacs.jpeg&#34; alt=&#34;linua-emacs-talk&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;本文主要记录我的《Mastering Emacs》的读书心得，上图取自Google，在《Mastering Emacs》一书第五章篇头有引用。&lt;/p&gt;&#xA;&lt;p&gt;PS:该书是周六晚上才发布的，目前只有&lt;a href=&#34;https://www.masteringemacs.org/article/my-ebook-mastering-emacs-now-out&#34;&gt;电子版&lt;/a&gt;. 由于该书有点小贵，我在Hick的群里面组织了团购，最后有8人参团，平均每人25。虽然从某种程度算说，这也是盗版。但是，我想说的是，我们尽力了。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Bash使用心得</title>
-      <link>https://zilongshanren.com/post/bash-quick-reference/</link>
+      <link>http://localhost:1313/post/bash-quick-reference/</link>
       <pubDate>Sun, 14 Dec 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/bash-quick-reference/</guid>
-      <description>由于前段时间一直在做Bash和Makefile脚本的编写，所以，本文主要是记录一些Bash使用心得. 有人可能会问了，现在Python这么流行</description>
+      <guid>http://localhost:1313/post/bash-quick-reference/</guid>
+      <description>&lt;p&gt;由于前段时间一直在做Bash和Makefile脚本的编写，所以，本文主要是记录一些Bash使用心得.&#xA;有人可能会问了，现在Python这么流行，完全可以用来取代Bash呀。理论上是没错，但是Bash脚本有它自己独特的优点，&#xA;比如编写简单，功能强大（主要指的是与管道命令和其它命令行程序结合起来使用）,特别适合用来制作一些&amp;quot;简单&amp;quot;的自动化处理任务脚本。&#xA;很多时候，我宁愿用shell而不想编写python，因为shell实在是太方便啦。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Be Great or Nothing</title>
-      <link>https://zilongshanren.com/post/great-or-nothing/</link>
+      <link>http://localhost:1313/post/great-or-nothing/</link>
       <pubDate>Sun, 16 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/great-or-nothing/</guid>
-      <description>最近工作上比较忙，博客更新的也没以前那么频繁了。本来计划每周一篇的博客写作，最终还是没有完成。(还是自己比较懒，偶尔会有一些拖延症。) 近来一</description>
+      <guid>http://localhost:1313/post/great-or-nothing/</guid>
+      <description>&lt;p&gt;最近工作上比较忙，博客更新的也没以前那么频繁了。本来计划每周一篇的博客写作，最终还是没有完成。(还是自己比较懒，偶尔会有一些拖延症。)&#xA;近来一直在反思过去工作中的一些问题，想想，是时候写点什么东西了。恰好，公司前不久刚开完开发者大会，大会的标语就是&amp;quot;Great or nothing!&amp;quot;.&#xA;而我们的首席架构师Ricardo也经常提到，Great or nothing. 本文就谈谈自己对这句话的一些理解和看法吧。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>一套交叉编译脚本</title>
-      <link>https://zilongshanren.com/post/a-promising-cross-compile-framework/</link>
+      <link>http://localhost:1313/post/a-promising-cross-compile-framework/</link>
       <pubDate>Sun, 02 Nov 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/a-promising-cross-compile-framework/</guid>
-      <description>现在移动平台非常火热，我们在使用C/C++开发一些移动应用的时候，经常可能需要将一些第三方c/c++库编译成对应的iOS/Android/W</description>
+      <guid>http://localhost:1313/post/a-promising-cross-compile-framework/</guid>
+      <description>&lt;p&gt;现在移动平台非常火热，我们在使用C/C++开发一些移动应用的时候，经常可能需要将一些第三方c/c++库编译成对应的iOS/Android/WP/Tizen上面的静态库。&#xA;之前我介绍过&lt;a href=&#34;http://zilongshanren.com/blog/2014-09-01-how-to-use-cmake-to-compile-static-library.html&#34;&gt;如何使用CMake来编译跨平台库&lt;/a&gt;。&#xA;那种方法有一个局限性，它只针对一些提供了CMake支持或者源码本身不需要configure的库来说，使用会非常方便，但是如果库本身没有提供CMake或者&#xA;在编译之前需要configure的库，使用起来就会很麻烦了。最好的做法，其实是重用它本身提供的编译系统，然后提供交叉编译所需要的一些参数即可。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Bad Smell</title>
-      <link>https://zilongshanren.com/post/bad-smell/</link>
+      <link>http://localhost:1313/post/bad-smell/</link>
       <pubDate>Sun, 12 Oct 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/bad-smell/</guid>
-      <description>国庆七天假，为了回家，我于万军丛中抢到了回家的高铁票，终于踏上了回乡之路。在家里没网上，除了带小孩以外，我还阅读完了一本关于Emacs Lis</description>
+      <guid>http://localhost:1313/post/bad-smell/</guid>
+      <description>&lt;p&gt;国庆七天假，为了回家，我于万军丛中抢到了回家的高铁票，终于踏上了回乡之路。在家里没网上，除了带小孩以外，我还阅读完了一本关于Emacs Lisp的书&#xA;《Writing GNU Emacs Extensions》。该书内容有些地方过时了，不过对于编写Emacs扩展和学习Lisp还是有帮助的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>高标准与不完美</title>
-      <link>https://zilongshanren.com/post/high-standard-and-imperfect/</link>
+      <link>http://localhost:1313/post/high-standard-and-imperfect/</link>
       <pubDate>Mon, 29 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/high-standard-and-imperfect/</guid>
-      <description>这段时间一直在折腾Cocos2D-X第三方库的自动编译脚本，目前引擎差不多集成了20个左右的第三方库，80%都是使用的预编译库，也有一直直接</description>
+      <guid>http://localhost:1313/post/high-standard-and-imperfect/</guid>
+      <description>&lt;p&gt;这段时间一直在折腾Cocos2D-X第三方库的自动编译脚本，目前引擎差不多集成了20个左右的第三方库，80%都是使用的预编译库，也有一直直接使用的源码(比如Box2D,Spine)。 但是，我们的最终目标肯定是要全平台全部使用预编译好的第三方库，因为这样可以加速引擎本身的编译时间。另外，为什么要折腾这些编译脚本呢？主要是为了以后更新和升级第三方库方便。毕竟那么多平台，如果每个开发者都要自己手动去编译，就太浪费时间了。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A bite of Python</title>
-      <link>https://zilongshanren.com/post/a-bite-of-python/</link>
+      <link>http://localhost:1313/post/a-bite-of-python/</link>
       <pubDate>Sun, 21 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/a-bite-of-python/</guid>
-      <description>周五的时候，我的一个朋友让我帮忙写一个小工具。这个小工具要完成的功能如下： 指定方差与均值，生成相应的随机数，默认生成一组随机数(默认为10个</description>
+      <guid>http://localhost:1313/post/a-bite-of-python/</guid>
+      <description>&lt;p&gt;周五的时候，我的一个朋友让我帮忙写一个小工具。这个小工具要完成的功能如下：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;指定方差与均值，生成相应的随机数，默认生成一组随机数(默认为10个)&lt;/li&gt;&#xA;&lt;li&gt;使用生成出来的随机数，重新计算方差和均值，如果方差和均值在指定的误差范围内则接受&lt;/li&gt;&#xA;&lt;li&gt;生成带有固定格式的Excel表格&lt;/li&gt;&#xA;&lt;li&gt;均值、方差、误差等可以配置，且可以同时提供多组数据输入&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;我当时想到的第一个是C++，因为C++11支持&lt;a href=&#34;http://en.cppreference.com/w/cpp/numeric/random/normal_distribution&#34;&gt;根据均值和方差生成随机数&lt;/a&gt;,&#xA;另外C++是我最熟悉的语言。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Things I Have Learned at Cocos2D-X Team</title>
-      <link>https://zilongshanren.com/post/what-i-learn-at-cocos2d-x/</link>
+      <link>http://localhost:1313/post/what-i-learn-at-cocos2d-x/</link>
       <pubDate>Sun, 14 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/what-i-learn-at-cocos2d-x/</guid>
-      <description>我是去年7月加入的Cocos2D-X团队，从今年2月份正式进入Cocos2D-x引擎团队，负责维护GUI框架。之前我一直在做技术推广，写英文</description>
+      <guid>http://localhost:1313/post/what-i-learn-at-cocos2d-x/</guid>
+      <description>&lt;p&gt;我是去年7月加入的Cocos2D-X团队，从今年2月份正式进入Cocos2D-x引擎团队，负责维护GUI框架。之前我一直在做技术推广，写英文教程、演讲、偶尔上课是我的全部工作。&#xA;期间，我最骄傲的产出是出色地完成了Doxygen自动提取C++源码，然后生成Js/Lua/Cpp可以切换的API文档。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>迁移博客到Octopress</title>
-      <link>https://zilongshanren.com/post/migrate-to-octopress/</link>
+      <link>http://localhost:1313/post/migrate-to-octopress/</link>
       <pubDate>Mon, 08 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/migrate-to-octopress/</guid>
-      <description>各位看到这篇文章的时候，我其实已经迁移完博客了。(文章全部迁移完毕，部分文章图片不完整，我会稍后修复，另外评论只能稍后再迁移了。) 迁移博客跟</description>
+      <guid>http://localhost:1313/post/migrate-to-octopress/</guid>
+      <description>&lt;p&gt;各位看到这篇文章的时候，我其实已经迁移完博客了。(文章全部迁移完毕，部分文章图片不完整，我会稍后修复，另外评论只能稍后再迁移了。)&lt;/p&gt;&#xA;&lt;p&gt;迁移博客跟软件做到一半改需求的心情是一样滴。。。一句话:&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>使用CMake编译跨平台静态库</title>
-      <link>https://zilongshanren.com/post/how-to-use-cmake-to-compile-static-library/</link>
+      <link>http://localhost:1313/post/how-to-use-cmake-to-compile-static-library/</link>
       <pubDate>Sun, 31 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/how-to-use-cmake-to-compile-static-library/</guid>
-      <description>在开始介绍如何使用CMake编译跨平台的静态库之前，先讲讲我在没有使用CMake之前所趟过的坑。因为很多开源的程序，比如png，都是自带编译</description>
+      <guid>http://localhost:1313/post/how-to-use-cmake-to-compile-static-library/</guid>
+      <description>&lt;p&gt;在开始介绍如何使用CMake编译跨平台的静态库之前，先讲讲我在没有使用CMake之前所趟过的坑。因为很多开源的程序，比如png，都是自带编译脚本的。我们可以使用下列脚本来进行编译：&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Emacs, The Editor of a Life Time</title>
-      <link>https://zilongshanren.com/post/emacs-the-editor-of-a-life-time/</link>
+      <link>http://localhost:1313/post/emacs-the-editor-of-a-life-time/</link>
       <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/emacs-the-editor-of-a-life-time/</guid>
-      <description>最近看了一个关于Emacs的视频，视频的标题为The Editor of a Life Time。一个程序员，使用Emacs 31年了，不得不说让人很震撼。认识我的朋友都</description>
+      <guid>http://localhost:1313/post/emacs-the-editor-of-a-life-time/</guid>
+      <description>&lt;p&gt;最近看了一个关于Emacs的视频，视频的标题为&lt;a href=&#34;https://www.youtube.com/watch?v=VADudzQGvU8&#34;&gt;The Editor of a Life Time&lt;/a&gt;。一个程序员，使用Emacs 31年了，不得不说让人很震撼。认识我的朋友都知道，我之前是一个不折不扣的Vim党，也写过一篇《打造属于自己的Vim神器》，可能还有一些朋友看了这篇文章和文中的视频，受到了一些鼓舞，于是开始接触并认真学习Vim。可是，我怎么这么快就“叛变”了呢？！且听我慢慢道来。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Lua教程:绑定一个简单的C&#43;&#43;类(6)</title>
-      <link>https://zilongshanren.com/post/bind-a-simple-cpp-class-in-lua/</link>
+      <link>http://localhost:1313/post/bind-a-simple-cpp-class-in-lua/</link>
       <pubDate>Mon, 11 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/bind-a-simple-cpp-class-in-lua/</guid>
-      <description>本文是最后一篇C/C++与Lua交互的教程，在此之后，我们会结合Cocos2D-X来介绍Lua绑定。本文主要介绍如何绑定一个简单的C++类到</description>
+      <guid>http://localhost:1313/post/bind-a-simple-cpp-class-in-lua/</guid>
+      <description>&lt;p&gt;本文是最后一篇C/C++与Lua交互的教程，在此之后，我们会结合Cocos2D-X来介绍Lua绑定。本文主要介绍如何绑定一个简单的C++类到Lua里面，并且提供Lua的面向对象访问方式。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Lua教程:C/C&#43;&#43;操作Lua数组和字符串(5)</title>
-      <link>https://zilongshanren.com/post/cpp-operate-lua-string/</link>
+      <link>http://localhost:1313/post/cpp-operate-lua-string/</link>
       <pubDate>Sun, 10 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cpp-operate-lua-string/</guid>
-      <description>本文将介绍如何在C/C++里面操作Lua的数组和字符串类型，同时还会介绍如何在C/C++函数里面存储Lua状态（registry和upval</description>
+      <guid>http://localhost:1313/post/cpp-operate-lua-string/</guid>
+      <description>&lt;p&gt;本文将介绍如何在C/C++里面操作Lua的数组和字符串类型，同时还会介绍如何在C/C++函数里面存储Lua状态（registry和upvalue），而registry在使用C/C++自定义类型时非常有用，可以方便地为userdata指定metatable。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>学习新东西</title>
-      <link>https://zilongshanren.com/post/talking-about-learning-new-thing/</link>
+      <link>http://localhost:1313/post/talking-about-learning-new-thing/</link>
       <pubDate>Tue, 05 Aug 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/talking-about-learning-new-thing/</guid>
-      <description>对于程序员而言，最大的痛苦莫过于对着层出不穷的新语言、新技术和新框架疲于奔命了。 就拿cocos2d-x来说，有些人可能2.x都才刚刚上手，3</description>
+      <guid>http://localhost:1313/post/talking-about-learning-new-thing/</guid>
+      <description>&lt;p&gt;对于程序员而言，最大的痛苦莫过于对着层出不穷的新语言、新技术和新框架疲于奔命了。&#xA;就拿cocos2d-x来说，有些人可能2.x都才刚刚上手，3.0就已经出来了。而他们正准备开始去尝试3.0的时候，可能3.2已经出来了。然后，他们怒了，“你他娘的版本更新速度太快了！”&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Lua教程：Lua调用C/C&#43;&#43;函数(4)</title>
-      <link>https://zilongshanren.com/post/lua-call-cpp-functions/</link>
+      <link>http://localhost:1313/post/lua-call-cpp-functions/</link>
       <pubDate>Wed, 30 Jul 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/lua-call-cpp-functions/</guid>
-      <description>本教程将介绍如何在Lua里面调用c/c++函数。 在Lua里面调用c/c++函数其实是比较简单，本文将通过两个示例演示具体的做法：一个是求平均</description>
+      <guid>http://localhost:1313/post/lua-call-cpp-functions/</guid>
+      <description>&lt;p&gt;本教程将介绍如何在Lua里面调用c/c++函数。&lt;/p&gt;&#xA;&lt;p&gt;在Lua里面调用c/c++函数其实是比较简单，本文将通过两个示例演示具体的做法：一个是求平均数，另一个是打印lua函数的一些参数信息。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Lua教程：C/C&#43;&#43;调用Lua的Table(3)</title>
-      <link>https://zilongshanren.com/post/call-lua-table-from-cpp/</link>
+      <link>http://localhost:1313/post/call-lua-table-from-cpp/</link>
       <pubDate>Mon, 28 Jul 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/call-lua-table-from-cpp/</guid>
-      <description>从写上一篇Lua的文章到现在，已经过去半月有余了，是时候让自己的Lua状态refresh一下了。本教程将介绍Lua的栈及基本栈操作，同时还有</description>
+      <guid>http://localhost:1313/post/call-lua-table-from-cpp/</guid>
+      <description>&lt;p&gt;从写&lt;a href=&#34;http://zilongshanren.com/blog/2014-07-06-lua-tutorials-pass-data-to-cpp-and-vice-versa.html&#34;&gt;上一篇Lua的文章&lt;/a&gt;到现在，已经过去半月有余了，是时候让自己的Lua状态refresh一下了。本教程将介绍Lua的栈及基本栈操作，同时还有如何在C/C++代码里面读取Lua的Table。&lt;/p&gt;&#xA;&lt;h2 id=&#34;理解lua栈&#34;&gt;理解Lua栈&lt;/h2&gt;&#xA;&lt;p&gt;Lua通过一个“虚拟栈”与C/C++程序进行数据交互，所有的Lua C API都是通过操作这个栈来完成相应的数据通信。&#xA;Lua的这个“虚拟栈”解决了C/C++程序与Lua程序通信的两大问题：&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>WebGL教程:你的第一个立方体(3)</title>
-      <link>https://zilongshanren.com/post/webgl-your-first-cube/</link>
+      <link>http://localhost:1313/post/webgl-your-first-cube/</link>
       <pubDate>Sun, 20 Jul 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/webgl-your-first-cube/</guid>
-      <description>在上一篇文章中，我们介绍了如何使用glMatrix.js来处理3D图形里面的数学运算，主要谈到了MVP的应用。同时，我们还简单地提到了如何使</description>
+      <guid>http://localhost:1313/post/webgl-your-first-cube/</guid>
+      <description>&lt;p&gt;在&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-28-webgl-use-glmatrix-and-jquery.html&#34;&gt;上一篇文章&lt;/a&gt;中，我们介绍了如何使用glMatrix.js来处理3D图形里面的数学运算，主要谈到了MVP的应用。同时，我们还简单地提到了如何使用JQuery来丰富我们的WebGL应用。&lt;/p&gt;&#xA;&lt;p&gt;本文将介绍如何使用WebGL来制作一个旋转的立方体。在这篇教程里面，我们会提到以下内容：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;VBO(Vertex Buffer Object)和IBO（Index Buffer Object）&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;如何绘制3D立方体&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>阿里云ubuntu12.04搭建自己的gitlab</title>
-      <link>https://zilongshanren.com/post/setup-gitlab-on-ubuntu-aliyun/</link>
+      <link>http://localhost:1313/post/setup-gitlab-on-ubuntu-aliyun/</link>
       <pubDate>Tue, 15 Jul 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/setup-gitlab-on-ubuntu-aliyun/</guid>
-      <description>我对Github太爱了，但是它的私有仓库要钱，而且是每个月7美金，对于一个上有老下有小的屌丝来说，还是能省则省吧。 况且，我不是有一台阿里云的</description>
+      <guid>http://localhost:1313/post/setup-gitlab-on-ubuntu-aliyun/</guid>
+      <description>&lt;p&gt;我对Github太爱了，但是它的私有仓库要钱，而且是每个月7美金，对于一个上有老下有小的屌丝来说，还是能省则省吧。&#xA;况且，我不是有一台阿里云的服务器么，我完全可以自己搭一个Gitlab嘛！&#xA;有人可能会说，直接搭一个Git服务器就行了嘛，分分钟搞定的事。（确实，我之前也搭过。）&#xA;但是，如果只是搭建一个Git服务器会有很多弊端：&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>OpenGL ES2.0教程:纹理贴图(6)</title>
-      <link>https://zilongshanren.com/post/opengl-es2-0-texturing-mapping/</link>
+      <link>http://localhost:1313/post/opengl-es2-0-texturing-mapping/</link>
       <pubDate>Sat, 12 Jul 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/opengl-es2-0-texturing-mapping/</guid>
-      <description>在上一篇文章中，我们介绍了如何绘制一个立方体，里面涉及的知识点有VBO(Vertex Buffer Object)、IBO(Index Buffer Object)和M</description>
+      <guid>http://localhost:1313/post/opengl-es2-0-texturing-mapping/</guid>
+      <description>&lt;p&gt;在&lt;a href=&#34;http://zilongshanren.com/blog/2014-07-01-opengl-es2-your-first-cube.html&#34;&gt;上一篇文章&lt;/a&gt;中，我们介绍了如何绘制一个立方体，里面涉及的知识点有VBO(Vertex Buffer Object)、IBO(Index Buffer Object)和MVP(Modile-View-Projection)变换。&lt;/p&gt;&#xA;&lt;p&gt;本文将在&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-22-opengl-es2-use-vbo.html&#34;&gt;教程4&lt;/a&gt;的基础之上，添加纹理贴图支持。最后，本文会把纹理贴图扩展至3D立方体上面。&lt;/p&gt;&#xA;&lt;h2 id=&#34;基本方法&#34;&gt;基本方法&lt;/h2&gt;&#xA;&lt;p&gt;当我们把一张图片加载到内存里面之后，它是不能直接被GPU绘制出来的，纹理贴图过程如下：&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>程序猿：你的&#34;家当&#34;都在云上吗？</title>
-      <link>https://zilongshanren.com/post/does-you-stuff-all-on-cloud/</link>
+      <link>http://localhost:1313/post/does-you-stuff-all-on-cloud/</link>
       <pubDate>Mon, 07 Jul 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/does-you-stuff-all-on-cloud/</guid>
-      <description>最近我一直在想一个问题，作为一个程序猿，我的“家当”都在云上面吗？ 在扯这个话题之前，先来陈列一下我目前有哪些家当。 首当其冲的应该是我的代码，</description>
+      <guid>http://localhost:1313/post/does-you-stuff-all-on-cloud/</guid>
+      <description>&lt;p&gt;最近我一直在想一个问题，作为一个程序猿，我的“家当”都在云上面吗？&lt;/p&gt;&#xA;&lt;p&gt;在扯这个话题之前，先来陈列一下我目前有哪些家当。&lt;/p&gt;&#xA;&lt;p&gt;首当其冲的应该是我的代码，然后是工作环境（包括编辑器配置，操作系统配置，常用软件配置），博客笔记，书签，电子书，还有 1024 收藏（邪恶）。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Lua教程:C&#43;&#43;和Lua相互传递数据(2)</title>
-      <link>https://zilongshanren.com/post/pass-lua-to-cpp-and-vise-verse/</link>
+      <link>http://localhost:1313/post/pass-lua-to-cpp-and-vise-verse/</link>
       <pubDate>Sun, 06 Jul 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/pass-lua-to-cpp-and-vise-verse/</guid>
-      <description>这是我的Lua系列教程的第二篇，本篇文章主要介绍C++和Lua相互传递数据。如果你还不知道怎么在c/c++里面调用Lua脚本的话，请参考这篇</description>
+      <guid>http://localhost:1313/post/pass-lua-to-cpp-and-vise-verse/</guid>
+      <description>&lt;p&gt;这是我的Lua系列教程的第二篇，本篇文章主要介绍C++和Lua相互传递数据。如果你还不知道怎么在c/c++里面调用Lua脚本的话，请参考&lt;a href=&#34;https://zilongshanren.com/blog/2014-06-28-embeded-lua-tutorial-one.html&#34;&gt;这篇文章&lt;/a&gt;.&#xA;本文主要介绍基本数据类型的传递，比如整形(int)，字符串(string)、数字(number)及bool值。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>如何坚持每周写一篇博客</title>
-      <link>https://zilongshanren.com/post/how-to-write-one-blog-post-each-week/</link>
+      <link>http://localhost:1313/post/how-to-write-one-blog-post-each-week/</link>
       <pubDate>Thu, 03 Jul 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/how-to-write-one-blog-post-each-week/</guid>
-      <description>如何坚持每周写一篇博客呢？ 在回答这个问题之前,让我们先来看看这个问题是怎么由来的？ 我在我的微博好友justbilt首页中无意中看到下面这段话</description>
+      <guid>http://localhost:1313/post/how-to-write-one-blog-post-each-week/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;如何坚持每周写一篇博客呢？&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;在回答这个问题之前,让我们先来看看这个问题是怎么由来的？&lt;/p&gt;&#xA;&lt;p&gt;我在我的微博好友&lt;a href=&#34;http://weibo.com/justbilt&#34;&gt;justbilt&lt;/a&gt;首页中无意中看到下面这段话：&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;诚然，我有相当长一段时间没有更新博客，与上面说的情况或多或少有一点点关系。但是，这些不应该成为我们不写博客的理由。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>OpenGL ES2.0教程：你的第一个立方体(5)</title>
-      <link>https://zilongshanren.com/post/opengl-es2.0-tutorials-your-first-cube/</link>
+      <link>http://localhost:1313/post/opengl-es2.0-tutorials-your-first-cube/</link>
       <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/opengl-es2.0-tutorials-your-first-cube/</guid>
-      <description>在上篇文章中，我们介绍了VBO索引的使用，使用VBO索引可以有效地减少顶点个数,优化内存，提高程序效率。 本教程将带领大家一起走进3D&amp;nda</description>
+      <guid>http://localhost:1313/post/opengl-es2.0-tutorials-your-first-cube/</guid>
+      <description>&lt;p&gt;在&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-22-opengl-es2-use-vbo.html&#34;&gt;上篇文章&lt;/a&gt;中，我们介绍了VBO索引的使用，使用VBO索引可以有效地减少顶点个数,优化内存，提高程序效率。&lt;/p&gt;&#xA;&lt;p&gt;本教程将带领大家一起走进3D&amp;ndash;绘制一个立方体。其实画立方体本质上和画三角形没什么区别，所有的模型最终都要转换为三角形。&lt;/p&gt;&#xA;&lt;p&gt;同时，本文还会介绍如何通过修改MVP矩阵来让此立方体不停地旋转。另外，大家还可以动手去修改本教程的示例代码，借此我们可以更加深入地理解OpenGL的normalized device space。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Lua教程: C&#43;&#43;嵌入Lua脚本(1)</title>
-      <link>https://zilongshanren.com/post/embed-lua-tutorials-one/</link>
+      <link>http://localhost:1313/post/embed-lua-tutorials-one/</link>
       <pubDate>Sat, 28 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/embed-lua-tutorials-one/</guid>
-      <description>本系列教程主要介绍如何在C/C++程序里面嵌入Lua脚本，我打算从以下几个方面来介绍： 如何在C/C++里面嵌入Lua脚本 Lua访问C/C++</description>
+      <guid>http://localhost:1313/post/embed-lua-tutorials-one/</guid>
+      <description>&lt;p&gt;本系列教程主要介绍如何在C/C++程序里面嵌入Lua脚本，我打算从以下几个方面来介绍：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;如何在C/C++里面嵌入Lua脚本&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Lua访问C/C++数据结构（这里面要介绍类，结构体，函数，变量，枚举等数据类型在lua里面如何访问）&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>WebGL教程:使用glMatrix和JQuery(2)</title>
-      <link>https://zilongshanren.com/post/webgl-use-glmatrix-and-jquery/</link>
+      <link>http://localhost:1313/post/webgl-use-glmatrix-and-jquery/</link>
       <pubDate>Sat, 28 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/webgl-use-glmatrix-and-jquery/</guid>
-      <description>上篇文章介绍了如何使用WebGL来绘制一个三角形。从那个教程中，我们可以看出，其实WebGL只是一个2D API,我们只需要在Vertex Sh</description>
+      <guid>http://localhost:1313/post/webgl-use-glmatrix-and-jquery/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-07-webgl-your-first-triangles.html&#34;&gt;上篇文章&lt;/a&gt;介绍了如何使用WebGL来绘制一个三角形。从那个教程中，我们可以看出，其实WebGL只是一个&lt;a href=&#34;http://games.greggman.com/game/webgl-fundamentals/&#34;&gt;2D API&lt;/a&gt;,我们只需要在Vertex Shader里面指定绘制图元的裁剪坐标系的坐标(取值范围从-1到+1)，同时在Fragment Shader里面指定顶点最终的像素颜色即可。如果要实现3D效果，必须由程序员自己来指定3D空间坐标变换，即Model-View-Projection变换。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>我的Git工作流(下)</title>
-      <link>https://zilongshanren.com/post/my-git-workflow-part-two/</link>
+      <link>http://localhost:1313/post/my-git-workflow-part-two/</link>
       <pubDate>Thu, 26 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/my-git-workflow-part-two/</guid>
-      <description>在上篇文章中,我谈到了我日常使用Git作为个人项目管理工具的一些基本用法。同时，我还简单地谈了一下使用Git作为个人项目管理工具的好处。但是</description>
+      <guid>http://localhost:1313/post/my-git-workflow-part-two/</guid>
+      <description>&lt;p&gt;在&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-25-my-git-workflow-part-one.html&#34;&gt;上篇文章中&lt;/a&gt;,我谈到了我日常使用Git作为个人项目管理工具的一些基本用法。同时，我还简单地谈了一下使用Git作为个人项目管理工具的好处。但是，Git的强大威力只有在多人协作与大项目开发中才能真正体会到。它的分布式理念，灵活的分支机制，再加上多种错误应急措施，让我对它赞不绝口。&lt;/p&gt;&#xA;&lt;p&gt;本文主要谈一下我在参与开源项目Cocos2D-X中学到的一些东西。&lt;/p&gt;&#xA;&lt;h2 id=&#34;多人协作&#34;&gt;多人协作&lt;/h2&gt;&#xA;&lt;p&gt;首先，Cocos2D-X现在主要分为3个分支（v1,v2和v3），分别对应OpenGL ES1.0，OpenGL ES 2.0 OC style和OpenGL ES 2.0 C++11 style。目前，整个团队的重心放在v3分支上面。新功能的开发，bug的修复以及代码的持续改进基本上都基于v3分支在做。而v2分支主要是用来修复一些重大的bug。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>我的Git工作流(上)</title>
-      <link>https://zilongshanren.com/post/my-git-workflow-part-one/</link>
+      <link>http://localhost:1313/post/my-git-workflow-part-one/</link>
       <pubDate>Wed, 25 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/my-git-workflow-part-one/</guid>
-      <description>这篇文章主要是记录一下我自己的Git工作流。 我从2010年下半年开始接触Git起，到今天也有快4年的时间了。在接触Git之前，版本控制系统里</description>
+      <guid>http://localhost:1313/post/my-git-workflow-part-one/</guid>
+      <description>&lt;p&gt;这篇文章主要是记录一下我自己的Git工作流。&#xA;我从2010年下半年开始接触Git起，到今天也有快4年的时间了。在接触Git之前，版本控制系统里面我只用过svn，而且还只是会最简单的update和commit。当时，感觉版本控制这东西挺不错的，程序出了问题，还可以回滚。但是，当时对于版本控制的理解，好像就仅限于“文件备份”功能&amp;ndash;终于不用每一个版本都新建一个文件夹存起来，打上时间戳了。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>OpenGL ES2.0教程:使用VBO索引(4)</title>
-      <link>https://zilongshanren.com/post/opengl-es2-0-use-vbo/</link>
+      <link>http://localhost:1313/post/opengl-es2-0-use-vbo/</link>
       <pubDate>Sun, 22 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/opengl-es2-0-use-vbo/</guid>
-      <description>在上一篇文章中，我们介绍了uniform和模型-视图-投影变换，相信大家对于OpenGL ES 2.0应该有一点感觉了。在这篇文章中，我们不再画三</description>
+      <guid>http://localhost:1313/post/opengl-es2-0-use-vbo/</guid>
+      <description>&lt;p&gt;在&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-15-opengl-es2-meet-mvp.html&#34;&gt;上一篇文章&lt;/a&gt;中，我们介绍了uniform和模型-视图-投影变换，相信大家对于OpenGL ES 2.0应该有一点感觉了。在这篇文章中，我们不再画三角形了，改为画四边形。下篇教程，我们就可以画立方体了，到时候就是真3D了，哈哈。&lt;/p&gt;&#xA;&lt;p&gt;为什么三角形在OpenGL教程里面这么受欢迎呢？因为在OpenGL的世界里面，所有的几何体都可以用三角形组合出来。我们的四边形也一样，它可以用两个三角形组合出来。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式：观察者模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-observer/</link>
+      <link>http://localhost:1313/post/cocos2d-x-design-patterns-observer/</link>
       <pubDate>Fri, 20 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-observer/</guid>
-      <description>1、应用场景 前面在介绍单例模式的时候，提到了一个类NotificationCenter，它除了应用单例模式以外，还应用了观察者模式。Noti</description>
+      <guid>http://localhost:1313/post/cocos2d-x-design-patterns-observer/</guid>
+      <description>&lt;h2 id=&#34;1应用场景&#34;&gt;1、应用场景&lt;/h2&gt;&#xA;&lt;p&gt;前面在介绍单例模式的时候，提到了一个类NotificationCenter，它除了应用单例模式以外，还应用了观察者模式。NotificationCenter类是观察者模式中的目标对象，而NotificationObserver则是观察者。(注意目前，cocos2d-x 3.0已经把该类deprecated了，替代方案是使用EventDispatcher的Custom Event来替代）&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式:委托模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-delegation/</link>
+      <link>http://localhost:1313/post/cocos2d-x-design-patterns-delegation/</link>
       <pubDate>Fri, 20 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-delegation/</guid>
-      <description>前言： 前一篇文章讨论了cocos2d-x里面的中介者模式，但是，由于概念把握上面的偏差，我把GoF的中介者模式搞混淆了。幸好有读者给我提出了</description>
+      <guid>http://localhost:1313/post/cocos2d-x-design-patterns-delegation/</guid>
+      <description>&lt;p&gt;前言：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-20-cocos2d-x-design-pattern-mediator.html&#34;&gt;前一篇文章&lt;/a&gt;讨论了cocos2d-x里面的中介者模式，但是，由于概念把握上面的偏差，我把GoF的中介者模式搞混淆了。幸好有读者给我提出了这个问题，我在上一篇文章中也补充说明了。虽然我谈到的应用场景跟中介者模式有点类似，但是，经典的模式就是模式，我不能随便篡改，更不能张冠李戴。所以，这篇文章我将谈到的是委托模式（delegation pattern），而不是GoF里面的代理模式（Proxy pattern）,虽然delegate也可以翻译成“代理”，但是，为了以示区别，这里使用委托。当然，文章观点如果有误，欢迎大家指出。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式:中介者模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-design-pattern-mediator/</link>
+      <link>http://localhost:1313/post/cocos2d-x-design-pattern-mediator/</link>
       <pubDate>Fri, 20 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-design-pattern-mediator/</guid>
-      <description>上周写了关于cocos2d-x里面的观察者模式，文章最后提到一个应用场景：“你的GameScene里面有两个layer，一个gameLaye</description>
+      <guid>http://localhost:1313/post/cocos2d-x-design-pattern-mediator/</guid>
+      <description>&lt;p&gt;上周写了关于&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-20-cocos2d-x-design-pattern-observer.html&#34;&gt;cocos2d-x里面的观察者模式&lt;/a&gt;，文章最后提到一个应用场景：“你的GameScene里面有两个layer，一个gameLayer，它包含了游戏中的对象，比如玩家、敌人等。另一个层是HudLayer，它包含了游戏中显示分数、生命值等信息。如何让这两个层相互通信。”&lt;/p&gt;&#xA;&lt;p&gt;关于这两个层之间如何通信的问题，读者Llllong和我畅快淋漓地讨论了一番，详细的内容可以参考那篇文章的留言部分。最后，我们总结出三种通信方式：委托、观察者模式、中介者模式。（PS：剧透一下，下周跟大家一起来探讨一下cocos2d-x里面的委托设计模式。我12年翻译了&lt;a href=&#34;http://www.cnblogs.com/andyque/archive/2012/03/11/2390814.html&#34;&gt;cocos2d如何实现mvc系列文章&lt;/a&gt;，里面涉及到委托的使用，可是代码是objc写的，有一些童鞋不知道c++如何实现委托，导致port代码有困难。别急，下周我们见分晓。）&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>搭建wordpress博客</title>
-      <link>https://zilongshanren.com/post/setup-wordpress-blog/</link>
+      <link>http://localhost:1313/post/setup-wordpress-blog/</link>
       <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/setup-wordpress-blog/</guid>
-      <description>更新：（2016-10-15） 目前我已经使用 hexo 来搭建静态 blog，使用 org + emacs 来写博客，所以 wordpress 已不推荐。 前言 写这篇博客的目的主要有两点： 备忘录</description>
+      <guid>http://localhost:1313/post/setup-wordpress-blog/</guid>
+      <description>&lt;p&gt;更新：（2016-10-15）&#xA;&lt;strong&gt;目前我已经使用 hexo 来搭建静态 blog，使用 org + emacs 来写博客，所以 wordpress 已不推荐。&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;p&gt;写这篇博客的目的主要有两点：&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>打造属于自己的Vim神器</title>
-      <link>https://zilongshanren.com/post/make-your-own-vim-weapon/</link>
+      <link>http://localhost:1313/post/make-your-own-vim-weapon/</link>
       <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/make-your-own-vim-weapon/</guid>
-      <description>Why Vim? 为什么要使用Vim？ 让我们先看看其他人怎么说： Vim就像学钢琴一样，一旦学会，终身受益无穷。 这些话都是出自vim高手之口，对于Vim新手</description>
+      <guid>http://localhost:1313/post/make-your-own-vim-weapon/</guid>
+      <description>&lt;h2 id=&#34;why-vim&#34;&gt;Why Vim?&lt;/h2&gt;&#xA;&lt;p&gt;为什么要使用Vim？&lt;/p&gt;&#xA;&lt;p&gt;让我们先看看其他人怎么说：&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;Vim就像学钢琴一样，一旦学会，终身受益无穷。&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;这些话都是出自vim高手之口，对于Vim新手，可能暂时没办法体会。而我使用Vim也有一段时间了，肯定不能算是高手，但至少也是一个熟手。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式: 组合模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-composite-patterns/</link>
+      <link>http://localhost:1313/post/cocos2d-x-composite-patterns/</link>
       <pubDate>Wed, 18 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-composite-patterns/</guid>
-      <description>在开始挖掘cocos2d-x里面的组合模式之前，我先武断地下个结论： “几乎所有与GUI相关的框架设计都应用了组合设计模式”。（PS：大家注意</description>
+      <guid>http://localhost:1313/post/cocos2d-x-composite-patterns/</guid>
+      <description>&lt;p&gt;在开始挖掘cocos2d-x里面的组合模式之前，我先武断地下个结论：&lt;/p&gt;&#xA;&lt;p&gt;“几乎所有与GUI相关的框架设计都应用了组合设计模式”。（PS：大家注意我的用词，是“几乎所有”，给自己留条后路，哈哈）&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式：防御式编程模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-defensive-programming/</link>
+      <link>http://localhost:1313/post/cocos2d-x-defensive-programming/</link>
       <pubDate>Sun, 15 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-defensive-programming/</guid>
-      <description>声明：防御式编程是提高程序代码质量的一种手段，它不能算是真正意义上的模式。但是，这里，我还是要给它冠之以“模式”二字。 原因有三： cocos2</description>
+      <guid>http://localhost:1313/post/cocos2d-x-defensive-programming/</guid>
+      <description>&lt;p&gt;声明：防御式编程是提高程序代码质量的一种手段，它不能算是真正意义上的模式。但是，这里，我还是要给它冠之以“模式”二字。&lt;/p&gt;&#xA;&lt;p&gt;原因有三：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;cocos2d-x的框架源代码大量采用了防御式编程技术，用来确保框架的代码质量和稳定性。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>OpenGL ES2.0教程:初识MVP(3)</title>
-      <link>https://zilongshanren.com/post/opengl-es2-meet-mvp/</link>
+      <link>http://localhost:1313/post/opengl-es2-meet-mvp/</link>
       <pubDate>Sun, 15 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/opengl-es2-meet-mvp/</guid>
-      <description>在上一篇文章中，我在介绍vertex shader的时候挖了一个坑：CC_MVPMatrix。它其实是一个uniform，每一个cocos2d</description>
+      <guid>http://localhost:1313/post/opengl-es2-meet-mvp/</guid>
+      <description>&lt;p&gt;在&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-07-write-your-own-shader.html&#34;&gt;上一篇文章&lt;/a&gt;中，我在介绍vertex shader的时候挖了一个坑：CC_MVPMatrix。它其实是一个uniform，每一个cocos2d-x预定义的shader都包含有这个uniform，&#xA;但是如果你在shader里面不使用这个变量的话，OpenGL底层会把它优化掉。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式:外观模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-facade/</link>
+      <link>http://localhost:1313/post/cocos2d-x-design-patterns-facade/</link>
       <pubDate>Tue, 10 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-facade/</guid>
-      <description>1.应用场景 Cocos2d-x里面有一个非常明显的地方使用了外观模式，它就是SimpleAudioEngine。因为它为CocosDensh</description>
+      <guid>http://localhost:1313/post/cocos2d-x-design-patterns-facade/</guid>
+      <description>&lt;h2 id=&#34;1应用场景&#34;&gt;1.应用场景&lt;/h2&gt;&#xA;&lt;p&gt;Cocos2d-x里面有一个非常明显的地方使用了外观模式，它就是SimpleAudioEngine。因为它为CocosDenshion这个子系统的一组接口提供了一个一致的界面，同时定义了一个高层接口，方便客户使用该子系统。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式：管理者模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-manager/</link>
+      <link>http://localhost:1313/post/cocos2d-x-design-patterns-manager/</link>
       <pubDate>Mon, 09 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-manager/</guid>
-      <description>管理者（Manager）就是专门负责管理其它类的实例的类，比如Cocoa里面的NSFontManager、NSInputManager、NS</description>
+      <guid>http://localhost:1313/post/cocos2d-x-design-patterns-manager/</guid>
+      <description>&lt;p&gt;管理者（Manager）就是专门负责管理其它类的实例的类，比如Cocoa里面的NSFontManager、NSInputManager、NSFileManager和NSLayoutManager类。此模式和“二段构建模式”一样，也没有出现在GoF的23个设计模式中，但是《Cocoa设计模式》一书中有提及，感兴趣的读者可以去查阅一下。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X 设计模式：二段构建模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-design-pattern-two-stage-creation/</link>
+      <link>http://localhost:1313/post/cocos2d-x-design-pattern-two-stage-creation/</link>
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-design-pattern-two-stage-creation/</guid>
-      <description>乍一看标题，大家可能会觉得很奇怪，神马是“二段构建模式”呢？ 所谓二段构建，就是指创建对象时不是直接通过构建函数来分配内存并完成初始化操作。取</description>
+      <guid>http://localhost:1313/post/cocos2d-x-design-pattern-two-stage-creation/</guid>
+      <description>&lt;p&gt;乍一看标题，大家可能会觉得很奇怪，神马是“二段构建模式”呢？&lt;/p&gt;&#xA;&lt;p&gt;所谓二段构建，就是指创建对象时不是直接通过构建函数来分配内存并完成初始化操作。取而代之的是，构造函数只负责分配内存，而初始化的工作则由一些名为initXXX的成员方法来完成。然后再定义一些静态类方法把这两个阶段组合起来，完成最终对象的构建。因为在《Cocoa设计模式》一书中，把此惯用法称之为“Two Stage Creation”，即“二段构建”。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JSAPI用户手册翻译</title>
-      <link>https://zilongshanren.com/post/jsapi-reference/</link>
+      <link>http://localhost:1313/post/jsapi-reference/</link>
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/jsapi-reference/</guid>
-      <description>本文档主要涵盖如何嵌入SpiderMonkey javascript引擎到你自己的c++程序中。 JavaScript在浏览器端已经被广泛使用了</description>
+      <guid>http://localhost:1313/post/jsapi-reference/</guid>
+      <description>&lt;p&gt;本文档主要涵盖如何嵌入SpiderMonkey javascript引擎到你自己的c++程序中。&lt;/p&gt;&#xA;&lt;p&gt;JavaScript在浏览器端已经被广泛使用了。现在，Mozilla的javascript引擎可以被嵌入到任何c++程序中，而不仅仅是应用于浏览器。许多应用程序开发可以通过脚本化的方式获益,这些程序可以使用SpiderMonkey API让c++代码里面跑js代码。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>OpenGL ES2.0教程：编写自己的shader(2)</title>
-      <link>https://zilongshanren.com/post/opengl-es20-write-your-own-shader/</link>
+      <link>http://localhost:1313/post/opengl-es20-write-your-own-shader/</link>
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/opengl-es20-write-your-own-shader/</guid>
-      <description>在上篇文章中，我给大家介绍了如何在cocos2d-x里面绘制一个三角形，当时我们使用的是cocos2d-x引擎自带的shader和一些辅助函</description>
+      <guid>http://localhost:1313/post/opengl-es20-write-your-own-shader/</guid>
+      <description>&lt;p&gt;在&lt;a href=&#34;http://zilongshanren.com/blog/2014-05-31-opengl-es-2-0-your-first-traingles.html&#34;&gt;上篇文章&lt;/a&gt;中，我给大家介绍了如何在cocos2d-x里面绘制一个三角形，当时我们使用的是cocos2d-x引擎自带的shader和一些辅助函数。在本文中，我将演示一下如何编写自己的shader，同时，我们还会介绍VBO（顶点缓冲区对象）和VAO（顶点数组对象）的基本用法。&lt;/p&gt;&#xA;&lt;p&gt;在编写自己的shader之前，我觉得有必要提一下OpenGL渲染管线。&#xA;理解OpenGL渲染管线，对于学习OpenGL非常重要。下面是OpenGL渲染管线的示意图：（图中淡蓝色区域是可以编程的阶段）&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>WebGL教程：你的第一个三角形(1)</title>
-      <link>https://zilongshanren.com/post/webgl-your-first-triangles/</link>
+      <link>http://localhost:1313/post/webgl-your-first-triangles/</link>
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/webgl-your-first-triangles/</guid>
-      <description>本人最近正在学习WebGL，所以想借着自己写《Cocos2D-X OpenGLES 2.0教程系列》的同时再应用到WebGL上面来。一来可以加深自己的理解，二</description>
+      <guid>http://localhost:1313/post/webgl-your-first-triangles/</guid>
+      <description>&lt;p&gt;本人最近正在学习WebGL，所以想借着自己写《Cocos2D-X OpenGLES 2.0教程系列》的同时再应用到WebGL上面来。一来可以加深自己的理解，二来也可以对比两者的差别，提高学习效率。WebGL目前各大厂商都在推，就连微软也开始重视这项技术了，不得不说这是一项不小的进步。而最近我看到一篇文章，讲到&lt;a href=&#34;http://www.realtimerendering.com/blog/why-use-webgl-for-graphics-research/&#34;&gt;《为什么要使用WebGL来做图形学的研究》&lt;/a&gt;，深受启发。而且javascript编写OpenGL代码也非常地方便和简洁。另外，js在编写3D程序方面，它的性能是可以和C媲美的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>打造属于自己的Vim神器:后记</title>
-      <link>https://zilongshanren.com/post/make-your-own-vim-super-weapon/</link>
+      <link>http://localhost:1313/post/make-your-own-vim-super-weapon/</link>
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/make-your-own-vim-super-weapon/</guid>
-      <description>一年以前，我写下了《如何打造属于自己的vim神器》并且录制了相应的Vim使用视频。 当时收到了大量vim爱好者的好评和反馈，在这一年里，我也对</description>
+      <guid>http://localhost:1313/post/make-your-own-vim-super-weapon/</guid>
+      <description>&lt;p&gt;一年以前，我写下了&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-19-make-your-vim-weapon.html&#34;&gt;《如何打造属于自己的vim神器》&lt;/a&gt;并且录制了相应的&lt;a href=&#34;http://v.youku.com/v_show/id_XNTA2ODQyODAw.html&#34;&gt;Vim使用视频&lt;/a&gt;。 当时收到了大量vim爱好者的好评和反馈，在这一年里，我也对我自己的vim配置做了不少修改。现在&lt;a href=&#34;https://github.com/zilongshanren/dotfiles&#34;&gt;我的vim配置&lt;/a&gt;放在Gihtub上面，目前有21个fork。它里面不仅存放了我的Vim配置，还保留了我的Mac使用习惯，包括Git，Tmux,Zsh等命令行工具的配置。几乎我每换一个工作环境，从mac到虚拟机，从本地电脑到远端服务器，我要做的第一件事情就是先clone我的Vim仓库，然后通过简单的几个命令把神器打造出来。&lt;/p&gt;&#xA;&lt;p&gt;这篇文章我打算讲一下我对Vim的一些新的认识，同时写下我对于新手Vimer的一些建议。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式:单例模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-singleton/</link>
+      <link>http://localhost:1313/post/cocos2d-x-singleton/</link>
       <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-singleton/</guid>
-      <description>本系列文章我将和大家一起来发掘cocos2d-x中所使用到的设计模式。 (老实说，这些文章都是老文章了，但是旧瓶装新酒，不管是对自己还是对他人</description>
+      <guid>http://localhost:1313/post/cocos2d-x-singleton/</guid>
+      <description>&lt;p&gt;本系列文章我将和大家一起来发掘cocos2d-x中所使用到的设计模式。&#xA;(老实说，这些文章都是老文章了，但是旧瓶装新酒，不管是对自己还是对他人都是有收获的）&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>OpenGL ES 2.0教程：你的第一个三角形(1)</title>
-      <link>https://zilongshanren.com/post/opengl-es-2-0-your-first-triangles/</link>
+      <link>http://localhost:1313/post/opengl-es-2-0-your-first-triangles/</link>
       <pubDate>Sat, 31 May 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/opengl-es-2-0-your-first-triangles/</guid>
-      <description>前言 学习程序世界里面的任何一项技能都有一个HelloWorld，而OpenGL的HelloWorld就是自己画一个三角形。当然，在 cocos</description>
+      <guid>http://localhost:1313/post/opengl-es-2-0-your-first-triangles/</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;p&gt;学习程序世界里面的任何一项技能都有一个HelloWorld，而OpenGL的HelloWorld就是自己画一个三角形。当然，在&#xA;cocos2d-x里面使用DrawPrimitives可以轻松画出一个三角形。但是，我们这一次希望只通过底层的图形API就能够绘制一个三&#xA;角形。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

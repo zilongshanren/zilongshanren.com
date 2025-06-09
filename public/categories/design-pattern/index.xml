@@ -1,92 +1,75 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>design pattern on 子龙山人</title>
-    <link>https://zilongshanren.com/categories/design-pattern/</link>
-    <description>Recent content in design pattern on 子龙山人</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Design Pattern on 子龙山人</title>
+    <link>http://localhost:1313/categories/design-pattern/</link>
+    <description>Recent content in Design Pattern on 子龙山人</description>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 20 Jun 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/design-pattern/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Jun 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/design-pattern/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cocos2D-X设计模式：观察者模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-observer/</link>
+      <link>http://localhost:1313/post/cocos2d-x-design-patterns-observer/</link>
       <pubDate>Fri, 20 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-observer/</guid>
-      <description>1、应用场景 前面在介绍单例模式的时候，提到了一个类NotificationCenter，它除了应用单例模式以外，还应用了观察者模式。Noti</description>
+      <guid>http://localhost:1313/post/cocos2d-x-design-patterns-observer/</guid>
+      <description>&lt;h2 id=&#34;1应用场景&#34;&gt;1、应用场景&lt;/h2&gt;&#xA;&lt;p&gt;前面在介绍单例模式的时候，提到了一个类NotificationCenter，它除了应用单例模式以外，还应用了观察者模式。NotificationCenter类是观察者模式中的目标对象，而NotificationObserver则是观察者。(注意目前，cocos2d-x 3.0已经把该类deprecated了，替代方案是使用EventDispatcher的Custom Event来替代）&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式:委托模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-delegation/</link>
+      <link>http://localhost:1313/post/cocos2d-x-design-patterns-delegation/</link>
       <pubDate>Fri, 20 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-delegation/</guid>
-      <description>前言： 前一篇文章讨论了cocos2d-x里面的中介者模式，但是，由于概念把握上面的偏差，我把GoF的中介者模式搞混淆了。幸好有读者给我提出了</description>
+      <guid>http://localhost:1313/post/cocos2d-x-design-patterns-delegation/</guid>
+      <description>&lt;p&gt;前言：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-20-cocos2d-x-design-pattern-mediator.html&#34;&gt;前一篇文章&lt;/a&gt;讨论了cocos2d-x里面的中介者模式，但是，由于概念把握上面的偏差，我把GoF的中介者模式搞混淆了。幸好有读者给我提出了这个问题，我在上一篇文章中也补充说明了。虽然我谈到的应用场景跟中介者模式有点类似，但是，经典的模式就是模式，我不能随便篡改，更不能张冠李戴。所以，这篇文章我将谈到的是委托模式（delegation pattern），而不是GoF里面的代理模式（Proxy pattern）,虽然delegate也可以翻译成“代理”，但是，为了以示区别，这里使用委托。当然，文章观点如果有误，欢迎大家指出。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式:中介者模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-design-pattern-mediator/</link>
+      <link>http://localhost:1313/post/cocos2d-x-design-pattern-mediator/</link>
       <pubDate>Fri, 20 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-design-pattern-mediator/</guid>
-      <description>上周写了关于cocos2d-x里面的观察者模式，文章最后提到一个应用场景：“你的GameScene里面有两个layer，一个gameLaye</description>
+      <guid>http://localhost:1313/post/cocos2d-x-design-pattern-mediator/</guid>
+      <description>&lt;p&gt;上周写了关于&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-20-cocos2d-x-design-pattern-observer.html&#34;&gt;cocos2d-x里面的观察者模式&lt;/a&gt;，文章最后提到一个应用场景：“你的GameScene里面有两个layer，一个gameLayer，它包含了游戏中的对象，比如玩家、敌人等。另一个层是HudLayer，它包含了游戏中显示分数、生命值等信息。如何让这两个层相互通信。”&lt;/p&gt;&#xA;&lt;p&gt;关于这两个层之间如何通信的问题，读者Llllong和我畅快淋漓地讨论了一番，详细的内容可以参考那篇文章的留言部分。最后，我们总结出三种通信方式：委托、观察者模式、中介者模式。（PS：剧透一下，下周跟大家一起来探讨一下cocos2d-x里面的委托设计模式。我12年翻译了&lt;a href=&#34;http://www.cnblogs.com/andyque/archive/2012/03/11/2390814.html&#34;&gt;cocos2d如何实现mvc系列文章&lt;/a&gt;，里面涉及到委托的使用，可是代码是objc写的，有一些童鞋不知道c++如何实现委托，导致port代码有困难。别急，下周我们见分晓。）&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式: 组合模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-composite-patterns/</link>
+      <link>http://localhost:1313/post/cocos2d-x-composite-patterns/</link>
       <pubDate>Wed, 18 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-composite-patterns/</guid>
-      <description>在开始挖掘cocos2d-x里面的组合模式之前，我先武断地下个结论： “几乎所有与GUI相关的框架设计都应用了组合设计模式”。（PS：大家注意</description>
+      <guid>http://localhost:1313/post/cocos2d-x-composite-patterns/</guid>
+      <description>&lt;p&gt;在开始挖掘cocos2d-x里面的组合模式之前，我先武断地下个结论：&lt;/p&gt;&#xA;&lt;p&gt;“几乎所有与GUI相关的框架设计都应用了组合设计模式”。（PS：大家注意我的用词，是“几乎所有”，给自己留条后路，哈哈）&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式：防御式编程模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-defensive-programming/</link>
+      <link>http://localhost:1313/post/cocos2d-x-defensive-programming/</link>
       <pubDate>Sun, 15 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-defensive-programming/</guid>
-      <description>声明：防御式编程是提高程序代码质量的一种手段，它不能算是真正意义上的模式。但是，这里，我还是要给它冠之以“模式”二字。 原因有三： cocos2</description>
+      <guid>http://localhost:1313/post/cocos2d-x-defensive-programming/</guid>
+      <description>&lt;p&gt;声明：防御式编程是提高程序代码质量的一种手段，它不能算是真正意义上的模式。但是，这里，我还是要给它冠之以“模式”二字。&lt;/p&gt;&#xA;&lt;p&gt;原因有三：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;cocos2d-x的框架源代码大量采用了防御式编程技术，用来确保框架的代码质量和稳定性。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式:外观模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-facade/</link>
+      <link>http://localhost:1313/post/cocos2d-x-design-patterns-facade/</link>
       <pubDate>Tue, 10 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-facade/</guid>
-      <description>1.应用场景 Cocos2d-x里面有一个非常明显的地方使用了外观模式，它就是SimpleAudioEngine。因为它为CocosDensh</description>
+      <guid>http://localhost:1313/post/cocos2d-x-design-patterns-facade/</guid>
+      <description>&lt;h2 id=&#34;1应用场景&#34;&gt;1.应用场景&lt;/h2&gt;&#xA;&lt;p&gt;Cocos2d-x里面有一个非常明显的地方使用了外观模式，它就是SimpleAudioEngine。因为它为CocosDenshion这个子系统的一组接口提供了一个一致的界面，同时定义了一个高层接口，方便客户使用该子系统。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式：管理者模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-design-patterns-manager/</link>
+      <link>http://localhost:1313/post/cocos2d-x-design-patterns-manager/</link>
       <pubDate>Mon, 09 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-design-patterns-manager/</guid>
-      <description>管理者（Manager）就是专门负责管理其它类的实例的类，比如Cocoa里面的NSFontManager、NSInputManager、NS</description>
+      <guid>http://localhost:1313/post/cocos2d-x-design-patterns-manager/</guid>
+      <description>&lt;p&gt;管理者（Manager）就是专门负责管理其它类的实例的类，比如Cocoa里面的NSFontManager、NSInputManager、NSFileManager和NSLayoutManager类。此模式和“二段构建模式”一样，也没有出现在GoF的23个设计模式中，但是《Cocoa设计模式》一书中有提及，感兴趣的读者可以去查阅一下。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X 设计模式：二段构建模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-design-pattern-two-stage-creation/</link>
+      <link>http://localhost:1313/post/cocos2d-x-design-pattern-two-stage-creation/</link>
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-design-pattern-two-stage-creation/</guid>
-      <description>乍一看标题，大家可能会觉得很奇怪，神马是“二段构建模式”呢？ 所谓二段构建，就是指创建对象时不是直接通过构建函数来分配内存并完成初始化操作。取</description>
+      <guid>http://localhost:1313/post/cocos2d-x-design-pattern-two-stage-creation/</guid>
+      <description>&lt;p&gt;乍一看标题，大家可能会觉得很奇怪，神马是“二段构建模式”呢？&lt;/p&gt;&#xA;&lt;p&gt;所谓二段构建，就是指创建对象时不是直接通过构建函数来分配内存并完成初始化操作。取而代之的是，构造函数只负责分配内存，而初始化的工作则由一些名为initXXX的成员方法来完成。然后再定义一些静态类方法把这两个阶段组合起来，完成最终对象的构建。因为在《Cocoa设计模式》一书中，把此惯用法称之为“Two Stage Creation”，即“二段构建”。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Cocos2D-X设计模式:单例模式</title>
-      <link>https://zilongshanren.com/post/cocos2d-x-singleton/</link>
+      <link>http://localhost:1313/post/cocos2d-x-singleton/</link>
       <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/cocos2d-x-singleton/</guid>
-      <description>本系列文章我将和大家一起来发掘cocos2d-x中所使用到的设计模式。 (老实说，这些文章都是老文章了，但是旧瓶装新酒，不管是对自己还是对他人</description>
+      <guid>http://localhost:1313/post/cocos2d-x-singleton/</guid>
+      <description>&lt;p&gt;本系列文章我将和大家一起来发掘cocos2d-x中所使用到的设计模式。&#xA;(老实说，这些文章都是老文章了，但是旧瓶装新酒，不管是对自己还是对他人都是有收获的）&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

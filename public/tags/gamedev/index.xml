@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>gamedev on 子龙山人</title>
-    <link>https://zilongshanren.com/tags/gamedev/</link>
-    <description>Recent content in gamedev on 子龙山人</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Gamedev on 子龙山人</title>
+    <link>http://localhost:1313/tags/gamedev/</link>
+    <description>Recent content in Gamedev on 子龙山人</description>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 16 Jun 2019 20:19:00 +0800</lastBuildDate><atom:link href="https://zilongshanren.com/tags/gamedev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Jun 2019 20:19:24 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/gamedev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>为什么我的游戏发热量很高</title>
-      <link>https://zilongshanren.com/post/why-my-game-drain-my-device-s-battery-life/</link>
+      <link>http://localhost:1313/post/why-my-game-drain-my-device-s-battery-life/</link>
       <pubDate>Sun, 16 Jun 2019 20:19:00 +0800</pubDate>
-      
-      <guid>https://zilongshanren.com/post/why-my-game-drain-my-device-s-battery-life/</guid>
-      <description>&lt;p&gt;一般谈到游戏为什么会发热，我们首先想到的就是CPU占用过高。因为在我们的常识里面，当自己笔记本电脑的CPU风扇疯狂转动的时候，肯定就是到了可以『煮鸡蛋』的时候了 😂&lt;/p&gt;
-&lt;p&gt;但是移动设备除了CPU以外，还有其他因素可能比CPU更耗电。&lt;/p&gt;</description>
+      <guid>http://localhost:1313/post/why-my-game-drain-my-device-s-battery-life/</guid>
+      <description>&lt;p&gt;一般谈到游戏为什么会发热，我们首先想到的就是CPU占用过高。因为在我们的常识里面，当自己笔记本电脑的CPU风扇疯狂转动的时候，肯定就是到了可以『煮鸡蛋』的时候了 &amp;#x1f602;&lt;/p&gt;&#xA;&lt;p&gt;但是移动设备除了CPU以外，还有其他因素可能比CPU更耗电。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

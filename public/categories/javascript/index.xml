@@ -2,46 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Javascript on 子龙山人</title>
-    <link>https://zilongshanren.com/categories/javascript/</link>
+    <link>http://localhost:1313/categories/javascript/</link>
     <description>Recent content in Javascript on 子龙山人</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 14 Mar 2016 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Mar 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>理解 Javascript This 关键字</title>
-      <link>https://zilongshanren.com/post/2016-03-13-undertand-javascript-this-keyword/</link>
+      <link>http://localhost:1313/post/2016-03-13-undertand-javascript-this-keyword/</link>
       <pubDate>Mon, 14 Mar 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2016-03-13-undertand-javascript-this-keyword/</guid>
-      <description>Table of Contents This 绑定内容与函数无关，而与执行环境有关 This 绑定的内容可以被动态修改 巧用闭包消除 This 动态绑定，提高代码可读性 小结 Reference 在我最早接触 Javascript 的时候，Th</description>
+      <guid>http://localhost:1313/post/2016-03-13-undertand-javascript-this-keyword/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;This 绑定内容与函数无关，而与执行环境有关&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;This 绑定的内容可以被动态修改&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;巧用闭包消除 This 动态绑定，提高代码可读性&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;Reference&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;在我最早接触 Javascript 的时候，This 关键字着实让我摸不着头脑。还有与 This 相关的一些函数，比如 bind，call 和 apply 也是难以掌握。本文试图用几个简单的例子来理解 This 关键字。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>理解 Javascript 作用域和作用域链</title>
-      <link>https://zilongshanren.com/post/2016-03-13-understand-javascript-scope-and-scope-chain/</link>
+      <link>http://localhost:1313/post/2016-03-13-understand-javascript-scope-and-scope-chain/</link>
       <pubDate>Sun, 13 Mar 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2016-03-13-understand-javascript-scope-and-scope-chain/</guid>
-      <description>Table of Contents Javascript 作用域 Javascript 作用域链 变量提升 小结 Reference 上篇文章 在介绍 Javascript 闭包的时候提到了“闭包创建时所处的环境信息”，但是并没有说明这些信息到底是什么。 也多亏</description>
+      <guid>http://localhost:1313/post/2016-03-13-understand-javascript-scope-and-scope-chain/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;Javascript 作用域&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;Javascript 作用域链&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;变量提升&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;Reference&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;&lt;a href=&#34;http://zilongshanren.com/blog/2016-02-28-understand-javascript-closure.html&#34;&gt;上篇文章&lt;/a&gt; 在介绍 Javascript 闭包的时候提到了“闭包创建时所处的环境信息”，但是并没有说明这些信息到底是什么。&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;也多亏了读者的提醒，我对于 Js 闭包的理解还是太肤浅了。这篇文章除了介绍 Js 的作用域和作用域链外，我还会讨论变量提升(var hositing) 这个问题。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>理解 Javascript 的闭包</title>
-      <link>https://zilongshanren.com/post/2016-02-28-understand-javascript-closure/</link>
+      <link>http://localhost:1313/post/2016-02-28-understand-javascript-closure/</link>
       <pubDate>Sun, 28 Feb 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2016-02-28-understand-javascript-closure/</guid>
-      <description>Table of Contents 什么是闭包？ 闭包有什么作用？ 如何正确地使用闭包？ 闭包的性能如何？ 小结 Reference 因为最近几个月一直在做 Cocos Creator 这个项目，大部分时间都在与 Javascript 打交道，所</description>
+      <guid>http://localhost:1313/post/2016-02-28-understand-javascript-closure/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;什么是闭包？&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;闭包有什么作用？&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;如何正确地使用闭包？&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;闭包的性能如何？&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;Reference&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;因为最近几个月一直在做 Cocos Creator 这个项目，大部分时间都在与 Javascript 打交道，所以接下来我有必要写几篇文章介绍一下 JS 里面几个比较让人迷惑的地方：闭包，变量作用域，变量提升和 this 绑定。&#xA;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>JSAPI用户手册翻译</title>
-      <link>https://zilongshanren.com/post/jsapi-reference/</link>
+      <link>http://localhost:1313/post/jsapi-reference/</link>
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/jsapi-reference/</guid>
-      <description>本文档主要涵盖如何嵌入SpiderMonkey javascript引擎到你自己的c++程序中。 JavaScript在浏览器端已经被广泛使用了</description>
+      <guid>http://localhost:1313/post/jsapi-reference/</guid>
+      <description>&lt;p&gt;本文档主要涵盖如何嵌入SpiderMonkey javascript引擎到你自己的c++程序中。&lt;/p&gt;&#xA;&lt;p&gt;JavaScript在浏览器端已经被广泛使用了。现在，Mozilla的javascript引擎可以被嵌入到任何c++程序中，而不仅仅是应用于浏览器。许多应用程序开发可以通过脚本化的方式获益,这些程序可以使用SpiderMonkey API让c++代码里面跑js代码。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

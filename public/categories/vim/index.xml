@@ -2,28 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vim on 子龙山人</title>
-    <link>https://zilongshanren.com/categories/vim/</link>
+    <link>http://localhost:1313/categories/vim/</link>
     <description>Recent content in Vim on 子龙山人</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 19 Jun 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/vim/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 19 Jun 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/vim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>打造属于自己的Vim神器</title>
-      <link>https://zilongshanren.com/post/make-your-own-vim-weapon/</link>
+      <link>http://localhost:1313/post/make-your-own-vim-weapon/</link>
       <pubDate>Thu, 19 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/make-your-own-vim-weapon/</guid>
-      <description>Why Vim? 为什么要使用Vim？ 让我们先看看其他人怎么说： Vim就像学钢琴一样，一旦学会，终身受益无穷。 这些话都是出自vim高手之口，对于Vim新手</description>
+      <guid>http://localhost:1313/post/make-your-own-vim-weapon/</guid>
+      <description>&lt;h2 id=&#34;why-vim&#34;&gt;Why Vim?&lt;/h2&gt;&#xA;&lt;p&gt;为什么要使用Vim？&lt;/p&gt;&#xA;&lt;p&gt;让我们先看看其他人怎么说：&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;Vim就像学钢琴一样，一旦学会，终身受益无穷。&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;这些话都是出自vim高手之口，对于Vim新手，可能暂时没办法体会。而我使用Vim也有一段时间了，肯定不能算是高手，但至少也是一个熟手。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>打造属于自己的Vim神器:后记</title>
-      <link>https://zilongshanren.com/post/make-your-own-vim-super-weapon/</link>
+      <link>http://localhost:1313/post/make-your-own-vim-super-weapon/</link>
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/make-your-own-vim-super-weapon/</guid>
-      <description>一年以前，我写下了《如何打造属于自己的vim神器》并且录制了相应的Vim使用视频。 当时收到了大量vim爱好者的好评和反馈，在这一年里，我也对</description>
+      <guid>http://localhost:1313/post/make-your-own-vim-super-weapon/</guid>
+      <description>&lt;p&gt;一年以前，我写下了&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-19-make-your-vim-weapon.html&#34;&gt;《如何打造属于自己的vim神器》&lt;/a&gt;并且录制了相应的&lt;a href=&#34;http://v.youku.com/v_show/id_XNTA2ODQyODAw.html&#34;&gt;Vim使用视频&lt;/a&gt;。 当时收到了大量vim爱好者的好评和反馈，在这一年里，我也对我自己的vim配置做了不少修改。现在&lt;a href=&#34;https://github.com/zilongshanren/dotfiles&#34;&gt;我的vim配置&lt;/a&gt;放在Gihtub上面，目前有21个fork。它里面不仅存放了我的Vim配置，还保留了我的Mac使用习惯，包括Git，Tmux,Zsh等命令行工具的配置。几乎我每换一个工作环境，从mac到虚拟机，从本地电脑到远端服务器，我要做的第一件事情就是先clone我的Vim仓库，然后通过简单的几个命令把神器打造出来。&lt;/p&gt;&#xA;&lt;p&gt;这篇文章我打算讲一下我对Vim的一些新的认识，同时写下我对于新手Vimer的一些建议。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>bash on 子龙山人</title>
-    <link>https://zilongshanren.com/categories/bash/</link>
-    <description>Recent content in bash on 子龙山人</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Bash on 子龙山人</title>
+    <link>http://localhost:1313/categories/bash/</link>
+    <description>Recent content in Bash on 子龙山人</description>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 14 Dec 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/categories/bash/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 14 Dec 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/bash/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bash使用心得</title>
-      <link>https://zilongshanren.com/post/bash-quick-reference/</link>
+      <link>http://localhost:1313/post/bash-quick-reference/</link>
       <pubDate>Sun, 14 Dec 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/bash-quick-reference/</guid>
-      <description>由于前段时间一直在做Bash和Makefile脚本的编写，所以，本文主要是记录一些Bash使用心得. 有人可能会问了，现在Python这么流行</description>
+      <guid>http://localhost:1313/post/bash-quick-reference/</guid>
+      <description>&lt;p&gt;由于前段时间一直在做Bash和Makefile脚本的编写，所以，本文主要是记录一些Bash使用心得.&#xA;有人可能会问了，现在Python这么流行，完全可以用来取代Bash呀。理论上是没错，但是Bash脚本有它自己独特的优点，&#xA;比如编写简单，功能强大（主要指的是与管道命令和其它命令行程序结合起来使用）,特别适合用来制作一些&amp;quot;简单&amp;quot;的自动化处理任务脚本。&#xA;很多时候，我宁愿用shell而不想编写python，因为shell实在是太方便啦。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

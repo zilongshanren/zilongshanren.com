@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Org-mode on 子龙山人</title>
-    <link>https://zilongshanren.com/tags/org-mode/</link>
-    <description>Recent content in Org-mode on 子龙山人</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <title>Org-Mode on 子龙山人</title>
+    <link>http://localhost:1313/tags/org-mode/</link>
+    <description>Recent content in Org-Mode on 子龙山人</description>
+    <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 19 Jul 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://zilongshanren.com/tags/org-mode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Jul 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/org-mode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用 Org-mode 来写博客</title>
-      <link>https://zilongshanren.com/post/2015-07-19-add-org-mode-support/</link>
+      <link>http://localhost:1313/post/2015-07-19-add-org-mode-support/</link>
       <pubDate>Sun, 19 Jul 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://zilongshanren.com/post/2015-07-19-add-org-mode-support/</guid>
-      <description>Table of Contents Why Org-mode❓ 它比 Markdown 功能更加强大🐶 和 Emacs 无缝集成📍 支持文学编程 我正在学习 Org-mode How to configure Org-octopress Some tips 让文章支持评论 配置 spacemacs 自动截图，保存图片到博客</description>
+      <guid>http://localhost:1313/post/2015-07-19-add-org-mode-support/</guid>
+      <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;Why Org-mode:question:&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;它比 Markdown 功能更加强大:dog:&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;和 Emacs 无缝集成:round_pushpin:&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;支持文学编程&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;我正在学习 Org-mode&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;How to configure Org-octopress&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline12&#34;&gt;Some tips&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;让文章支持评论&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline8&#34;&gt;配置 spacemacs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline9&#34;&gt;自动截图，保存图片到博客的相应目录，并且插入一个图片链接&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline10&#34;&gt;自动捕获当前 Chrome 的 Tab 页的 URL 并插入到文章中&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline11&#34;&gt;去除 Org 导出的 HTML 中的多余的空格&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline13&#34;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline14&#34;&gt;Reference&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;本文将介绍如何使用 Org-mode 在 Emacs 里面写博客。因为我的博客系统采用的是 Octopress，Org-mode 自带的 publish 功能太简单，所以，我决定在已有的博客上面添加 Org-mode 的支持。当然，和我一样有这个需求的人不止一个，我通过 Google 很快就找到了一个现成的方案。 &lt;a href=&#34;https://github.com/yoshinari-nomura/org-octopress&#34;&gt;yoshinari-nomura/org-octopress&lt;/a&gt; :+1:&#xA;&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
