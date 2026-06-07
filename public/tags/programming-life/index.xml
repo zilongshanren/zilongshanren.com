@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programming Life on 子龙山人</title>
-    <link>http://localhost:1313/tags/programming-life/</link>
+    <link>https://zilongshanren.com/tags/programming-life/</link>
     <description>Recent content in Programming Life on 子龙山人</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 01 Sep 2018 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/programming-life/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://zilongshanren.com/tags/programming-life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>《Clean Architecture》读书笔记</title>
-      <link>http://localhost:1313/post/summary-of-clean-architecture/</link>
+      <link>https://zilongshanren.com/post/summary-of-clean-architecture/</link>
       <pubDate>Sat, 01 Sep 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/summary-of-clean-architecture/</guid>
+      <guid>https://zilongshanren.com/post/summary-of-clean-architecture/</guid>
       <description>&lt;h2 id=&#34;一前言&#34;&gt;一、前言&lt;/h2&gt;&#xA;&lt;p&gt;软件架构非常重要，架构的主要目的是最小化系统开发和维护的人力成本，提高开发人员的开发效率。&lt;/p&gt;&#xA;&lt;p&gt;软件设计和软件构架有本质区别，架构更关心软件的高层设计，怎么定义系统和模块的边界，而设计更关心底层的实现细节。&lt;/p&gt;&#xA;&lt;p&gt;优雅的架构通常不是那么容易就获得的，他需要开发人员去争取、去斗争、去追求。&lt;/p&gt;</description>
     </item>
     <item>
       <title>这些年伴随我的一些好习惯</title>
-      <link>http://localhost:1313/post/2015-11-23-a-few-good-habit-i-keep-for-years/</link>
+      <link>https://zilongshanren.com/post/2015-11-23-a-few-good-habit-i-keep-for-years/</link>
       <pubDate>Mon, 23 Nov 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2015-11-23-a-few-good-habit-i-keep-for-years/</guid>
+      <guid>https://zilongshanren.com/post/2015-11-23-a-few-good-habit-i-keep-for-years/</guid>
       <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;每天坚持学习 1-2 小时&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;坚持阅读英文资料&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;不断改进自己的工具箱&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;积极融入社区&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;本文我试图回顾一下这些年伴随我的一些好习惯，我会按照我认为的重要性来排序。坚持这些好习惯，让我在程序员生涯的开端保持不错的势头并且它们还将继续助力我不断进步。&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>学习新东西</title>
-      <link>http://localhost:1313/post/talking-about-learning-new-thing/</link>
+      <link>https://zilongshanren.com/post/talking-about-learning-new-thing/</link>
       <pubDate>Tue, 05 Aug 2014 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/talking-about-learning-new-thing/</guid>
+      <guid>https://zilongshanren.com/post/talking-about-learning-new-thing/</guid>
       <description>&lt;p&gt;对于程序员而言，最大的痛苦莫过于对着层出不穷的新语言、新技术和新框架疲于奔命了。&#xA;就拿cocos2d-x来说，有些人可能2.x都才刚刚上手，3.0就已经出来了。而他们正准备开始去尝试3.0的时候，可能3.2已经出来了。然后，他们怒了，“你他娘的版本更新速度太快了！”&lt;/p&gt;</description>
     </item>
     <item>
       <title>程序猿：你的&#34;家当&#34;都在云上吗？</title>
-      <link>http://localhost:1313/post/does-you-stuff-all-on-cloud/</link>
+      <link>https://zilongshanren.com/post/does-you-stuff-all-on-cloud/</link>
       <pubDate>Mon, 07 Jul 2014 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/does-you-stuff-all-on-cloud/</guid>
+      <guid>https://zilongshanren.com/post/does-you-stuff-all-on-cloud/</guid>
       <description>&lt;p&gt;最近我一直在想一个问题，作为一个程序猿，我的“家当”都在云上面吗？&lt;/p&gt;&#xA;&lt;p&gt;在扯这个话题之前，先来陈列一下我目前有哪些家当。&lt;/p&gt;&#xA;&lt;p&gt;首当其冲的应该是我的代码，然后是工作环境（包括编辑器配置，操作系统配置，常用软件配置），博客笔记，书签，电子书，还有 1024 收藏（邪恶）。&lt;/p&gt;</description>
     </item>
     <item>
       <title>如何坚持每周写一篇博客</title>
-      <link>http://localhost:1313/post/how-to-write-one-blog-post-each-week/</link>
+      <link>https://zilongshanren.com/post/how-to-write-one-blog-post-each-week/</link>
       <pubDate>Thu, 03 Jul 2014 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/how-to-write-one-blog-post-each-week/</guid>
+      <guid>https://zilongshanren.com/post/how-to-write-one-blog-post-each-week/</guid>
       <description>&lt;p&gt;&lt;strong&gt;如何坚持每周写一篇博客呢？&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;在回答这个问题之前,让我们先来看看这个问题是怎么由来的？&lt;/p&gt;&#xA;&lt;p&gt;我在我的微博好友&lt;a href=&#34;http://weibo.com/justbilt&#34;&gt;justbilt&lt;/a&gt;首页中无意中看到下面这段话：&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;诚然，我有相当长一段时间没有更新博客，与上面说的情况或多或少有一点点关系。但是，这些不应该成为我们不写博客的理由。&lt;/p&gt;</description>
     </item>
   </channel>

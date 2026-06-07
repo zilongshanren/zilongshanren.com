@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Welgl on 子龙山人</title>
-    <link>http://localhost:1313/tags/welgl/</link>
+    <link>https://zilongshanren.com/tags/welgl/</link>
     <description>Recent content in Welgl on 子龙山人</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 20 Jul 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/welgl/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://zilongshanren.com/tags/welgl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WebGL教程:你的第一个立方体(3)</title>
-      <link>http://localhost:1313/post/webgl-your-first-cube/</link>
+      <link>https://zilongshanren.com/post/webgl-your-first-cube/</link>
       <pubDate>Sun, 20 Jul 2014 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/webgl-your-first-cube/</guid>
+      <guid>https://zilongshanren.com/post/webgl-your-first-cube/</guid>
       <description>&lt;p&gt;在&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-28-webgl-use-glmatrix-and-jquery.html&#34;&gt;上一篇文章&lt;/a&gt;中，我们介绍了如何使用glMatrix.js来处理3D图形里面的数学运算，主要谈到了MVP的应用。同时，我们还简单地提到了如何使用JQuery来丰富我们的WebGL应用。&lt;/p&gt;&#xA;&lt;p&gt;本文将介绍如何使用WebGL来制作一个旋转的立方体。在这篇教程里面，我们会提到以下内容：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;VBO(Vertex Buffer Object)和IBO（Index Buffer Object）&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;如何绘制3D立方体&lt;/p&gt;</description>
     </item>
     <item>
       <title>WebGL教程:使用glMatrix和JQuery(2)</title>
-      <link>http://localhost:1313/post/webgl-use-glmatrix-and-jquery/</link>
+      <link>https://zilongshanren.com/post/webgl-use-glmatrix-and-jquery/</link>
       <pubDate>Sat, 28 Jun 2014 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/webgl-use-glmatrix-and-jquery/</guid>
+      <guid>https://zilongshanren.com/post/webgl-use-glmatrix-and-jquery/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://zilongshanren.com/blog/2014-06-07-webgl-your-first-triangles.html&#34;&gt;上篇文章&lt;/a&gt;介绍了如何使用WebGL来绘制一个三角形。从那个教程中，我们可以看出，其实WebGL只是一个&lt;a href=&#34;http://games.greggman.com/game/webgl-fundamentals/&#34;&gt;2D API&lt;/a&gt;,我们只需要在Vertex Shader里面指定绘制图元的裁剪坐标系的坐标(取值范围从-1到+1)，同时在Fragment Shader里面指定顶点最终的像素颜色即可。如果要实现3D效果，必须由程序员自己来指定3D空间坐标变换，即Model-View-Projection变换。&lt;/p&gt;</description>
     </item>
     <item>
       <title>WebGL教程：你的第一个三角形(1)</title>
-      <link>http://localhost:1313/post/webgl-your-first-triangles/</link>
+      <link>https://zilongshanren.com/post/webgl-your-first-triangles/</link>
       <pubDate>Sat, 07 Jun 2014 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/webgl-your-first-triangles/</guid>
+      <guid>https://zilongshanren.com/post/webgl-your-first-triangles/</guid>
       <description>&lt;p&gt;本人最近正在学习WebGL，所以想借着自己写《Cocos2D-X OpenGLES 2.0教程系列》的同时再应用到WebGL上面来。一来可以加深自己的理解，二来也可以对比两者的差别，提高学习效率。WebGL目前各大厂商都在推，就连微软也开始重视这项技术了，不得不说这是一项不小的进步。而最近我看到一篇文章，讲到&lt;a href=&#34;http://www.realtimerendering.com/blog/why-use-webgl-for-graphics-research/&#34;&gt;《为什么要使用WebGL来做图形学的研究》&lt;/a&gt;，深受启发。而且javascript编写OpenGL代码也非常地方便和简洁。另外，js在编写3D程序方面，它的性能是可以和C媲美的。&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,73 +2,73 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Emacs on 子龙山人</title>
-    <link>http://localhost:1313/tags/emacs/</link>
+    <link>https://zilongshanren.com/tags/emacs/</link>
     <description>Recent content in Emacs on 子龙山人</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 21 Aug 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://zilongshanren.com/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>21 天学会 Emacs（下）</title>
-      <link>http://localhost:1313/post/2016-08-21-learn-emacs-21-days-part-two/</link>
+      <link>https://zilongshanren.com/post/2016-08-21-learn-emacs-21-days-part-two/</link>
       <pubDate>Sun, 21 Aug 2016 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2016-08-21-learn-emacs-21-days-part-two/</guid>
+      <guid>https://zilongshanren.com/post/2016-08-21-learn-emacs-21-days-part-two/</guid>
       <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;引子&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;非 Vim/Emacs 党学习路径&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;Vim 党学习路径&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;Emacs 新手党学习路径&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;总结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;TL;DR&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;21 天学会 Emacs 系列完美收官，你们再也不用追网剧了，我再也不用被人追着更新啦！&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;/p&gt;&#xA;&#xA;&lt;div id=&#34;orgheadline1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;orgheadline1&#34;&gt;引子&lt;/h2&gt;&#xA;&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline1&#34;&gt;&#xA;&lt;p&gt;&#xA;去年十月份开始，我断断续续地录制了 10 集 Spacemacs Rocks，很快就收到了很多人的反馈，要求录制一些新手视频。（估计是我的 Emacs 操作闪瞎了很多人的双眼。。。）&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>21天学会 Emacs（上）</title>
-      <link>http://localhost:1313/post/2016-06-12-master-emacs-in-21-days/</link>
+      <link>https://zilongshanren.com/post/2016-06-12-master-emacs-in-21-days/</link>
       <pubDate>Sun, 12 Jun 2016 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2016-06-12-master-emacs-in-21-days/</guid>
+      <guid>https://zilongshanren.com/post/2016-06-12-master-emacs-in-21-days/</guid>
       <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;为什么我要录制这个系列视频&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;我真的可以 21 天学会 Emacs 吗？&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;给 Emacs 新手的建议&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;后续学习建议&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;结语&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;经过了漫长的 3个月等待，《21 天学会 Emacs 系列》的上半部分总算是完结了。本来打算每周一更的视频，也由于各种原因未能及时更新，不过好在 Emacs 党的热情不减，我终于还是不负众望，坚持下来了。&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Spacemacs Rocks</title>
-      <link>http://localhost:1313/post/2015-12-06-spacemacs-rocks/</link>
+      <link>https://zilongshanren.com/post/2015-12-06-spacemacs-rocks/</link>
       <pubDate>Sun, 06 Dec 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2015-12-06-spacemacs-rocks/</guid>
+      <guid>https://zilongshanren.com/post/2015-12-06-spacemacs-rocks/</guid>
       <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;前言&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;Spacemacs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;Happy Hacking&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;Spacemacs Rocks!&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;本文是对 Spacemacs Rocks 第一季系列视频的一个小节，同时打个广告，欢迎对 Emacs 和 Spacemacs 感兴趣的朋友加入&#xA;emacs-cn 的 slack 聊天组 &lt;a href=&#34;https://slackin-emacs-cn.herokuapp.com/&#34;&gt;https://slackin-emacs-cn.herokuapp.com/&lt;/a&gt;。&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;/p&gt;&#xA;&#xA;&lt;div id=&#34;orgheadline1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;orgheadline1&#34;&gt;前言&lt;/h2&gt;&#xA;&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline1&#34;&gt;&#xA;&lt;p&gt;&#xA;Spacemacs 这个社区维护的 Emacs 配置，集成了 Vim 和 Emacs 的优点，我已经用了整整一年了，非常好用，我已经迫不及待地想把它推荐给身边每一位朋友。&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>The best way to teach others Emacs</title>
-      <link>http://localhost:1313/post/2015-11-07-the-best-way-to-teach-others-emacs/</link>
+      <link>https://zilongshanren.com/post/2015-11-07-the-best-way-to-teach-others-emacs/</link>
       <pubDate>Sat, 07 Nov 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2015-11-07-the-best-way-to-teach-others-emacs/</guid>
+      <guid>https://zilongshanren.com/post/2015-11-07-the-best-way-to-teach-others-emacs/</guid>
       <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;不要在安利的时候说 Emacs 可以做任何事情。&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;不要安利对方快捷键使用和无鼠标操作方式&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;要安利 Emacs 是一个编程平台&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;安利 Emacs 的正确方式：&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;第一步：找到一个对 Emacs 真正感兴趣的人。（这是最难的一步）&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;第二步：让他把 Emacs 自带的教程看完（C-h t），并且给他们一些 Youtube 视频教程。&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Things I Wish I Know When I Am Learning Emacs</title>
-      <link>http://localhost:1313/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/</link>
+      <link>https://zilongshanren.com/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/</link>
       <pubDate>Sat, 31 Oct 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/</guid>
+      <guid>https://zilongshanren.com/post/2015-10-31-things-i-wish-i-know-when-i-am-learning-emacs/</guid>
       <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;一定要使用 Starter Kit&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;Package 管理和依赖&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;按键绑定&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;按键绑定的覆盖问题&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;快捷键太多，记不住怎么办？&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;有问题问 Emacs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;Happy Hacking&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;当我在学习 Emacs 的时候，有一些事情，我希望有人能够提前告诉我。&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;这样的话，我便可以少走一些弯路。&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;/p&gt;&#xA;&#xA;&lt;div id=&#34;orgheadline1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;orgheadline1&#34;&gt;一定要使用 Starter Kit&lt;/h2&gt;&#xA;&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline1&#34;&gt;&#xA;&lt;p&gt;&#xA;对于 Emacs 新手而言，一定要使用 Starter Kit！&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>关于 Spacemacs 的 Tips</title>
-      <link>http://localhost:1313/post/2015-10-25-a-few-spacemacs-tips/</link>
+      <link>https://zilongshanren.com/post/2015-10-25-a-few-spacemacs-tips/</link>
       <pubDate>Sun, 25 Oct 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2015-10-25-a-few-spacemacs-tips/</guid>
+      <guid>https://zilongshanren.com/post/2015-10-25-a-few-spacemacs-tips/</guid>
       <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;could not load evil-indent-textobject&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;Spacemacs 启动速度特别慢&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;Happy Hacking&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;因为 Spacemacs 需要下载大量的 package，而中国大陆的网络环境不是很稳定，容易导致一些 package 在下载的过程中&#xA;byte-compile 出错，所以很多人会遇到一些特别奇怪的错误。&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Emacs 当前文件快速查找内容</title>
-      <link>http://localhost:1313/post/2015-10-15-nagivate-quickly-in-the-current-buffer/</link>
+      <link>https://zilongshanren.com/post/2015-10-15-nagivate-quickly-in-the-current-buffer/</link>
       <pubDate>Thu, 15 Oct 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2015-10-15-nagivate-quickly-in-the-current-buffer/</guid>
+      <guid>https://zilongshanren.com/post/2015-10-15-nagivate-quickly-in-the-current-buffer/</guid>
       <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;Evil search&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;Swiper&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;Helm-swoop&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;Helm-semantic-or-imenu&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;occur&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;最后&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;使用 Emacs 也已经两年多了，积累了不少经验，也一直在安利，不过效果不佳。是时候跟大家分享一些我使用 Emacs 的技巧了，不求安利，只求相互交流。&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>我是怎么同时掌握 Vim 和 Emacs 的?</title>
-      <link>http://localhost:1313/post/2015-08-16-how-could-i-master-vim-and-emacs/</link>
+      <link>https://zilongshanren.com/post/2015-08-16-how-could-i-master-vim-and-emacs/</link>
       <pubDate>Sun, 16 Aug 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2015-08-16-how-could-i-master-vim-and-emacs/</guid>
+      <guid>https://zilongshanren.com/post/2015-08-16-how-could-i-master-vim-and-emacs/</guid>
       <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;我是怎么学会 Vim 的&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;我与 Mac 结缘&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;打造 Vim 神器&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;我是怎么学会 Emacs 的&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;Evil&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;Prelude&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;Spacemacs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline8&#34;&gt;现在我在用 Vim 还是 Emacs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline9&#34;&gt;给初学者的建议&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline10&#34;&gt;总结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;看到这个标题，肯定会有人站出来说，“异教徒，烧死！。。。”&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;/p&gt;&#xA;&#xA;&lt;div id=&#34;orgheadline3&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;orgheadline3&#34;&gt;我是怎么学会 Vim 的&lt;/h2&gt;&#xA;&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline3&#34;&gt;&#xA;&lt;/div&gt;&lt;div id=&#34;orgheadline1&#34; class=&#34;outline-3&#34;&gt;&#xA;&lt;h3 id=&#34;orgheadline1&#34;&gt;我与 Mac 结缘&lt;/h3&gt;&#xA;&lt;div class=&#34;outline-text-3&#34; id=&#34;text-orgheadline1&#34;&gt;&#xA;&lt;p&gt;&#xA; 2010 年下半年， 当时我还是研一，不甘寂寞的我找到了一份 iOS 兼职游戏开发的工作，那是我生平第一次接触 Mac。当时我使用的是一台 MacMini。不过老板人比较好，允许我带回宿舍。对于一个被 Windows 毒害了多年的码农，Mac 对于我真是救星。这期间我学会了 Git，并且大量使用命令行来操作 Git。由于 Mac 上面的包管理器 Homebrew 非常好用，我又开始折腾 Shell。这期间我接触了 iTerm2,Oh-My-ZSH，Alfred 和 Tmux。我的命令行使用越来越熟练，我开始尝试全键盘操作，完全脱离鼠标，只依靠键盘和触摸板来工作。因为 Mac 的触摸板非常好用，所以，我又一次成功地超越了自己。后来，我发现 Git 的很多操作需要配置编辑器，而默认的编辑器则是 Vim。因此，我又下决心要学好 Vim。就是这样，我入了 Vim 教。&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Emacs, The Editor of a Life Time</title>
-      <link>http://localhost:1313/post/emacs-the-editor-of-a-life-time/</link>
+      <link>https://zilongshanren.com/post/emacs-the-editor-of-a-life-time/</link>
       <pubDate>Sun, 24 Aug 2014 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/emacs-the-editor-of-a-life-time/</guid>
+      <guid>https://zilongshanren.com/post/emacs-the-editor-of-a-life-time/</guid>
       <description>&lt;p&gt;最近看了一个关于Emacs的视频，视频的标题为&lt;a href=&#34;https://www.youtube.com/watch?v=VADudzQGvU8&#34;&gt;The Editor of a Life Time&lt;/a&gt;。一个程序员，使用Emacs 31年了，不得不说让人很震撼。认识我的朋友都知道，我之前是一个不折不扣的Vim党，也写过一篇《打造属于自己的Vim神器》，可能还有一些朋友看了这篇文章和文中的视频，受到了一些鼓舞，于是开始接触并认真学习Vim。可是，我怎么这么快就“叛变”了呢？！且听我慢慢道来。&lt;/p&gt;</description>
     </item>
   </channel>

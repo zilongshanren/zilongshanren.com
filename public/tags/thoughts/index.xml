@@ -2,24 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Thoughts on 子龙山人</title>
-    <link>http://localhost:1313/tags/thoughts/</link>
+    <link>https://zilongshanren.com/tags/thoughts/</link>
     <description>Recent content in Thoughts on 子龙山人</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 11 Aug 2019 12:09:45 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Jun 2026 11:29:33 +0800</lastBuildDate>
+    <atom:link href="https://zilongshanren.com/tags/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Context Window 才是最稀缺资源,别让 AI 在一个会话里耗到降智</title>
+      <link>https://zilongshanren.com/post/context-window-is-the-scarcest-resource/</link>
+      <pubDate>Sun, 07 Jun 2026 11:29:33 +0800</pubDate>
+      <guid>https://zilongshanren.com/post/context-window-is-the-scarcest-resource/</guid>
+      <description>&lt;p&gt;用 AI 写了快一年代码,今天聊个最容易被忽略、一旦忽略就很吃亏的坑。&lt;/p&gt;&#xA;&lt;p&gt;前阵子我让 Claude Code 查一个 bug,一开始是我把方向带偏了。后来我反应过来,纠正它:别按刚才那条路查,应该从另一个入口看。它当时也听懂了,按新方向把问题定位出来了。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>编程之道：自动洗碗机</title>
-      <link>http://localhost:1313/post/auto-wash-your-bowls/</link>
+      <link>https://zilongshanren.com/post/auto-wash-your-bowls/</link>
       <pubDate>Sat, 10 Aug 2019 22:54:00 +0800</pubDate>
-      <guid>http://localhost:1313/post/auto-wash-your-bowls/</guid>
+      <guid>https://zilongshanren.com/post/auto-wash-your-bowls/</guid>
       <description>&lt;p&gt;在&lt;a href=&#34;https://zilongshanren.com/post/wash-bowls-after-launch/&#34;&gt;上一篇文章&lt;/a&gt; 中，我提到了一些开发过程中非常容易被忽略和轻视的工作，比如代码整理，&#xA;commit 整理，添加测试等。做好这些工作不仅仅需要专业的知识，还需要非常强的自律才可以很好的完成。相比于精妙的算法和高大上的模式，做这些事情的优先级在很多开发团队里面比较低，通常可能是没人做。因为做好了这些事情，可能你也很难升职加薪，并且软件质量的提升也不是那么的明显（相比于改掉一些严重的 bug 而言）。&lt;/p&gt;</description>
     </item>
     <item>
       <title>编程之道：饭后洗碗</title>
-      <link>http://localhost:1313/post/wash-bowls-after-launch/</link>
+      <link>https://zilongshanren.com/post/wash-bowls-after-launch/</link>
       <pubDate>Sat, 20 Jul 2019 11:13:00 +0800</pubDate>
-      <guid>http://localhost:1313/post/wash-bowls-after-launch/</guid>
+      <guid>https://zilongshanren.com/post/wash-bowls-after-launch/</guid>
       <description>&lt;p&gt;从今天起，我将写一系列《编程之道》的文章，主要用来记录我这些年来写代码的感悟。这些文章主要聚焦在如何写好代码。更多的是『道』&amp;mdash; 最佳实践，而不是『术』。写代码并不是一件非常难的事情，但是写『好代码』却没有那么简单。它需要我们拥有『足够的知识』和『超强的自律』。&lt;/p&gt;</description>
     </item>
   </channel>

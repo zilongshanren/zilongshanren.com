@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Work on 子龙山人</title>
-    <link>http://localhost:1313/categories/work/</link>
+    <link>https://zilongshanren.com/categories/work/</link>
     <description>Recent content in Work on 子龙山人</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 19 Jun 2022 11:30:26 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/work/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://zilongshanren.com/categories/work/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在腾讯工作三年总结</title>
-      <link>http://localhost:1313/post/three-years-in-tencent/</link>
+      <link>https://zilongshanren.com/post/three-years-in-tencent/</link>
       <pubDate>Sun, 21 Feb 2021 17:59:00 +0800</pubDate>
-      <guid>http://localhost:1313/post/three-years-in-tencent/</guid>
+      <guid>https://zilongshanren.com/post/three-years-in-tencent/</guid>
       <description>&lt;p&gt;不知不觉，来腾讯工作已经超过 3 年了，由于工作比较忙，在深圳的生活节奏很快，一直没有时间来写博客。今天，趁着周末有空，也来总结一下我在腾讯这 3 年的情况。&lt;/p&gt;</description>
     </item>
     <item>
       <title>工作两年总结(下)</title>
-      <link>http://localhost:1313/post/2015-08-09-postmotem-of-two-years-work-part2/</link>
+      <link>https://zilongshanren.com/post/2015-08-09-postmotem-of-two-years-work-part2/</link>
       <pubDate>Sun, 09 Aug 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2015-08-09-postmotem-of-two-years-work-part2/</guid>
+      <guid>https://zilongshanren.com/post/2015-08-09-postmotem-of-two-years-work-part2/</guid>
       <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;不够专注&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;不够关心细节&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;不够主动争取&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;没有按需学习&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;做正确的事,不要做容易的事&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;本文是&lt;a href=&#34;http://zilongshanren.com/blog/2015-07-26-postmotem-of-two-years-programming-career.html&#34;&gt;工作两年总结（上） | 子龙山人&lt;/a&gt; 的续，主要介绍我这两年经历的教训。&#xA;&lt;/p&gt;&#xA;&#xA;&#xA;&lt;p&gt;&#xA;&lt;!-- more --&gt;&#xA;&lt;/p&gt;&#xA;&#xA;&lt;div id=&#34;orgheadline1&#34; class=&#34;outline-2&#34;&gt;&#xA;&lt;h2 id=&#34;orgheadline1&#34;&gt;不够专注&lt;/h2&gt;&#xA;&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline1&#34;&gt;&#xA;&lt;p&gt;&#xA;实际上，打从我开始学习计算机的时候，我便立志要学习游戏开发。读完研究生以后，我也是立马就投身了游戏行业。虽然，我不是参与实际的游戏开发，但是我做的是游戏引擎开发，也算是与游戏密不可分。不过，有时候，我会偶尔想离开游戏行业。至于原因，知乎大神有回答:&lt;a href=&#34;http://www.zhihu.com/question/29533974&#34;&gt;你为什么会离开游戏行业？ - 知乎&lt;/a&gt;。&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>工作两年总结（上）</title>
-      <link>http://localhost:1313/post/2015-07-26-postmotem-of-two-years-programming-career/</link>
+      <link>https://zilongshanren.com/post/2015-07-26-postmotem-of-two-years-programming-career/</link>
       <pubDate>Sun, 26 Jul 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2015-07-26-postmotem-of-two-years-programming-career/</guid>
+      <guid>https://zilongshanren.com/post/2015-07-26-postmotem-of-two-years-programming-career/</guid>
       <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;收获&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;掌握 Emacs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;掌握 Git 和 Github&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;掌握 Jenkins 持续集成&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;对编程语言和程序设计有了更深的理解&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;编程语言&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;程序设计&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline8&#34;&gt;Do more, promise less&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline9&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;本文主要是对我两年程序员生涯的一些心得体会进行总结，主要是技术相关。Cocos2D-X 最流行的那年，我选择加入了 Cocos2D-X 团队，凭借着自己的一腔热血和对游戏的热爱，我选择了技术推广作为我的第一份职业。然而，好景不长，技术推广需要专业的，有激情的团队，而我们无法组建这样的团队。&#xA;&lt;/p&gt;</description>
     </item>
   </channel>

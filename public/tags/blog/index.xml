@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on 子龙山人</title>
-    <link>http://localhost:1313/tags/blog/</link>
+    <link>https://zilongshanren.com/tags/blog/</link>
     <description>Recent content in Blog on 子龙山人</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 14 Jun 2019 09:07:14 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://zilongshanren.com/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>博客从 hexo 迁移到 hugo</title>
-      <link>http://localhost:1313/post/move-from-hexo-to-hugo/</link>
+      <link>https://zilongshanren.com/post/move-from-hexo-to-hugo/</link>
       <pubDate>Tue, 11 Jun 2019 09:07:00 +0800</pubDate>
-      <guid>http://localhost:1313/post/move-from-hexo-to-hugo/</guid>
+      <guid>https://zilongshanren.com/post/move-from-hexo-to-hugo/</guid>
       <description>&lt;h2 id=&#34;为什么又迁移博客&#34;&gt;为什么又迁移博客&lt;/h2&gt;&#xA;&lt;p&gt;熟悉我的朋友可能会发现，我几乎每隔一段时间都会换一个博客平台 &amp;#x1f602;&lt;/p&gt;&#xA;&lt;p&gt;从最早的Wordpress到Octopress，再到Hexo，最后到如今的Hugo，博客没写多少，博客平台却折腾不少。&lt;/p&gt;&#xA;&lt;p&gt;每一次折腾完后，我都会写下一篇类似的文章，讲我的迁移过程，而且似乎每次都声称这是最后一次折腾Blog了 &amp;#x1f602;&lt;/p&gt;&#xA;&lt;p&gt;因为我自己是个不折不扣的工具控，可能天生就爱折腾。&lt;/p&gt;</description>
     </item>
     <item>
       <title>关于写博客的一些思考</title>
-      <link>http://localhost:1313/post/2015-11-15-when-to-blog/</link>
+      <link>https://zilongshanren.com/post/2015-11-15-when-to-blog/</link>
       <pubDate>Sun, 15 Nov 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2015-11-15-when-to-blog/</guid>
+      <guid>https://zilongshanren.com/post/2015-11-15-when-to-blog/</guid>
       <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;写博客到底写些什么&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;可以是翻译看过的好文章&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;可以是读书笔记和心得体会&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;可以是攻克难题的步骤和答案&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;可以是自己已经熟练掌握了的东西&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;如何坚持写博客&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;写你感兴趣的并且真正热爱的东西。&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline8&#34;&gt;控制好写博客的频率&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline9&#34;&gt;找一个称手的写博客工具或平台&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline10&#34;&gt;总结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;我最早在 Cocos2D 圈子里面被大家认识是通过写博客，而“子龙山人”这个名号也是自那时起百度便可以搜索到了。&#xA;&lt;/p&gt;&#xA;&#xA;&lt;p&gt;&#xA;通过写博客，我还认识了与我合作第一本书的作者王寒，认识了泰然网的教主 Iven，认识了带我入 Emacs 教的“一叶道长”，认识了我的 Boss&amp;#x2013;Cocos2D-X 创始人王哲。而且后来，我也因此进入了现在的 Cocos2D-X 团队做游戏引擎研发。&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>迁移博客到 Hexo</title>
-      <link>http://localhost:1313/post/2015-08-02-migrate-blog-to-hexo/</link>
+      <link>https://zilongshanren.com/post/2015-08-02-migrate-blog-to-hexo/</link>
       <pubDate>Sun, 02 Aug 2015 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/post/2015-08-02-migrate-blog-to-hexo/</guid>
+      <guid>https://zilongshanren.com/post/2015-08-02-migrate-blog-to-hexo/</guid>
       <description>&lt;div id=&#34;table-of-contents&#34;&gt;&#xA;&lt;h2&gt;Table of Contents&lt;/h2&gt;&#xA;&lt;div id=&#34;text-table-of-contents&#34;&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline1&#34;&gt;为什么要迁移到 Hexo&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline2&#34;&gt;迁移过程&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline6&#34;&gt;迁移 Org-Octopress&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline3&#34;&gt;修改 permalink。&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline4&#34;&gt;修改 Org-Octopress 的根路径&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline5&#34;&gt;需要导出的文件要放到 source 目录，但是需要添加 skip_render 信息。&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline7&#34;&gt;Emacs 集成&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#orgheadline8&#34;&gt;小结&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;p&gt;&#xA;本文主要是记录我是如何把博客从 Octopress 迁移到 Hexo 上面去的，同时解释了我为什么要这么做。&#xA;&lt;/p&gt;</description>
     </item>
   </channel>

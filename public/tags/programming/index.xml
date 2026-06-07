@@ -2,46 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Programming on 子龙山人</title>
-    <link>http://localhost:1313/tags/programming/</link>
+    <link>https://zilongshanren.com/tags/programming/</link>
     <description>Recent content in Programming on 子龙山人</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 30 Dec 2021 22:55:06 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Jun 2026 11:29:33 +0800</lastBuildDate>
+    <atom:link href="https://zilongshanren.com/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Context Window 才是最稀缺资源,别让 AI 在一个会话里耗到降智</title>
+      <link>https://zilongshanren.com/post/context-window-is-the-scarcest-resource/</link>
+      <pubDate>Sun, 07 Jun 2026 11:29:33 +0800</pubDate>
+      <guid>https://zilongshanren.com/post/context-window-is-the-scarcest-resource/</guid>
+      <description>&lt;p&gt;用 AI 写了快一年代码,今天聊个最容易被忽略、一旦忽略就很吃亏的坑。&lt;/p&gt;&#xA;&lt;p&gt;前阵子我让 Claude Code 查一个 bug,一开始是我把方向带偏了。后来我反应过来,纠正它:别按刚才那条路查,应该从另一个入口看。它当时也听懂了,按新方向把问题定位出来了。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>如何自学计算机编程</title>
-      <link>http://localhost:1313/post/how-to-self-learning-cs/</link>
+      <link>https://zilongshanren.com/post/how-to-self-learning-cs/</link>
       <pubDate>Thu, 30 Dec 2021 22:54:00 +0800</pubDate>
-      <guid>http://localhost:1313/post/how-to-self-learning-cs/</guid>
+      <guid>https://zilongshanren.com/post/how-to-self-learning-cs/</guid>
       <description>&lt;p&gt;众所周知，现在计算机是“宇宙机”，很多人想转计算机，但是真正能够学好计算机编程的人非常少。不少的人选择了去培训机构突击几个月，然后找一份搬砖的工作作为跳板，希望积累经验过一两年后可以跳槽，实现人生的飞跃。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>为什么纯文本很强大？</title>
-      <link>http://localhost:1313/post/why-markdown-rocks/</link>
-      <pubDate>Wed, 12 Feb 2020 11:35:29 +0800</pubDate>
-      <guid>http://localhost:1313/post/why-markdown-rocks/</guid>
-      <description>&lt;p&gt;from the blog migrate history.&lt;/p&gt;&#xA;&lt;p&gt;wordpress: tools to transfer to markdown&lt;/p&gt;&#xA;&lt;p&gt;octopress: support markdown&lt;/p&gt;&#xA;&lt;p&gt;hexo: support markdown&lt;/p&gt;&#xA;&lt;p&gt;hugo: support markdown and tags&lt;/p&gt;&#xA;&lt;p&gt;because it&amp;rsquo;s plain text and it&amp;rsquo;s easy to support it&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>编程之道：自动洗碗机</title>
-      <link>http://localhost:1313/post/auto-wash-your-bowls/</link>
+      <link>https://zilongshanren.com/post/auto-wash-your-bowls/</link>
       <pubDate>Sat, 10 Aug 2019 22:54:00 +0800</pubDate>
-      <guid>http://localhost:1313/post/auto-wash-your-bowls/</guid>
+      <guid>https://zilongshanren.com/post/auto-wash-your-bowls/</guid>
       <description>&lt;p&gt;在&lt;a href=&#34;https://zilongshanren.com/post/wash-bowls-after-launch/&#34;&gt;上一篇文章&lt;/a&gt; 中，我提到了一些开发过程中非常容易被忽略和轻视的工作，比如代码整理，&#xA;commit 整理，添加测试等。做好这些工作不仅仅需要专业的知识，还需要非常强的自律才可以很好的完成。相比于精妙的算法和高大上的模式，做这些事情的优先级在很多开发团队里面比较低，通常可能是没人做。因为做好了这些事情，可能你也很难升职加薪，并且软件质量的提升也不是那么的明显（相比于改掉一些严重的 bug 而言）。&lt;/p&gt;</description>
     </item>
     <item>
       <title>编程之道：饭后洗碗</title>
-      <link>http://localhost:1313/post/wash-bowls-after-launch/</link>
+      <link>https://zilongshanren.com/post/wash-bowls-after-launch/</link>
       <pubDate>Sat, 20 Jul 2019 11:13:00 +0800</pubDate>
-      <guid>http://localhost:1313/post/wash-bowls-after-launch/</guid>
+      <guid>https://zilongshanren.com/post/wash-bowls-after-launch/</guid>
       <description>&lt;p&gt;从今天起，我将写一系列《编程之道》的文章，主要用来记录我这些年来写代码的感悟。这些文章主要聚焦在如何写好代码。更多的是『道』&amp;mdash; 最佳实践，而不是『术』。写代码并不是一件非常难的事情，但是写『好代码』却没有那么简单。它需要我们拥有『足够的知识』和『超强的自律』。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>programmer tests</title>
-      <link>http://localhost:1313/post/programmer-tests/</link>
-      <pubDate>Sat, 20 Jul 2019 09:17:48 +0800</pubDate>
-      <guid>http://localhost:1313/post/programmer-tests/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://medium.com/@kentbeck%5F7670/programmer-test-principles-d01c064d7934&#34;&gt;https://medium.com/@kentbeck%5F7670/programmer-test-principles-d01c064d7934&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;focus-on-test-principles&#34;&gt;Focus on test principles&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;test should be fast. 一般来说一份钟以内的测试反馈周期就比较好，如果太长了，就会影响程序调试代码&lt;/li&gt;&#xA;&lt;li&gt;test should be deterministic. 测试覆盖要全，不能测试代码考虑不周全，结果测试过了，并不能反应真实的情况。&lt;/li&gt;&#xA;&lt;li&gt;test should be predictive. 测试过了，那么代码跑起来应该没有问题。不能测试过了，软件还是有问题，那么这样的测试就是有问题的&lt;/li&gt;&#xA;&lt;li&gt;test should be sensitive to behavior changes not to structure changes.如果我的程序代码非常依赖代码的执行顺序，那么我设计的代码就非常有问题。&lt;/li&gt;&#xA;&lt;li&gt;test should be cheap to write.  programmer don&amp;rsquo;t be paid by tests. Code&#xA;should be working and can be changed. less effort on test is better.&lt;/li&gt;&#xA;&lt;li&gt;programmer&amp;rsquo;s test should be cheap to read.  test code is also code, it read&#xA;more than write.&lt;/li&gt;&#xA;&lt;li&gt;programmer&amp;rsquo;s test should be cheap to change.&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
   </channel>
 </rss>

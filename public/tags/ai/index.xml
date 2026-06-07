@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI on 子龙山人</title>
+    <link>https://zilongshanren.com/tags/ai/</link>
+    <description>Recent content in AI on 子龙山人</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 07 Jun 2026 11:29:33 +0800</lastBuildDate>
+    <atom:link href="https://zilongshanren.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Context Window 才是最稀缺资源,别让 AI 在一个会话里耗到降智</title>
+      <link>https://zilongshanren.com/post/context-window-is-the-scarcest-resource/</link>
+      <pubDate>Sun, 07 Jun 2026 11:29:33 +0800</pubDate>
+      <guid>https://zilongshanren.com/post/context-window-is-the-scarcest-resource/</guid>
+      <description>&lt;p&gt;用 AI 写了快一年代码,今天聊个最容易被忽略、一旦忽略就很吃亏的坑。&lt;/p&gt;&#xA;&lt;p&gt;前阵子我让 Claude Code 查一个 bug,一开始是我把方向带偏了。后来我反应过来,纠正它:别按刚才那条路查,应该从另一个入口看。它当时也听懂了,按新方向把问题定位出来了。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
