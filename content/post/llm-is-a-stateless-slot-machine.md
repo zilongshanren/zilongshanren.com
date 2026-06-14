@@ -1,7 +1,7 @@
 +++
 title = "大模型是台 Stateless 老虎机:你能控制的只有事前对齐和事后验证"
-date = 2026-06-15T09:00:00+08:00
-lastmod = 2026-06-15T09:00:00+08:00
+date = 2026-06-14T09:00:00+08:00
+lastmod = 2026-06-14T09:00:00+08:00
 tags = ["thoughts", "programming", "AI", "Claude Code"]
 draft = false
 author = "zilongshanren"
